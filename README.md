@@ -12,9 +12,9 @@
 
 # 目前遇到的问题
 
-!!! Error
-HTTP Request Header 的 DS 算法未能通过认证, 会请求失败, 目前正在寻找解决方案中.
-iOS, iPadOS, visionOS, watchOS 暂时也没有空去适配
+> Error: 
+> HTTP Request Header 的 DS 算法未能通过认证, 会请求失败, 目前正在寻找解决方案中.
+> iOS, iPadOS, visionOS, watchOS 暂时也没有空去适配
 
 # 功能列表
 
