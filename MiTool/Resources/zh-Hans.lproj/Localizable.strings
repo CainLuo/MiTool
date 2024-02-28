@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  MiTool
+
+  Created by Cain Luo on 2024/2/4.
+  
+*/
+
+// MARK: - 侧边栏
+
+"SideBarNotesTitle" = "实时便签";
+"SideBarUserTitle" = "用户信息";
+
+"SideBarGenshinTitle" = "原神";
+"SideBarGenshinHome" = "原神首页";
+"SideBarGenshinRole" = "原神角色列表";
+
+"SideBarStarRailTitle" = "崩坏：星穹铁道";
+"SideBarStarRailRole" = "星穹铁道角色列表";
+"SideBarStarRailMap"  = "星穹铁道地图";
+"SideBarStarRailWiki" = "星穹铁道Wiki";
+
+// MARK: - 崩坏: 星穹铁道
+
+"StarRailWeightDaily" = "每日实训";
+"StarRailWeightWeekly" = "本周积分";
+"StarRailWeightEntrusted" = "委托执行";
+"StarRailWeightWeeklyMonster" = "历战余响";
+"StarRailWeightRecoveryTime" = "恢复时间";
+"StarRailWeightTrailblazePower" = "开拓力";
+"StarRailWeightTrailblazePower" = "存储开拓力：";
+"StarRailWeightTrailblazePowerFull" = "存储开拓力是否已满：";
+"StarRailWeightTrailblazePowerYes" = "是";
+"StarRailWeightTrailblazePowerNo" = "否";
+
+"StarRailRoleAvatarConsume" = "角色培养";
+"StarRailRoleSkillsConsume" = "行迹培养";
+"StarRailRoleEquipmentConsume" = "光锥培养";
+"StarRailRoleConsumeFinished" = "角色的等级、行迹和光锥已经完成所有养成。";
+
+"StarRailRoleEquipmentTitle" = "光锥";
+
+// MARK: - 原神
+
+"GenshinWeightResin" = "原粹树脂";
+"GenshinWeightRecoveryTime" = "剩余恢复时间";
+"GenshinWeightRecoveryTimeFormatter" = "%d小时%d分钟";
+"GenshinWeightRecoveryMinutesFormatter" = "0小时%d分钟";
+"GenshinWeightRecoveryDone" = "已恢复";
+"GenshinWeightTransformerDay" = "%d日%d小时";
+"GenshinWeightTransformerHour" = "%d小时%d分钟";
+"GenshinWeightTransformerReady" = "已准备就绪";
+
+// MARK: - 米游社
+
+"MihoyoGameNameHonKai3" = "崩坏3";
+"MihoyoGameNameGenshinImpact" = "原神";
+"MihoyoGameNameStarRail" = "崩坏：星穹铁道";
+"MihoyoGameUID" = "UID：%@";
+"MihoyoGameRegionName" = "服务器：%@";
+"MihoyoGameNickname" = "昵称：%@";
+"MihoyoGameLevel" = "等级：%@";
+"MihoyoGameReturn" = "返回";
+"MihoyoGameInputNickname" = "请输入你的米游社昵称：";
+"MihoyoGameInputUID" = "请输入你的米游社UID：";
+"MihoyoGameInputCookie" = "请输入你的米游社Cookie：";
+"MihoyoGameSave" = "保存/更新用户信息";
+"MihoyoGameRegion" = "地区：%@";
+"MihoyoGameAddUser" = "添加新用户";

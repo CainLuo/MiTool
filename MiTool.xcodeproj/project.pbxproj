@@ -1,0 +1,1035 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */; };
+		A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */; };
+		A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB92B8DE9C000C091BB /* starRailWidget.json */; };
+		A4871DBD2B8DE9FD00C091BB /* genshinImpactWidgetV2.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */; };
+		A4871DBF2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DBE2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift */; };
+		A4871DC12B8DEBF000C091BB /* genshinCharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DC02B8DEBF000C091BB /* genshinCharacter.json */; };
+		A4871DC32B8DED9800C091BB /* GenshinImpactCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */; };
+		A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC42B8EE46900C091BB /* Text+Extensions.swift */; };
+		A4871DC72B8EE91F00C091BB /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC62B8EE91F00C091BB /* View+Extensions.swift */; };
+		A4871DC92B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */; };
+		A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */; };
+		A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */; };
+		A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */; };
+		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
+		A49FEFCF2B8D8FED00B01909 /* ApiNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */; };
+		A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */; };
+		BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512222B6E206A004D6878 /* MiToolTests.swift */; };
+		BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512292B6E2651004D6878 /* RoleListView.swift */; };
+		BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05122B2B6E2709004D6878 /* RoleCardView.swift */; };
+		BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06872B712A200013DD7D /* SideBarViewModel.swift */; };
+		BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */; };
+		BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06902B72A8EC0013DD7D /* WebView.swift */; };
+		BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */; };
+		BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06942B73818B0013DD7D /* RoleDetailView.swift */; };
+		BF2D06992B74DEF30013DD7D /* AnnoucementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */; };
+		BF2D06A22B751E710013DD7D /* AnnoucementContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */; };
+		BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */; };
+		BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D02B69525500587AD3 /* MiToolApp.swift */; };
+		BF4659D32B69525500587AD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D22B69525500587AD3 /* ContentView.swift */; };
+		BF4659D52B69525600587AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4659D42B69525600587AD3 /* Assets.xcassets */; };
+		BF4659D92B69525600587AD3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4659D82B69525600587AD3 /* Preview Assets.xcassets */; };
+		BF4659E12B69534B00587AD3 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = BF4659E02B69534B00587AD3 /* SwiftUIX */; };
+		BF4659E42B69537900587AD3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF4659E32B69537900587AD3 /* Alamofire */; };
+		BF4659EA2B695EE000587AD3 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = BF4659E92B695EE000587AD3 /* ObjectMapper */; };
+		BF5581B92B6FAADE003A5487 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581B82B6FAADE003A5487 /* SideBar.swift */; };
+		BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */; };
+		BF5581BE2B6FAED7003A5487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF5581C02B6FAED7003A5487 /* Localizable.strings */; };
+		BF5581C32B6FAFB3003A5487 /* LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */; };
+		BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C72B70B52F003A5487 /* SideBarModel.swift */; };
+		BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */; };
+		BFA75B772B7E77450020B246 /* StarRailWeightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */; };
+		BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */; };
+		BFA75B7B2B7F86840020B246 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7A2B7F86840020B246 /* WeightView.swift */; };
+		BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */; };
+		BFA75B812B7FC4760020B246 /* MihoyoGameRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */; };
+		BFA75B892B7FC75B0020B246 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = BFA75B882B7FC75B0020B246 /* SQLite */; };
+		BFA75B8E2B7FC8680020B246 /* SQLManager+DailyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */; };
+		BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B8C2B7FC8680020B246 /* SQLManager.swift */; };
+		BFA75B902B7FC8680020B246 /* SQLManager+StarRailRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */; };
+		BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B642B80E299005DD170 /* SQLManager+MihoyoUser.swift */; };
+		BFB03B692B80ECC6005DD170 /* MihoyoUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B682B80ECC6005DD170 /* MihoyoUserModel.swift */; };
+		BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B6A2B80FEFA005DD170 /* MihoyoUserListViewModel.swift */; };
+		BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B6C2B80FF9B005DD170 /* MihoyoUserListView.swift */; };
+		BFB03B6F2B8255E2005DD170 /* MihoyoGameCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B6E2B8255E2005DD170 /* MihoyoGameCardViewModel.swift */; };
+		BFB03B712B825680005DD170 /* MihoyoGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B702B825680005DD170 /* MihoyoGameCardView.swift */; };
+		BFB03B732B831393005DD170 /* MihoyoUserEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03B722B831393005DD170 /* MihoyoUserEditView.swift */; };
+		BFB03B762B83772C005DD170 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BFB03B752B83772C005DD170 /* CryptoSwift */; };
+		BFB03B892B83B267005DD170 /* mihoyoUser.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B872B83B263005DD170 /* mihoyoUser.json */; };
+		BFB03B8A2B83B267005DD170 /* mihoyoPersonal.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B882B83B263005DD170 /* mihoyoPersonal.json */; };
+		BFB03B8B2B83B26C005DD170 /* starRailAvatars.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7D2B83B263005DD170 /* starRailAvatars.json */; };
+		BFB03B8F2B83B26C005DD170 /* computeAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B802B83B263005DD170 /* computeAvatar.json */; };
+		BFB03B902B83B26C005DD170 /* genshinSpiralAbyess.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7A2B83B263005DD170 /* genshinSpiralAbyess.json */; };
+		BFB03B912B83B26C005DD170 /* equipments.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B792B83B263005DD170 /* equipments.json */; };
+		BFB03B932B83B26C005DD170 /* 1305Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7B2B83B263005DD170 /* 1305Skill.json */; };
+		BFB03B952B83B26C005DD170 /* starRailAllAvatars.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7E2B83B263005DD170 /* starRailAllAvatars.json */; };
+		BFB03B972B83B26C005DD170 /* myAvatars.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7F2B83B263005DD170 /* myAvatars.json */; };
+		BFB03B982B83B26C005DD170 /* starRailCharacterDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B7C2B83B263005DD170 /* starRailCharacterDetails.json */; };
+		BFB03B9F2B844F9F005DD170 /* 10000089Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B9C2B844F9E005DD170 /* 10000089Skill.json */; };
+		BFB03BA02B844F9F005DD170 /* genshinFilter.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B9D2B844F9E005DD170 /* genshinFilter.json */; };
+		BFB03BA12B844F9F005DD170 /* 10000089FuNingNa.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B9E2B844F9E005DD170 /* 10000089FuNingNa.json */; };
+		BFB03BA32B845204005DD170 /* genshinDailyNote.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BA22B845204005DD170 /* genshinDailyNote.json */; };
+		BFB03BA52B845263005DD170 /* GenshinImpactDailyNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */; };
+		BFB03BA72B849123005DD170 /* GenshinWeightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */; };
+		BFB03BA92B84A58C005DD170 /* GenshinWeightCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */; };
+		BFB03BAB2B8A4C4F005DD170 /* 1003Skil.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BAA2B8A4C4F005DD170 /* 1003Skil.json */; };
+		BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */; };
+		BFB03BAF2B8B0B71005DD170 /* RoleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BAE2B8B0B70005DD170 /* RoleInfoView.swift */; };
+		BFB03BB12B8B0B93005DD170 /* RoleInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BB02B8B0B93005DD170 /* RoleInfoViewModel.swift */; };
+		BFB03BB42B8B986F005DD170 /* EnumKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BB32B8B986F005DD170 /* EnumKeys.swift */; };
+		BFB03BB82B8CE504005DD170 /* 1003SkillCompute.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BB72B8CE504005DD170 /* 1003SkillCompute.json */; };
+		BFB03BBA2B8CE55A005DD170 /* StarRailSkillComputeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */; };
+		BFB03BBC2B8CE648005DD170 /* skillComputeRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */; };
+		BFB03BBE2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */; };
+		BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */; };
+		BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */; };
+		BFE403B62B6E2A69002FF39E /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403B52B6E2A69002FF39E /* MockApi.swift */; };
+		BFE403B92B6E2B55002FF39E /* RoleAllViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403B82B6E2B55002FF39E /* RoleAllViewModel.swift */; };
+		BFE403BB2B6E2C21002FF39E /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */; };
+		BFE403BD2B6E2C48002FF39E /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403BC2B6E2C48002FF39E /* Api.swift */; };
+		BFE403C02B6E2FD6002FF39E /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403BF2B6E2FD6002FF39E /* ThemeColor.swift */; };
+		BFE403C32B6E3784002FF39E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BFE403C22B6E3784002FF39E /* Kingfisher */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF0512242B6E206A004D6878 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4659C52B69525500587AD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF4659CC2B69525500587AD3;
+			remoteInfo = MiTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
+		A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailDailyNode.json; sourceTree = "<group>"; };
+		A4871DB92B8DE9C000C091BB /* starRailWidget.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailWidget.json; sourceTree = "<group>"; };
+		A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinImpactWidgetV2.json; sourceTree = "<group>"; };
+		A4871DBE2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinImpactWidgetModel.swift; sourceTree = "<group>"; };
+		A4871DC02B8DEBF000C091BB /* genshinCharacter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinCharacter.json; sourceTree = "<group>"; };
+		A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinImpactCharacterModel.swift; sourceTree = "<group>"; };
+		A4871DC42B8EE46900C091BB /* Text+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extensions.swift"; sourceTree = "<group>"; };
+		A4871DC62B8EE91F00C091BB /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailCharacterDetailsModel.swift; sourceTree = "<group>"; };
+		A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleSkill.swift"; sourceTree = "<group>"; };
+		A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleCompute.swift"; sourceTree = "<group>"; };
+		A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111Skill.json; sourceTree = "<group>"; };
+		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
+		A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetworkManager.swift; sourceTree = "<group>"; };
+		A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
+		BF0512202B6E2069004D6878 /* MiToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0512222B6E206A004D6878 /* MiToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolTests.swift; sourceTree = "<group>"; };
+		BF0512292B6E2651004D6878 /* RoleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleListView.swift"; sourceTree = "<group>"; };
+		BF05122B2B6E2709004D6878 /* RoleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleCardView.swift; sourceTree = "<group>"; };
+		BF2D06872B712A200013DD7D /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
+		BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		BF2D06902B72A8EC0013DD7D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		BF2D06942B73818B0013DD7D /* RoleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleDetailView.swift"; sourceTree = "<group>"; };
+		BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementModel.swift; sourceTree = "<group>"; };
+		BF2D069C2B74E54F0013DD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementContentModel.swift; sourceTree = "<group>"; };
+		BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRoleCardModel.swift; sourceTree = "<group>"; };
+		BF4659CD2B69525500587AD3 /* MiTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4659D02B69525500587AD3 /* MiToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolApp.swift; sourceTree = "<group>"; };
+		BF4659D22B69525500587AD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF4659D42B69525600587AD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF4659D62B69525600587AD3 /* MiTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiTool.entitlements; sourceTree = "<group>"; };
+		BF4659D82B69525600587AD3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF5581B82B6FAADE003A5487 /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItemView.swift; sourceTree = "<group>"; };
+		BF5581BF2B6FAED7003A5487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF5581C12B6FAED8003A5487 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKeys.swift; sourceTree = "<group>"; };
+		BF5581C72B70B52F003A5487 /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
+		BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightModel.swift; sourceTree = "<group>"; };
+		BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightCard.swift; sourceTree = "<group>"; };
+		BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightCardViewModel.swift; sourceTree = "<group>"; };
+		BFA75B7A2B7F86840020B246 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
+		BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameRecordModel.swift; sourceTree = "<group>"; };
+		BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLManager+DailyNode.swift"; sourceTree = "<group>"; };
+		BFA75B8C2B7FC8680020B246 /* SQLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
+		BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRole.swift"; sourceTree = "<group>"; };
+		BFB03B642B80E299005DD170 /* SQLManager+MihoyoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+MihoyoUser.swift"; sourceTree = "<group>"; };
+		BFB03B682B80ECC6005DD170 /* MihoyoUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserModel.swift; sourceTree = "<group>"; };
+		BFB03B6A2B80FEFA005DD170 /* MihoyoUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserListViewModel.swift; sourceTree = "<group>"; };
+		BFB03B6C2B80FF9B005DD170 /* MihoyoUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserListView.swift; sourceTree = "<group>"; };
+		BFB03B6E2B8255E2005DD170 /* MihoyoGameCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameCardViewModel.swift; sourceTree = "<group>"; };
+		BFB03B702B825680005DD170 /* MihoyoGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameCardView.swift; sourceTree = "<group>"; };
+		BFB03B722B831393005DD170 /* MihoyoUserEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserEditView.swift; sourceTree = "<group>"; };
+		BFB03B792B83B263005DD170 /* equipments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = equipments.json; sourceTree = "<group>"; };
+		BFB03B7A2B83B263005DD170 /* genshinSpiralAbyess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinSpiralAbyess.json; sourceTree = "<group>"; };
+		BFB03B7B2B83B263005DD170 /* 1305Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1305Skill.json; sourceTree = "<group>"; };
+		BFB03B7C2B83B263005DD170 /* starRailCharacterDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = starRailCharacterDetails.json; sourceTree = "<group>"; };
+		BFB03B7D2B83B263005DD170 /* starRailAvatars.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = starRailAvatars.json; sourceTree = "<group>"; };
+		BFB03B7E2B83B263005DD170 /* starRailAllAvatars.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = starRailAllAvatars.json; sourceTree = "<group>"; };
+		BFB03B7F2B83B263005DD170 /* myAvatars.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myAvatars.json; sourceTree = "<group>"; };
+		BFB03B802B83B263005DD170 /* computeAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = computeAvatar.json; sourceTree = "<group>"; };
+		BFB03B872B83B263005DD170 /* mihoyoUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mihoyoUser.json; sourceTree = "<group>"; };
+		BFB03B882B83B263005DD170 /* mihoyoPersonal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mihoyoPersonal.json; sourceTree = "<group>"; };
+		BFB03B9C2B844F9E005DD170 /* 10000089Skill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10000089Skill.json; sourceTree = "<group>"; };
+		BFB03B9D2B844F9E005DD170 /* genshinFilter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genshinFilter.json; sourceTree = "<group>"; };
+		BFB03B9E2B844F9E005DD170 /* 10000089FuNingNa.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10000089FuNingNa.json; sourceTree = "<group>"; };
+		BFB03BA22B845204005DD170 /* genshinDailyNote.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genshinDailyNote.json; sourceTree = "<group>"; };
+		BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinImpactDailyNodeModel.swift; sourceTree = "<group>"; };
+		BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeightCard.swift; sourceTree = "<group>"; };
+		BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeightCardViewModel.swift; sourceTree = "<group>"; };
+		BFB03BAA2B8A4C4F005DD170 /* 1003Skil.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1003Skil.json; sourceTree = "<group>"; };
+		BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleInfoModel.swift; sourceTree = "<group>"; };
+		BFB03BAE2B8B0B70005DD170 /* RoleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleInfoView.swift; sourceTree = "<group>"; };
+		BFB03BB02B8B0B93005DD170 /* RoleInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleInfoViewModel.swift; sourceTree = "<group>"; };
+		BFB03BB32B8B986F005DD170 /* EnumKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumKeys.swift; sourceTree = "<group>"; };
+		BFB03BB72B8CE504005DD170 /* 1003SkillCompute.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1003SkillCompute.json; sourceTree = "<group>"; };
+		BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailSkillComputeModel.swift; sourceTree = "<group>"; };
+		BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = skillComputeRequest.json; sourceTree = "<group>"; };
+		BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailSkillComputeRequestModel.swift; sourceTree = "<group>"; };
+		BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailAllRoleModel.swift; sourceTree = "<group>"; };
+		BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		BFE403B52B6E2A69002FF39E /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
+		BFE403B82B6E2B55002FF39E /* RoleAllViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleAllViewModel.swift; sourceTree = "<group>"; };
+		BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
+		BFE403BC2B6E2C48002FF39E /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		BFE403BF2B6E2FD6002FF39E /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF05121D2B6E2069004D6878 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4659CA2B69525500587AD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFA75B892B7FC75B0020B246 /* SQLite in Frameworks */,
+				BFE403C32B6E3784002FF39E /* Kingfisher in Frameworks */,
+				BF4659EA2B695EE000587AD3 /* ObjectMapper in Frameworks */,
+				BF4659E12B69534B00587AD3 /* SwiftUIX in Frameworks */,
+				BF4659E42B69537900587AD3 /* Alamofire in Frameworks */,
+				BFB03B762B83772C005DD170 /* CryptoSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF0512212B6E206A004D6878 /* MiToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF0512222B6E206A004D6878 /* MiToolTests.swift */,
+			);
+			path = MiToolTests;
+			sourceTree = "<group>";
+		};
+		BF2D06862B7129DA0013DD7D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFB03B9B2B844F9E005DD170 /* genshin */,
+				BFB03B772B83B263005DD170 /* hkrpg */,
+				BFB03B862B83B263005DD170 /* mihoyo */,
+				BF4659D62B69525600587AD3 /* MiTool.entitlements */,
+				BF4659D42B69525600587AD3 /* Assets.xcassets */,
+				BF5581C02B6FAED7003A5487 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF4659C42B69525500587AD3 = {
+			isa = PBXGroup;
+			children = (
+				BF4659CF2B69525500587AD3 /* MiTool */,
+				BF0512212B6E206A004D6878 /* MiToolTests */,
+				BF4659CE2B69525500587AD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF4659CE2B69525500587AD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF4659CD2B69525500587AD3 /* MiTool.app */,
+				BF0512202B6E2069004D6878 /* MiToolTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF4659CF2B69525500587AD3 /* MiTool */ = {
+			isa = PBXGroup;
+			children = (
+				BF4659D22B69525500587AD3 /* ContentView.swift */,
+				BFE403B12B6E2A2F002FF39E /* Extensions */,
+				BF2D069C2B74E54F0013DD7D /* Info.plist */,
+				BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */,
+				BFB03BB32B8B986F005DD170 /* EnumKeys.swift */,
+				BF4659D02B69525500587AD3 /* MiToolApp.swift */,
+				BFE403AE2B6E28F5002FF39E /* Models */,
+				BFE403B42B6E2A5E002FF39E /* Networks */,
+				BF4659D72B69525600587AD3 /* Preview Content */,
+				BF2D06862B7129DA0013DD7D /* Resources */,
+				BFA75B8A2B7FC8680020B246 /* SQLManager */,
+				BFE403BE2B6E2FBD002FF39E /* Theme */,
+				BFE403B72B6E2B44002FF39E /* ViewModels */,
+				BF5581B72B6FAAD1003A5487 /* Views */,
+			);
+			path = MiTool;
+			sourceTree = "<group>";
+		};
+		BF4659D72B69525600587AD3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BF4659D82B69525600587AD3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF5581B72B6FAAD1003A5487 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */,
+				BFB03B702B825680005DD170 /* MihoyoGameCardView.swift */,
+				BFB03B722B831393005DD170 /* MihoyoUserEditView.swift */,
+				BFB03B6C2B80FF9B005DD170 /* MihoyoUserListView.swift */,
+				BF05122B2B6E2709004D6878 /* RoleCardView.swift */,
+				BF2D06942B73818B0013DD7D /* RoleDetailView.swift */,
+				BFB03BAE2B8B0B70005DD170 /* RoleInfoView.swift */,
+				BF0512292B6E2651004D6878 /* RoleListView.swift */,
+				BF5581B82B6FAADE003A5487 /* SideBar.swift */,
+				BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */,
+				A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */,
+				BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */,
+				BF2D06902B72A8EC0013DD7D /* WebView.swift */,
+				BFA75B7A2B7F86840020B246 /* WeightView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFA75B8A2B7FC8680020B246 /* SQLManager */ = {
+			isa = PBXGroup;
+			children = (
+				BFA75B8C2B7FC8680020B246 /* SQLManager.swift */,
+				BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */,
+				BFB03B642B80E299005DD170 /* SQLManager+MihoyoUser.swift */,
+				BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */,
+				A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */,
+				A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */,
+			);
+			path = SQLManager;
+			sourceTree = "<group>";
+		};
+		BFB03B772B83B263005DD170 /* hkrpg */ = {
+			isa = PBXGroup;
+			children = (
+				BFB03BAA2B8A4C4F005DD170 /* 1003Skil.json */,
+				BFB03BB72B8CE504005DD170 /* 1003SkillCompute.json */,
+				A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */,
+				BFB03B7B2B83B263005DD170 /* 1305Skill.json */,
+				BFB03B7C2B83B263005DD170 /* starRailCharacterDetails.json */,
+				BFB03B802B83B263005DD170 /* computeAvatar.json */,
+				BFB03B792B83B263005DD170 /* equipments.json */,
+				BFB03B7A2B83B263005DD170 /* genshinSpiralAbyess.json */,
+				BFB03B7F2B83B263005DD170 /* myAvatars.json */,
+				BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */,
+				BFB03B7E2B83B263005DD170 /* starRailAllAvatars.json */,
+				BFB03B7D2B83B263005DD170 /* starRailAvatars.json */,
+				A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */,
+				A4871DB92B8DE9C000C091BB /* starRailWidget.json */,
+			);
+			path = hkrpg;
+			sourceTree = SOURCE_ROOT;
+		};
+		BFB03B862B83B263005DD170 /* mihoyo */ = {
+			isa = PBXGroup;
+			children = (
+				BFB03B872B83B263005DD170 /* mihoyoUser.json */,
+				BFB03B882B83B263005DD170 /* mihoyoPersonal.json */,
+			);
+			path = mihoyo;
+			sourceTree = SOURCE_ROOT;
+		};
+		BFB03B9B2B844F9E005DD170 /* genshin */ = {
+			isa = PBXGroup;
+			children = (
+				BFB03B9E2B844F9E005DD170 /* 10000089FuNingNa.json */,
+				BFB03B9C2B844F9E005DD170 /* 10000089Skill.json */,
+				BFB03B9D2B844F9E005DD170 /* genshinFilter.json */,
+				A4871DC02B8DEBF000C091BB /* genshinCharacter.json */,
+				BFB03BA22B845204005DD170 /* genshinDailyNote.json */,
+				A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */,
+			);
+			path = genshin;
+			sourceTree = SOURCE_ROOT;
+		};
+		BFE403AE2B6E28F5002FF39E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */,
+				BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */,
+				A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */,
+				BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */,
+				A4871DBE2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift */,
+				BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */,
+				BFB03B682B80ECC6005DD170 /* MihoyoUserModel.swift */,
+				BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */,
+				BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */,
+				BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */,
+				BF5581C72B70B52F003A5487 /* SideBarModel.swift */,
+				BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */,
+				BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */,
+				BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */,
+				BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */,
+				A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFE403B12B6E2A2F002FF39E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */,
+				BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */,
+				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
+				A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */,
+				A4871DC62B8EE91F00C091BB /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFE403B42B6E2A5E002FF39E /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				BFE403BC2B6E2C48002FF39E /* Api.swift */,
+				BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */,
+				BFE403B52B6E2A69002FF39E /* MockApi.swift */,
+				A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */,
+				A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		BFE403B72B6E2B44002FF39E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BFE403B82B6E2B55002FF39E /* RoleAllViewModel.swift */,
+				BF2D06872B712A200013DD7D /* SideBarViewModel.swift */,
+				BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */,
+				BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */,
+				BFB03B6A2B80FEFA005DD170 /* MihoyoUserListViewModel.swift */,
+				BFB03B6E2B8255E2005DD170 /* MihoyoGameCardViewModel.swift */,
+				BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */,
+				BFB03BB02B8B0B93005DD170 /* RoleInfoViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BFE403BE2B6E2FBD002FF39E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BFE403BF2B6E2FD6002FF39E /* ThemeColor.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF05121F2B6E2069004D6878 /* MiToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF0512262B6E206A004D6878 /* Build configuration list for PBXNativeTarget "MiToolTests" */;
+			buildPhases = (
+				BF05121C2B6E2069004D6878 /* Sources */,
+				BF05121D2B6E2069004D6878 /* Frameworks */,
+				BF05121E2B6E2069004D6878 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF0512252B6E206A004D6878 /* PBXTargetDependency */,
+			);
+			name = MiToolTests;
+			productName = MiToolTests;
+			productReference = BF0512202B6E2069004D6878 /* MiToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF4659CC2B69525500587AD3 /* MiTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4659DC2B69525600587AD3 /* Build configuration list for PBXNativeTarget "MiTool" */;
+			buildPhases = (
+				BF4659C92B69525500587AD3 /* Sources */,
+				BF4659CA2B69525500587AD3 /* Frameworks */,
+				BF4659CB2B69525500587AD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiTool;
+			packageProductDependencies = (
+				BF4659E02B69534B00587AD3 /* SwiftUIX */,
+				BF4659E32B69537900587AD3 /* Alamofire */,
+				BF4659E92B695EE000587AD3 /* ObjectMapper */,
+				BFE403C22B6E3784002FF39E /* Kingfisher */,
+				BFA75B882B7FC75B0020B246 /* SQLite */,
+				BFB03B752B83772C005DD170 /* CryptoSwift */,
+			);
+			productName = MiTool;
+			productReference = BF4659CD2B69525500587AD3 /* MiTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF4659C52B69525500587AD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					BF05121F2B6E2069004D6878 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = BF4659CC2B69525500587AD3;
+					};
+					BF4659CC2B69525500587AD3 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = BF4659C82B69525500587AD3 /* Build configuration list for PBXProject "MiTool" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = BF4659C42B69525500587AD3;
+			packageReferences = (
+				BF4659DF2B69534B00587AD3 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				BF4659E22B69537900587AD3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BF4659E82B695EE000587AD3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				BFE403C12B6E3784002FF39E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				BFA75B872B7FC75B0020B246 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				BFB03B742B83772C005DD170 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+			);
+			productRefGroup = BF4659CE2B69525500587AD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF4659CC2B69525500587AD3 /* MiTool */,
+				BF05121F2B6E2069004D6878 /* MiToolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF05121E2B6E2069004D6878 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4659CB2B69525500587AD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB03B8F2B83B26C005DD170 /* computeAvatar.json in Resources */,
+				BFB03BA32B845204005DD170 /* genshinDailyNote.json in Resources */,
+				A4871DC12B8DEBF000C091BB /* genshinCharacter.json in Resources */,
+				BFB03B952B83B26C005DD170 /* starRailAllAvatars.json in Resources */,
+				BF4659D92B69525600587AD3 /* Preview Assets.xcassets in Resources */,
+				BFB03BB82B8CE504005DD170 /* 1003SkillCompute.json in Resources */,
+				BFB03B912B83B26C005DD170 /* equipments.json in Resources */,
+				BFB03B8A2B83B267005DD170 /* mihoyoPersonal.json in Resources */,
+				BF4659D52B69525600587AD3 /* Assets.xcassets in Resources */,
+				BFB03BBC2B8CE648005DD170 /* skillComputeRequest.json in Resources */,
+				BFB03BA12B844F9F005DD170 /* 10000089FuNingNa.json in Resources */,
+				BF5581BE2B6FAED7003A5487 /* Localizable.strings in Resources */,
+				BFB03B932B83B26C005DD170 /* 1305Skill.json in Resources */,
+				BFB03B982B83B26C005DD170 /* starRailCharacterDetails.json in Resources */,
+				BFB03BA02B844F9F005DD170 /* genshinFilter.json in Resources */,
+				BFB03B9F2B844F9F005DD170 /* 10000089Skill.json in Resources */,
+				BFB03BAB2B8A4C4F005DD170 /* 1003Skil.json in Resources */,
+				A4871DBD2B8DE9FD00C091BB /* genshinImpactWidgetV2.json in Resources */,
+				A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */,
+				BFB03B8B2B83B26C005DD170 /* starRailAvatars.json in Resources */,
+				BFB03B972B83B26C005DD170 /* myAvatars.json in Resources */,
+				BFB03B902B83B26C005DD170 /* genshinSpiralAbyess.json in Resources */,
+				A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */,
+				BFB03B892B83B267005DD170 /* mihoyoUser.json in Resources */,
+				A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF05121C2B6E2069004D6878 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4659C92B69525500587AD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFA75B812B7FC4760020B246 /* MihoyoGameRecordModel.swift in Sources */,
+				BFA75B7B2B7F86840020B246 /* WeightView.swift in Sources */,
+				BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */,
+				BFE403B92B6E2B55002FF39E /* RoleAllViewModel.swift in Sources */,
+				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
+				BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */,
+				BF2D06A22B751E710013DD7D /* AnnoucementContentModel.swift in Sources */,
+				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
+				BFE403BB2B6E2C21002FF39E /* ApiProtocol.swift in Sources */,
+				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
+				BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */,
+				BFE403BD2B6E2C48002FF39E /* Api.swift in Sources */,
+				BFA75B772B7E77450020B246 /* StarRailWeightCard.swift in Sources */,
+				BFB03BB12B8B0B93005DD170 /* RoleInfoViewModel.swift in Sources */,
+				BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */,
+				BFA75B902B7FC8680020B246 /* SQLManager+StarRailRole.swift in Sources */,
+				BFE403C02B6E2FD6002FF39E /* ThemeColor.swift in Sources */,
+				BFB03BBE2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift in Sources */,
+				BFB03B692B80ECC6005DD170 /* MihoyoUserModel.swift in Sources */,
+				BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */,
+				A4871DC92B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift in Sources */,
+				BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */,
+				BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */,
+				A49FEFCF2B8D8FED00B01909 /* ApiNetworkManager.swift in Sources */,
+				BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */,
+				BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */,
+				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,
+				BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */,
+				BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */,
+				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,
+				BFE403B62B6E2A69002FF39E /* MockApi.swift in Sources */,
+				A4871DC72B8EE91F00C091BB /* View+Extensions.swift in Sources */,
+				BFB03B732B831393005DD170 /* MihoyoUserEditView.swift in Sources */,
+				BF4659D32B69525500587AD3 /* ContentView.swift in Sources */,
+				A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */,
+				BFB03BAF2B8B0B71005DD170 /* RoleInfoView.swift in Sources */,
+				BFB03B6F2B8255E2005DD170 /* MihoyoGameCardViewModel.swift in Sources */,
+				BFA75B8E2B7FC8680020B246 /* SQLManager+DailyNode.swift in Sources */,
+				BF5581B92B6FAADE003A5487 /* SideBar.swift in Sources */,
+				A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */,
+				BF5581C32B6FAFB3003A5487 /* LocalizableKeys.swift in Sources */,
+				A4871DBF2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift in Sources */,
+				BFB03BBA2B8CE55A005DD170 /* StarRailSkillComputeModel.swift in Sources */,
+				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
+				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
+				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
+				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
+				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
+				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
+				BF2D06992B74DEF30013DD7D /* AnnoucementModel.swift in Sources */,
+				BFB03BA72B849123005DD170 /* GenshinWeightCard.swift in Sources */,
+				BFB03BB42B8B986F005DD170 /* EnumKeys.swift in Sources */,
+				A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */,
+				BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */,
+				BFB03BA52B845263005DD170 /* GenshinImpactDailyNodeModel.swift in Sources */,
+				A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */,
+				BFB03B712B825680005DD170 /* MihoyoGameCardView.swift in Sources */,
+				A4871DC32B8DED9800C091BB /* GenshinImpactCharacterModel.swift in Sources */,
+				BFB03BA92B84A58C005DD170 /* GenshinWeightCardViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF0512252B6E206A004D6878 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF4659CC2B69525500587AD3 /* MiTool */;
+			targetProxy = BF0512242B6E206A004D6878 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF5581C02B6FAED7003A5487 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5581BF2B6FAED7003A5487 /* en */,
+				BF5581C12B6FAED8003A5487 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF0512272B6E206A004D6878 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = caom.cainluo.MiToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiTool.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MiTool";
+			};
+			name = Debug;
+		};
+		BF0512282B6E206A004D6878 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = caom.cainluo.MiToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiTool.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MiTool";
+			};
+			name = Release;
+		};
+		BF4659DA2B69525600587AD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF4659DB2B69525600587AD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		BF4659DD2B69525600587AD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MiTool/Resources/MiTool.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MiTool/Preview Content\"";
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiTool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mi Tool";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = caom.cainluo.MiTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF4659DE2B69525600587AD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MiTool/Resources/MiTool.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MiTool/Preview Content\"";
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiTool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mi Tool";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = caom.cainluo.MiTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF0512262B6E206A004D6878 /* Build configuration list for PBXNativeTarget "MiToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF0512272B6E206A004D6878 /* Debug */,
+				BF0512282B6E206A004D6878 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF4659C82B69525500587AD3 /* Build configuration list for PBXProject "MiTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4659DA2B69525600587AD3 /* Debug */,
+				BF4659DB2B69525600587AD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF4659DC2B69525600587AD3 /* Build configuration list for PBXNativeTarget "MiTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4659DD2B69525600587AD3 /* Debug */,
+				BF4659DE2B69525600587AD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF4659DF2B69534B00587AD3 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.9;
+			};
+		};
+		BF4659E22B69537900587AD3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		BF4659E82B695EE000587AD3 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		BFA75B872B7FC75B0020B246 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
+		BFB03B742B83772C005DD170 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.1;
+			};
+		};
+		BFE403C12B6E3784002FF39E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF4659E02B69534B00587AD3 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4659DF2B69534B00587AD3 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		BF4659E32B69537900587AD3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4659E22B69537900587AD3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BF4659E92B695EE000587AD3 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4659E82B695EE000587AD3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		BFA75B882B7FC75B0020B246 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFA75B872B7FC75B0020B246 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		BFB03B752B83772C005DD170 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFB03B742B83772C005DD170 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+		BFE403C22B6E3784002FF39E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE403C12B6E3784002FF39E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BF4659C52B69525500587AD3 /* Project object */;
+}

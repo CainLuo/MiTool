@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  MiTool
+
+  Created by Cain Luo on 2024/2/4.
+  
+*/
+
+// MARK: - 侧边栏
+
+"SideBarNotesTitle" = "Real-time notes";
+"SideBarUserTitle" = "User Info";
+
+"SideBarGenshinTitle" = "Genshin Impact";
+"SideBarGenshinHome" = "Genshin Home";
+"SideBarGenshinRole" = "Genshin Role List";
+
+"SideBarStarRailTitle" = "Honkai: Star Rail";
+"SideBarStarRailRole" = "Star Rail Role List";
+"SideBarStarRailMap"  = "Star Rail Map";
+"SideBarStarRailWiki" = "Star Rail Wiki";
+
+// MARK: - 崩坏: 星穹铁道
+
+"StarRailWeightDaily" = "Daily";
+"StarRailWeightWeekly" = "Weekly";
+"StarRailWeightEntrusted" = "Entrusted";
+"StarRailWeightWeeklyMonster" = "Weekly monster";
+"StarRailWeightRecoveryTime" = "Recovery time";
+"StarRailWeightTrailblazePower" = "Trailblaze power";
+"StarRailWeightTrailblazePower" = "Reserved Trailblaze Power: ";
+"StarRailWeightTrailblazePowerFull" = "Reserved trailblaze power is full: ";
+"StarRailWeightTrailblazePowerYes" = "Yes";
+"StarRailWeightTrailblazePowerNo" = "No";
+
+"StarRailRoleAvatarConsume" = "Avatar consume";
+"StarRailRoleSkillsConsume" = "Skills consume";
+"StarRailRoleEquipmentConsume" = "Equipment consume";
+"StarRailRoleConsumeFinished" = "The character's level, path and cone have all been developed.";
+
+"StarRailRoleEquipmentTitle" = "Equipment";
+
+// MARK: - 原神
+
+"GenshinWeightResin" = "Resin";
+"GenshinWeightRecoveryTime" = "Recovery time";
+"GenshinWeightRecoveryTimeFormatter" = "%dHour%dMinute";
+"GenshinWeightRecoveryMinutesFormatter" = "0Hour%dMinute";
+"GenshinWeightRecoveryDone" = "Recovery done";
+"GenshinWeightTransformerDay" = "%dDay%dHour";
+"GenshinWeightTransformerHour" = "%dHour%dMinute";
+"GenshinWeightTransformerReady" = "Ready";
+
+// MARK: - 米游社
+
+"MihoyoGameNameHonKai3" = "HonKai3";
+"MihoyoGameNameGenshinImpact" = "GenshinImpact";
+"MihoyoGameNameStarRail" = "Honkai: Star Rail";
+"MihoyoGameUID" = "UID: %@";
+"MihoyoGameRegionName" = "Region name: %@";
+"MihoyoGameNickname" = "Nickname: %@";
+"MihoyoGameLevel" = "Level: %@";
+"MihoyoGameReturn" = "Return";
+"MihoyoGameInputNickname" = "Please input your Mihoyo nickname: ";
+"MihoyoGameInputUID" = "Please input your Mihoyo UID: ";
+"MihoyoGameInputCookie" = "Please input your Mihoyo Cookie: ";
+"MihoyoGameSave" = "Save or upgrade info";
+"MihoyoGameRegion" = "Region：%@";
+"MihoyoGameAddUser" = "Add new user";
