@@ -54,3 +54,6 @@
 
 # 建议
 如果有什么功能或者改进的方便, 可以在 issues 提一下, 比如现在的 UI 界面都是比较随意, 个人不懂 UI/UX, 请大家多多包涵😭
+
+# License
+本项目采用的是GNU GENERAL PUBLIC LICENSE, 希望可以将项目一直开源下去~
