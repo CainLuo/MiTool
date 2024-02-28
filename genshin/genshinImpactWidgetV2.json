@@ -1,0 +1,37 @@
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "current_resin": 116,
+        "max_resin": 160,
+        "resin_recovery_time": "20949",
+        "finished_task_num": 4,
+        "total_task_num": 4,
+        "is_extra_task_reward_received": true,
+        "current_expedition_num": 5,
+        "max_expedition_num": 5,
+        "expeditions": [{
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/e782752367399bbcc9323b9b11620d57.png",
+            "status": "Finished"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/46b598cd68be9c095f967313c0890b42.png",
+            "status": "Finished"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/36ae5b2d5962c30479b84eb1246665d0.png",
+            "status": "Finished"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/371c551bcf5aa5ae39a6d3043b702d68.png",
+            "status": "Finished"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/2f89c76f4925544395158a73b4fb44a7.png",
+            "status": "Finished"
+        }],
+        "current_home_coin": 960,
+        "max_home_coin": 2400,
+        "has_signed": true,
+        "sign_url": "https://act.mihoyo.com/bbs/event/signin/hk4e/index.html?act_id=e202311201442471\u0026bbs_auth_required=true\u0026bbs_presentation_style=fullscreen\u0026mhy_presentation_style=fullscreen\u0026utm_source=bbs\u0026utm_medium=ys\u0026utm_campaign=widget",
+        "daily_task": null,
+        "home_url": "https://webstatic.mihoyo.com/app/community-game-records/?bbs_presentation_style=fullscreen\u0026mhypresentationstyle=fullscreen\u0026bbs_auth_required=true\u0026gid=2",
+        "note_url": "https://webstatic.mihoyo.com/app/community-game-records/?bbs_presentation_style=fullscreen\u0026bbs_auth_required=true#/ys/daily"
+    }
+}

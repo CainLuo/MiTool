@@ -1,0 +1,72 @@
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "page": "1",
+        "size": "10",
+        "total": "0",
+        "list": [
+            {
+                "uid": "109050292",
+                "gacha_type": "400",
+                "item_id": "",
+                "count": "1",
+                "time": "2022-10-08 21:29:39",
+                "name": "飞天御剑",
+                "lang": "zh-cn",
+                "item_type": "武器",
+                "rank_type": "3",
+                "id": "1665234360001134292"
+            },
+            {
+                "uid": "109050292",
+                "gacha_type": "400",
+                "item_id": "",
+                "count": "1",
+                "time": "2022-10-08 21:29:39",
+                "name": "坎蒂丝",
+                "lang": "zh-cn",
+                "item_type": "角色",
+                "rank_type": "4",
+                "id": "1665234360001134192"
+            },
+            {
+                "uid": "109050292",
+                "gacha_type": "400",
+                "item_id": "",
+                "count": "1",
+                "time": "2022-10-08 21:29:39",
+                "name": "讨龙英杰谭",
+                "lang": "zh-cn",
+                "item_type": "武器",
+                "rank_type": "3",
+                "id": "1665234360001134092"
+            },
+            {
+                "uid": "109050292",
+                "gacha_type": "400",
+                "item_id": "",
+                "count": "1",
+                "time": "2022-10-08 21:29:39",
+                "name": "沐浴龙血的剑",
+                "lang": "zh-cn",
+                "item_type": "武器",
+                "rank_type": "3",
+                "id": "1665234360001133992"
+            },
+            {
+                "uid": "109050292",
+                "gacha_type": "400",
+                "item_id": "",
+                "count": "1",
+                "time": "2022-10-08 21:29:39",
+                "name": "魔导绪论",
+                "lang": "zh-cn",
+                "item_type": "武器",
+                "rank_type": "3",
+                "id": "1665234360001133892"
+            }
+        ],
+        "region": "cn_gf01"
+    }
+}

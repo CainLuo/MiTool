@@ -1,0 +1,32 @@
+{
+	"retcode": 0,
+	"message": "OK",
+	"data": {
+		"current_stamina": 112,
+		"max_stamina": 112,
+		"stamina_recover_time": 0,
+		"current_train_score": 0,
+		"max_train_score": 600,
+		"greedy_endless": {
+			"schedule_end": "1708524000",
+			"level_icon": "",
+			"cur_reward": 0,
+			"max_reward": 5,
+			"is_open": true
+		},
+		"ultra_endless": {
+			"schedule_end": "1708524000",
+			"group_level": 0,
+			"challenge_score": 0,
+			"is_open": true,
+			"level_icon": ""
+		},
+		"battle_field": null,
+		"god_war": {
+			"schedule_end": "1708891200",
+			"cur_reward": 0,
+			"max_reward": 20000,
+			"is_open": true
+		}
+	}
+}

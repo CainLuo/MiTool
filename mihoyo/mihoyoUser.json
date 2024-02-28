@@ -1,0 +1,126 @@
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "user_info": {
+            "uid": "182692936",
+            "nickname": "CainLuo",
+            "introduce": "开心就好",
+            "avatar": "1",
+            "gender": 0,
+            "certification": {
+                "type": 0,
+                "label": ""
+            },
+            "level_exps": [{
+                "level": 6,
+                "exp": 2365,
+                "game_id": 2
+            }, {
+                "level": 2,
+                "exp": 116,
+                "game_id": 6
+            }, {
+                "level": 2,
+                "exp": 54,
+                "game_id": 5
+            }, {
+                "level": 1,
+                "exp": 1,
+                "game_id": 1
+            }, {
+                "level": 1,
+                "exp": 2,
+                "game_id": 4
+            }, {
+                "level": 1,
+                "exp": 0,
+                "game_id": 3
+            }, {
+                "level": 1,
+                "exp": 17,
+                "game_id": 8
+            }],
+            "achieve": {
+                "like_num": "363",
+                "post_num": "23",
+                "replypost_num": "189",
+                "follow_cnt": "15",
+                "followed_cnt": "8",
+                "topic_cnt": "0",
+                "new_follower_num": "0",
+                "good_post_num": "0",
+                "follow_collection_cnt": "0",
+                "silent_num": "0"
+            },
+            "community_info": {
+                "is_realname": true,
+                "agree_status": true,
+                "silent_end_time": 0,
+                "forbid_end_time": 0,
+                "info_upd_time": 1619708431,
+                "privacy_invisible": {
+                    "post": false,
+                    "collect": false,
+                    "watermark": false,
+                    "reply": false,
+                    "post_and_instant": false
+                },
+                "notify_disable": {
+                    "reply": true,
+                    "upvote": true,
+                    "follow": true,
+                    "system": false,
+                    "chat": true
+                },
+                "has_initialized": true,
+                "user_func_status": {
+                    "enable_history_view": true,
+                    "enable_recommend": true,
+                    "enable_mention": false,
+                    "user_center_view": 1,
+                    "show_self_created_villa": "SHOW_SELF_CREATED_VILLA_STATUS_PUBLIC"
+                },
+                "forum_silent_info": [],
+                "last_login_ip": "",
+                "last_login_time": 0,
+                "created_at": 1619703496
+            },
+            "avatar_url": "https://bbs-static.miyoushe.com/avatar/avatar1.png",
+            "certifications": [],
+            "level_exp": null,
+            "pendant": "https://upload-bbs.mihoyo.com/upload/2022/05/10/1ac6bed2ca64121bb4bc05a3c963873a_5210533687637123505.png",
+            "is_logoff": false,
+            "ip_region": "广东",
+            "showText": null,
+            "avatar_ext": {
+                "avatar_type": 0,
+                "avatar_assets_id": "",
+                "resources": [],
+                "hd_resources": []
+            }
+        },
+        "follow_relation": null,
+        "auth_relations": [],
+        "is_in_blacklist": false,
+        "is_has_collection": false,
+        "is_creator": false,
+        "customer_service": {
+            "is_customer_service_staff": false,
+            "game_id": 0
+        },
+        "audit_info": {
+            "is_nickname_in_audit": false,
+            "nickname": "",
+            "is_introduce_in_audit": false,
+            "introduce": "",
+            "nickname_status": 1,
+            "is_avatar_in_audit": false,
+            "avatar_url": "",
+            "introduce_status": 0,
+            "avatar_status": 0
+        },
+        "user_silence_status": 0,
+        "user_silence_reason": ""
+    }
+}

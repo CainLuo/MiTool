@@ -1,0 +1,42 @@
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "current_stamina": 112,
+        "max_stamina": 240,
+        "stamina_recover_time": 45965,
+        "accepted_expedition_num": 4,
+        "total_expedition_num": 4,
+        "expeditions": [{
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/bea98c6b93566547d0ffd4566d98b7d8.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/63e4efe649801ddef6eece29629e046d.png"],
+            "status": "Ongoing",
+            "remaining_time": 33694,
+            "name": "无名之地，无名之人"
+        }, {
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/94dfc863bd9e2733d61ecfc3e0bb145b.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/c5e2442cade78c7690545c2227910c82.png"],
+            "status": "Ongoing",
+            "remaining_time": 33695,
+            "name": "阿卡夏记录"
+        }, {
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/4785614f7cace4a3a02e45cd07e9d094.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/e8993a7e84b2b3291913462066498f4d.png"],
+            "status": "Ongoing",
+            "remaining_time": 33696,
+            "name": "看不见的手"
+        }, {
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/ba1ddfbec41619921da91c6764db1c16.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/9ae6a8cc4c19d70d06ed0fe120482a0e.png"],
+            "status": "Ongoing",
+            "remaining_time": 33698,
+            "name": "幻梦的残片"
+        }],
+        "current_train_score": 500,
+        "max_train_score": 500,
+        "current_rogue_score": 14000,
+        "max_rogue_score": 14000,
+        "has_signed": true,
+        "sign_url": "https://webstatic.mihoyo.com/bbs/event/signin/hkrpg/index.html?bbs_auth_required=true\u0026act_id=e202304121516551\u0026bbs_auth_required=true\u0026bbs_presentation_style=fullscreen",
+        "current_reserve_stamina": 0,
+        "is_reserve_stamina_full": false,
+        "home_url": "https://webstatic.mihoyo.com/app/community-game-records/rpg/index.html?mhy_presentation_style=fullscreen\u0026game_id=6",
+        "note_url": "https://webstatic.mihoyo.com/app/community-game-records/rpg/index.html?mhy_presentation_style=fullscreen\u0026game_id=6"
+    }
+}

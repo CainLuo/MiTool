@@ -1,0 +1,89 @@
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "current_resin": 116,
+        "max_resin": 160,
+        "resin_recovery_time": "20892",
+        "finished_task_num": 4,
+        "total_task_num": 4,
+        "is_extra_task_reward_received": true,
+        "remain_resin_discount_num": 0,
+        "resin_discount_num_limit": 3,
+        "current_expedition_num": 5,
+        "max_expedition_num": 5,
+        "expeditions": [{
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/e782752367399bbcc9323b9b11620d57.png",
+            "status": "Finished",
+            "remained_time": "0"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/46b598cd68be9c095f967313c0890b42.png",
+            "status": "Finished",
+            "remained_time": "0"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/36ae5b2d5962c30479b84eb1246665d0.png",
+            "status": "Finished",
+            "remained_time": "0"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/371c551bcf5aa5ae39a6d3043b702d68.png",
+            "status": "Finished",
+            "remained_time": "0"
+        }, {
+            "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u854wf/2f89c76f4925544395158a73b4fb44a7.png",
+            "status": "Finished",
+            "remained_time": "0"
+        }],
+        "current_home_coin": 960,
+        "max_home_coin": 2400,
+        "home_coin_recovery_time": "169234",
+        "calendar_url": "",
+        "transformer": {
+            "obtained": true,
+            "recovery_time": {
+                "Day": 0,
+                "Hour": 0,
+                "Minute": 0,
+                "Second": 0,
+                "reached": true
+            },
+            "wiki": "https://bbs.mihoyo.com/ys/obc/content/1562/detail?bbs_presentation_style=no_header",
+            "noticed": false,
+            "latest_job_id": "0"
+        },
+        "daily_task": {
+            "total_num": 4,
+            "finished_num": 4,
+            "is_extra_task_reward_received": true,
+            "task_rewards": [{
+                "status": "TaskRewardStatusTakenAward"
+            }, {
+                "status": "TaskRewardStatusUnfinished"
+            }, {
+                "status": "TaskRewardStatusUnfinished"
+            }, {
+                "status": "TaskRewardStatusUnfinished"
+            }],
+            "attendance_rewards": [{
+                "status": "AttendanceRewardStatusTakenAward",
+                "progress": 2000
+            }, {
+                "status": "AttendanceRewardStatusTakenAward",
+                "progress": 2000
+            }, {
+                "status": "AttendanceRewardStatusTakenAward",
+                "progress": 2000
+            }, {
+                "status": "AttendanceRewardStatusForbid",
+                "progress": 2000
+            }],
+            "attendance_visible": true
+        },
+        "archon_quest_progress": {
+            "list": [],
+            "is_open_archon_quest": true,
+            "is_finish_all_mainline": true,
+            "is_finish_all_interchapter": true,
+            "wiki_url": ""
+        }
+    }
+}

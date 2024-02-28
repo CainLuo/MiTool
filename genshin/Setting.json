@@ -1,0 +1,21 @@
+{
+    "settingList": [{
+        "acountList":[{
+            "nickname":"",
+            "uid":"",
+            "service":""
+        }],
+        "appstoreList":[{
+            "title":"",
+            "type":""
+        }],
+        "questionList":[{
+            "title":"",
+            "type":""
+        }],
+        "moreList":[{
+            "title":"",
+            "type":""
+        }]
+    }]
+}

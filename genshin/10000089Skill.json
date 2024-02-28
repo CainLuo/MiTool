@@ -1,0 +1,43 @@
+{
+	"retcode": 0,
+	"message": "OK",
+	"data": {
+		"list": [{
+			"id": 10891,
+			"group_id": 8931,
+			"name": "普通攻击·独舞之邀",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_skill_icon_u854wf/a4f80c8585d20bdfa55e44b7a63026a7.png",
+			"max_level": 10
+		}, {
+			"id": 10892,
+			"group_id": 8932,
+			"name": "孤心沙龙",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_skill_icon_u854wf/9c0a2ce7364ecfc28af93aa8623fa95c.png",
+			"max_level": 10
+		}, {
+			"id": 10895,
+			"group_id": 8939,
+			"name": "万众狂欢",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_skill_icon_u854wf/8964b894c82c351b896d8d5bc909b63d.png",
+			"max_level": 10
+		}, {
+			"id": 8921,
+			"group_id": 8921,
+			"name": "停不了的圆舞",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_talent_icon_u854wf/d9ffdb864c33543f896aee97ccc7d872.png",
+			"max_level": 1
+		}, {
+			"id": 8922,
+			"group_id": 8922,
+			"name": "无人听的自白",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_talent_icon_u854wf/f1f2481225c9a306119a47a0ab49f9eb.png",
+			"max_level": 1
+		}, {
+			"id": 8923,
+			"group_id": 8923,
+			"name": "瀚海亦舞台",
+			"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_talent_icon_u854wf/4080f1da818b1fbeb524b89ea4402046.png",
+			"max_level": 1
+		}]
+	}
+}
