@@ -10,6 +10,12 @@
 ## 获取材料的逻辑
 * 在有 Cookie 的前提下, 默认在后台自动去获取已有角色的接口, 然后将获取到的角色数据存到 SQLite, 存储完之后再从计算材料的接口中获取到材料数量并存到 SQLite, 只获取没有养成的角色的资料
 
+# 目前遇到的问题
+
+!!! Error
+HTTP Request Header 的 DS 算法未能通过认证, 会请求失败, 目前正在寻找解决方案中.
+iOS, iPadOS, visionOS, watchOS 暂时也没有空去适配
+
 # 功能列表
 
 ### 适配
@@ -46,3 +52,6 @@
 - [gsiod_core](https://github.com/Genshin-bots/gsuid_core)
 - [KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
 - [baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
+
+# 建议
+如果有什么功能或者改进的方便, 可以在 issues 提一下, 比如现在的 UI 界面都是比较随意, 个人不懂 UI/UX, 请大家多多包涵😭
