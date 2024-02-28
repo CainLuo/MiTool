@@ -33,16 +33,16 @@
 ### 开源库
 本项目用的是以下的第三方开源库, 排名不分先后, 感谢各位大佬的共享~
 
-[SwiftUIX](https://github.com/SwiftUIX/SwiftUIX)
-[Alamofire](https://github.com/Alamofire/Alamofire)
-[ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper)
-[Kingfisher](https://github.com/onevcat/Kingfisher)
-[SQLite.swift](https://github.com/stephencelis/SQLite.swift)
-[CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
+- [SwiftUIX](https://github.com/SwiftUIX/SwiftUIX)
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
+- [SQLite.swift](https://github.com/stephencelis/SQLite.swift)
+- [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
 
 ## 参考库
 本项目参考了以下第三方项目的 DS 加密方式(目前还没有请求成功), 排名不分先后, 感谢各位大佬的共享~
 
-[gsiod_core](https://github.com/Genshin-bots/gsuid_core)
-[KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
-[baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
+- [gsiod_core](https://github.com/Genshin-bots/gsuid_core)
+- [KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
+- [baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
