@@ -9,37 +9,8 @@ import Foundation
 
 class SideBarViewModel: ObservableObject {
     @Published var sections: [SideBarSectionModel] = []
-    @Published var header = SideBarHeaderModel(
-        iconName: IconSideBar.header.rawValue,
-        userName: "username"
-    )
-
-    func fetchSideBarHeader() {
-        header = SideBarHeaderModel(
-            iconName: IconSideBar.header.rawValue,
-            userName: "凹凸曼的小怪兽",
-            iconUrlString: "https://img1.baidu.com/it/u=996166138,4031649162&fm=253&fmt=auto&app=138&f=JPEG?w=360&h=360"
-        )
-    }
 
     func fetchSideBarSections() {
-        let starRailItems = [
-            SideBarItemModel(
-                name: CopySideBar.starRailRole,
-                iconName: IconSideBar.roleList.rawValue,
-                type: .starRailRole
-            ),
-            SideBarItemModel(
-                name: CopySideBar.starRailMap,
-                iconName: IconSideBar.map.rawValue,
-                type: .starRailMap
-            ),
-            SideBarItemModel(
-                name: CopySideBar.starRailWiki,
-                iconName: IconSideBar.wiki.rawValue,
-                type: .starRailWiki
-            )
-        ]
 
         let notes = [
             SideBarItemModel(
@@ -60,11 +31,58 @@ class SideBarViewModel: ObservableObject {
                 sectionIcon: "",
                 items: notes
             ),
-            SideBarSectionModel(
-                sectionName: CopySideBar.starRailTitle,
-                sectionIcon: IconSideBar.starRailSection.rawValue,
-                items: starRailItems
+            getStarRailSesction(),
+            getGenshinImpactSesction()
+        ]
+    }
+
+    func getStarRailSesction() -> SideBarSectionModel {
+        let starRailItems = [
+            SideBarItemModel(
+                name: CopySideBar.starRailRole,
+                iconName: IconSideBar.roleList.rawValue,
+                type: .starRailRole
+            ),
+            SideBarItemModel(
+                name: CopySideBar.starRailMap,
+                iconName: IconSideBar.map.rawValue,
+                type: .starRailMap
+            ),
+            SideBarItemModel(
+                name: CopySideBar.starRailWiki,
+                iconName: IconSideBar.wiki.rawValue,
+                type: .starRailWiki
             )
         ]
+        return SideBarSectionModel(
+            sectionName: CopySideBar.starRailTitle,
+            sectionIcon: IconSideBar.starRailSection.rawValue,
+            items: starRailItems
+        )
+    }
+
+    func getGenshinImpactSesction() -> SideBarSectionModel {
+        let starRailItems = [
+            SideBarItemModel(
+                name: CopySideBar.genshinRole,
+                iconName: IconSideBar.roleList.rawValue,
+                type: .genshinImpactRole
+            ),
+            SideBarItemModel(
+                name: CopySideBar.genshinMap,
+                iconName: IconSideBar.map.rawValue,
+                type: .genshinImpactMap
+            ),
+            SideBarItemModel(
+                name: CopySideBar.genshinWiki,
+                iconName: IconSideBar.wiki.rawValue,
+                type: .genshinImpactWiki
+            )
+        ]
+        return SideBarSectionModel(
+            sectionName: CopySideBar.genshinTitle,
+            sectionIcon: IconSideBar.starRailSection.rawValue,
+            items: starRailItems
+        )
     }
 }

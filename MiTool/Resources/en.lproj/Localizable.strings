@@ -12,8 +12,9 @@
 "SideBarUserTitle" = "User Info";
 
 "SideBarGenshinTitle" = "Genshin Impact";
-"SideBarGenshinHome" = "Genshin Home";
 "SideBarGenshinRole" = "Genshin Role List";
+"SideBarGenshinMap"  = "Genshin Map";
+"SideBarGenshinWiki" = "Genshin Wiki";
 
 "SideBarStarRailTitle" = "Honkai: Star Rail";
 "SideBarStarRailRole" = "Star Rail Role List";

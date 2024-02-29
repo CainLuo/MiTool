@@ -34,13 +34,11 @@ struct SideBar: View {
                         }
                     }
                 }
-                
                 Spacer()
             }
         }
         .frame(width: 200)
         .onAppear {
-            viewModel.fetchSideBarHeader()
             viewModel.fetchSideBarSections()
         }
     }

@@ -12,8 +12,9 @@
 "SideBarUserTitle" = "用户信息";
 
 "SideBarGenshinTitle" = "原神";
-"SideBarGenshinHome" = "原神首页";
 "SideBarGenshinRole" = "原神角色列表";
+"SideBarGenshinMap"  = "星穹铁道地图";
+"SideBarGenshinWiki" = "星穹铁道Wiki";
 
 "SideBarStarRailTitle" = "崩坏：星穹铁道";
 "SideBarStarRailRole" = "星穹铁道角色列表";

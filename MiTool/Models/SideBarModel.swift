@@ -14,6 +14,10 @@ enum SideBarType {
     case starRailRole
     case starRailMap
     case starRailWiki
+    
+    case genshinImpactRole
+    case genshinImpactMap
+    case genshinImpactWiki
 }
 
 struct SideBarSectionModel: Identifiable, Hashable {

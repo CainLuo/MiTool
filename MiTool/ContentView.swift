@@ -26,6 +26,12 @@ struct ContentView: View {
                 WiKiMap(selection: $selection)
             case .starRailMap:
                 WiKiMap(selection: $selection)
+            case .genshinImpactRole:
+                EmptyView()
+            case .genshinImpactMap:
+                WiKiMap(selection: $selection)
+            case .genshinImpactWiki:
+                WiKiMap(selection: $selection)
             }
         }
     }

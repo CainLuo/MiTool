@@ -20,8 +20,9 @@ struct LocalizableKeys {
         static let usersTitle = String(localized: "SideBarUserTitle")
 
         static let genshinTitle = String(localized: "SideBarGenshinTitle")
-        static let genshinHome = String(localized: "SideBarGenshinHome")
         static let genshinRole = String(localized: "SideBarGenshinRole")
+        static let genshinMap = String(localized: "SideBarGenshinMap")
+        static let genshinWiki = String(localized: "SideBarGenshinWiki")
 
         static let starRailTitle = String(localized: "SideBarStarRailTitle")
         static let starRailRole = String(localized: "SideBarStarRailRole")
