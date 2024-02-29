@@ -21,11 +21,9 @@ private let canMergeMaterials = Expression<String?>("can_merge_materials")  // �
 private let coinID = Expression<String?>("coin_id")                         // coinID
 
 extension SQLManager {
-    /// 创建 starRailRoleSkill 表
-    /// - Parameter db: Connection
-    func cretestarRailRoleComputeTable(_ db: Connection) {
+    func cretestarRailRoleComputeTable(_ dataBase: Connection) {
         do {
-            try db.run(starRailRoleCompute.create(ifNotExists: true) { table in
+            try dataBase.run(starRailRoleCompute.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(itemID)
                 table.column(avatarConsume)
@@ -41,16 +39,13 @@ extension SQLManager {
             debugPrint(error)
         }
     }
-    
-    /// 添加角色的培养耗材
-    /// - Parameters:
-    ///   - uuid: String
-    ///   - model: StarRailSkillComputeData
-    ///   - complete: complete: ((Bool, Error?) -> Void)?
-    func addStarRailRoleComputeInfo(uuid: String,
-                                    roleID: String,
-                                    model: StarRailSkillComputeData,
-                                    complete: ((Bool, Error?) -> Void)?) {
+
+    func addStarRailRoleComputeInfo(
+        uuid: String,
+        roleID: String,
+        model: StarRailSkillComputeData,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
             let insert = starRailRoleCompute.insert(
                 uid <- uuid,
@@ -64,30 +59,27 @@ extension SQLManager {
                 canMergeMaterials <- model.canMergeMaterials?.toJSONString(),
                 coinID <- model.coinID
             )
-            try db.run(insert)
+            try dataBase.run(insert)
             complete?(true, nil)
         } catch {
             debugPrint(error)
             complete?(false, error)
         }
     }
-    
-    /// 更新角色的培养耗材信息
-    /// - Parameters:
-    ///   - uuid: Star Rail UID
-    ///   - model: StarRailAllRoleListModel
-    ///   - complete: complete: ((Bool, Error?) -> Void)?
-    func upgradeStarRailRoleComputeInfo(uuid: String,
-                                        roleID: String,
-                                        model: StarRailSkillComputeData,
-                                        complete: ((Bool, Error?) -> Void)?) {
+
+    func upgradeStarRailRoleComputeInfo(
+        uuid: String,
+        roleID: String,
+        model: StarRailSkillComputeData,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let starRailRole = starRailRoleCompute.filter(
                     uid == uuid &&
                     itemID == roleID
                 )
-                try db.run(starRailRole.update(
+                try dataBase.run(starRailRole.update(
                     uid <- uuid,
                     avatarConsume <- model.avatarConsume?.toJSONString(),
                     skillConsume <- model.skillConsume?.toJSONString(),
@@ -104,16 +96,13 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 获取所有角色培养耗材列表
-    /// - Parameter uuid: Star Rail UID
-    /// - Returns: [StarRailAllRoleListModel]]
+
     func getAllStarRailRoleComputeList(uuid: String) -> [StarRailSkillComputeData] {
         var list: [StarRailSkillComputeData] = []
         
         do {
-            try db.transaction {
-                try db.prepare(starRailRoleCompute).forEach { item in
+            try dataBase.transaction {
+                try dataBase.prepare(starRailRoleCompute).forEach { item in
                     let model = StarRailSkillComputeData(
                         avatarConsume: item[avatarConsume],
                         skillConsume: item[skillConsume],

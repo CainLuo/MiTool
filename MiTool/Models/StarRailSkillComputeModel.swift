@@ -13,11 +13,11 @@ struct StarRailSkillComputeModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: StarRailSkillComputeData?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -43,21 +43,23 @@ struct StarRailSkillComputeData: Mappable {
     var canMergeMaterials: [StarRailSkillComputeAvatarConsume]?
     // ID
     var coinID: String?
-    
+
     var userOwnsMaterialsString: String? {
         userOwnsMaterials?.toJSONString
     }
-    
+
     init?(map: ObjectMapper.Map) { }
-    
-    init(avatarConsume: String?,
-         skillConsume: String?,
-         equipmentConsume: String?,
-         userOwnsMaterials: String?,
-         needGetMaterials: String?,
-         canPayMaterials: String?,
-         canMergeMaterials: String?,
-         coinID: String?) {
+
+    init(
+        avatarConsume: String?,
+        skillConsume: String?,
+        equipmentConsume: String?,
+        userOwnsMaterials: String?,
+        needGetMaterials: String?,
+        canPayMaterials: String?,
+        canMergeMaterials: String?,
+        coinID: String?
+    ) {
         self.avatarConsume = [StarRailSkillComputeAvatarConsume](JSONString: avatarConsume ?? "")
         self.skillConsume = [StarRailSkillComputeAvatarConsume](JSONString: skillConsume ?? "")
         self.equipmentConsume = [StarRailSkillComputeAvatarConsume](JSONString: equipmentConsume ?? "")
@@ -67,7 +69,7 @@ struct StarRailSkillComputeData: Mappable {
         self.canMergeMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canMergeMaterials ?? "")
         self.coinID = coinID
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatarConsume <- map["avatar_consume"]
         skillConsume <- map["skill_consume"]
@@ -89,11 +91,11 @@ struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
     var num: Int?
     var wikiURL: String?
     var rarity: RarityType?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]

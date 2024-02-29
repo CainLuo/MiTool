@@ -28,9 +28,9 @@ private let transformer            = Expression<String?>("transformer")         
 
 //extension SQLManager {
 //
-//    func createDailyNodeTable(_ db: Connection) {
+//    func createDailyNodeTable(_ dataBase: Connection) {
 //        do {
-//            try db.run(dailyNodes.create(ifNotExists: true) { t in
+//            try dataBase.run(dailyNodes.create(ifNotExists: true) { t in
 //                t.column(index, primaryKey: .autoincrement)
 //                
 //                t.column(uid, unique: true)
@@ -60,8 +60,8 @@ private let transformer            = Expression<String?>("transformer")         
 //        var nodes: [DailyNodeData] = []
 //        
 //        do {
-//            try db.transaction {
-//                try db.prepare(dailyNodes).forEach({ node in
+//            try dataBase.transaction {
+//                try dataBase.prepare(dailyNodes).forEach({ node in
 //                    var expeditionList: [DailyNodeExpedition] = []
 //                    if let expeditionsString = node[expeditions],
 //                        let data = expeditionsString.data(using: .utf8),

@@ -16,7 +16,7 @@ struct StarRailRoleInfoModel: Mappable {
 
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -31,21 +31,23 @@ struct StarRailRoleInfoData: Mappable {
     var skillsOther: [StarRailRoleInfoSkill] = []
     var equipment: StarRailRoleInfoEquipment?
     var isLogin: Bool?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
-    init(avatar: String?, 
-         skills: String?,
-         skillsOther: String?,
-         equipment: String?, 
-         isLogin: Bool?) {
+
+    init(
+        avatar: String?,
+        skills: String?,
+        skillsOther: String?,
+        equipment: String?,
+        isLogin: Bool?
+    ) {
         self.avatar = StarRailRoleInfoAvatar(JSONString: avatar ?? "")
         self.skills = [StarRailRoleInfoSkill](JSONString: skills ?? "") ?? []
         self.skillsOther = [StarRailRoleInfoSkill](JSONString: skillsOther ?? "") ?? []
         self.equipment = StarRailRoleInfoEquipment(JSONString: equipment ?? "")
         self.isLogin = isLogin
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatar <- map["avatar"]
         skills <- map["skills"]
@@ -69,14 +71,14 @@ struct StarRailRoleInfoAvatar: Mappable {
     var verticalIconURL: String?
     var isForward: Bool?
     var isUp: Bool?
-    
+
     var level: String {
         "Lv.\(curLevel)/\(maxLevel)"
     }
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
@@ -103,15 +105,15 @@ struct StarRailRoleInfoEquipment: Mappable {
     var maxLevel: Int = 80
     var curLevel: Int = 1
     var targetLevel: Int?
-    var isForward: Bool?
-    
+    var isForward = false
+
     var levelString: String {
         "Lv.\(curLevel)/\(maxLevel)"
     }
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
@@ -138,7 +140,7 @@ struct StarRailRoleInfoSkill: Mappable, Identifiable {
     var targetLevel: Int?
     var progress: StarRailRoleInfoProgress?
     var minLevelLimit: Int?
-    
+
     var skillLevel: String {
         guard let curLevel = curLevel, 
               let maxLevel = maxLevel else {
@@ -146,9 +148,9 @@ struct StarRailRoleInfoSkill: Mappable, Identifiable {
         }
         return "Lv.\(curLevel)/\(maxLevel)"
     }
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         pointID <- map["point_id"]
         prePoint <- map["pre_point"]

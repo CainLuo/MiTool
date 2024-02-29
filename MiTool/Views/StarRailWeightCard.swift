@@ -72,11 +72,13 @@ struct StarRailWeightCard: View {
 struct StarRailWeightOtherCard: View {
     let weightTypes: [StarRailLocalModel]
     
-    var columns = Array(repeating: GridItem(.flexible()),
-                                count: 2)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 2
+    )
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 15, content: {
+        LazyVGrid(columns: columns, spacing: 15) {
             ForEach(weightTypes, id: \.self) { type in
                 VStack(spacing: 10) {
                     Text(type.name)
@@ -86,12 +88,11 @@ struct StarRailWeightOtherCard: View {
                 }
                 .padding([.leading, .trailing])
             }
-        })
+        }
     }
 }
 
 struct StarRailExpeditionView: View {
-    
     enum AvatarSize {
         static let width: CGFloat = 40
         static let height: CGFloat = 40
@@ -104,11 +105,13 @@ struct StarRailExpeditionView: View {
 
     let expeditions: [StarRailWeightExpeditionModel]
     
-    var columns = Array(repeating: GridItem(.flexible()),
-                        count: 2)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 2
+    )
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 15, content: {
+        LazyVGrid(columns: columns, spacing: 15) {
             ForEach(expeditions.indices, id: \.self) { index in
                 let expedition = expeditions[index]
                 HStack {
@@ -156,7 +159,7 @@ struct StarRailExpeditionView: View {
                     }
                 }
             }
-        })
+        }
     }
 }
 

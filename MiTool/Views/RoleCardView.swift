@@ -58,9 +58,11 @@ struct RoleCardView: View {
 
 #Preview {
     RoleCardView(item: 
-                    StarRailAllRoleListModel(itemName: "",
-                                     iconURL: "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u17ehb/cbf5a53b27530f3b626aedc65679a3d3.png",
-                                     targetLevel: 1)
+                    StarRailAllRoleListModel(
+                        itemName: "",
+                        iconURL: "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u17ehb/cbf5a53b27530f3b626aedc65679a3d3.png",
+                        targetLevel: 1
+                    )
     )
     .frame(width: 400, height: 600)
 }

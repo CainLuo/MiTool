@@ -26,12 +26,9 @@ private let currentReserveStamina = Expression<Int>("currentReserveStamina")   /
 private let isReserveStaminaFull = Expression<Bool>("isReserveStaminaFull")    // 是否有体力存储
 
 extension SQLManager {
-    
-    /// 创建starRailDailyNode表
-    /// - Parameter db: Connection
-    func createStarRailDailyNodeTable(_ db: Connection) {
+    func createStarRailDailyNodeTable(_ dataBase: Connection) {
         do {
-            try db.run(starRailDailyNode.create(ifNotExists: true) { table in
+            try dataBase.run(starRailDailyNode.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(uid)
                 table.column(currentStamina)
@@ -53,15 +50,12 @@ extension SQLManager {
             debugPrint(error)
         }
     }
-    
-    /// 添加星穹铁道的 DailyNode
-    /// - Parameters:
-    ///   - uuid: 星穹铁道 UID
-    ///   - model: StarRailWeightDataModel
-    ///   - complete: ((Bool, Error?) -> Void)?
-    func addStarRailDailyNode(uuid: String,
-                              model: StarRailWeightDataModel,
-                              complete: ((Bool, Error?) -> Void)?) {
+
+    func addStarRailDailyNode(
+        uuid: String,
+        model: StarRailWeightDataModel,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
             let insert = starRailDailyNode.insert(
                 uid <- uuid,
@@ -78,25 +72,22 @@ extension SQLManager {
                 currentReserveStamina <- model.currentReserveStamina,
                 isReserveStaminaFull <- model.isReserveStaminaFull
             )
-            try db.run(insert)
+            try dataBase.run(insert)
             complete?(true, nil)
         } catch {
             complete?(false, error)
         }
     }
-    
-    /// 更新星穹铁道的 DailyNode
-    /// - Parameters:
-    ///   - uuid: uuid
-    ///   - model: StarRailWeightDataModel
-    ///   - complete: ((Bool, Error?) -> Void)?)
-    func upgradeStarRailDailyNode(_ uuid: String,
-                                 model: StarRailWeightDataModel,
-                                 complete: ((Bool, Error?) -> Void)?) {
+
+    func upgradeStarRailDailyNode(
+        _ uuid: String,
+        model: StarRailWeightDataModel,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let mihoyoUser = starRailDailyNode.filter(uid == uuid)
-                try db.run(mihoyoUser.update(
+                try dataBase.run(mihoyoUser.update(
                     uid <- uuid,
                     currentStamina <- model.currentStamina,
                     maxStamina <- model.maxStamina,
@@ -117,14 +108,12 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 获取星穹铁道所有的 DailyNode
-    /// - Returns: [StarRailWeightDataModel]]
+
     func getStarRaillAllDailyNode() -> [StarRailWeightDataModel] {
         var list: [StarRailWeightDataModel] = []
         do {
-            try db.transaction {
-                try db.prepare(starRailDailyNode).forEach({ item in
+            try dataBase.transaction {
+                try dataBase.prepare(starRailDailyNode).forEach { item in
                     let account = StarRailWeightDataModel(
                         currentStamina: item[currentStamina],
                         maxStamina: item[maxStamina],
@@ -142,7 +131,7 @@ extension SQLManager {
                         isReserveStaminaFull: item[isReserveStaminaFull]
                     )
                     list.append(account)
-                })
+                }
             }
             return list
         } catch {

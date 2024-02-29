@@ -10,7 +10,7 @@ import Foundation
 enum SideBarType {
     case notes
     case users
-    
+
     case starRailRole
     case starRailMap
     case starRailWiki
@@ -35,7 +35,7 @@ struct SideBarHeaderModel: Identifiable, Hashable {
     var iconName: String
     var userName: String
     var iconUrlString: String?
-    
+
     var iconURL: URL? {
         guard let iconUrlString = iconUrlString else {
             return nil

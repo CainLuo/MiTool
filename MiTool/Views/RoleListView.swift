@@ -11,13 +11,17 @@ import SwiftUIX
 struct RoleListView: View {
     @StateObject var viewModel = RoleAllViewModel()
     
-    var columns = Array(repeating: GridItem(.flexible()),
-                        count: 8)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 8
+    )
     
-    var destiny = [Destiny.destruction, Destiny.theHunt,
-                   Destiny.erudition, Destiny.harmony,
-                   Destiny.nihility, Destiny.preservation,
-                   Destiny.abundance]
+    var destiny = [
+        Destiny.destruction, Destiny.theHunt,
+        Destiny.erudition, Destiny.harmony,
+        Destiny.nihility, Destiny.preservation,
+        Destiny.abundance
+    ]
 
     var body: some View {
         ScrollView {
@@ -37,12 +41,12 @@ struct RoleListView: View {
                             }
                         }
 
-                        LazyVGrid(columns: columns, spacing: 15, content: {
+                        LazyVGrid(columns: columns, spacing: 15) {
                             let list = viewModel.roleList.filter { $0.avatarBaseType == destiny[section] }
                             ForEach(list.indices, id: \.self) { index in
                                 RoleCardView(item: list[index])
                             }
-                        })
+                        }
                         Divider()
                     }
                 }

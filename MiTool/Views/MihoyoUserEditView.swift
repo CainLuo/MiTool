@@ -54,9 +54,11 @@ struct MihoyoUserEditView: View {
             .padding()
             
             Button(action: {
-                viewModel.saveMihoyoUser(nickname: nickename,
-                                         uid: uid,
-                                         cookie: cookie)
+                viewModel.saveMihoyoUser(
+                    nickname: nickename,
+                    uid: uid,
+                    cookie: cookie
+                )
                 
                 if viewModel.saveUserSuccess {
                     self.presentationMode.wrappedValue.dismiss()

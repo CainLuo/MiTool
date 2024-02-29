@@ -22,9 +22,11 @@ struct RoleInfoView: View {
                     HStack(spacing: 10) {
                         RoleInfoEquipment(viewModel: viewModel)
 
-                        RoleInfoSkillsView(skills: viewModel.skills,
-                                           talentSkills: viewModel.talentSkills,
-                                           otherSkills: viewModel.otherSkills)
+                        RoleInfoSkillsView(
+                            skills: viewModel.skills,
+                            talentSkills: viewModel.talentSkills,
+                            otherSkills: viewModel.otherSkills
+                        )
                     }
                     RoleInfoConsumeView(viewModel: viewModel)
                 }
@@ -150,8 +152,10 @@ struct RoleInfoDrawingView: View {
 struct RoleInfoConsumeView: View {
     @StateObject var viewModel: RoleInfoViewModel
 
-    var columns = Array(repeating: GridItem(.flexible()),
-                        count: 10)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 10
+    )
 
     var body: some View {
         if viewModel.consumeSections.isEmpty {
@@ -161,13 +165,15 @@ struct RoleInfoConsumeView: View {
                 .background(.black.opacity(0.5))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         } else {
-            LazyVGrid(columns: columns, content: {
+            LazyVGrid(columns: columns) {
                 ForEach(viewModel.consumeSections) { section in
                     Section(section.title) {
                         ForEach(section.consume) { item in
                             VStack {
-                                StarRaillRarityView(rarity: item.rarity ?? .one,
-                                                    urlString: item.itemURL ?? "")
+                                StarRaillRarityView(
+                                    rarity: item.rarity ?? .one,
+                                    urlString: item.itemURL ?? ""
+                                )
                                 .frame(width: 50, height: 50)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 
@@ -178,7 +184,7 @@ struct RoleInfoConsumeView: View {
                         }
                     }
                 }
-            })
+            }
         }
     }
 }

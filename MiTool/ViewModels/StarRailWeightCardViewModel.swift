@@ -32,7 +32,8 @@ class StarRailWeightCardViewModel: ObservableObject {
         expeditions = data.expeditions ?? []
         stamina = "\(data.currentStamina)/\(data.maxStamina)"
         reserveStamina = CopyStarRailWeight.reserveTrailblazePower + "\(data.currentReserveStamina)"
-        reserveStaminaFull = CopyStarRailWeight.reserveTrailblazePowerFull + "\(data.isReserveStaminaFull ? CopyStarRailWeight.fullYes : CopyStarRailWeight.fullNo)"
+        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWeight.fullYes : CopyStarRailWeight.fullNo)"
+        reserveStaminaFull = CopyStarRailWeight.reserveTrailblazePowerFull + tipsString
         
         setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
         setUpLocalModels(data: data)
@@ -54,18 +55,26 @@ class StarRailWeightCardViewModel: ObservableObject {
     
     private func setUpLocalModels(data: StarRailWeightDataModel) {
         localModels = [
-            StarRailLocalModel(type: .daily, 
-                               currentValue: data.currentTrainScore,
-                               maxValue: data.maxTrainScore),
-            StarRailLocalModel(type: .weekly, 
-                               currentValue: data.currentRogueScore,
-                               maxValue: data.maxRogueScore),
-            StarRailLocalModel(type: .entrusted, 
-                               currentValue: data.acceptedEpeditionNum,
-                               maxValue: data.totalExpeditionNum),
-            StarRailLocalModel(type: .weeklyMonster, 
-                               currentValue: data.weeklyCocoonCnt,
-                               maxValue: data.weeklyCocoonLimit)
+            StarRailLocalModel(
+                type: .daily,
+                currentValue: data.currentTrainScore,
+                maxValue: data.maxTrainScore
+            ),
+            StarRailLocalModel(
+                type: .weekly,
+                currentValue: data.currentRogueScore,
+                maxValue: data.maxRogueScore
+            ),
+            StarRailLocalModel(
+                type: .entrusted,
+                currentValue: data.acceptedEpeditionNum,
+                maxValue: data.totalExpeditionNum
+            ),
+            StarRailLocalModel(
+                type: .weeklyMonster,
+                currentValue: data.weeklyCocoonCnt,
+                maxValue: data.weeklyCocoonLimit
+            )
         ]
     }
     

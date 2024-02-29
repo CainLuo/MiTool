@@ -72,7 +72,7 @@ struct MihoyoGameRecordList: Mappable, Identifiable {
         case .starRail:
             return CopyGameName.starRail
         case nil:
-            return "暂时未知"
+            return CopyGameName.unknown
         }
     }
 

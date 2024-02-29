@@ -23,9 +23,9 @@ private let verticalIconURL = Expression<String?>("verticalIconURL")    // 角�
 private let isForward = Expression<Bool>("isForward")                   // 角色是否是前瞻
 
 extension SQLManager {
-    func creteStarRailRoleTable(_ db: Connection) {
+    func creteStarRailRoleTable(_ dataBase: Connection) {
         do {
-            try db.run(starRailRole.create(ifNotExists: true) { table in
+            try dataBase.run(starRailRole.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(uid)
                 table.column(itemID)
@@ -45,9 +45,11 @@ extension SQLManager {
         }
     }
 
-    func addStarRailRoleInfo(uuid: String,
-                             model: StarRailAllRoleListModel,
-                             complete: ((Bool, Error?) -> Void)?) {
+    func addStarRailRoleInfo(
+        uuid: String,
+        model: StarRailAllRoleListModel,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
             let insert = starRailRole.insert(
                 uid <- uuid,
@@ -63,7 +65,7 @@ extension SQLManager {
                 verticalIconURL <- model.verticalIconURL,
                 isForward <- model.isForward ?? false
             )
-            try db.run(insert)
+            try dataBase.run(insert)
             complete?(true, nil)
         } catch {
             debugPrint(error)
@@ -71,16 +73,18 @@ extension SQLManager {
         }
     }
 
-    func upgradeStarRailRoleInfo(uuid: String,
-                                 model: StarRailAllRoleListModel,
-                                 complete: ((Bool, Error?) -> Void)?) {
+    func upgradeStarRailRoleInfo(
+        uuid: String,
+        model: StarRailAllRoleListModel,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let starRailRole = starRailRole.filter(
                     uid == uuid &&
                     itemID == model.itemID ?? ""
                 )
-                try db.run(starRailRole.update(
+                try dataBase.run(starRailRole.update(
                     itemName <- model.itemName,
                     iconURL <- model.iconURL,
                     damageType <- model.damageType?.rawValue,
@@ -102,8 +106,8 @@ extension SQLManager {
     func getAllStarRailRoleList(uuid: String) -> [StarRailAllRoleListModel] {
         var list: [StarRailAllRoleListModel] = []
         do {
-            try db.transaction {
-                try db.prepare(starRailRole).forEach { item in
+            try dataBase.transaction {
+                try dataBase.prepare(starRailRole).forEach { item in
                     let model = StarRailAllRoleListModel(
                         itemID: item[itemID],
                         itemName: item[itemName],

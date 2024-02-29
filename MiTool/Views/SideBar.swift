@@ -19,10 +19,10 @@ struct SideBar: View {
         VStack {
             VStack {
                 KFImage(viewModel.header.iconURL)
-                    .placeholder({
+                    .placeholder {
                         Image(systemName: viewModel.header.iconName)
                             .circleModifier()
-                    })
+                    }
                     .circleModifier()
                     .padding(.top, 30)
 
@@ -35,16 +35,17 @@ struct SideBar: View {
             ScrollView {
                 Group {
                     ForEach(viewModel.sections.indices, id: \.self) { index in
-                        
                         let section = viewModel.sections[index]
                         if !section.sectionName.isEmpty {
                             Text(section.sectionName)
                                 .padding()
                         }
                         ForEach(section.items) { item in
-                            SideBarItemView(item: item,
-                                            animation: animation,
-                                            selection: $selection)
+                            SideBarItemView(
+                                item: item,
+                                animation: animation,
+                                selection: $selection
+                            )
                         }
                     }
                 }

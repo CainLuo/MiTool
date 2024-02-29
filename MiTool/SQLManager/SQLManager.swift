@@ -13,7 +13,7 @@ class SQLManager {
     
     private init() { }
     
-    open private(set) var db: Connection!
+    open private(set) var dataBase: Connection!
     
     let starRailRole = Table("starRailRole")
     let starRailRoleSkill = Table("starRailRoleSkill")
@@ -25,7 +25,7 @@ class SQLManager {
     var userVersion: Int32 {
         get {
             do {
-                let version = try db?.scalar("PRAGMA user_version") as? Int64
+                let version = try dataBase?.scalar("PRAGMA user_version") as? Int64
                 return Int32(version ?? 0)
             } catch {
                 #if DEBUG
@@ -35,10 +35,10 @@ class SQLManager {
             return 0
         } set {
             do {
-                try db?.run("PRAGMA user_version = \(newValue)")
+                try dataBase?.run("PRAGMA user_version = \(newValue)")
             } catch {
                 #if DEBUG
-                print(error)
+                debugPrint(error)
                 #endif
             }
         }
@@ -46,27 +46,29 @@ class SQLManager {
     
     /// 链接SQLite数据库
     func connectDataBase() {
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
-                                                             .userDomainMask,
-                                                             true).first else {
+        guard let path = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory,
+            .userDomainMask,
+            true
+        ).first else {
             return
         }
         
-        print("⚠️⚠️⚠️ ---------- Database path: \(path)/db.sqlite3 ---------- ⚠️⚠️⚠️")
+        debugPrint("⚠️⚠️⚠️ ---------- Database path: \(path)/db.sqlite3 ---------- ⚠️⚠️⚠️")
         
         do {
-            db = try Connection("\(path)/db.sqlite3")
-            db.busyTimeout = 5
-            db.busyHandler { tries in
+            dataBase = try Connection("\(path)/db.sqlite3")
+            dataBase.busyTimeout = 5
+            dataBase.busyHandler { tries in
                 tries < 3
             }
-            createMihoyoGameCardTable(db)
-            creteStarRailRoleTable(db)
-            cretestarRailRoleComputeTable(db)
-            creteStarRailRoleSkillTable(db)
+            createMihoyoGameCardTable(dataBase)
+            creteStarRailRoleTable(dataBase)
+            cretestarRailRoleComputeTable(dataBase)
+            creteStarRailRoleSkillTable(dataBase)
         } catch {
             #if DEBUG
-            print("💥💥💥 ---------- \(error.localizedDescription) ---------- 💥💥💥")
+            debugPrint("💥💥💥 ---------- \(error.localizedDescription) ---------- 💥💥💥")
             #endif
         }
     }
@@ -79,7 +81,7 @@ class SQLManager {
     func columns(table: String, column: String) -> Bool {
         do {
             var columns: [String] = []
-            let statement = try db.prepare("PRAGMA table_info(" + table + ")")
+            let statement = try dataBase.prepare("PRAGMA table_info(" + table + ")")
             
             statement.forEach { row in
                 if let column = row[1] as? String {

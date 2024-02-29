@@ -15,7 +15,6 @@
 		A4871DC12B8DEBF000C091BB /* genshinCharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DC02B8DEBF000C091BB /* genshinCharacter.json */; };
 		A4871DC32B8DED9800C091BB /* GenshinImpactCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */; };
 		A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC42B8EE46900C091BB /* Text+Extensions.swift */; };
-		A4871DC72B8EE91F00C091BB /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC62B8EE91F00C091BB /* View+Extensions.swift */; };
 		A4871DC92B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */; };
 		A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */; };
 		A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */; };
@@ -121,7 +120,6 @@
 		A4871DC02B8DEBF000C091BB /* genshinCharacter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinCharacter.json; sourceTree = "<group>"; };
 		A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinImpactCharacterModel.swift; sourceTree = "<group>"; };
 		A4871DC42B8EE46900C091BB /* Text+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extensions.swift"; sourceTree = "<group>"; };
-		A4871DC62B8EE91F00C091BB /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailCharacterDetailsModel.swift; sourceTree = "<group>"; };
 		A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleSkill.swift"; sourceTree = "<group>"; };
 		A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleCompute.swift"; sourceTree = "<group>"; };
@@ -407,7 +405,6 @@
 				BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */,
 				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
 				A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */,
-				A4871DC62B8EE91F00C091BB /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -649,7 +646,6 @@
 				BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,
 				BFE403B62B6E2A69002FF39E /* MockApi.swift in Sources */,
-				A4871DC72B8EE91F00C091BB /* View+Extensions.swift in Sources */,
 				BFB03B732B831393005DD170 /* MihoyoUserEditView.swift in Sources */,
 				BF4659D32B69525500587AD3 /* ContentView.swift in Sources */,
 				A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */,

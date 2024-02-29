@@ -53,24 +53,26 @@ struct StarRailWeightDataModel: Mappable {
     // 当前体力储备
     var currentReserveStamina: Int = 0
     // 是否有体力存储
-    var isReserveStaminaFull: Bool = false
+    var isReserveStaminaFull = false
     
     init?(map: ObjectMapper.Map) { }
     
-    init(currentStamina: Int,
-         maxStamina: Int,
-         staminaRecoverTime: Int,
-         acceptedEpeditionNum: Int,
-         totalExpeditionNum: Int,
-         expeditions: String?,
-         currentTrainScore: Int,
-         maxTrainScore: Int,
-         currentRogueScore: Int,
-         maxRogueScore: Int,
-         weeklyCocoonCnt: Int,
-         weeklyCocoonLimit: Int,
-         currentReserveStamina: Int,
-         isReserveStaminaFull: Bool) {
+    init(
+        currentStamina: Int,
+        maxStamina: Int,
+        staminaRecoverTime: Int,
+        acceptedEpeditionNum: Int,
+        totalExpeditionNum: Int,
+        expeditions: String?,
+        currentTrainScore: Int,
+        maxTrainScore: Int,
+        currentRogueScore: Int,
+        maxRogueScore: Int,
+        weeklyCocoonCnt: Int,
+        weeklyCocoonLimit: Int,
+        currentReserveStamina: Int,
+        isReserveStaminaFull: Bool
+    ) {
         self.currentStamina = currentStamina
         self.maxStamina = maxStamina
         self.staminaRecoverTime = staminaRecoverTime
@@ -128,14 +130,14 @@ struct StarRailWeightExpeditionModel: Mappable, Identifiable {
     
     var timeString: String {
         if remainingTime == 0 {
-            return "已完成"
+            return CopyStarRailWeight.finished
         } else if remainingTime < 3600 {
             let minutes = remainingTime / 60
-            return "0小时\(minutes)分钟"
+            return String(format: CopyGenshinWeight.transformerMinutes, minutes)
         } else {
             let minutes = remainingTime % 3600 / 60
             let hour = Int(remainingTime / 3600)
-            return "\(hour)小时\(minutes)分钟"
+            return String(format: CopyGenshinWeight.transformerHour, hour, minutes)
         }
     }
     

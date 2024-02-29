@@ -9,8 +9,10 @@ import SwiftUI
 import Kingfisher
 
 extension Image {
-    func circleModifier(width: CGFloat = 90,
-                        height: CGFloat = 90) -> some View {
+    func circleModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -18,16 +20,20 @@ extension Image {
             .clipShape(Circle())
     }
     
-    func sizeModifier(width: CGFloat = 90,
-                      height: CGFloat = 90) -> some View {
+    func sizeModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: width, height: height)
     }
     
-    func sizeFillModifier(width: CGFloat = 90,
-                          height: CGFloat = 90) -> some View {
+    func sizeFillModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -36,8 +42,10 @@ extension Image {
 }
 
 extension KFImage {
-    func circleModifier(width: CGFloat = 90,
-                        height: CGFloat = 90) -> some View {
+    func circleModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -45,16 +53,20 @@ extension KFImage {
             .clipShape(Circle())
     }
     
-    func sizeModifier(width: CGFloat = 90,
-                      height: CGFloat = 90) -> some View {
+    func sizeModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: width, height: height)
     }
     
-    func sizeFillModifier(width: CGFloat = 90,
-                          height: CGFloat = 90) -> some View {
+    func sizeFillModifier(
+        width: CGFloat = 90,
+        height: CGFloat = 90
+    ) -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fill)

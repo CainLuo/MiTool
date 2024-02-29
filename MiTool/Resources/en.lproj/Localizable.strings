@@ -32,6 +32,7 @@
 "StarRailWeightTrailblazePowerFull" = "Reserved trailblaze power is full: ";
 "StarRailWeightTrailblazePowerYes" = "Yes";
 "StarRailWeightTrailblazePowerNo" = "No";
+"StarRailWeightWeightFinished" = "Finished";
 
 "StarRailRoleAvatarConsume" = "Avatar consume";
 "StarRailRoleSkillsConsume" = "Skills consume";
@@ -44,18 +45,19 @@
 
 "GenshinWeightResin" = "Resin";
 "GenshinWeightRecoveryTime" = "Recovery time";
-"GenshinWeightRecoveryTimeFormatter" = "%dHour%dMinute";
-"GenshinWeightRecoveryMinutesFormatter" = "0Hour%dMinute";
 "GenshinWeightRecoveryDone" = "Recovery done";
 "GenshinWeightTransformerDay" = "%dDay%dHour";
 "GenshinWeightTransformerHour" = "%dHour%dMinute";
+"GenshinWeightTransformerMinutes" = "0Hour%dMinute";
 "GenshinWeightTransformerReady" = "Ready";
+"GenshinWeightTransformerDate" = "MM-DD-yyyy";
 
 // MARK: - 米游社
 
 "MihoyoGameNameHonKai3" = "HonKai3";
 "MihoyoGameNameGenshinImpact" = "GenshinImpact";
 "MihoyoGameNameStarRail" = "Honkai: Star Rail";
+"MihoyoGameNameUnknown" = "Unknown";
 "MihoyoGameUID" = "UID: %@";
 "MihoyoGameRegionName" = "Region name: %@";
 "MihoyoGameNickname" = "Nickname: %@";

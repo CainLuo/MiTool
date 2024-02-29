@@ -20,9 +20,9 @@ private let ipRegion = Expression<String?>("ipRegion")      // 头像链接
 private let gameCard = Expression<String?>("gameCard")      // 游戏卡片，原神id：1，星穹铁道id：6
 
 extension SQLManager {
-    func createMihoyoGameCardTable(_ db: Connection) {
+    func createMihoyoGameCardTable(_ dataBase: Connection) {
         do {
-            try db.run(mihoyoUser.create(ifNotExists: true) { table in
+            try dataBase.run(mihoyoUser.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(uid, unique: true)
                 table.column(cookie)
@@ -53,7 +53,7 @@ extension SQLManager {
                 avatarURL <- model.avatarURL,
                 ipRegion <- model.ipRegion
             )
-            try db.run(insert)
+            try dataBase.run(insert)
             complete?(true, nil)
         } catch {
             complete?(false, error)
@@ -62,7 +62,7 @@ extension SQLManager {
 
     func removeMihoyoUsers() {
         do {
-            if try db.run(mihoyoUser.delete()) > 0 {
+            if try dataBase.run(mihoyoUser.delete()) > 0 {
                 print("删除所有用户成功")
             } else {
                 print("没有找对应的用户")
@@ -74,10 +74,13 @@ extension SQLManager {
         }
     }
 
-    func removeMihoyoUser(_ uuid: String, complete: ((Bool, Error?) -> Void)) {
+    func removeMihoyoUser(
+        _ uuid: String,
+        complete: ((Bool, Error?) -> Void)
+    ) {
         let mihoyoUser = mihoyoUser.filter(uid == uuid)
         do {
-            if try db.run(mihoyoUser.delete()) > 0 {
+            if try dataBase.run(mihoyoUser.delete()) > 0 {
                 print("删除用户成功")
                 complete(true, nil)
             } else {
@@ -91,13 +94,15 @@ extension SQLManager {
         }
     }
 
-    func upgradeMihoyoAccount(_ model: MihoyoUserInfo,
-                              mihoyoCookie: String,
-                              complete: ((Bool, Error?) -> Void)?) {
+    func upgradeMihoyoAccount(
+        _ model: MihoyoUserInfo,
+        mihoyoCookie: String,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let mihoyoUser = mihoyoUser.filter(uid == model.uid)
-                try db.run(mihoyoUser.update(
+                try dataBase.run(mihoyoUser.update(
                     uid <- model.uid,
                     nickname <- model.nickname,
                     createTime <- model.communityInfo?.createdAt,
@@ -114,13 +119,15 @@ extension SQLManager {
         }
     }
 
-    func upgradeMihoyoUserCookie(_ uuid: String,
-                                 mihoyoCookie: String,
-                                 complete: ((Bool, Error?) -> Void)?) {
+    func upgradeMihoyoUserCookie(
+        _ uuid: String,
+        mihoyoCookie: String,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let mihoyoUser = mihoyoUser.filter(uid == uuid)
-                try db.run(mihoyoUser.update(
+                try dataBase.run(mihoyoUser.update(
                     cookie <- mihoyoCookie
                 ))
                 complete?(true, nil)
@@ -130,13 +137,15 @@ extension SQLManager {
         }
     }
 
-    func upgradeMihoyoUserGameCard(_ uuid: String,
-                                   gameCardJSON: String,
-                                   complete: ((Bool, Error?) -> Void)?) {
+    func upgradeMihoyoUserGameCard(
+        _ uuid: String,
+        gameCardJSON: String,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
-            try db.transaction {
+            try dataBase.transaction {
                 let mihoyoUser = mihoyoUser.filter(uid == uuid)
-                try db.run(mihoyoUser.update(
+                try dataBase.run(mihoyoUser.update(
                     gameCard <- gameCardJSON
                 ))
                 complete?(true, nil)
@@ -149,8 +158,8 @@ extension SQLManager {
     func getMihoyoUserList() -> [MihoyoUserListModel] {
         var list: [MihoyoUserListModel] = []
         do {
-            try db.transaction {
-                try db.prepare(mihoyoUser).forEach({ item in
+            try dataBase.transaction {
+                try dataBase.prepare(mihoyoUser).forEach { item in
                     let account = MihoyoUserListModel(
                         uid: item[uid] ?? "",
                         nickname: item[nickname] ?? "",
@@ -162,7 +171,7 @@ extension SQLManager {
                         cookie: item[cookie] ?? ""
                     )
                     list.append(account)
-                })
+                }
             }
             return list
         } catch {
@@ -176,7 +185,7 @@ extension SQLManager {
     func getMihoyoUser(_ uuid: String, complete: ((_ model: MihoyoUserListModel) -> Void)?) {
         let query = mihoyoUser.filter(uid == uuid)
         do {
-            try db.prepare(query).forEach({ item in
+            try dataBase.prepare(query).forEach { item in
                 complete?(MihoyoUserListModel(
                     uid: item[uid] ?? "",
                     nickname: item[nickname] ?? "",
@@ -190,7 +199,7 @@ extension SQLManager {
                 #if DEBUG
                 print("")
                 #endif
-            })
+            }
         } catch {
             #if DEBUG
             print(error)

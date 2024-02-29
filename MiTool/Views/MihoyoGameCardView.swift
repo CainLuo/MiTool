@@ -16,8 +16,10 @@ struct MihoyoGameCardView: View {
 
     @StateObject var viewModel = MihoyoGameCardViewModel()
     
-    var columns = Array(repeating: GridItem(.flexible()),
-                        count: 1)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 1
+    )
 
     var body: some View {
         List(viewModel.gameRecord) { item in
@@ -68,11 +70,13 @@ struct MihoyoGameCardView: View {
 struct MihoyoGameCardDataView: View {
     let data: [MihoyoGameRecordDatum]
     
-    var rows = Array(repeating: GridItem(.flexible()),
-                        count: 1)
+    var rows = Array(
+        repeating: GridItem(.flexible()),
+        count: 1
+    )
 
     var body: some View {
-        LazyHGrid(rows: rows, content: {
+        LazyHGrid(rows: rows) {
             ForEach(data) { dataItem in
                 VStack(spacing: 8) {
                     Text("\(dataItem.name)")
@@ -80,7 +84,7 @@ struct MihoyoGameCardDataView: View {
                         .multilineTextAlignment(.center)
                 }
             }
-        })
+        }
     }
 }
 

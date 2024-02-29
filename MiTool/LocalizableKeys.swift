@@ -40,6 +40,7 @@ struct LocalizableKeys {
         static let reserveTrailblazePowerFull = String(localized: "StarRailWeightTrailblazePowerFull")
         static let fullYes = String(localized: "StarRailWeightTrailblazePowerYes")
         static let fullNo = String(localized: "StarRailWeightTrailblazePowerNo")
+        static let finished = String(localized: "StarRailWeightWeightFinished")
     }
 
     struct StarRailRole {
@@ -53,18 +54,19 @@ struct LocalizableKeys {
     struct GenshinWeight {
         static let resin = String(localized: "GenshinWeightResin")
         static let recoveryTime = String(localized: "GenshinWeightRecoveryTime")
-        static let timeFormatter = String(localized: "GenshinWeightRecoveryTimeFormatter")
-        static let minutesFormatter = String(localized: "GenshinWeightRecoveryMinutesFormatter")
         static let recoveryDone = String(localized: "GenshinWeightRecoveryDone")
         static let transformerDay = String(localized: "GenshinWeightTransformerDay")
         static let transformerHour = String(localized: "GenshinWeightTransformerHour")
+        static let transformerMinutes = String(localized: "GenshinWeightTransformerMinutes")
         static let ready = String(localized: "GenshinWeightTransformerReady")
+        static let date = String(localized: "GenshinWeightTransformerDate")
     }
 
     struct MihoyoGameName {
         static let honkai3 = String(localized: "MihoyoGameNameHonKai3")
         static let genshin = String(localized: "MihoyoGameNameGenshinImpact")
         static let starRail = String(localized: "MihoyoGameNameStarRail")
+        static let unknown = String(localized: "MihoyoGameNameUnknown")
         static let uid = String(localized: "MihoyoGameUID")
         static let regionName = String(localized: "MihoyoGameRegionName")
         static let nickname = String(localized: "MihoyoGameNickname")

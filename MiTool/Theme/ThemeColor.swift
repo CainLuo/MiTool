@@ -17,15 +17,19 @@ enum ThemeColor {
         static let fourBottom = Color("FourStarBottom")
         
         static func fiveColor() -> LinearGradient {
-            LinearGradient(colors: [StarRail.fiveTop, StarRail.fiveBottom],
-                           startPoint: .top,
-                           endPoint: .bottom)
+            LinearGradient(
+                colors: [StarRail.fiveTop, StarRail.fiveBottom],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         }
         
         static func fourColor() -> LinearGradient {
-            LinearGradient(colors: [StarRail.fourTop, StarRail.fourBottom],
-                           startPoint: .top,
-                           endPoint: .bottom)
+            LinearGradient(
+                colors: [StarRail.fourTop, StarRail.fourBottom],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         }
     }
 }

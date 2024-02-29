@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 #else
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
-                     launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         SQLManager.shared.connectDataBase()
         return true
     }

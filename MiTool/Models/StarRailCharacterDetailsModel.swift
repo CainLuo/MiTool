@@ -1,5 +1,5 @@
 //
-//  StarRailCharacterDetailsModel.swift
+//  StarRailChaDetailsModel.swift
 //  MiTool
 //
 //  Created by Cain on 2024/2/28.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - StarRailCharacterDetailsModel
-struct StarRailCharacterDetailsModel: Mappable {
+// MARK: - StarRailChaDetailsModel
+struct StarRailChaDetailsModel: Mappable {
     var retcode: Int?
     var message: String?
-    var data: StarRailCharacterDetailsData?
+    var data: StarRailChaDetailsData?
     
     init?(map: Map) { }
     init() { }
@@ -24,14 +24,14 @@ struct StarRailCharacterDetailsModel: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsData
-struct StarRailCharacterDetailsData: Mappable {
-    var avatarList: [StarRailCharacterDetailsAvatarList]?
-    var equipWiki: StarRailCharacterDetailsEquipWiki?
-    var relicWiki: StarRailCharacterDetailsRelicWiki?
-    var propertyInfo: StarRailCharacterDetailsPropertyInfo?
-    var recommendProperty: StarRailCharacterDetailsRecommendProperty?
-    var relicProperties: [StarRailCharacterDetailsRelicProperty]?
+// MARK: - StarRailChaDetailsData
+struct StarRailChaDetailsData: Mappable {
+    var avatarList: [StarRailChaDetailsAvatarList]?
+    var equipWiki: StarRailChaDetailsEquipWiki?
+    var relicWiki: StarRailChaDetailsRelicWiki?
+    var propertyInfo: StarRailChaDetailsPropertyInfo?
+    var recommendProperty: StarRailChaDetailsRecommendProperty?
+    var relicProperties: [StarRailChaDetailsRelicProperty]?
     
     init?(map: Map) { }
     init() { }
@@ -46,8 +46,8 @@ struct StarRailCharacterDetailsData: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsAvatarList
-struct StarRailCharacterDetailsAvatarList: Mappable {
+// MARK: - StarRailChaDetailsAvatarList
+struct StarRailChaDetailsAvatarList: Mappable {
     var id: Int = 0
     var level: Int = 1
     var name: String = ""
@@ -56,12 +56,12 @@ struct StarRailCharacterDetailsAvatarList: Mappable {
     var rarity: RarityType = .one
     var rank: Int = 0
     var image: String = ""
-    var equip: StarRailCharacterDetailsEquip?
-    var relics: [StarRailCharacterDetailsOrnament]?
-    var ornaments: [StarRailCharacterDetailsOrnament]?
-    var ranks: [StarRailCharacterDetailsRank]?
-    var properties: [StarRailCharacterDetailsPropertyElement]?
-    var skills: [StarRailCharacterDetailsSkill]?
+    var equip: StarRailChaDetailsEquip?
+    var relics: [StarRailChaDetailsOrnament]?
+    var ornaments: [StarRailChaDetailsOrnament]?
+    var ranks: [StarRailChaDetailsRank]?
+    var properties: [StarRailChaDetailsPropertyElement]?
+    var skills: [StarRailChaDetailsSkill]?
     var baseType: Int = 0
     var figurePath: String = ""
     
@@ -88,8 +88,8 @@ struct StarRailCharacterDetailsAvatarList: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsEquip
-struct StarRailCharacterDetailsEquip: Mappable {
+// MARK: - StarRailChaDetailsEquip
+struct StarRailChaDetailsEquip: Mappable {
     var id: Int = 0
     var level: Int = 1
     var rank: Int = 0
@@ -112,8 +112,8 @@ struct StarRailCharacterDetailsEquip: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsOrnament
-struct StarRailCharacterDetailsOrnament: Mappable {
+// MARK: - StarRailChaDetailsOrnament
+struct StarRailChaDetailsOrnament: Mappable {
     var id: Int = 0
     var level: Int = 1
     var pos: Int = 0
@@ -121,8 +121,8 @@ struct StarRailCharacterDetailsOrnament: Mappable {
     var desc: String = ""
     var icon: String = ""
     var rarity: RarityType = .one
-    var mainProperty: StarRailCharacterDetailsMainPropertyClass?
-    var properties: [StarRailCharacterDetailsMainPropertyClass]?
+    var mainProperty: StarRailChaDetailsMainPropertyClass?
+    var properties: [StarRailChaDetailsMainPropertyClass]?
     
     init?(map: Map) { }
     init() { }
@@ -140,8 +140,8 @@ struct StarRailCharacterDetailsOrnament: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsMainPropertyClass
-struct StarRailCharacterDetailsMainPropertyClass: Mappable {
+// MARK: - StarRailChaDetailsMainPropertyClass
+struct StarRailChaDetailsMainPropertyClass: Mappable {
     var propertyType: Int?
     var value: String?
     var times: Int?
@@ -156,8 +156,8 @@ struct StarRailCharacterDetailsMainPropertyClass: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsPropertyElement
-struct StarRailCharacterDetailsPropertyElement: Mappable {
+// MARK: - StarRailChaDetailsPropertyElement
+struct StarRailChaDetailsPropertyElement: Mappable {
     var propertyType: Int?
     var base: String?
     var add: String?
@@ -174,8 +174,8 @@ struct StarRailCharacterDetailsPropertyElement: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsRank
-struct StarRailCharacterDetailsRank: Mappable {
+// MARK: - StarRailChaDetailsRank
+struct StarRailChaDetailsRank: Mappable {
     var id: Int?
     var pos: Int?
     var name: String?
@@ -196,8 +196,8 @@ struct StarRailCharacterDetailsRank: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsSkill
-struct StarRailCharacterDetailsSkill: Mappable {
+// MARK: - StarRailChaDetailsSkill
+struct StarRailChaDetailsSkill: Mappable {
     var pointID: String?
     var pointType: Int?
     var itemURL: String?
@@ -207,7 +207,7 @@ struct StarRailCharacterDetailsSkill: Mappable {
     var prePoint: String?
     var anchor: String?
     var remake: String?
-    var skillStages: [StarRailCharacterDetailsSkillStage]?
+    var skillStages: [StarRailChaDetailsSkillStage]?
     
     init?(map: Map) { }
     init() { }
@@ -226,8 +226,8 @@ struct StarRailCharacterDetailsSkill: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsSkillStage
-struct StarRailCharacterDetailsSkillStage: Mappable {
+// MARK: - StarRailChaDetailsSkillStage
+struct StarRailChaDetailsSkillStage: Mappable {
     var desc: String?
     var name: String?
     var level: Int?
@@ -250,8 +250,8 @@ struct StarRailCharacterDetailsSkillStage: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsEquipWiki
-struct StarRailCharacterDetailsEquipWiki {
+// MARK: - StarRailChaDetailsEquipWiki
+struct StarRailChaDetailsEquipWiki {
     var the20004: String?
     var the21000: String?
     var the21001: String?
@@ -286,65 +286,65 @@ struct StarRailCharacterDetailsEquipWiki {
     var the24003: String?
 }
 
-// MARK: - StarRailCharacterDetailsPropertyInfo
-struct StarRailCharacterDetailsPropertyInfo {
-    var the1: StarRailCharacterDetailsThe1?
-    var the2: StarRailCharacterDetailsThe1?
-    var the3: StarRailCharacterDetailsThe1?
-    var the4: StarRailCharacterDetailsThe1?
-    var the5: StarRailCharacterDetailsThe1?
-    var the6: StarRailCharacterDetailsThe1?
-    var the7: StarRailCharacterDetailsThe1?
-    var the8: StarRailCharacterDetailsThe1?
-    var the9: StarRailCharacterDetailsThe1?
-    var the10: StarRailCharacterDetailsThe1?
-    var the11: StarRailCharacterDetailsThe1?
-    var the12: StarRailCharacterDetailsThe1?
-    var the13: StarRailCharacterDetailsThe1?
-    var the14: StarRailCharacterDetailsThe1?
-    var the15: StarRailCharacterDetailsThe1?
-    var the16: StarRailCharacterDetailsThe1?
-    var the17: StarRailCharacterDetailsThe1?
-    var the18: StarRailCharacterDetailsThe1?
-    var the19: StarRailCharacterDetailsThe1?
-    var the20: StarRailCharacterDetailsThe1?
-    var the21: StarRailCharacterDetailsThe1?
-    var the22: StarRailCharacterDetailsThe1?
-    var the23: StarRailCharacterDetailsThe1?
-    var the24: StarRailCharacterDetailsThe1?
-    var the25: StarRailCharacterDetailsThe1?
-    var the26: StarRailCharacterDetailsThe1?
-    var the27: StarRailCharacterDetailsThe1?
-    var the28: StarRailCharacterDetailsThe1?
-    var the29: StarRailCharacterDetailsThe1?
-    var the30: StarRailCharacterDetailsThe1?
-    var the31: StarRailCharacterDetailsThe1?
-    var the32: StarRailCharacterDetailsThe1?
-    var the33: StarRailCharacterDetailsThe1?
-    var the34: StarRailCharacterDetailsThe1?
-    var the35: StarRailCharacterDetailsThe1?
-    var the36: StarRailCharacterDetailsThe1?
-    var the37: StarRailCharacterDetailsThe1?
-    var the38: StarRailCharacterDetailsThe1?
-    var the39: StarRailCharacterDetailsThe1?
-    var the40: StarRailCharacterDetailsThe1?
-    var the41: StarRailCharacterDetailsThe1?
-    var the42: StarRailCharacterDetailsThe1?
-    var the43: StarRailCharacterDetailsThe1?
-    var the51: StarRailCharacterDetailsThe1?
-    var the52: StarRailCharacterDetailsThe1?
-    var the53: StarRailCharacterDetailsThe1?
-    var the54: StarRailCharacterDetailsThe1?
-    var the55: StarRailCharacterDetailsThe1?
-    var the56: StarRailCharacterDetailsThe1?
-    var the57: StarRailCharacterDetailsThe1?
-    var the58: StarRailCharacterDetailsThe1?
-    var the59: StarRailCharacterDetailsThe1?
-    var the60: StarRailCharacterDetailsThe1?
+// MARK: - StarRailChaDetailsPropertyInfo
+struct StarRailChaDetailsPropertyInfo {
+    var the1: StarRailChaDetailsThe1?
+    var the2: StarRailChaDetailsThe1?
+    var the3: StarRailChaDetailsThe1?
+    var the4: StarRailChaDetailsThe1?
+    var the5: StarRailChaDetailsThe1?
+    var the6: StarRailChaDetailsThe1?
+    var the7: StarRailChaDetailsThe1?
+    var the8: StarRailChaDetailsThe1?
+    var the9: StarRailChaDetailsThe1?
+    var the10: StarRailChaDetailsThe1?
+    var the11: StarRailChaDetailsThe1?
+    var the12: StarRailChaDetailsThe1?
+    var the13: StarRailChaDetailsThe1?
+    var the14: StarRailChaDetailsThe1?
+    var the15: StarRailChaDetailsThe1?
+    var the16: StarRailChaDetailsThe1?
+    var the17: StarRailChaDetailsThe1?
+    var the18: StarRailChaDetailsThe1?
+    var the19: StarRailChaDetailsThe1?
+    var the20: StarRailChaDetailsThe1?
+    var the21: StarRailChaDetailsThe1?
+    var the22: StarRailChaDetailsThe1?
+    var the23: StarRailChaDetailsThe1?
+    var the24: StarRailChaDetailsThe1?
+    var the25: StarRailChaDetailsThe1?
+    var the26: StarRailChaDetailsThe1?
+    var the27: StarRailChaDetailsThe1?
+    var the28: StarRailChaDetailsThe1?
+    var the29: StarRailChaDetailsThe1?
+    var the30: StarRailChaDetailsThe1?
+    var the31: StarRailChaDetailsThe1?
+    var the32: StarRailChaDetailsThe1?
+    var the33: StarRailChaDetailsThe1?
+    var the34: StarRailChaDetailsThe1?
+    var the35: StarRailChaDetailsThe1?
+    var the36: StarRailChaDetailsThe1?
+    var the37: StarRailChaDetailsThe1?
+    var the38: StarRailChaDetailsThe1?
+    var the39: StarRailChaDetailsThe1?
+    var the40: StarRailChaDetailsThe1?
+    var the41: StarRailChaDetailsThe1?
+    var the42: StarRailChaDetailsThe1?
+    var the43: StarRailChaDetailsThe1?
+    var the51: StarRailChaDetailsThe1?
+    var the52: StarRailChaDetailsThe1?
+    var the53: StarRailChaDetailsThe1?
+    var the54: StarRailChaDetailsThe1?
+    var the55: StarRailChaDetailsThe1?
+    var the56: StarRailChaDetailsThe1?
+    var the57: StarRailChaDetailsThe1?
+    var the58: StarRailChaDetailsThe1?
+    var the59: StarRailChaDetailsThe1?
+    var the60: StarRailChaDetailsThe1?
 }
 
-// MARK: - StarRailCharacterDetailsThe1
-struct StarRailCharacterDetailsThe1: Mappable {
+// MARK: - StarRailChaDetailsThe1
+struct StarRailChaDetailsThe1: Mappable {
     var propertyType: Int?
     var name: String?
     var icon: String?
@@ -363,59 +363,59 @@ struct StarRailCharacterDetailsThe1: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsRecommendProperty
-struct StarRailCharacterDetailsRecommendProperty {
-    var the1001: StarRailCharacterDetailsThe1001?
-    var the1002: StarRailCharacterDetailsThe1001?
-    var the1003: StarRailCharacterDetailsThe1001?
-    var the1004: StarRailCharacterDetailsThe1001?
-    var the1005: StarRailCharacterDetailsThe1001?
-    var the1006: StarRailCharacterDetailsThe1001?
-    var the1008: StarRailCharacterDetailsThe1001?
-    var the1009: StarRailCharacterDetailsThe1001?
-    var the1013: StarRailCharacterDetailsThe1001?
-    var the1101: StarRailCharacterDetailsThe1001?
-    var the1102: StarRailCharacterDetailsThe1001?
-    var the1103: StarRailCharacterDetailsThe1001?
-    var the1104: StarRailCharacterDetailsThe1001?
-    var the1105: StarRailCharacterDetailsThe1001?
-    var the1106: StarRailCharacterDetailsThe1001?
-    var the1107: StarRailCharacterDetailsThe1001?
-    var the1108: StarRailCharacterDetailsThe1001?
-    var the1109: StarRailCharacterDetailsThe1001?
-    var the1110: StarRailCharacterDetailsThe1001?
-    var the1111: StarRailCharacterDetailsThe1001?
-    var the1112: StarRailCharacterDetailsThe1001?
-    var the1201: StarRailCharacterDetailsThe1001?
-    var the1202: StarRailCharacterDetailsThe1001?
-    var the1203: StarRailCharacterDetailsThe1001?
-    var the1204: StarRailCharacterDetailsThe1001?
-    var the1205: StarRailCharacterDetailsThe1001?
-    var the1206: StarRailCharacterDetailsThe1001?
-    var the1207: StarRailCharacterDetailsThe1001?
-    var the1208: StarRailCharacterDetailsThe1001?
-    var the1209: StarRailCharacterDetailsThe1001?
-    var the1210: StarRailCharacterDetailsThe1001?
-    var the1211: StarRailCharacterDetailsThe1001?
-    var the1212: StarRailCharacterDetailsThe1001?
-    var the1213: StarRailCharacterDetailsThe1001?
-    var the1214: StarRailCharacterDetailsThe1001?
-    var the1215: StarRailCharacterDetailsThe1001?
-    var the1217: StarRailCharacterDetailsThe1001?
-    var the1302: StarRailCharacterDetailsThe1001?
-    var the1303: StarRailCharacterDetailsThe1001?
-    var the1305: StarRailCharacterDetailsThe1001?
-    var the1306: StarRailCharacterDetailsThe1001?
-    var the1307: StarRailCharacterDetailsThe1001?
-    var the1312: StarRailCharacterDetailsThe1001?
-    var the8001: StarRailCharacterDetailsThe1001?
-    var the8002: StarRailCharacterDetailsThe1001?
-    var the8003: StarRailCharacterDetailsThe1001?
-    var the8004: StarRailCharacterDetailsThe1001?
+// MARK: - StarRailChaDetailsRecommendProperty
+struct StarRailChaDetailsRecommendProperty {
+    var the1001: StarRailChaDetailsThe1001?
+    var the1002: StarRailChaDetailsThe1001?
+    var the1003: StarRailChaDetailsThe1001?
+    var the1004: StarRailChaDetailsThe1001?
+    var the1005: StarRailChaDetailsThe1001?
+    var the1006: StarRailChaDetailsThe1001?
+    var the1008: StarRailChaDetailsThe1001?
+    var the1009: StarRailChaDetailsThe1001?
+    var the1013: StarRailChaDetailsThe1001?
+    var the1101: StarRailChaDetailsThe1001?
+    var the1102: StarRailChaDetailsThe1001?
+    var the1103: StarRailChaDetailsThe1001?
+    var the1104: StarRailChaDetailsThe1001?
+    var the1105: StarRailChaDetailsThe1001?
+    var the1106: StarRailChaDetailsThe1001?
+    var the1107: StarRailChaDetailsThe1001?
+    var the1108: StarRailChaDetailsThe1001?
+    var the1109: StarRailChaDetailsThe1001?
+    var the1110: StarRailChaDetailsThe1001?
+    var the1111: StarRailChaDetailsThe1001?
+    var the1112: StarRailChaDetailsThe1001?
+    var the1201: StarRailChaDetailsThe1001?
+    var the1202: StarRailChaDetailsThe1001?
+    var the1203: StarRailChaDetailsThe1001?
+    var the1204: StarRailChaDetailsThe1001?
+    var the1205: StarRailChaDetailsThe1001?
+    var the1206: StarRailChaDetailsThe1001?
+    var the1207: StarRailChaDetailsThe1001?
+    var the1208: StarRailChaDetailsThe1001?
+    var the1209: StarRailChaDetailsThe1001?
+    var the1210: StarRailChaDetailsThe1001?
+    var the1211: StarRailChaDetailsThe1001?
+    var the1212: StarRailChaDetailsThe1001?
+    var the1213: StarRailChaDetailsThe1001?
+    var the1214: StarRailChaDetailsThe1001?
+    var the1215: StarRailChaDetailsThe1001?
+    var the1217: StarRailChaDetailsThe1001?
+    var the1302: StarRailChaDetailsThe1001?
+    var the1303: StarRailChaDetailsThe1001?
+    var the1305: StarRailChaDetailsThe1001?
+    var the1306: StarRailChaDetailsThe1001?
+    var the1307: StarRailChaDetailsThe1001?
+    var the1312: StarRailChaDetailsThe1001?
+    var the8001: StarRailChaDetailsThe1001?
+    var the8002: StarRailChaDetailsThe1001?
+    var the8003: StarRailChaDetailsThe1001?
+    var the8004: StarRailChaDetailsThe1001?
 }
 
-// MARK: - StarRailCharacterDetailsThe1001
-struct StarRailCharacterDetailsThe1001: Mappable {
+// MARK: - StarRailChaDetailsThe1001
+struct StarRailChaDetailsThe1001: Mappable {
     var recommendRelicProperties: [Int]?
     var customRelicProperties: [Any?]?
     var isCustomPropertyValid: Bool?
@@ -430,8 +430,8 @@ struct StarRailCharacterDetailsThe1001: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsRelicProperty
-struct StarRailCharacterDetailsRelicProperty: Mappable {
+// MARK: - StarRailChaDetailsRelicProperty
+struct StarRailChaDetailsRelicProperty: Mappable {
     var propertyType: Int?
     var modifyPropertyType: Int?
     
@@ -444,6 +444,6 @@ struct StarRailCharacterDetailsRelicProperty: Mappable {
     }
 }
 
-// MARK: - StarRailCharacterDetailsRelicWiki
-struct StarRailCharacterDetailsRelicWiki {
+// MARK: - StarRailChaDetailsRelicWiki
+struct StarRailChaDetailsRelicWiki {
 }

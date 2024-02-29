@@ -10,11 +10,11 @@ import SwiftUI
 class RoleInfoViewModel: ObservableObject {
     let api = MockApi.shared
     
-    @Published var avatar: StarRailRoleInfoAvatar = StarRailRoleInfoAvatar()
+    @Published var avatar = StarRailRoleInfoAvatar()
     @Published var skills: [StarRailRoleInfoSkill] = []
     @Published var talentSkills: [StarRailRoleInfoSkill] = []
     @Published var otherSkills: [StarRailRoleInfoSkill] = []
-    @Published var equipment: StarRailRoleInfoEquipment = StarRailRoleInfoEquipment()
+    @Published var equipment = StarRailRoleInfoEquipment()
         
     @Published var consumeSections: [StarRailLocalCompute] = []
     
@@ -65,22 +65,28 @@ class RoleInfoViewModel: ObservableObject {
         
         if let consume = data.avatarConsume,
             !consume.isEmpty {
-            let compute = StarRailLocalCompute(title: CopyStarRailRole.avatarConsume,
-                                               consume: consume)
+            let compute = StarRailLocalCompute(
+                title: CopyStarRailRole.avatarConsume,
+                consume: consume
+            )
             consumeSections.append(compute)
         }
         
         if let consume = data.skillConsume,
            !consume.isEmpty {
-            let compute = StarRailLocalCompute(title: CopyStarRailRole.skillsConsume,
-                                               consume: consume)
+            let compute = StarRailLocalCompute(
+                title: CopyStarRailRole.skillsConsume,
+                consume: consume
+            )
             consumeSections.append(compute)
         }
         
         if let consume = data.equipmentConsume,
            !consume.isEmpty {
-            let compute = StarRailLocalCompute(title: CopyStarRailRole.equipmentConsume,
-                                               consume: consume)
+            let compute = StarRailLocalCompute(
+                title: CopyStarRailRole.equipmentConsume,
+                consume: consume
+            )
             consumeSections.append(compute)
         }
     }

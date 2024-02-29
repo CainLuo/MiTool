@@ -14,10 +14,10 @@ struct ProfileInfoModel: Mappable, Identifiable {
     var username: String?
     var cookies: String?
     var gameID: Int?
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         uid <- map["uid"]
         username <- map["username"]

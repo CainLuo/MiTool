@@ -11,6 +11,7 @@ disabled_rules:
   - orphaned_doc_comment
   - todo
   - unused_capture_list
+  - trailing_whitespace
 
 analyzer_rules:
   - unused_import
@@ -102,9 +103,9 @@ multiline_arguments:
 private_over_fileprivate:
   validate_extensions: true
 
-trailing_whitespace:
-  ignores_empty_lines: false
-  ignores_comments: true
+#trailing_whitespace:
+#  ignores_empty_lines: true
+#  ignores_comments: true
 
 vertical_whitespace:
   max_empty_lines: 2

@@ -12,8 +12,10 @@ import SwiftUIX
 struct MihoyoUserListView: View {
     @StateObject var viewModel = MihoyoUserListViewModel()
     
-    var columns = Array(repeating: GridItem(.flexible()),
-                        count: 2)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 2
+    )
 
     var body: some View {
         ScrollView(.horizontal) {
@@ -26,9 +28,12 @@ struct MihoyoUserListView: View {
                 HStack {
                     ForEach(viewModel.userList) { user in
                         VStack {
-                            MihoyoUserCardView(viewModel: viewModel,
-                                               user: user)
+                            MihoyoUserCardView(
+                                viewModel: viewModel,
+                                user: user
+                            )
                             .padding(.top, 10)
+                            
                             MihoyoGameCardView(uid: user.uid)
                         }
                         .border(cornerRadius: 8,
@@ -102,19 +107,7 @@ struct MihoyoAddUserView: View {
     }
 }
 
-// MARK: - Preview
-//#Preview {
-//    MihoyoUserCardView(viewModel: MihoyoUserListViewModel(),
-//                       user: MihoyoUserListModel())
-//        .frame(width: 300, height: 100)
-//}
-
 #Preview {
     MihoyoUserListView()
         .frame(width: 1000, height: 1000)
 }
-
-//#Preview {
-//    MihoyoAddUserView(viewModel: MihoyoUserListViewModel())
-//        .frame(width: 600, height: 600)
-//}

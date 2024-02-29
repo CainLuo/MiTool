@@ -32,6 +32,7 @@
 "StarRailWeightTrailblazePowerFull" = "存储开拓力是否已满：";
 "StarRailWeightTrailblazePowerYes" = "是";
 "StarRailWeightTrailblazePowerNo" = "否";
+"StarRailWeightWeightFinished" = "已完成";
 
 "StarRailRoleAvatarConsume" = "角色培养";
 "StarRailRoleSkillsConsume" = "行迹培养";
@@ -44,18 +45,20 @@
 
 "GenshinWeightResin" = "原粹树脂";
 "GenshinWeightRecoveryTime" = "剩余恢复时间";
-"GenshinWeightRecoveryTimeFormatter" = "%d小时%d分钟";
-"GenshinWeightRecoveryMinutesFormatter" = "0小时%d分钟";
 "GenshinWeightRecoveryDone" = "已恢复";
 "GenshinWeightTransformerDay" = "%d日%d小时";
 "GenshinWeightTransformerHour" = "%d小时%d分钟";
+"GenshinWeightTransformerMinutes" = "0小时%d分钟";
 "GenshinWeightTransformerReady" = "已准备就绪";
+"GenshinWeightTransformerDate" = "yyyy-MM-DD";
 
 // MARK: - 米游社
 
 "MihoyoGameNameHonKai3" = "崩坏3";
 "MihoyoGameNameGenshinImpact" = "原神";
 "MihoyoGameNameStarRail" = "崩坏：星穹铁道";
+"MihoyoGameNameUnknown" = "暂时未知";
+
 "MihoyoGameUID" = "UID：%@";
 "MihoyoGameRegionName" = "服务器：%@";
 "MihoyoGameNickname" = "昵称：%@";

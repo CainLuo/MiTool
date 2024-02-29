@@ -26,6 +26,8 @@ class MihoyoGameCardViewModel: ObservableObject {
         
         self.gameRecord = gameRecord
         
+        debugPrint(gameCardJSON)
+        
 //        manager.upgradeMihoyoUserGameCard(uid,
 //                                          gameCardJSON: gameCardJSON) { success, error in
 //            

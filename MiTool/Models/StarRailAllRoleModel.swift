@@ -14,10 +14,10 @@ struct StarRailAllRoleModel: Mappable, Identifiable {
     var retcode: Int?
     var message: String?
     var data: StarRailAllRoleDataModel?
-    
+
     init?(map: Map) { }
     init() { }
-    
+
     mutating func mapping(map: Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -30,10 +30,10 @@ struct StarRailAllRoleDataModel: Mappable, Identifiable {
     var id = UUID()
     var list: [StarRailAllRoleListModel]?
     var isLogin: Bool?
-    
+
     init?(map: Map) {
     }
-    
+
     mutating func mapping(map: Map) {
         list <- map["list"]
         isLogin <- map["isLogin"]
@@ -54,11 +54,20 @@ struct StarRailAllRoleListModel: Mappable, Identifiable {
     var targetLevel: Int?
     var verticalIconURL: String?
     var isForward: Bool?
-    
-    init(itemID: String?, itemName: String?, iconURL: String?,
-         damageType: Damage?, rarity: RarityType?, avatarBaseType: Destiny?,
-         maxLevel: Int?, curLevel: Int?, targetLevel: Int?, verticalIconURL: String?,
-         isForward: Bool?) {
+
+    init(
+        itemID: String?,
+        itemName: String?,
+        iconURL: String?,
+        damageType: Damage?, 
+        rarity: RarityType?, 
+        avatarBaseType: Destiny?,
+        maxLevel: Int?, 
+        curLevel: Int?,
+        targetLevel: Int?,
+        verticalIconURL: String?,
+        isForward: Bool?
+    ) {
         self.itemID = itemID
         self.itemName = itemName
         self.iconURL = iconURL
@@ -71,9 +80,9 @@ struct StarRailAllRoleListModel: Mappable, Identifiable {
         self.verticalIconURL = verticalIconURL
         self.isForward = isForward
     }
-    
+
     init?(map: Map) { }
-    
+
     mutating func mapping(map: Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
@@ -87,10 +96,12 @@ struct StarRailAllRoleListModel: Mappable, Identifiable {
         verticalIconURL <- map["vertical_icon_url"]
         isForward <- map["is_forward"]
     }
-    
-    init(itemName: String?,
-         iconURL: String?,
-         targetLevel: Int?) {
+
+    init(
+        itemName: String?,
+        iconURL: String?,
+        targetLevel: Int?
+    ) {
         self.itemName = itemName
         self.iconURL = iconURL
         self.targetLevel = targetLevel
