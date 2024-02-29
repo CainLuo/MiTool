@@ -1,6 +1,0 @@
-framework module Pods_MiToolTests {
-  umbrella header "Pods-MiToolTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -8,34 +8,31 @@
 import Foundation
 import SQLite
 
-fileprivate let index = Expression<Int64>("index")              // 索引
-fileprivate let uid = Expression<String?>("uid")                // 米游社uid
-fileprivate let cookie = Expression<String?>("cookie")          // 米游社Cookie
-fileprivate let nickname = Expression<String?>("nickname")      // 昵称
-fileprivate let createTime = Expression<Int?>("createTime")     // 创建时间
-fileprivate let introduce = Expression<String?>("introduce")    // 简介
-fileprivate let gender = Expression<Int?>("gender")             // 性别，0：保密，1：男，2：女
-fileprivate let avatarURL = Expression<String?>("avatarURL")    // 头像链接
-fileprivate let ipRegion = Expression<String?>("ipRegion")      // 头像链接
-fileprivate let gameCard = Expression<String?>("gameCard")      // 游戏卡片，原神id：1，星穹铁道id：6
+private let index = Expression<Int64>("index")              // 索引
+private let uid = Expression<String?>("uid")                // 米游社uid
+private let cookie = Expression<String?>("cookie")          // 米游社Cookie
+private let nickname = Expression<String?>("nickname")      // 昵称
+private let createTime = Expression<Int?>("createTime")     // 创建时间
+private let introduce = Expression<String?>("introduce")    // 简介
+private let gender = Expression<Int?>("gender")             // 性别，0：保密，1：男，2：女
+private let avatarURL = Expression<String?>("avatarURL")    // 头像链接
+private let ipRegion = Expression<String?>("ipRegion")      // 头像链接
+private let gameCard = Expression<String?>("gameCard")      // 游戏卡片，原神id：1，星穹铁道id：6
 
 extension SQLManager {
-    
-    /// 创建MihoyoUser表
-    /// - Parameter db: Connection
     func createMihoyoGameCardTable(_ db: Connection) {
         do {
-            try db.run(mihoyoUser.create(ifNotExists: true) { t in
-                t.column(index, primaryKey: .autoincrement)
-                t.column(uid, unique: true)
-                t.column(cookie)
-                t.column(nickname)
-                t.column(createTime)
-                t.column(introduce)
-                t.column(gender)
-                t.column(avatarURL)
-                t.column(ipRegion)
-                t.column(gameCard)
+            try db.run(mihoyoUser.create(ifNotExists: true) { table in
+                table.column(index, primaryKey: .autoincrement)
+                table.column(uid, unique: true)
+                table.column(cookie)
+                table.column(nickname)
+                table.column(createTime)
+                table.column(introduce)
+                table.column(gender)
+                table.column(avatarURL)
+                table.column(ipRegion)
+                table.column(gameCard)
             })
         } catch {
             #if DEBUG
@@ -43,11 +40,7 @@ extension SQLManager {
             #endif
         }
     }
-    
-    /// 添加米游社用户信息
-    /// - Parameters:
-    ///   - mode: MihoyoUserInfo
-    ///   - complete: ((Bool, Error?) -> Void)
+
     func addMihoyoUser(_ model: MihoyoUserInfo, complete: ((Bool, Error?) -> Void)?) {
         do {
             let insert = mihoyoUser.insert(
@@ -66,8 +59,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 删除所有Mihoyo的用户信息
+
     func removeMihoyoUsers() {
         do {
             if try db.run(mihoyoUser.delete()) > 0 {
@@ -81,11 +73,7 @@ extension SQLManager {
             #endif
         }
     }
-    
-    /// 删除指定账号的信息
-    /// - Parameters:
-    ///   - uuid: String
-    ///   - complete: ((Bool, Error?) -> Void)
+
     func removeMihoyoUser(_ uuid: String, complete: ((Bool, Error?) -> Void)) {
         let mihoyoUser = mihoyoUser.filter(uid == uuid)
         do {
@@ -102,11 +90,7 @@ extension SQLManager {
             #endif
         }
     }
-    
-    /// 更新账号信息
-    /// - Parameters:
-    ///   - model: EnkaModel
-    ///   - complete: ((Bool, Error?) -> Void)
+
     func upgradeMihoyoAccount(_ model: MihoyoUserInfo,
                               mihoyoCookie: String,
                               complete: ((Bool, Error?) -> Void)?) {
@@ -129,11 +113,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 更新账号Cookie
-    /// - Parameters:
-    ///   - model: EnkaModel
-    ///   - complete: ((Bool, Error?) -> Void)
+
     func upgradeMihoyoUserCookie(_ uuid: String,
                                  mihoyoCookie: String,
                                  complete: ((Bool, Error?) -> Void)?) {
@@ -149,11 +129,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 更新账号Game Card JSON
-    /// - Parameters:
-    ///   - model: EnkaModel
-    ///   - complete: ((Bool, Error?) -> Void)
+
     func upgradeMihoyoUserGameCard(_ uuid: String,
                                    gameCardJSON: String,
                                    complete: ((Bool, Error?) -> Void)?) {
@@ -169,9 +145,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 获取所有账号列表
-    /// - Parameter complete: ((_ models: [MihoyoUserListModel]) -> Void)
+
     func getMihoyoUserList() -> [MihoyoUserListModel] {
         var list: [MihoyoUserListModel] = []
         do {
@@ -198,11 +172,7 @@ extension SQLManager {
             return list
         }
     }
-    
-    /// 获取Acount
-    /// - Parameters:
-    ///   - uuid: String
-    ///   - complete: ((_ model: EnkaModel) -> Void)
+
     func getMihoyoUser(_ uuid: String, complete: ((_ model: MihoyoUserListModel) -> Void)?) {
         let query = mihoyoUser.filter(uid == uuid)
         do {

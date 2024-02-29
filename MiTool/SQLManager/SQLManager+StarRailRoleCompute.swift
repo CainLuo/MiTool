@@ -8,34 +8,34 @@
 import Foundation
 import SQLite
 
-fileprivate let index = Expression<Int64>("index")                              // 索引
-fileprivate let uid = Expression<String?>("uid")                                // UID
-fileprivate let itemID = Expression<String?>("itemID")                          // 角色 ID
-fileprivate let avatarConsume = Expression<String?>("avatar_consume")           // 角色等级培养耗材
-fileprivate let skillConsume = Expression<String?>("skill_consume")             // 角色行迹培养耗材
-fileprivate let equipmentConsume = Expression<String?>("equipment_consume")     // 角色光锥培养耗材
-fileprivate let userOwnsMaterials = Expression<String?>("user_owns_materials")  // 用户已有耗材的类型
-fileprivate let needGetMaterials = Expression<String?>("need_get_materials")    // 需要获取的耗材
-fileprivate let canPayMaterials = Expression<String?>("can_pay_materials")      // 可以支出的耗材
-fileprivate let canMergeMaterials = Expression<String?>("can_merge_materials")  // 可以合成的耗材
-fileprivate let coinID = Expression<String?>("coin_id")                         // coinID
+private let index = Expression<Int64>("index")                              // 索引
+private let uid = Expression<String?>("uid")                                // UID
+private let itemID = Expression<String?>("itemID")                          // 角色 ID
+private let avatarConsume = Expression<String?>("avatar_consume")           // 角色等级培养耗材
+private let skillConsume = Expression<String?>("skill_consume")             // 角色行迹培养耗材
+private let equipmentConsume = Expression<String?>("equipment_consume")     // 角色光锥培养耗材
+private let userOwnsMaterials = Expression<String?>("user_owns_materials")  // 用户已有耗材的类型
+private let needGetMaterials = Expression<String?>("need_get_materials")    // 需要获取的耗材
+private let canPayMaterials = Expression<String?>("can_pay_materials")      // 可以支出的耗材
+private let canMergeMaterials = Expression<String?>("can_merge_materials")  // 可以合成的耗材
+private let coinID = Expression<String?>("coin_id")                         // coinID
 
 extension SQLManager {
     /// 创建 starRailRoleSkill 表
     /// - Parameter db: Connection
     func cretestarRailRoleComputeTable(_ db: Connection) {
         do {
-            try db.run(starRailRoleSkill.create(ifNotExists: true) { t in
-                t.column(index, primaryKey: .autoincrement)
-                t.column(itemID)
-                t.column(avatarConsume)
-                t.column(skillConsume)
-                t.column(equipmentConsume)
-                t.column(userOwnsMaterials)
-                t.column(needGetMaterials)
-                t.column(canPayMaterials)
-                t.column(canMergeMaterials)
-                t.column(coinID)
+            try db.run(starRailRoleCompute.create(ifNotExists: true) { table in
+                table.column(index, primaryKey: .autoincrement)
+                table.column(itemID)
+                table.column(avatarConsume)
+                table.column(skillConsume)
+                table.column(equipmentConsume)
+                table.column(userOwnsMaterials)
+                table.column(needGetMaterials)
+                table.column(canPayMaterials)
+                table.column(canMergeMaterials)
+                table.column(coinID)
             })
         } catch {
             debugPrint(error)
@@ -83,11 +83,11 @@ extension SQLManager {
                                         complete: ((Bool, Error?) -> Void)?) {
         do {
             try db.transaction {
-                let starRailRole = starRailRoleSkill.filter(
+                let starRailRole = starRailRoleCompute.filter(
                     uid == uuid &&
                     itemID == roleID
                 )
-                try db.run(starRailRoleSkill.update(
+                try db.run(starRailRole.update(
                     uid <- uuid,
                     avatarConsume <- model.avatarConsume?.toJSONString(),
                     skillConsume <- model.skillConsume?.toJSONString(),
@@ -113,7 +113,7 @@ extension SQLManager {
         
         do {
             try db.transaction {
-                try db.prepare(starRailRoleSkill).forEach { item in
+                try db.prepare(starRailRoleCompute).forEach { item in
                     let model = StarRailSkillComputeData(
                         avatarConsume: item[avatarConsume],
                         skillConsume: item[skillConsume],

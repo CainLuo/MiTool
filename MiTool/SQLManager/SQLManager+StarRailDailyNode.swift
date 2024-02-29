@@ -8,22 +8,22 @@
 import Foundation
 import SQLite
 
-fileprivate let index = Expression<Int64>("index")                                  // 索引
-fileprivate let uid = Expression<String>("uid")                                    // 星穹铁道 UID
-fileprivate let currentStamina = Expression<Int>("currentStamina")                 // 当前体力
-fileprivate let maxStamina = Expression<Int>("maxStamina")                         // 最大体力
-fileprivate let staminaRecoverTime = Expression<Int>("staminaRecoverTime")         // 恢复体力时间
-fileprivate let acceptedEpeditionNum = Expression<Int>("acceptedEpeditionNum")     // 当前探险数量
-fileprivate let totalExpeditionNum = Expression<Int>("totalExpeditionNum")         // 总的最大可探险数量
-fileprivate let expeditions = Expression<String?>("expeditions")                    // 探险详情
-fileprivate let currentTrainScore = Expression<Int>("currentTrainScore")           // 当前当日活跃度
-fileprivate let maxTrainScore = Expression<Int>("maxTrainScore")                   // 总的当日活跃度
-fileprivate let currentRogueScore = Expression<Int>("currentRogueScore")           // 本周积分
-fileprivate let maxRogueScore = Expression<Int>("maxRogueScore")                   // 总的最大本周积分
-fileprivate let weeklyCocoonCnt = Expression<Int>("weeklyCocoonCnt")               // 当前可用历战余响次数
-fileprivate let weeklyCocoonLimit = Expression<Int>("weeklyCocoonLimit")           // 最大可用历战余响次数
-fileprivate let currentReserveStamina = Expression<Int>("currentReserveStamina")   // 当前体力储备
-fileprivate let isReserveStaminaFull = Expression<Bool>("isReserveStaminaFull")    // 是否有体力存储
+private let index = Expression<Int64>("index")                                  // 索引
+private let uid = Expression<String>("uid")                                    // 星穹铁道 UID
+private let currentStamina = Expression<Int>("currentStamina")                 // 当前体力
+private let maxStamina = Expression<Int>("maxStamina")                         // 最大体力
+private let staminaRecoverTime = Expression<Int>("staminaRecoverTime")         // 恢复体力时间
+private let acceptedEpeditionNum = Expression<Int>("acceptedEpeditionNum")     // 当前探险数量
+private let totalExpeditionNum = Expression<Int>("totalExpeditionNum")         // 总的最大可探险数量
+private let expeditions = Expression<String?>("expeditions")                    // 探险详情
+private let currentTrainScore = Expression<Int>("currentTrainScore")           // 当前当日活跃度
+private let maxTrainScore = Expression<Int>("maxTrainScore")                   // 总的当日活跃度
+private let currentRogueScore = Expression<Int>("currentRogueScore")           // 本周积分
+private let maxRogueScore = Expression<Int>("maxRogueScore")                   // 总的最大本周积分
+private let weeklyCocoonCnt = Expression<Int>("weeklyCocoonCnt")               // 当前可用历战余响次数
+private let weeklyCocoonLimit = Expression<Int>("weeklyCocoonLimit")           // 最大可用历战余响次数
+private let currentReserveStamina = Expression<Int>("currentReserveStamina")   // 当前体力储备
+private let isReserveStaminaFull = Expression<Bool>("isReserveStaminaFull")    // 是否有体力存储
 
 extension SQLManager {
     
@@ -31,23 +31,23 @@ extension SQLManager {
     /// - Parameter db: Connection
     func createStarRailDailyNodeTable(_ db: Connection) {
         do {
-            try db.run(starRailDailyNode.create(ifNotExists: true) { t in
-                t.column(index, primaryKey: .autoincrement)
-                t.column(uid)
-                t.column(currentStamina)
-                t.column(maxStamina)
-                t.column(staminaRecoverTime)
-                t.column(acceptedEpeditionNum)
-                t.column(totalExpeditionNum)
-                t.column(expeditions)
-                t.column(currentTrainScore)
-                t.column(maxTrainScore)
-                t.column(currentRogueScore)
-                t.column(maxRogueScore)
-                t.column(weeklyCocoonCnt)
-                t.column(weeklyCocoonLimit)
-                t.column(currentReserveStamina)
-                t.column(isReserveStaminaFull)
+            try db.run(starRailDailyNode.create(ifNotExists: true) { table in
+                table.column(index, primaryKey: .autoincrement)
+                table.column(uid)
+                table.column(currentStamina)
+                table.column(maxStamina)
+                table.column(staminaRecoverTime)
+                table.column(acceptedEpeditionNum)
+                table.column(totalExpeditionNum)
+                table.column(expeditions)
+                table.column(currentTrainScore)
+                table.column(maxTrainScore)
+                table.column(currentRogueScore)
+                table.column(maxRogueScore)
+                table.column(weeklyCocoonCnt)
+                table.column(weeklyCocoonLimit)
+                table.column(currentReserveStamina)
+                table.column(isReserveStaminaFull)
             })
         } catch {
             debugPrint(error)

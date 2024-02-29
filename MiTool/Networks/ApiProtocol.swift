@@ -9,62 +9,62 @@ import Foundation
 import Alamofire
 import CryptoSwift
 
-struct ApiKeys {
-    struct Host {
-        static let mihoyo = "https://api-takumi-record.mihoyo.com"
-        static let enka = ""
+enum ApiKeys {
+    enum Host: String {
+        case mihoyo = "https://api-takumi-record.mihoyo.com"
+        case enka = ""
     }
-    
-    struct Mihoyo {
+
+    enum Mihoyo: String {
         // 获取米游社用户的游戏记录
-        static let gameRecord = "/game_record/card/api/getGameRecordCard"
+        case gameRecord = "/game_record/card/api/getGameRecordCard"
     }
-    
-    struct GenshinImpact {
+
+    enum GenshinImpact: String {
         // 小组件
-        static let widget = "/game_record/app/genshin/aapi/widget/v2"
+        case widget = "/game_record/app/genshin/aapi/widget/v2"
         // 实时便签
-        static let dailyNote = "/game_record/app/genshin/api/dailyNote"
+        case dailyNote = "/game_record/app/genshin/api/dailyNote"
         // 已抽取到的角色
-        static let character = "/game_record/app/genshin/api/character"
+        case character = "/game_record/app/genshin/api/character"
         // 原神所有的角色
-        static let avatarList = "/event/e20200928calculate/v1/avatar/list"
+        case avatarList = "/event/e20200928calculate/v1/avatar/list"
         // 原神所有的 filter, 角色属性, 武器类型
-        static let filterList = "/event/e20200928calculate/v1/item/filter"
+        case filterList = "/event/e20200928calculate/v1/item/filter"
         // 获取角色的天赋培养材料
-        static let avatarSkill = "/event/e20200928calculate/v1/avatarSkill/list"
+        case avatarSkill = "/event/e20200928calculate/v1/avatarSkill/list"
         // 计算角色的天赋培养材料
-        static let compute = "/event/e20200928calculate/v2/compute"
+        case compute = "/event/e20200928calculate/v2/compute"
         // 获取深渊记录
-        static let spiralAbyss = "/game_record/app/genshin/api/spiralAbyss"
+        case spiralAbyss = "/game_record/app/genshin/api/spiralAbyss"
     }
-    
-    struct StarRail {
+
+    enum StarRail: String {
         // 小组件
-        static let widget = "/game_record/app/hkrpg/aapi/widget"
+        case widget = "/game_record/app/hkrpg/aapi/widget"
         // 实时便签
-        static let dailyNote = "/game_record/app/hkrpg/api/note"
+        case dailyNote = "/game_record/app/hkrpg/api/note"
         // 已抽取到的角色
-        static let character = "/game_record/app/hkrpg/api/avatar/basic"
+        case character = "/game_record/app/hkrpg/api/avatar/basic"
         // 星穹铁道所有的角色
-        static let avatarList = "/event/rpgcalc/avatar/list"
+        case avatarList = "/event/rpgcalc/avatar/list"
         // 星穹铁道角色详情
-        static let avatarDetail = "/event/rpgcalc/avatar/detail"
+        case avatarDetail = "/event/rpgcalc/avatar/detail"
         // 星穹铁道所有光锥
-        static let equipmentList = "/event/rpgcalc/equipment/list"
+        case equipmentList = "/event/rpgcalc/equipment/list"
         // 计算角色培养耗材, 等级, 行迹, 光锥
-        static let compute = "/event/rpgcalc/compute"
+        case compute = "/event/rpgcalc/compute"
         // 模拟宇宙
-        static let rogue = "/game_record/app/hkrpg/api/rogue"
+        case rogue = "/game_record/app/hkrpg/api/rogue"
         // 混沌回忆
-        static let challenge = "/game_record/app/hkrpg/api/challenge"
+        case challenge = "/game_record/app/hkrpg/api/challenge"
     }
 }
 
 protocol ApiProtocol {
     // MARK: - Mihoyo User
     func getMihoyoGameRecord() -> MihoyoGameRecordModel
-    
+
     // MARK: - GenshinImpact
     func getGshinImpactWeight() -> GenshinImpactDailyNodeModel
     func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel
@@ -91,28 +91,28 @@ protocol ApiProtocol {
 }
 
 struct HeadersModel {
-    struct DSInfo {
-        static let version = "2.60.1"
-        static let k2Key = "K2"
-        static let lk2Key = "LK2"
-        static let key22 = "22"
-        static let key25 = "25"
-        static let osKey = "os"
-        static let pdKey = "pd"
-
-        static let config: [String: Any] = [
-            version: [
-                DSInfo.k2Key: "AcpNVhfh0oedCobdCyFV8EE1jMOVDy9q",
-                DSInfo.lk2Key: "1OJyMNCqFlstEQqqMOv0rKCIdTOoJhNt",
-                DSInfo.key22: "t0qEgfub6cvueAPgR5m9aQWWVciEer7v",
-                DSInfo.key25: "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs",
-            ],
-            DSInfo.osKey: "6cqshh5dhw73bzxn20oexa9k516chk7s",
-            DSInfo.pdKey: "JwYDpKvLj6MrMqqYU6jTKF17KNO2PXoS"
-        ]
+    enum DSInfo: String {
+        case version = "2.60.1"
+        case k2Key = "K2"
+        case lk2Key = "LK2"
+        case key22 = "22"
+        case key25 = "25"
+        case osKey = "os"
+        case pdKey = "pd"
     }
-    
-    var ds: String = ""
+
+    let config: [String: Any] = [
+        DSInfo.version.rawValue: [
+            DSInfo.k2Key: "AcpNVhfh0oedCobdCyFV8EE1jMOVDy9q",
+            DSInfo.lk2Key: "1OJyMNCqFlstEQqqMOv0rKCIdTOoJhNt",
+            DSInfo.key22: "t0qEgfub6cvueAPgR5m9aQWWVciEer7v",
+            DSInfo.key25: "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
+        ],
+        DSInfo.osKey.rawValue: "6cqshh5dhw73bzxn20oexa9k516chk7s",
+        DSInfo.pdKey.rawValue: "JwYDpKvLj6MrMqqYU6jTKF17KNO2PXoS"
+    ]
+
+    var decodeSalt: String = ""
     var appVersion: String = "2.19.1"
     var clientType: String = "5"
     var language: String = "zh-cn"
@@ -122,21 +122,22 @@ struct HeadersModel {
     var contentTyoe: String = "application/x-www-form-urlencoded;charset=UTF-8"
     var acceptEncoding: String = "gzip, deflate, br"
     var acceptLanguage: String = "zh-CN,zh-Hans;q=0.9"
-    
-    init(uid: String, region: String, cookie: String) {
-        let timestamp = Int(Date().timeIntervalSince1970)
-        let random = Int.random(in: 100000...200000)
-        
-        _ = "salt=xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs&t=\(timestamp)&r=\(random)&b=&q=role_id=\(uid)&server=\(region)".md5()
 
-        self.ds = RequestHeader().getDSToken(b: ["server": "\(region)",
-                                                 "role_id": "\(uid)"])//"\(timestamp),\(random),\(sign)"
+    init(uid: String, region: String, cookie: String) {
+//        let timestamp = Int(Date().timeIntervalSince1970)
+//        let random = Int.random(in: 100000...200000)
+//        _ = "salt=xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs&t=\(timestamp)&r=\(random)&b=&q=role_id=\(uid)&server=\(region)".md5()
+        let body = [
+            "server": "\(region)",
+            "role_id": "\(uid)"
+        ]
+        self.decodeSalt = RequestHeader().getDSToken(body: body)
         self.cookie = cookie
     }
-    
+
     func getHeaders() -> HTTPHeaders {
         HTTPHeaders([
-            "DS": ds,
+            "DS": decodeSalt,
             "x-rpc-app_version": appVersion,
             "x-rpc-client_type": clientType,
             "x-rpc-language": language,

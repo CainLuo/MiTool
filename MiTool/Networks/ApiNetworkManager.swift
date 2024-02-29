@@ -10,14 +10,17 @@ import Alamofire
 import ObjectMapper
 
 class ApiNetworkManager {
-    
-    func getRequest(url: URL, 
-                    parameters: Parameters? = nil,
-                    completionHandler: ((String, AFError?) -> Void)? = nil) {
-        AF.request(url,
-                   method: .get, 
-                   parameters: [:],
-                   headers: [:])
+    func getRequest(
+        url: URL,
+        parameters: Parameters? = nil,
+        completionHandler: ((String, AFError?) -> Void)? = nil
+    ) {
+        AF.request(
+            url,
+            method: .get,
+            parameters: [:],
+            headers: [:]
+        )
         .response { data in
             switch data.result {
             case .success(let result):
@@ -32,14 +35,18 @@ class ApiNetworkManager {
             }
         }
     }
-    
-    func postReuqest(url: URL,
-                     parameters: Parameters? = nil,
-                     completionHandler: ((String, AFError?) -> Void)? = nil) {
-        AF.request(url,
-                   method: .get,
-                   parameters: [:],
-                   headers: [:])
+
+    func postReuqest(
+        url: URL,
+        parameters: Parameters? = nil,
+        completionHandler: ((String, AFError?) -> Void)? = nil
+    ) {
+        AF.request(
+            url,
+            method: .get,
+            parameters: [:],
+            headers: [:]
+        )
         .response { data in
             switch data.result {
             case .success(let result):

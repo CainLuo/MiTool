@@ -8,51 +8,43 @@
 import Foundation
 import SQLite
 
-fileprivate let index = Expression<Int64>("index")                          // 索引
-fileprivate let uid = Expression<String>("uid")                             // 用户ID
-fileprivate let itemID = Expression<String?>("itemID")                      // 角色 ID
-fileprivate let itemName = Expression<String?>("itemName")                  // 角色名称
-fileprivate let iconURL = Expression<String?>("iconURL")                    // 角色 icon
-fileprivate let damageType = Expression<String?>("damageType")              // 角色属性
-fileprivate let rarity = Expression<String?>("rarity")                      // 星级
-fileprivate let avatarBaseType = Expression<String?>("avatarBaseType")      // 角色命途
-fileprivate let maxLevel = Expression<Int?>("maxLevel")                     // 角色最高等级
-fileprivate let curLevel = Expression<Int?>("curLevel")                     // 角色当前等级
-fileprivate let targetLevel = Expression<Int?>("targetLevel")               // 角色目标等级
-fileprivate let verticalIconURL = Expression<String?>("verticalIconURL")    // 角色垂直 icon URL
-fileprivate let isForward = Expression<Bool>("isForward")                   // 角色是否是前瞻
+private let index = Expression<Int64>("index")                          // 索引
+private let uid = Expression<String>("uid")                             // 用户ID
+private let itemID = Expression<String?>("itemID")                      // 角色 ID
+private let itemName = Expression<String?>("itemName")                  // 角色名称
+private let iconURL = Expression<String?>("iconURL")                    // 角色 icon
+private let damageType = Expression<String?>("damageType")              // 角色属性
+private let rarity = Expression<String?>("rarity")                      // 星级
+private let avatarBaseType = Expression<String?>("avatarBaseType")      // 角色命途
+private let maxLevel = Expression<Int?>("maxLevel")                     // 角色最高等级
+private let curLevel = Expression<Int?>("curLevel")                     // 角色当前等级
+private let targetLevel = Expression<Int?>("targetLevel")               // 角色目标等级
+private let verticalIconURL = Expression<String?>("verticalIconURL")    // 角色垂直 icon URL
+private let isForward = Expression<Bool>("isForward")                   // 角色是否是前瞻
 
 extension SQLManager {
-    
-    /// 创建 StarRailRole 表
-    /// - Parameter db: Connection
     func creteStarRailRoleTable(_ db: Connection) {
         do {
-            try db.run(starRailRole.create(ifNotExists: true) { t in
-                t.column(index, primaryKey: .autoincrement)
-                t.column(uid)
-                t.column(itemID)
-                t.column(itemName)
-                t.column(iconURL)
-                t.column(damageType)
-                t.column(rarity)
-                t.column(avatarBaseType)
-                t.column(maxLevel)
-                t.column(curLevel)
-                t.column(targetLevel)
-                t.column(verticalIconURL)
-                t.column(isForward)
+            try db.run(starRailRole.create(ifNotExists: true) { table in
+                table.column(index, primaryKey: .autoincrement)
+                table.column(uid)
+                table.column(itemID)
+                table.column(itemName)
+                table.column(iconURL)
+                table.column(damageType)
+                table.column(rarity)
+                table.column(avatarBaseType)
+                table.column(maxLevel)
+                table.column(curLevel)
+                table.column(targetLevel)
+                table.column(verticalIconURL)
+                table.column(isForward)
             })
         } catch {
             debugPrint(error)
         }
     }
-    
-    /// 添加角色详情
-    /// - Parameters:
-    ///   - uuid: Star Rail UID
-    ///   - model: StarRailAllRoleListModel
-    ///   - complete: ((Bool, Error?) -> Void)?
+
     func addStarRailRoleInfo(uuid: String,
                              model: StarRailAllRoleListModel,
                              complete: ((Bool, Error?) -> Void)?) {
@@ -78,12 +70,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 更新角色的基本信息
-    /// - Parameters:
-    ///   - uuid: Star Rail UID
-    ///   - model: StarRailAllRoleListModel
-    ///   - complete: complete: ((Bool, Error?) -> Void)?
+
     func upgradeStarRailRoleInfo(uuid: String,
                                  model: StarRailAllRoleListModel,
                                  complete: ((Bool, Error?) -> Void)?) {
@@ -111,10 +98,7 @@ extension SQLManager {
             complete?(false, error)
         }
     }
-    
-    /// 获取整个角色列表
-    /// - Parameter uuid: Star Rail UID
-    /// - Returns: [StarRailAllRoleListModel]]
+
     func getAllStarRailRoleList(uuid: String) -> [StarRailAllRoleListModel] {
         var list: [StarRailAllRoleListModel] = []
         do {

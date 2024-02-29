@@ -13,11 +13,11 @@ struct AnnoucementContentModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: AnnoucementContentDataModel?
-    
+
     init() { }
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -31,9 +31,9 @@ struct AnnoucementContentDataModel: Mappable {
     var total: Int?
     var picList: [AnnoucementContentPicItem]?
     var picTotal: Int?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         list <- map["list"]
         total <- map["total"]
@@ -50,9 +50,9 @@ struct AnnoucementContentItem: Mappable {
     var banner: String?
     var content: String?
     var lang: String?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         annID <- map["ann_id"]
         title <- map["title"]
@@ -76,9 +76,9 @@ struct AnnoucementContentPicItem: Mappable {
     var hrefType: Int?
     var href: String?
     var picList: [Any?]?
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         annID <- map["ann_id"]
         contentType <- map["contentType"]

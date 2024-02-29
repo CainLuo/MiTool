@@ -9,22 +9,22 @@ import Foundation
 import SQLite
 import ObjectMapper
 
-fileprivate let index                  = Expression<Int64>("index")                     // 索引
-fileprivate let uid                    = Expression<String?>("uid")                     // 用户uid
-fileprivate let currentResin           = Expression<Int?>("currentResin")               // 当前树脂数
-fileprivate let maxResin               = Expression<Int?>("maxResin")                   // 最大树脂数
-fileprivate let resinRecoveryTime      = Expression<String?>("resinRecoveryTime")       // 树脂回复时间
-fileprivate let finishedTaskNum        = Expression<Int?>("finishedTaskNum")            // 完成日常数
-fileprivate let totalTaskNum           = Expression<Int?>("totalTaskNum")               // 最大日常数
-fileprivate let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
-fileprivate let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
-fileprivate let currentExpeditionNum   = Expression<Int?>("currentExpeditionNum")       // 派遣数
-fileprivate let maxExpeditionNum       = Expression<Int?>("maxExpeditionNum")           // 最大派遣数
-fileprivate let expeditions            = Expression<String?>("expeditions")             // 派遣人数列表
-fileprivate let currentHomeCoin        = Expression<Int?>("currentHomeCoin")            // 宝钱
-fileprivate let maxHomeCoin            = Expression<Int?>("maxHomeCoin")                // 最大宝钱
-fileprivate let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
-fileprivate let transformer            = Expression<String?>("transformer")             // 转换仪器
+private let index                  = Expression<Int64>("index")                     // 索引
+private let uid                    = Expression<String?>("uid")                     // 用户uid
+private let currentResin           = Expression<Int?>("currentResin")               // 当前树脂数
+private let maxResin               = Expression<Int?>("maxResin")                   // 最大树脂数
+private let resinRecoveryTime      = Expression<String?>("resinRecoveryTime")       // 树脂回复时间
+private let finishedTaskNum        = Expression<Int?>("finishedTaskNum")            // 完成日常数
+private let totalTaskNum           = Expression<Int?>("totalTaskNum")               // 最大日常数
+private let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
+private let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
+private let currentExpeditionNum   = Expression<Int?>("currentExpeditionNum")       // 派遣数
+private let maxExpeditionNum       = Expression<Int?>("maxExpeditionNum")           // 最大派遣数
+private let expeditions            = Expression<String?>("expeditions")             // 派遣人数列表
+private let currentHomeCoin        = Expression<Int?>("currentHomeCoin")            // 宝钱
+private let maxHomeCoin            = Expression<Int?>("maxHomeCoin")                // 最大宝钱
+private let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
+private let transformer            = Expression<String?>("transformer")             // 转换仪器
 
 //extension SQLManager {
 //

@@ -8,29 +8,29 @@
 import Foundation
 import SQLite
 
-fileprivate let index = Expression<Int64>("index")                  // 索引
-fileprivate let uid = Expression<String?>("uid")                    // UID
-fileprivate let avatar = Expression<String?>("avatar")              // 角色信息
-fileprivate let itemID = Expression<String?>("itemID")              // 角色 ID
-fileprivate let skills = Expression<String?>("skills")              // 角色主要技能信息
-fileprivate let skillsOther = Expression<String?>("skillsOther")    // 角色其他天赋信息
-fileprivate let equipment = Expression<String?>("equipment")        // 光锥信息
-fileprivate let isLogin = Expression<Bool?>("isLogin")              // 是否登录
+private let index = Expression<Int64>("index")                  // 索引
+private let uid = Expression<String?>("uid")                    // UID
+private let avatar = Expression<String?>("avatar")              // 角色信息
+private let itemID = Expression<String?>("itemID")              // 角色 ID
+private let skills = Expression<String?>("skills")              // 角色主要技能信息
+private let skillsOther = Expression<String?>("skillsOther")    // 角色其他天赋信息
+private let equipment = Expression<String?>("equipment")        // 光锥信息
+private let isLogin = Expression<Bool?>("isLogin")              // 是否登录
 
 extension SQLManager {
     /// 创建 StarRailRole 表
     /// - Parameter db: Connection
     func creteStarRailRoleSkillTable(_ db: Connection) {
         do {
-            try db.run(starRailRoleSkill.create(ifNotExists: true) { t in
-                t.column(index, primaryKey: .autoincrement)
-                t.column(uid)
-                t.column(itemID)
-                t.column(avatar)
-                t.column(skills)
-                t.column(skillsOther)
-                t.column(equipment)
-                t.column(isLogin)
+            try db.run(starRailRoleSkill.create(ifNotExists: true) { table in
+                table.column(index, primaryKey: .autoincrement)
+                table.column(uid)
+                table.column(itemID)
+                table.column(avatar)
+                table.column(skills)
+                table.column(skillsOther)
+                table.column(equipment)
+                table.column(isLogin)
             })
         } catch {
             debugPrint(error)
