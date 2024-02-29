@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BC951C3E3DD5FB858598F0B /* Pods_MiToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 864CA217C54139CA11D3F137 /* Pods_MiToolTests.framework */; };
+		667B025882AE740B9A2FDA51 /* Pods_MiTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605953C9F4046F872D739834 /* Pods_MiTool.framework */; };
 		A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */; };
 		A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */; };
 		A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB92B8DE9C000C091BB /* starRailWidget.json */; };
@@ -112,6 +114,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D6E8A6A27CE260A613A9032 /* Pods-MiTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiTool.debug.xcconfig"; path = "Target Support Files/Pods-MiTool/Pods-MiTool.debug.xcconfig"; sourceTree = "<group>"; };
+		605953C9F4046F872D739834 /* Pods_MiTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7544FD9E749084FFD7028D94 /* Pods-MiToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiToolTests.debug.xcconfig"; path = "Target Support Files/Pods-MiToolTests/Pods-MiToolTests.debug.xcconfig"; sourceTree = "<group>"; };
+		864CA217C54139CA11D3F137 /* Pods_MiToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9244B1CC175F06D1BFCBF342 /* Pods-MiToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiToolTests.release.xcconfig"; path = "Target Support Files/Pods-MiToolTests/Pods-MiToolTests.release.xcconfig"; sourceTree = "<group>"; };
 		A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailDailyNode.json; sourceTree = "<group>"; };
 		A4871DB92B8DE9C000C091BB /* starRailWidget.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailWidget.json; sourceTree = "<group>"; };
@@ -203,6 +210,7 @@
 		BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
 		BFE403BC2B6E2C48002FF39E /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		BFE403BF2B6E2FD6002FF39E /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		DDB6E528950ADFFD443C3382 /* Pods-MiTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiTool.release.xcconfig"; path = "Target Support Files/Pods-MiTool/Pods-MiTool.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC951C3E3DD5FB858598F0B /* Pods_MiToolTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +232,7 @@
 				BF4659E12B69534B00587AD3 /* SwiftUIX in Frameworks */,
 				BF4659E42B69537900587AD3 /* Alamofire in Frameworks */,
 				BFB03B762B83772C005DD170 /* CryptoSwift in Frameworks */,
+				667B025882AE740B9A2FDA51 /* Pods_MiTool.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +266,8 @@
 				BF4659CF2B69525500587AD3 /* MiTool */,
 				BF0512212B6E206A004D6878 /* MiToolTests */,
 				BF4659CE2B69525500587AD3 /* Products */,
+				FC6A9A1BCD04A56805308C6C /* Pods */,
+				DADC3155D641AC99923E4DFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,10 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				BF4659D22B69525500587AD3 /* ContentView.swift */,
+				BFB03BB32B8B986F005DD170 /* EnumKeys.swift */,
 				BFE403B12B6E2A2F002FF39E /* Extensions */,
 				BF2D069C2B74E54F0013DD7D /* Info.plist */,
 				BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */,
-				BFB03BB32B8B986F005DD170 /* EnumKeys.swift */,
 				BF4659D02B69525500587AD3 /* MiToolApp.swift */,
 				BFE403AE2B6E28F5002FF39E /* Models */,
 				BFE403B42B6E2A5E002FF39E /* Networks */,
@@ -445,6 +457,26 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		DADC3155D641AC99923E4DFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				605953C9F4046F872D739834 /* Pods_MiTool.framework */,
+				864CA217C54139CA11D3F137 /* Pods_MiToolTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC6A9A1BCD04A56805308C6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D6E8A6A27CE260A613A9032 /* Pods-MiTool.debug.xcconfig */,
+				DDB6E528950ADFFD443C3382 /* Pods-MiTool.release.xcconfig */,
+				7544FD9E749084FFD7028D94 /* Pods-MiToolTests.debug.xcconfig */,
+				9244B1CC175F06D1BFCBF342 /* Pods-MiToolTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,6 +484,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF0512262B6E206A004D6878 /* Build configuration list for PBXNativeTarget "MiToolTests" */;
 			buildPhases = (
+				ACAE71FF82C2C8E1125264DE /* [CP] Check Pods Manifest.lock */,
 				BF05121C2B6E2069004D6878 /* Sources */,
 				BF05121D2B6E2069004D6878 /* Frameworks */,
 				BF05121E2B6E2069004D6878 /* Resources */,
@@ -470,6 +503,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF4659DC2B69525600587AD3 /* Build configuration list for PBXNativeTarget "MiTool" */;
 			buildPhases = (
+				3D4EFE07F612F4A823F3A6EC /* [CP] Check Pods Manifest.lock */,
 				BF4659C92B69525500587AD3 /* Sources */,
 				BF4659CA2B69525500587AD3 /* Frameworks */,
 				BF4659CB2B69525500587AD3 /* Resources */,
@@ -580,6 +614,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D4EFE07F612F4A823F3A6EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiTool-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACAE71FF82C2C8E1125264DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiToolTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BF05121C2B6E2069004D6878 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -681,6 +762,7 @@
 /* Begin XCBuildConfiguration section */
 		BF0512272B6E206A004D6878 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7544FD9E749084FFD7028D94 /* Pods-MiToolTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -703,6 +785,7 @@
 		};
 		BF0512282B6E206A004D6878 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9244B1CC175F06D1BFCBF342 /* Pods-MiToolTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -839,6 +922,7 @@
 		};
 		BF4659DD2B69525600587AD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D6E8A6A27CE260A613A9032 /* Pods-MiTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -880,6 +964,7 @@
 		};
 		BF4659DE2B69525600587AD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB6E528950ADFFD443C3382 /* Pods-MiTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
