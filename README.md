@@ -30,10 +30,14 @@
 - [x] 添加米游社 Cookie
 
 ### 崩坏: 星穹铁道
-- [x] 星穹铁道角色培养详情
+- [x] 角色培养详情
+- [ ] 本期/上期混沌回忆详情
+- [ ] 抽卡分析
 
 ### 原神
-- [ ] 原神角色培养详情
+- [ ] 角色培养详情
+- [ ] 本期/上期深渊记录
+- [ ] 抽卡分析 
 
 ### 开源库
 本项目用的是以下的第三方开源库, 排名不分先后, 感谢各位大佬的共享~
@@ -51,6 +55,12 @@
 - [gsiod_core](https://github.com/Genshin-bots/gsuid_core)
 - [KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
 - [baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
+
+## 代码一致性
+为了让项目的代码一致性, 使用了 [SwiftLint](https://github.com/realm/SwiftLint), 具体规则使用了 [kodecocodes](https://github.com/kodecocodes/swift-style-guide/tree/main?tab=readme-ov-file#classes-and-structures) 所提供的代码风格.
+
+⚠️⚠️⚠️注意⚠️⚠️⚠️
+如果你的电脑装的 `Homebrew` 路径与本项目的不一致, 可以在 `MiTool -> Targets -> MiTool -> Build Pahses -> SwiftLint` 将 `export PATH="/opt/homebrew/bin:$PATH"` 改成你电脑本地的路径即可.
 
 # 建议
 如果有什么功能或者改进的方便, 可以在 issues 提一下, 比如现在的 UI 界面都是比较随意, 个人不懂 UI/UX, 请大家多多包涵😭
