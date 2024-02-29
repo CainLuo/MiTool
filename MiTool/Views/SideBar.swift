@@ -17,21 +17,6 @@ struct SideBar: View {
     
     var body: some View {
         VStack {
-            VStack {
-                KFImage(viewModel.header.iconURL)
-                    .placeholder {
-                        Image(systemName: viewModel.header.iconName)
-                            .circleModifier()
-                    }
-                    .circleModifier()
-                    .padding(.top, 30)
-
-                Text(viewModel.header.userName)
-                    .fontWeight(.semibold)
-                    .font(.system(size: 16))
-                    .padding(.top, 10)
-            }
-            
             ScrollView {
                 Group {
                     ForEach(viewModel.sections.indices, id: \.self) { index in
