@@ -35,7 +35,3 @@ class MihoyoUserListViewModel: ObservableObject {
         }
     }
 }
-
-/**
-stuid=182692936;stoken=v2_EZ6JDJqFF8b9dh5I5f1h5YHWd3Pxoae1Pmj8_daxDl1OFymHN9qOpsNrHZKfiTTyumOOS7suqEftRLeC-VhWTZHaaJveWlx6iZlLURFodFQn1t-tr2TUmYSlV_-tUsA=;mid=0otk3b2k90_mhy;login_ticket=dqY0SCsvLuYnuPwmjIYewsgpcCTVltR4IgOu9GGK;
- */

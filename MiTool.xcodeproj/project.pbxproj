@@ -19,6 +19,7 @@
 		A4871DC92B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */; };
 		A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */; };
 		A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */; };
+		A4871DCF2B901B7300C091BB /* SQLManager+StarRailDailyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCE2B901B7300C091BB /* SQLManager+StarRailDailyNode.swift */; };
 		A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */; };
 		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
 		A49FEFCF2B8D8FED00B01909 /* ApiNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */; };
@@ -123,6 +124,7 @@
 		A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailCharacterDetailsModel.swift; sourceTree = "<group>"; };
 		A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleSkill.swift"; sourceTree = "<group>"; };
 		A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRoleCompute.swift"; sourceTree = "<group>"; };
+		A4871DCE2B901B7300C091BB /* SQLManager+StarRailDailyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailDailyNode.swift"; sourceTree = "<group>"; };
 		A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111Skill.json; sourceTree = "<group>"; };
 		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
 		A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetworkManager.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				BFA75B8C2B7FC8680020B246 /* SQLManager.swift */,
 				BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */,
 				BFB03B642B80E299005DD170 /* SQLManager+MihoyoUser.swift */,
+				A4871DCE2B901B7300C091BB /* SQLManager+StarRailDailyNode.swift */,
 				BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */,
 				A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */,
 				A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */,
@@ -608,6 +611,7 @@
 				BFA75B902B7FC8680020B246 /* SQLManager+StarRailRole.swift in Sources */,
 				BFE403C02B6E2FD6002FF39E /* ThemeColor.swift in Sources */,
 				BFB03BBE2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift in Sources */,
+				A4871DCF2B901B7300C091BB /* SQLManager+StarRailDailyNode.swift in Sources */,
 				BFB03B692B80ECC6005DD170 /* MihoyoUserModel.swift in Sources */,
 				BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */,
 				A4871DC92B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift in Sources */,

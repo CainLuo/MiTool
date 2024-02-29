@@ -57,6 +57,36 @@ struct StarRailWeightDataModel: Mappable {
     
     init?(map: ObjectMapper.Map) { }
     
+    init(currentStamina: Int,
+         maxStamina: Int,
+         staminaRecoverTime: Int,
+         acceptedEpeditionNum: Int,
+         totalExpeditionNum: Int,
+         expeditions: String?,
+         currentTrainScore: Int,
+         maxTrainScore: Int,
+         currentRogueScore: Int,
+         maxRogueScore: Int,
+         weeklyCocoonCnt: Int,
+         weeklyCocoonLimit: Int,
+         currentReserveStamina: Int,
+         isReserveStaminaFull: Bool) {
+        self.currentStamina = currentStamina
+        self.maxStamina = maxStamina
+        self.staminaRecoverTime = staminaRecoverTime
+        self.acceptedEpeditionNum = acceptedEpeditionNum
+        self.totalExpeditionNum = totalExpeditionNum
+        self.expeditions = [StarRailWeightExpeditionModel](JSONString: expeditions ?? "")
+        self.currentTrainScore = currentTrainScore
+        self.maxTrainScore = maxTrainScore
+        self.currentRogueScore = currentRogueScore
+        self.maxRogueScore = maxRogueScore
+        self.weeklyCocoonCnt = weeklyCocoonCnt
+        self.weeklyCocoonLimit = weeklyCocoonLimit
+        self.currentReserveStamina = currentReserveStamina
+        self.isReserveStaminaFull = isReserveStaminaFull
+    }
+    
     mutating func mapping(map: ObjectMapper.Map) {
         currentStamina <- map["current_stamina"]
         maxStamina <- map["max_stamina"]

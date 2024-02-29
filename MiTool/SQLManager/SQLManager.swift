@@ -17,6 +17,7 @@ class SQLManager {
     
     let starRailRole = Table("starRailRole")
     let starRailRoleSkill = Table("starRailRoleSkill")
+    let starRailDailyNode = Table("StarRailDailyNode")
     let starRailRoleCompute = Table("starRailRoleCompute")
     let mihoyoUser = Table("MihoyoUser")
 

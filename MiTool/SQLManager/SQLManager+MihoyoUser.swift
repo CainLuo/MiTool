@@ -173,29 +173,29 @@ extension SQLManager {
     /// 获取所有账号列表
     /// - Parameter complete: ((_ models: [MihoyoUserListModel]) -> Void)
     func getMihoyoUserList() -> [MihoyoUserListModel] {
-        var accountList: [MihoyoUserListModel] = []
+        var list: [MihoyoUserListModel] = []
         do {
             try db.transaction {
-                try db.prepare(mihoyoUser).forEach({ mihoyoUser in
+                try db.prepare(mihoyoUser).forEach({ item in
                     let account = MihoyoUserListModel(
-                        uid: mihoyoUser[uid] ?? "",
-                        nickname: mihoyoUser[nickname] ?? "",
-                        introduce: mihoyoUser[introduce] ?? "",
-                        gender: mihoyoUser[gender] ?? 1,
-                        createdAt: mihoyoUser[createTime] ?? 0,
-                        avatarURL: mihoyoUser[avatarURL] ?? "",
-                        ipRegion: mihoyoUser[ipRegion] ?? "",
-                        cookie: mihoyoUser[cookie] ?? ""
+                        uid: item[uid] ?? "",
+                        nickname: item[nickname] ?? "",
+                        introduce: item[introduce] ?? "",
+                        gender: item[gender] ?? 1,
+                        createdAt: item[createTime] ?? 0,
+                        avatarURL: item[avatarURL] ?? "",
+                        ipRegion: item[ipRegion] ?? "",
+                        cookie: item[cookie] ?? ""
                     )
-                    accountList.append(account)
+                    list.append(account)
                 })
             }
-            return accountList
+            return list
         } catch {
             #if DEBUG
             print(error)
             #endif
-            return []
+            return list
         }
     }
     
@@ -206,16 +206,16 @@ extension SQLManager {
     func getMihoyoUser(_ uuid: String, complete: ((_ model: MihoyoUserListModel) -> Void)?) {
         let query = mihoyoUser.filter(uid == uuid)
         do {
-            try db.prepare(query).forEach({ mihoyoUser in
+            try db.prepare(query).forEach({ item in
                 complete?(MihoyoUserListModel(
-                    uid: mihoyoUser[uid] ?? "",
-                    nickname: mihoyoUser[nickname] ?? "",
-                    introduce: mihoyoUser[introduce] ?? "",
-                    gender: mihoyoUser[gender] ?? 0,
-                    createdAt: mihoyoUser[createTime] ?? 0,
-                    avatarURL: mihoyoUser[avatarURL] ?? "",
-                    ipRegion: mihoyoUser[ipRegion] ?? "",
-                    cookie: mihoyoUser[cookie] ?? ""
+                    uid: item[uid] ?? "",
+                    nickname: item[nickname] ?? "",
+                    introduce: item[introduce] ?? "",
+                    gender: item[gender] ?? 0,
+                    createdAt: item[createTime] ?? 0,
+                    avatarURL: item[avatarURL] ?? "",
+                    ipRegion: item[ipRegion] ?? "",
+                    cookie: item[cookie] ?? ""
                 ))
                 #if DEBUG
                 print("")
