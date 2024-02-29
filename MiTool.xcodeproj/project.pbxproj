@@ -31,8 +31,6 @@
 		BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06902B72A8EC0013DD7D /* WebView.swift */; };
 		BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */; };
 		BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06942B73818B0013DD7D /* RoleDetailView.swift */; };
-		BF2D06992B74DEF30013DD7D /* AnnoucementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */; };
-		BF2D06A22B751E710013DD7D /* AnnoucementContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */; };
 		BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */; };
 		BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D02B69525500587AD3 /* MiToolApp.swift */; };
 		BF4659D32B69525500587AD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D22B69525500587AD3 /* ContentView.swift */; };
@@ -137,9 +135,7 @@
 		BF2D06902B72A8EC0013DD7D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		BF2D06942B73818B0013DD7D /* RoleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleDetailView.swift"; sourceTree = "<group>"; };
-		BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementModel.swift; sourceTree = "<group>"; };
 		BF2D069C2B74E54F0013DD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementContentModel.swift; sourceTree = "<group>"; };
 		BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRoleCardModel.swift; sourceTree = "<group>"; };
 		BF4659CD2B69525500587AD3 /* MiTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4659D02B69525500587AD3 /* MiToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolApp.swift; sourceTree = "<group>"; };
@@ -378,8 +374,6 @@
 		BFE403AE2B6E28F5002FF39E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF2D06A12B751E710013DD7D /* AnnoucementContentModel.swift */,
-				BF2D06982B74DEF30013DD7D /* AnnoucementModel.swift */,
 				A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */,
 				BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */,
 				A4871DBE2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift */,
@@ -620,7 +614,6 @@
 				BFE403B92B6E2B55002FF39E /* RoleAllViewModel.swift in Sources */,
 				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
 				BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */,
-				BF2D06A22B751E710013DD7D /* AnnoucementContentModel.swift in Sources */,
 				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
 				BFE403BB2B6E2C21002FF39E /* ApiProtocol.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
@@ -663,7 +656,6 @@
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
-				BF2D06992B74DEF30013DD7D /* AnnoucementModel.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWeightCard.swift in Sources */,
 				BFB03BB42B8B986F005DD170 /* EnumKeys.swift in Sources */,
 				A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */,
