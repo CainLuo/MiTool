@@ -13,10 +13,10 @@ struct GenshinImpactWidgetModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: GenshinImpactWidgetData?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -25,7 +25,7 @@ struct GenshinImpactWidgetModel: Mappable {
 }
 
 // MARK: - GenshinImpactWidgetData
-struct GenshinImpactWidgetData {
+struct GenshinImpactWidgetData: Mappable {
     var currentResin: Int?
     var maxResin: Int?
     var resinRecoveryTime: String?
@@ -42,10 +42,10 @@ struct GenshinImpactWidgetData {
     var dailyTask: NSNull?
     var homeURL: String?
     var noteURL: String?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         currentResin <- map["current_resin"]
         maxResin <- map["max_resin"]
@@ -67,13 +67,13 @@ struct GenshinImpactWidgetData {
 }
 
 // MARK: - GenshinImpactWidgetExpedition
-struct GenshinImpactWidgetExpedition {
+struct GenshinImpactWidgetExpedition: Mappable {
     var avatarSideIcon: String?
     var status: String?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatarSideIcon <- map["avatar_side_icon"]
         status <- map["status"]

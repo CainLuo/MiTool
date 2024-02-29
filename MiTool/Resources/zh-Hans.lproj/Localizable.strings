@@ -28,7 +28,7 @@
 "StarRailWeightWeeklyMonster" = "历战余响";
 "StarRailWeightRecoveryTime" = "恢复时间";
 "StarRailWeightTrailblazePower" = "开拓力";
-"StarRailWeightTrailblazePower" = "存储开拓力：";
+"StarRailWeightCacheTrailblazePower" = "存储开拓力：";
 "StarRailWeightTrailblazePowerFull" = "存储开拓力是否已满：";
 "StarRailWeightTrailblazePowerYes" = "是";
 "StarRailWeightTrailblazePowerNo" = "否";

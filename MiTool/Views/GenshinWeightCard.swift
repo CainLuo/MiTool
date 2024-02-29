@@ -10,7 +10,7 @@ import Kingfisher
 
 struct GenshinWeightCard: View {
     @StateObject var viewModel = GenshinWeightCardViewModel()
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -24,14 +24,14 @@ struct GenshinWeightCard: View {
             }
             Text(CopyGenshinWeight.recoveryTime)
             Text(viewModel.recoveryTime)
-            
+
             Divider()
-            
+
             GenshinWeightOtherCard(viewModel: viewModel)
                 .padding([.top, .bottom])
-            
+
             Divider()
-            
+
             GenshinWeightExpeditionView(viewModel: viewModel)
                 .padding(.top)
         }
@@ -43,47 +43,59 @@ struct GenshinWeightCard: View {
 
 struct GenshinWeightOtherCard: View {
     @StateObject var viewModel: GenshinWeightCardViewModel
-    
-    var columns = Array(repeating: GridItem(.flexible()),
-                                count: 2)
+
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 2
+    )
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 15, content: {
-            GenshinWeightOtherCardSubview(iconName: "homeCoin", 
-                                          text: "\(viewModel.data.currentHomeCoin)/\(viewModel.data.maxHomeCoin)")
-            
-            GenshinWeightOtherCardSubview(iconName: "resinDiscount",
-                                          text: "\(viewModel.data.remainResinDiscountNum)/\(viewModel.data.resinDiscountNumLimit)")
+        LazyVGrid(columns: columns, spacing: 15) {
+            GenshinWeightOtherCardSubview(
+                iconName: "homeCoin",
+                text: "\(viewModel.data.currentHomeCoin)/\(viewModel.data.maxHomeCoin)"
+            )
 
-            GenshinWeightOtherCardSubview(iconName: "task",
-                                          text: "\(viewModel.data.finishedTaskNum)/\(viewModel.data.totalTaskNum)")
+            GenshinWeightOtherCardSubview(
+                iconName: "resinDiscount",
+                text: "\(viewModel.data.remainResinDiscountNum)/\(viewModel.data.resinDiscountNumLimit)"
+            )
 
-            GenshinWeightOtherCardSubview(iconName: "transformer",
-                                          text: viewModel.data.transformerTime)
-        })
+            GenshinWeightOtherCardSubview(
+                iconName: "task",
+                text: "\(viewModel.data.finishedTaskNum)/\(viewModel.data.totalTaskNum)"
+            )
+
+            GenshinWeightOtherCardSubview(
+                iconName: "transformer",
+                text: viewModel.data.transformerTime
+            )
+        }
     }
 }
 
 struct GenshinWeightExpeditionView: View {
     @StateObject var viewModel: GenshinWeightCardViewModel
-    var columns = Array(repeating: GridItem(.flexible()),
-                                count: 2)
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 2
+    )
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 15, content: {
+        LazyVGrid(columns: columns, spacing: 15) {
             ForEach(viewModel.data.expeditions ?? []) { item in
                 HStack {
                     KFImage(URL(string: item.avatarSideIcon))
                         .circleModifier(width: 50, height: 50)
                         .padding(.bottom)
-                    
+
                     Text(item.remainedTimeString)
                 }
                 .padding([.leading, .trailing], 10)
                 .background(.black.opacity(0.3))
                 .cornerRadius(10)
             }
-        })
+        }
     }
 }
 
@@ -96,7 +108,7 @@ struct GenshinWeightExpeditionView: View {
 struct GenshinWeightOtherCardSubview: View {
     let iconName: String
     let text: String
-    
+
     var body: some View {
         VStack {
             Image(iconName)

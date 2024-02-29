@@ -13,10 +13,10 @@ struct GenshinImpactDailyNodeModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: GenshinImpactDailyNodeData?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -37,7 +37,7 @@ struct GenshinImpactDailyNodeData: Mappable {
     // 总每日委托数量
     var totalTaskNum: Int = 0
     // 是否已经获取每日委托后的额外奖励
-    var isExtraTaskRewardReceived: Bool = false
+    var isExtraTaskRewardReceived = false
     // 剩余优惠周本次数
     var remainResinDiscountNum: Int = 0
     // 每周总共优惠周本次数
@@ -61,13 +61,13 @@ struct GenshinImpactDailyNodeData: Mappable {
     // 每日委托的详情：委托任务、历练点
     var dailyTask: GenshinImpactDailyNodeDailyTask?
     // 魔神任务、支线任务详情
-    var archonQuestProgress: GenshinImpactDailyNodeArchonQuestProgress?
-    
+    var archonQuestProgress: GenshinImpactArchonQuestProgress?
+
     var transformerTime: String {
         guard let recoveryTime = transformer?.recoveryTime else {
             return ""
         }
-        
+
         if recoveryTime.reached {
             return CopyGenshinWeight.ready
         } else {
@@ -78,7 +78,7 @@ struct GenshinImpactDailyNodeData: Mappable {
             }
         }
     }
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
 
@@ -104,16 +104,16 @@ struct GenshinImpactDailyNodeData: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeArchonQuestProgress
-struct GenshinImpactDailyNodeArchonQuestProgress: Mappable {
+// MARK: - GenshinImpactArchonQuestProgress
+struct GenshinImpactArchonQuestProgress: Mappable {
     var list: [Any?]?
-    var isOpenArchonQuest: Bool = false
-    var isFinishAllMainline: Bool = false
-    var isFinishAllInterchapter: Bool = false
+    var isOpenArchonQuest = false
+    var isFinishAllMainline = false
+    var isFinishAllInterchapter = false
     var wikiURL: String = ""
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         list <- map["list"]
         isOpenArchonQuest <- map["is_open_archon_quest"]
@@ -127,13 +127,13 @@ struct GenshinImpactDailyNodeArchonQuestProgress: Mappable {
 struct GenshinImpactDailyNodeDailyTask: Mappable {
     var totalNum: Int = 0
     var finishedNum: Int = 0
-    var isExtraTaskRewardReceived: Bool = false
+    var isExtraTaskRewardReceived = false
     var taskRewards: [GenshinImpactDailyNodeTaskReward]?
     var attendanceRewards: [GenshinImpactDailyNodeAttendanceReward]?
-    var attendanceVisible: Bool = false
-    
+    var attendanceVisible = false
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         totalNum <- map["total_num"]
         finishedNum <- map["finished_num"]
@@ -148,9 +148,9 @@ struct GenshinImpactDailyNodeDailyTask: Mappable {
 struct GenshinImpactDailyNodeAttendanceReward: Mappable {
     var status: String = ""
     var progress: Int = 0
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         status <- map["status"]
         progress <- map["progress"]
@@ -160,9 +160,9 @@ struct GenshinImpactDailyNodeAttendanceReward: Mappable {
 // MARK: - GenshinImpactDailyNodeTaskReward
 struct GenshinImpactDailyNodeTaskReward: Mappable {
     var status: String = ""
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         status <- map["status"]
     }
@@ -174,18 +174,18 @@ struct GenshinImpactDailyNodeExpedition: Mappable, Identifiable {
     var avatarSideIcon: String = ""
     var status: String = ""
     var remainedTime: String = ""
-    
+
     var remainedTimeString: String {
         guard let remainedTime = Int(remainedTime) else {
             return ""
         }
-        
+
         let tempMinute = remainedTime % 3600
         let minute = tempMinute / 60
         let hour = (remainedTime - tempMinute) / 3600
         return String(format: CopyGenshinWeight.transformerHour, hour, minute)
     }
-    
+
     var timeProgress: CGFloat {
         guard let remainedTime = Int(remainedTime) else {
             return 0
@@ -196,9 +196,9 @@ struct GenshinImpactDailyNodeExpedition: Mappable, Identifiable {
             return (3600.0 / CGFloat(remainedTime))
         }
     }
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatarSideIcon <- map["avatar_side_icon"]
         status <- map["status"]
@@ -208,14 +208,14 @@ struct GenshinImpactDailyNodeExpedition: Mappable, Identifiable {
 
 // MARK: - GenshinImpactDailyNodeTransformer
 struct GenshinImpactDailyNodeTransformer: Mappable {
-    var obtained: Bool = false
+    var obtained = false
     var recoveryTime: GenshinImpactDailyNodeRecoveryTime?
     var wiki: String = ""
-    var noticed: Bool = false
+    var noticed = false
     var latestJobID: String = ""
-    
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         obtained <- map["obtained"]
         recoveryTime <- map["recovery_time"]
@@ -231,10 +231,10 @@ struct GenshinImpactDailyNodeRecoveryTime: Mappable {
     var hour: Int = 0
     var minute: Int = 0
     var second: Int = 0
-    var reached: Bool = false
-    
+    var reached = false
+
     init?(map: ObjectMapper.Map) { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         day <- map["Day"]
         hour <- map["Hour"]

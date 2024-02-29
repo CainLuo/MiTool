@@ -6,29 +6,35 @@
 //
 
 import Foundation
+import ObjectMapper
 
 extension Bundle {
-    static func getJSONFile(_ fileName: String) -> [String: Any]? {
+    static func getJSONFile<T: Mappable>(
+        _ fileName: String,
+        responseType: T.Type
+    ) -> T? {
         guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            print("File not found: \(fileName).json")
             return nil
         }
-        
+
         do {
             let data = try Data(contentsOf: filePath)
-            let jsonData: [String: Any] = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String : Any]
-            return jsonData
+            let jsonStriing = String(data: data, encoding: .utf8) ?? ""
+            return T(JSONString: jsonStriing)
         } catch {
-            print("\(error)")
+            print("Error parsing JSON file: \(error)")
+            return nil
         }
-        
-        return nil
     }
 }
 
 extension Dictionary {
     var toJSONString: String? {
-        guard let theJSONData = try? JSONSerialization.data(withJSONObject: self,
-                                                            options: [.prettyPrinted]) else {
+        guard let theJSONData = try? JSONSerialization.data(
+            withJSONObject: self,
+            options: [.prettyPrinted]
+        ) else {
             return nil
         }
         return String(data: theJSONData, encoding: .ascii)

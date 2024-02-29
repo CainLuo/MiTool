@@ -13,12 +13,12 @@ struct MihoyoGameRecordModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: MihoyoGameRecordData?
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -29,10 +29,10 @@ struct MihoyoGameRecordModel: Mappable {
 // MARK: - MihoyoGameRecordData
 struct MihoyoGameRecordData: Mappable {
     var list: [MihoyoGameRecordList]?
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         list <- map["list"]
     }
@@ -62,7 +62,7 @@ struct MihoyoGameRecordList: Mappable, Identifiable {
     var h5DataSwitches: [Any?]?
     var backgroundColor: String = ""
     var backgroundImageV2: String = ""
-    
+
     var gameName: String {
         switch gameID {
         case .honkai3:
@@ -75,10 +75,10 @@ struct MihoyoGameRecordList: Mappable, Identifiable {
             return "暂时未知"
         }
     }
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         hasRole <- map["has_role"]
         gameID <- map["game_id"]
@@ -104,10 +104,10 @@ struct MihoyoGameRecordDatum: Mappable, Identifiable {
     var name: String = ""
     var type: Int?
     var value: String = ""
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         name <- map["name"]
         type <- map["type"]
@@ -120,10 +120,10 @@ struct MihoyoGameRecordDataSwitch: Mappable {
     var switchID: Int?
     var isPublic: Bool?
     var switchName: String = ""
-    
+
     init?(map: ObjectMapper.Map) {
     }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         switchID <- map["switch_id"]
         isPublic <- map["is_public"]

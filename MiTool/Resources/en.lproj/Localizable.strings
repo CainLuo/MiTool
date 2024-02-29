@@ -28,7 +28,7 @@
 "StarRailWeightWeeklyMonster" = "Weekly monster";
 "StarRailWeightRecoveryTime" = "Recovery time";
 "StarRailWeightTrailblazePower" = "Trailblaze power";
-"StarRailWeightTrailblazePower" = "Reserved Trailblaze Power: ";
+"StarRailWeightCacheTrailblazePower" = "Reserved Trailblaze Power: ";
 "StarRailWeightTrailblazePowerFull" = "Reserved trailblaze power is full: ";
 "StarRailWeightTrailblazePowerYes" = "Yes";
 "StarRailWeightTrailblazePowerNo" = "No";

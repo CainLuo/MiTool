@@ -16,7 +16,7 @@ enum Damage: String {
     case wind = "16"      // 风
     case quantum = "32"   // 量子
     case imaginary = "64" // 虚数
-    
+
     var damagetIcon: String {
         switch self {
         case .physical:
@@ -35,8 +35,8 @@ enum Damage: String {
             return DamageIcon.imaginaryIcon.rawValue
         }
     }
-    
 }
+
 enum DamageIcon: String {
     case physicalIcon = "physical"    // 物理
     case fireIcon = "fire"            // 火
@@ -55,7 +55,7 @@ enum Destiny: String {
     case nihility = "5"        // 虚无
     case preservation = "6"    // 存护
     case abundance = "7"       // 丰饶
-    
+
     var destinyIcon: String {
         switch self {
         case .destruction:
@@ -92,27 +92,37 @@ enum RarityType: String {
     case three = "3"
     case four = "4"
     case five = "5"
-    
+
     var ratityColor: Gradient {
         switch self {
         case .one:
-            return Gradient(colors: [Color(hexadecimal6: 0x484B59),
-                                     Color(hexadecimal6: 0x7F8088)])
+            return Gradient(colors: [
+                Color(hexadecimal6: 0x484B59),
+                Color(hexadecimal6: 0x7F8088)
+            ])
         case .two:
-            return Gradient(colors: [Color(hexadecimal6: 0x394C65),
-                                     Color(hexadecimal6: 0x418082)])
+            return Gradient(colors: [
+                Color(hexadecimal6: 0x394C65),
+                Color(hexadecimal6: 0x418082)
+            ])
         case .three:
-            return Gradient(colors: [Color(hexadecimal6: 0x3D4371),
-                                     Color(hexadecimal6: 0x4575B4)])
+            return Gradient(colors: [
+                Color(hexadecimal6: 0x3D4371),
+                Color(hexadecimal6: 0x4575B4)
+            ])
         case .four:
-            return Gradient(colors: [Color(hexadecimal6: 0x404066),
-                                     Color(hexadecimal6: 0x9864CE)])
+            return Gradient(colors: [
+                Color(hexadecimal6: 0x404066),
+                Color(hexadecimal6: 0x9864CE)
+            ])
         case .five:
-            return Gradient(colors: [Color(hexadecimal6: 0x925C52),
-                                     Color(hexadecimal6: 0xC6A470)])
+            return Gradient(colors: [
+                Color(hexadecimal6: 0x925C52),
+                Color(hexadecimal6: 0xC6A470)
+            ])
         }
     }
-    
+
     var ratityImage: String {
         "starRailRarity\(self.rawValue)"
     }

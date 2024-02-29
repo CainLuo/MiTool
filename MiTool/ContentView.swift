@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selection: SideBarType = .notes
-    
+
     var body: some View {
         NavigationSplitView {
             SideBar(selection: $selection)

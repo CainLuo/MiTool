@@ -13,10 +13,10 @@ struct GenshinImpactCharacterModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: GenshinImpactCharacterData?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
@@ -28,10 +28,10 @@ struct GenshinImpactCharacterModel: Mappable {
 struct GenshinImpactCharacterData: Mappable {
     var avatars: [GenshinImpactCharacterAvatar]?
     var role: GenshinImpactCharacterRole?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatars <- map["avatars"]
         role <- map["role"]
@@ -54,10 +54,10 @@ struct GenshinImpactCharacterAvatar: Mappable {
     var activedConstellationNum: Int?
     var costumes: [Any?]?
     var external: NSNull?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
         image <- map["image"]
@@ -84,10 +84,10 @@ struct GenshinImpactCharacterConstellation: Mappable {
     var effect: String?
     var isActived: Bool?
     var pos: Int?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
         name <- map["name"]
@@ -108,10 +108,10 @@ struct GenshinImpactCharacterReliquary: Mappable {
     var level: Int?
     var reliquarySet: GenshinImpactCharacterSet?
     var posName: String?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
         name <- map["name"]
@@ -129,10 +129,10 @@ struct GenshinImpactCharacterSet: Mappable {
     var id: Int?
     var name: String?
     var affixes: [GenshinImpactCharacterAffix]?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
         name <- map["name"]
@@ -144,10 +144,10 @@ struct GenshinImpactCharacterSet: Mappable {
 struct GenshinImpactCharacterAffix: Mappable {
     var activationNumber: Int?
     var effect: String?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         activationNumber <- map["activation_number"]
         effect <- map["effect"]
@@ -166,10 +166,10 @@ struct GenshinImpactCharacterWeapon: Mappable {
     var typeName: String?
     var desc: String?
     var affixLevel: Int?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
         name <- map["name"]
@@ -190,10 +190,10 @@ struct GenshinImpactCharacterRole: Mappable {
     var nickname: String?
     var region: String?
     var level: Int?
-    
+
     init?(map: ObjectMapper.Map) { }
     init() { }
-    
+
     mutating func mapping(map: ObjectMapper.Map) {
         avatarURL <- map["AvatarUrl"]
         nickname <- map["nickname"]
