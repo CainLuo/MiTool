@@ -13,6 +13,7 @@ class GenshinWeightCardViewModel: ObservableObject {
     @Published var data = GenshinImpactDailyNodeData()
     @Published var recoveryTime: String = ""
     @Published var staminaColor: Color = .red
+    @Published var dailyNodes: [GenshinImpactLocalDailyModel] = []
 
     func getGenshinWeight() {
         guard let data = manager.getGshinImpactWeight().data else {
@@ -23,6 +24,7 @@ class GenshinWeightCardViewModel: ObservableObject {
         let time = Int(data.resinRecoveryTime) ?? 0
         setUpRecoveryTime(staminaRecoverTime: time)
         setUpStaminaColor(staminaRecoverTime: time)
+        setupDailyNode()
     }
 
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
@@ -48,5 +50,29 @@ class GenshinWeightCardViewModel: ObservableObject {
         } else {
             staminaColor = .red
         }
+    }
+    
+    private func setupDailyNode() {
+        dailyNodes = [
+            GenshinImpactLocalDailyModel(
+                iconNmae: "homeCoin",
+                currentValue: data.currentHomeCoin,
+                maxValue: data.maxHomeCoin
+            ),
+            GenshinImpactLocalDailyModel(
+                iconNmae: "resinDiscount",
+                currentValue: data.remainResinDiscountNum,
+                maxValue: data.resinDiscountNumLimit
+            ),
+            GenshinImpactLocalDailyModel(
+                iconNmae: "task",
+                currentValue: data.finishedTaskNum,
+                maxValue: data.totalTaskNum
+            ),
+            GenshinImpactLocalDailyModel(
+                iconNmae: "transformer",
+                otherContent: data.transformerTime
+            )
+        ]
     }
 }

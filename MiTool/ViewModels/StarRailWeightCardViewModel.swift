@@ -31,7 +31,7 @@ class StarRailWeightCardViewModel: ObservableObject {
         
         expeditions = data.expeditions ?? []
         stamina = "\(data.currentStamina)/\(data.maxStamina)"
-        reserveStamina = CopyStarRailWeight.reserveTrailblazePower + "\(data.currentReserveStamina)"
+        reserveStamina = "\(data.currentReserveStamina)"
         let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWeight.fullYes : CopyStarRailWeight.fullNo)"
         reserveStaminaFull = CopyStarRailWeight.reserveTrailblazePowerFull + tipsString
         
