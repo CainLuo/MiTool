@@ -45,7 +45,7 @@
 		BF5581C32B6FAFB3003A5487 /* LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */; };
 		BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C72B70B52F003A5487 /* SideBarModel.swift */; };
 		BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */; };
-		BFA75B772B7E77450020B246 /* StarRailWeightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */; };
+		BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */; };
 		BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */; };
 		BFA75B7B2B7F86840020B246 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7A2B7F86840020B246 /* WeightView.swift */; };
 		BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */; };
@@ -77,7 +77,7 @@
 		BFB03BA12B844F9F005DD170 /* 10000089FuNingNa.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03B9E2B844F9E005DD170 /* 10000089FuNingNa.json */; };
 		BFB03BA32B845204005DD170 /* genshinDailyNote.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BA22B845204005DD170 /* genshinDailyNote.json */; };
 		BFB03BA52B845263005DD170 /* GenshinImpactDailyNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */; };
-		BFB03BA72B849123005DD170 /* GenshinWeightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */; };
+		BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA62B849123005DD170 /* GenshinWidgetCard.swift */; };
 		BFB03BA92B84A58C005DD170 /* GenshinWeightCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */; };
 		BFB03BAB2B8A4C4F005DD170 /* 1003Skil.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BAA2B8A4C4F005DD170 /* 1003Skil.json */; };
 		BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */; };
@@ -150,7 +150,7 @@
 		BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKeys.swift; sourceTree = "<group>"; };
 		BF5581C72B70B52F003A5487 /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightModel.swift; sourceTree = "<group>"; };
-		BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightCard.swift; sourceTree = "<group>"; };
+		BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetCard.swift; sourceTree = "<group>"; };
 		BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightCardViewModel.swift; sourceTree = "<group>"; };
 		BFA75B7A2B7F86840020B246 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		BFB03B9E2B844F9E005DD170 /* 10000089FuNingNa.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10000089FuNingNa.json; sourceTree = "<group>"; };
 		BFB03BA22B845204005DD170 /* genshinDailyNote.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genshinDailyNote.json; sourceTree = "<group>"; };
 		BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinImpactDailyNodeModel.swift; sourceTree = "<group>"; };
-		BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeightCard.swift; sourceTree = "<group>"; };
+		BFB03BA62B849123005DD170 /* GenshinWidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWidgetCard.swift; sourceTree = "<group>"; };
 		BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeightCardViewModel.swift; sourceTree = "<group>"; };
 		BFB03BAA2B8A4C4F005DD170 /* 1003Skil.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1003Skil.json; sourceTree = "<group>"; };
 		BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleInfoModel.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 		BF5581B72B6FAAD1003A5487 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BFB03BA62B849123005DD170 /* GenshinWeightCard.swift */,
+				BFB03BA62B849123005DD170 /* GenshinWidgetCard.swift */,
 				BFB03B702B825680005DD170 /* MihoyoGameCardView.swift */,
 				BFB03B722B831393005DD170 /* MihoyoUserEditView.swift */,
 				BFB03B6C2B80FF9B005DD170 /* MihoyoUserListView.swift */,
@@ -307,7 +307,7 @@
 				BF5581B82B6FAADE003A5487 /* SideBar.swift */,
 				BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */,
 				A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */,
-				BFA75B762B7E77450020B246 /* StarRailWeightCard.swift */,
+				BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */,
 				BF2D06902B72A8EC0013DD7D /* WebView.swift */,
 				BFA75B7A2B7F86840020B246 /* WeightView.swift */,
 			);
@@ -619,7 +619,7 @@
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
 				BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */,
 				BFE403BD2B6E2C48002FF39E /* Api.swift in Sources */,
-				BFA75B772B7E77450020B246 /* StarRailWeightCard.swift in Sources */,
+				BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */,
 				BFB03BB12B8B0B93005DD170 /* RoleInfoViewModel.swift in Sources */,
 				BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */,
 				BFA75B902B7FC8680020B246 /* SQLManager+StarRailRole.swift in Sources */,
@@ -656,7 +656,7 @@
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
-				BFB03BA72B849123005DD170 /* GenshinWeightCard.swift in Sources */,
+				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,
 				BFB03BB42B8B986F005DD170 /* EnumKeys.swift in Sources */,
 				A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */,
 				BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */,

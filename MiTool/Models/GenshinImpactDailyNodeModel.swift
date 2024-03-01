@@ -62,6 +62,10 @@ struct GenshinImpactDailyNodeData: Mappable {
     var dailyTask: GenshinImpactDailyNodeDailyTask?
     // 魔神任务、支线任务详情
     var archonQuestProgress: GenshinImpactArchonQuestProgress?
+    
+    var resinContent: String {
+        "\(currentResin)/\(maxResin)"
+    }
 
     var transformerTime: String {
         guard let recoveryTime = transformer?.recoveryTime else {
@@ -242,4 +246,16 @@ struct GenshinImpactDailyNodeRecoveryTime: Mappable {
         second <- map["Second"]
         reached <- map["reached"]
     }
+}
+
+// MARK:
+struct GenshinImpactLocalDailyModel: Identifiable {
+    var id = UUID()
+    var iconNmae: String
+    var currentValue: Int = 0
+    var maxValue: Int = 0
+    var valueContent: String {
+        "\(currentValue)/\(maxValue)"
+    }
+    var otherContent: String? = nil
 }

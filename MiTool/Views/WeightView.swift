@@ -9,19 +9,17 @@ import SwiftUI
 
 struct WeightView: View {
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                StarRailWeightCard()
-                    .frame(minWidth: 450, 
-                           maxWidth: .infinity)
-
-                Divider()
-                
-                GenshinWeightCard()
-                    .frame(minWidth: 400, 
-                           maxWidth: .infinity)
+        List {
+            Section {
+                StarRailWidgetCard()
+                GenshinWidgetCard()
+            } header: {
+                Text("UID: 173612938123")
+                    .font(.system(size: 26, weight: .bold))
             }
         }
+        .frame(minWidth: 776,
+               maxWidth: .infinity)
     }
 }
 
