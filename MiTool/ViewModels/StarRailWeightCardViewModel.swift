@@ -80,14 +80,14 @@ class StarRailWeightCardViewModel: ObservableObject {
     
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
         if staminaRecoverTime == 0 {
-            recoveryTime = "已恢复"
+            recoveryTime = CopyGenshinWeight.recoveryDone
         } else if staminaRecoverTime < 3600 {
             let minutes = staminaRecoverTime / 60
-            recoveryTime = "0小时\(minutes)分钟"
+            recoveryTime = String(format: CopyGenshinWeight.transformerMinutes, minutes)
         } else {
             let minutes = staminaRecoverTime % 3600 / 60
             let hour = Int(staminaRecoverTime / 3600)
-            recoveryTime = "\(hour)小时\(minutes)分钟"
+            recoveryTime = String(format: CopyGenshinWeight.transformerHour, hour, minutes)
         }
     }
 }

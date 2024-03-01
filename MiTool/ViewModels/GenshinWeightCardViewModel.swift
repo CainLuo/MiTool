@@ -29,7 +29,7 @@ class GenshinWeightCardViewModel: ObservableObject {
 
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
         if staminaRecoverTime == 0 {
-            recoveryTime = "已恢复"
+            recoveryTime = CopyGenshinWeight.recoveryDone
         } else if staminaRecoverTime < 3600 {
             let minutes = staminaRecoverTime / 60
             recoveryTime = String(format: CopyGenshinWeight.transformerMinutes, minutes)
