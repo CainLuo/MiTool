@@ -127,3 +127,30 @@ enum RarityType: String {
         "starRailRarity\(self.rawValue)"
     }
 }
+
+enum StarRailServerType: String {
+    case gdCN = "prod_gf_cn"
+    case qdCN = "prod_qd_cn"
+    case officialUSA = "prod_official_usa"
+    case officialEURO = "prod_official_euro"
+    case officialASIA = "prod_official_asia"
+    case officialCHT = "prod_official_cht"
+}
+
+enum GenshinImpactServerType: String {
+    case gfCN = "cn_gf01"
+    case qdCN = "cn_qd01"
+}
+
+typealias IconSideBar = IconKeys.SideBar
+
+enum IconKeys {
+    enum SideBar: String {
+        case header = "person.circle.fill"
+        case home = "house.fill"
+        case roleList = "person.circle"
+        case map = "map.circle.fill"
+        case wiki = "book.circle.fill"
+        case starRailSection = "star.leadinghalf.filled"
+    }
+}
