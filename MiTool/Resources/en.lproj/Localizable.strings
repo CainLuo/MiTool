@@ -62,7 +62,7 @@
 "MihoyoGameUID" = "UID: %@";
 "MihoyoGameRegionName" = "Region name: %@";
 "MihoyoGameNickname" = "Nickname: %@";
-"MihoyoGameLevel" = "Level: %@";
+"MihoyoGameLevel" = "Level: %d";
 "MihoyoGameReturn" = "Return";
 "MihoyoGameInputNickname" = "Please input your Mihoyo nickname: ";
 "MihoyoGameInputUID" = "Please input your Mihoyo UID: ";
