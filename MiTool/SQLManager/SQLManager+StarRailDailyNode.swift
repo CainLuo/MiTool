@@ -8,14 +8,14 @@
 import Foundation
 import SQLite
 
-private let index = Expression<Int64>("index")                                  // 索引
+private let index = Expression<Int64>("index")                                 // 索引
 private let uid = Expression<String>("uid")                                    // 星穹铁道 UID
 private let currentStamina = Expression<Int>("currentStamina")                 // 当前体力
 private let maxStamina = Expression<Int>("maxStamina")                         // 最大体力
 private let staminaRecoverTime = Expression<Int>("staminaRecoverTime")         // 恢复体力时间
 private let acceptedEpeditionNum = Expression<Int>("acceptedEpeditionNum")     // 当前探险数量
 private let totalExpeditionNum = Expression<Int>("totalExpeditionNum")         // 总的最大可探险数量
-private let expeditions = Expression<String?>("expeditions")                    // 探险详情
+private let expeditions = Expression<String?>("expeditions")                   // 探险详情
 private let currentTrainScore = Expression<Int>("currentTrainScore")           // 当前当日活跃度
 private let maxTrainScore = Expression<Int>("maxTrainScore")                   // 总的当日活跃度
 private let currentRogueScore = Expression<Int>("currentRogueScore")           // 本周积分

@@ -17,10 +17,9 @@ private let introduce = Expression<String?>("introduce")    // 简介
 private let gender = Expression<Int?>("gender")             // 性别，0：保密，1：男，2：女
 private let avatarURL = Expression<String?>("avatarURL")    // 头像链接
 private let ipRegion = Expression<String?>("ipRegion")      // 头像链接
-private let gameCard = Expression<String?>("gameCard")      // 游戏卡片，原神id：1，星穹铁道id：6
 
 extension SQLManager {
-    func createMihoyoGameCardTable(_ dataBase: Connection) {
+    func createMihoyoUserTable(_ dataBase: Connection) {
         do {
             try dataBase.run(mihoyoUser.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
@@ -32,7 +31,6 @@ extension SQLManager {
                 table.column(gender)
                 table.column(avatarURL)
                 table.column(ipRegion)
-                table.column(gameCard)
             })
         } catch {
             #if DEBUG
@@ -41,7 +39,10 @@ extension SQLManager {
         }
     }
 
-    func addMihoyoUser(_ model: MihoyoUserInfo, complete: ((Bool, Error?) -> Void)?) {
+    func addMihoyoUser(
+        _ model: MihoyoUserInfo,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
         do {
             let insert = mihoyoUser.insert(
                 uid <- model.uid,
@@ -54,6 +55,29 @@ extension SQLManager {
                 ipRegion <- model.ipRegion
             )
             try dataBase.run(insert)
+            complete?(true, nil)
+        } catch {
+            complete?(false, error)
+        }
+    }
+    
+    func upgradeMihoyoUser(
+        uuid: String,
+        _ model: MihoyoUserInfo,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
+        do {
+            let mihoyoUser = mihoyoUser.filter(uid == uuid)
+            try dataBase.run(mihoyoUser.update(
+                uid <- uuid,
+                nickname <- model.nickname,
+                cookie <- model.cookie,
+                createTime <- model.communityInfo?.createdAt,
+                introduce <- model.introduce,
+                gender <- model.gender,
+                avatarURL <- model.avatarURL,
+                ipRegion <- model.ipRegion
+            ))
             complete?(true, nil)
         } catch {
             complete?(false, error)
@@ -94,67 +118,6 @@ extension SQLManager {
         }
     }
 
-    func upgradeMihoyoAccount(
-        _ model: MihoyoUserInfo,
-        mihoyoCookie: String,
-        complete: ((Bool, Error?) -> Void)?
-    ) {
-        do {
-            try dataBase.transaction {
-                let mihoyoUser = mihoyoUser.filter(uid == model.uid)
-                try dataBase.run(mihoyoUser.update(
-                    uid <- model.uid,
-                    nickname <- model.nickname,
-                    createTime <- model.communityInfo?.createdAt,
-                    introduce <- model.introduce,
-                    gender <- model.gender,
-                    avatarURL <- model.avatarURL,
-                    ipRegion <- model.ipRegion,
-                    cookie <- mihoyoCookie
-                ))
-                complete?(true, nil)
-            }
-        } catch {
-            complete?(false, error)
-        }
-    }
-
-    func upgradeMihoyoUserCookie(
-        _ uuid: String,
-        mihoyoCookie: String,
-        complete: ((Bool, Error?) -> Void)?
-    ) {
-        do {
-            try dataBase.transaction {
-                let mihoyoUser = mihoyoUser.filter(uid == uuid)
-                try dataBase.run(mihoyoUser.update(
-                    cookie <- mihoyoCookie
-                ))
-                complete?(true, nil)
-            }
-        } catch {
-            complete?(false, error)
-        }
-    }
-
-    func upgradeMihoyoUserGameCard(
-        _ uuid: String,
-        gameCardJSON: String,
-        complete: ((Bool, Error?) -> Void)?
-    ) {
-        do {
-            try dataBase.transaction {
-                let mihoyoUser = mihoyoUser.filter(uid == uuid)
-                try dataBase.run(mihoyoUser.update(
-                    gameCard <- gameCardJSON
-                ))
-                complete?(true, nil)
-            }
-        } catch {
-            complete?(false, error)
-        }
-    }
-
     func getMihoyoUserList() -> [MihoyoUserListModel] {
         var list: [MihoyoUserListModel] = []
         do {
@@ -182,7 +145,10 @@ extension SQLManager {
         }
     }
 
-    func getMihoyoUser(_ uuid: String, complete: ((_ model: MihoyoUserListModel) -> Void)?) {
+    func getMihoyoUser(
+        _ uuid: String,
+        complete: ((_ model: MihoyoUserListModel) -> Void)?
+    ) {
         let query = mihoyoUser.filter(uid == uuid)
         do {
             try dataBase.prepare(query).forEach { item in
