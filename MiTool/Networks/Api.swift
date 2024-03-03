@@ -9,8 +9,12 @@ import Foundation
 import Alamofire
 
 class Api: ApiProtocol {
-    func getMihoyoGameRecord() -> MihoyoGameRecordModel {
-        MihoyoGameRecordModel()
+    func getMihoyoUserInfo() -> MihoyoUserModel {
+        MihoyoUserModel()
+    }
+    
+    func getMihoyoGameCards() -> MihoyoGameCardsModel {
+        MihoyoGameCardsModel()
     }
 }
 

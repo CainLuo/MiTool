@@ -63,7 +63,8 @@ enum ApiKeys {
 
 protocol ApiProtocol {
     // MARK: - Mihoyo User
-    func getMihoyoGameRecord() -> MihoyoGameRecordModel
+    func getMihoyoUserInfo() -> MihoyoUserModel
+    func getMihoyoGameCards() -> MihoyoGameCardsModel
 
     // MARK: - GenshinImpact
     func getGshinImpactWeight() -> GenshinImpactDailyNodeModel

@@ -13,12 +13,22 @@ class MockApi: ApiProtocol {
 
     private init() { }
 
-    func getMihoyoGameRecord() -> MihoyoGameRecordModel {
+    func getMihoyoUserInfo() -> MihoyoUserModel {
+        guard let model = Bundle.getJSONFile(
+            "mihoyoUser",
+            responseType: MihoyoUserModel.self
+        ) else {
+            return MihoyoUserModel()
+        }
+        return model
+    }
+    
+    func getMihoyoGameCards() -> MihoyoGameCardsModel {
         guard let model = Bundle.getJSONFile(
             "mihoyoPersonal",
-            responseType: MihoyoGameRecordModel.self
+            responseType: MihoyoGameCardsModel.self
         ) else {
-            return MihoyoGameRecordModel()
+            return MihoyoGameCardsModel()
         }
         return model
     }

@@ -25,7 +25,7 @@ struct MihoyoUserModel: Mappable {
 }
 
 // MARK: - MihoyoUserData
-struct MihoyoUserData {
+struct MihoyoUserData: Mappable {
     var userInfo: MihoyoUserInfo?
 
     init?(map: Map) { }
@@ -36,7 +36,7 @@ struct MihoyoUserData {
 }
 
 // MARK: - MihoyoUserInfo
-struct MihoyoUserInfo {
+struct MihoyoUserInfo: Mappable {
     var uid: String?
     var nickname: String?
     var introduce: String?
@@ -47,6 +47,7 @@ struct MihoyoUserInfo {
     var cookie: String?
 
     init?(map: Map) { }
+    init() { }
 
     init(nickname: String, uid: String, cookie: String) {
         self.nickname = nickname
@@ -66,7 +67,7 @@ struct MihoyoUserInfo {
 }
 
 // MARK: - MihoyoUserCommunityInfo
-struct MihoyoUserCommunityInfo {
+struct MihoyoUserCommunityInfo: Mappable {
     var createdAt: Int?
 
     init?(map: Map) { }
