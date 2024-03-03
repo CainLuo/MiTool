@@ -49,7 +49,7 @@
 		BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */; };
 		BFA75B7B2B7F86840020B246 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7A2B7F86840020B246 /* WeightView.swift */; };
 		BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */; };
-		BFA75B812B7FC4760020B246 /* MihoyoGameRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */; };
+		BFA75B812B7FC4760020B246 /* MihoyoGameCardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B802B7FC4760020B246 /* MihoyoGameCardsModel.swift */; };
 		BFA75B892B7FC75B0020B246 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = BFA75B882B7FC75B0020B246 /* SQLite */; };
 		BFA75B8E2B7FC8680020B246 /* SQLManager+DailyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */; };
 		BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B8C2B7FC8680020B246 /* SQLManager.swift */; };
@@ -88,6 +88,9 @@
 		BFB03BBA2B8CE55A005DD170 /* StarRailSkillComputeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */; };
 		BFB03BBC2B8CE648005DD170 /* skillComputeRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */; };
 		BFB03BBE2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */; };
+		BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */; };
+		BFC19FD32B9243A1006E83E9 /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC19FD22B9243A1006E83E9 /* WidgetSectionModel.swift */; };
+		BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */; };
 		BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */; };
 		BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */; };
 		BFE403B62B6E2A69002FF39E /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE403B52B6E2A69002FF39E /* MockApi.swift */; };
@@ -154,7 +157,7 @@
 		BFA75B782B7E79E50020B246 /* StarRailWeightCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightCardViewModel.swift; sourceTree = "<group>"; };
 		BFA75B7A2B7F86840020B246 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
-		BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameRecordModel.swift; sourceTree = "<group>"; };
+		BFA75B802B7FC4760020B246 /* MihoyoGameCardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameCardsModel.swift; sourceTree = "<group>"; };
 		BFA75B8B2B7FC8680020B246 /* SQLManager+DailyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLManager+DailyNode.swift"; sourceTree = "<group>"; };
 		BFA75B8C2B7FC8680020B246 /* SQLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
 		BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailRole.swift"; sourceTree = "<group>"; };
@@ -191,6 +194,9 @@
 		BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailSkillComputeModel.swift; sourceTree = "<group>"; };
 		BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = skillComputeRequest.json; sourceTree = "<group>"; };
 		BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailSkillComputeRequestModel.swift; sourceTree = "<group>"; };
+		BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
+		BFC19FD22B9243A1006E83E9 /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
+		BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+GameRecord.swift"; sourceTree = "<group>"; };
 		BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailAllRoleModel.swift; sourceTree = "<group>"; };
 		BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		BFE403B52B6E2A69002FF39E /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
@@ -324,6 +330,7 @@
 				BFA75B8D2B7FC8680020B246 /* SQLManager+StarRailRole.swift */,
 				A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */,
 				A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */,
+				BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */,
 			);
 			path = SQLManager;
 			sourceTree = "<group>";
@@ -377,7 +384,7 @@
 				A4871DC22B8DED9800C091BB /* GenshinImpactCharacterModel.swift */,
 				BFB03BA42B845263005DD170 /* GenshinImpactDailyNodeModel.swift */,
 				A4871DBE2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift */,
-				BFA75B802B7FC4760020B246 /* MihoyoGameRecordModel.swift */,
+				BFA75B802B7FC4760020B246 /* MihoyoGameCardsModel.swift */,
 				BFB03B682B80ECC6005DD170 /* MihoyoUserModel.swift */,
 				BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */,
 				BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */,
@@ -388,6 +395,7 @@
 				BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */,
 				BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */,
 				A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */,
+				BFC19FD22B9243A1006E83E9 /* WidgetSectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,6 +434,7 @@
 				BFB03B6E2B8255E2005DD170 /* MihoyoGameCardViewModel.swift */,
 				BFB03BA82B84A58C005DD170 /* GenshinWeightCardViewModel.swift */,
 				BFB03BB02B8B0B93005DD170 /* RoleInfoViewModel.swift */,
+				BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -591,7 +600,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    #export PATH=\"/opt/homebrew/bin:$PATH\"\n    export PATH=/Users/cain/homebrew/bin:$PATH\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\n    #export PATH=/Users/cain/homebrew/bin:$PATH\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -608,8 +617,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFA75B812B7FC4760020B246 /* MihoyoGameRecordModel.swift in Sources */,
+				BFA75B812B7FC4760020B246 /* MihoyoGameCardsModel.swift in Sources */,
 				BFA75B7B2B7F86840020B246 /* WeightView.swift in Sources */,
+				BFC19FD32B9243A1006E83E9 /* WidgetSectionModel.swift in Sources */,
 				BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */,
 				BFE403B92B6E2B55002FF39E /* RoleAllViewModel.swift in Sources */,
 				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
@@ -636,6 +646,7 @@
 				BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */,
 				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,
 				BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */,
+				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
 				BFA75B792B7E79E50020B246 /* StarRailWeightCardViewModel.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,
 				BFE403B62B6E2A69002FF39E /* MockApi.swift in Sources */,
@@ -662,6 +673,7 @@
 				BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */,
 				BFB03BA52B845263005DD170 /* GenshinImpactDailyNodeModel.swift in Sources */,
 				A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */,
+				BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */,
 				BFB03B712B825680005DD170 /* MihoyoGameCardView.swift in Sources */,
 				A4871DC32B8DED9800C091BB /* GenshinImpactCharacterModel.swift in Sources */,
 				BFB03BA92B84A58C005DD170 /* GenshinWeightCardViewModel.swift in Sources */,

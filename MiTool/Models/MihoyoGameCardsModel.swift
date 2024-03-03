@@ -1,5 +1,5 @@
 //
-//  MihoyoGameRecordModel.swift
+//  MihoyoGameCardsModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/17.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - MihoyoGameRecordModel
-struct MihoyoGameRecordModel: Mappable {
+// MARK: - MihoyoGameCardsModel
+struct MihoyoGameCardsModel: Mappable {
     var retcode: Int?
     var message: String?
-    var data: MihoyoGameRecordData?
+    var data: MihoyoGameCardsData?
 
     init?(map: ObjectMapper.Map) {
     }
@@ -26,9 +26,9 @@ struct MihoyoGameRecordModel: Mappable {
     }
 }
 
-// MARK: - MihoyoGameRecordData
-struct MihoyoGameRecordData: Mappable {
-    var list: [MihoyoGameRecordList]?
+// MARK: - MihoyoGameCardsData
+struct MihoyoGameCardsData: Mappable {
+    var list: [MihoyoGameCardsList]?
 
     init?(map: ObjectMapper.Map) {
     }
@@ -44,8 +44,8 @@ enum MihoyoGameID: Int {
     case starRail = 6
 }
 
-// MARK: - MihoyoGameRecordList
-struct MihoyoGameRecordList: Mappable, Identifiable {
+// MARK: - MihoyoGameCardsList
+struct MihoyoGameCardsList: Mappable, Identifiable {
     var id = UUID()
     var hasRole: Bool?
     var gameID: MihoyoGameID?
@@ -55,10 +55,10 @@ struct MihoyoGameRecordList: Mappable, Identifiable {
     var level: Int = 1
     var backgroundImage: String = ""
     var isPublic: Bool?
-    var data: [MihoyoGameRecordDatum]?
+    var data: [MihoyoGameCardsDatum]?
     var regionName: String = ""
     var url: String = ""
-    var dataSwitches: [MihoyoGameRecordDataSwitch]?
+    var dataSwitches: [MihoyoGameCardsDataSwitch]?
     var h5DataSwitches: [Any?]?
     var backgroundColor: String = ""
     var backgroundImageV2: String = ""
@@ -98,8 +98,8 @@ struct MihoyoGameRecordList: Mappable, Identifiable {
     }
 }
 
-// MARK: - MihoyoGameRecordDatum
-struct MihoyoGameRecordDatum: Mappable, Identifiable {
+// MARK: - MihoyoGameCardsDatum
+struct MihoyoGameCardsDatum: Mappable, Identifiable {
     var id = UUID()
     var name: String = ""
     var type: Int?
@@ -115,8 +115,8 @@ struct MihoyoGameRecordDatum: Mappable, Identifiable {
     }
 }
 
-// MARK: - MihoyoGameRecordDataSwitch
-struct MihoyoGameRecordDataSwitch: Mappable {
+// MARK: - MihoyoGameCardsDataSwitch
+struct MihoyoGameCardsDataSwitch: Mappable {
     var switchID: Int?
     var isPublic: Bool?
     var switchName: String = ""

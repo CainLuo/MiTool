@@ -19,7 +19,8 @@ class SQLManager {
     let starRailRoleSkill = Table("starRailRoleSkill")
     let starRailDailyNode = Table("StarRailDailyNode")
     let starRailRoleCompute = Table("starRailRoleCompute")
-    let mihoyoUser = Table("MihoyoUser")
+    let mihoyoUser = Table("mihoyoUser")
+    let mihoyoGameCards = Table("mihoyoGameCards")
 
     // 获取/设置数据库User version
     var userVersion: Int32 {
@@ -62,10 +63,11 @@ class SQLManager {
             dataBase.busyHandler { tries in
                 tries < 3
             }
-            createMihoyoGameCardTable(dataBase)
+            createMihoyoUserTable(dataBase)
             creteStarRailRoleTable(dataBase)
             cretestarRailRoleComputeTable(dataBase)
             creteStarRailRoleSkillTable(dataBase)
+            createMihoyoGameCardsTable(dataBase)
         } catch {
             #if DEBUG
             debugPrint("💥💥💥 ---------- \(error.localizedDescription) ---------- 💥💥💥")

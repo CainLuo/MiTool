@@ -82,4 +82,3 @@ struct MihoyoUserEditView: View {
     MihoyoUserEditView(viewModel: MihoyoUserListViewModel())
         .frame(width: 600, height: 600)
 }
-

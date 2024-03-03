@@ -60,10 +60,10 @@
 "MihoyoGameNameStarRail" = "崩坏：星穹铁道";
 "MihoyoGameNameUnknown" = "暂时未知";
 
-"MihoyoGameUID" = "UID：%@";
+"MihoyoGameUID" = "UID：";
 "MihoyoGameRegionName" = "服务器：%@";
 "MihoyoGameNickname" = "昵称：%@";
-"MihoyoGameLevel" = "等级：%@";
+"MihoyoGameLevel" = "等级：%d";
 "MihoyoGameReturn" = "返回";
 "MihoyoGameInputNickname" = "请输入你的米游社昵称：";
 "MihoyoGameInputUID" = "请输入你的米游社UID：";
