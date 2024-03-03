@@ -59,7 +59,7 @@
 "MihoyoGameNameGenshinImpact" = "GenshinImpact";
 "MihoyoGameNameStarRail" = "Honkai: Star Rail";
 "MihoyoGameNameUnknown" = "Unknown";
-"MihoyoGameUID" = "UID: %@";
+"MihoyoGameUID" = "UID: ";
 "MihoyoGameRegionName" = "Region name: %@";
 "MihoyoGameNickname" = "Nickname: %@";
 "MihoyoGameLevel" = "Level: %d";
