@@ -49,7 +49,7 @@ struct MihoyoUserListView: View {
                 }
             }
         }
-        .onAppear {
+        .task {
             viewModel.getMihoyoUserList()
         }
     }
@@ -74,7 +74,7 @@ struct MihoyoUserCardView: View {
                     Text(user.nickname)
                         .font(.system(size: 18, weight: .semibold))
                     
-                    Text(String(format: CopyGameName.uid, user.uid))
+                    Text("\(CopyGameName.uid)\(user.uid)")
                                         
                     Text(String(format: CopyGameName.region, user.ipRegion))
                 }

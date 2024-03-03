@@ -68,7 +68,7 @@ struct MihoyoGameCardView: View {
 }
 
 struct MihoyoGameCardDataView: View {
-    let data: [MihoyoGameRecordDatum]
+    let data: [MihoyoGameCardsDatum]
     
     var rows = Array(
         repeating: GridItem(.flexible()),
