@@ -15,22 +15,24 @@ class MihoyoGameCardViewModel: ObservableObject {
     
     @Published var gameRecord: [MihoyoGameCardsList] = []
     @Published var language: String = ""
-
+    
     func getMihoyoGameCard(_ uid: String) {
-        guard let gameRecord = api.getMihoyoGameCards().data?.list,
-              let gameCardJSON = gameRecord.toJSONString() else {
+        let gameCards = api.getMihoyoGameCards()
+
+        guard let gameCards = gameCards.data?.list else {
             return
         }
         
-        language = Locale.autoupdatingCurrent.identifier
-        
-        self.gameRecord = gameRecord
-        
-        debugPrint(gameCardJSON)
-        
-//        manager.upgradeMihoyoUserGameCard(uid,
-//                                          gameCardJSON: gameCardJSON) { success, error in
-//            
-//        }
+        manager.upgradeMihoyoGameCards(
+            uuid: uid,
+            model: gameCards
+        ) { [weak self] success, error in
+            guard success else {
+                debugPrint("Upgrade failed: \(error?.localizedDescription ?? "")")
+                return
+            }
+            debugPrint("Upgrade mihoyo game cards success")
+            self?.gameRecord = gameCards
+        }
     }
 }
