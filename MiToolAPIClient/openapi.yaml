@@ -4,16 +4,18 @@ info:
   version: 1.0.0
 servers:
   - url: https://api-takumi-record.mihoyo.com
+    description: Mihoyo service deployment.
+  - url: https://example-takumi.mihoyo.com
     description: Example service deployment.
 paths:
-  /greet:
+  /game_record/card/api/getGameRecordCard:
     get:
-      operationId: getGreeting
+      operationId: mihoyoUID
       parameters:
-        - name: name
-          required: false
+        - name: uid
+          required: true
           in: query
-          description: The name used in the returned greeting.
+          description: The uid used in the returned Mihoyo.
           schema:
             type: string
       responses:
@@ -22,10 +24,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Greeting'
+                $ref: '#/components/schemas/GameRecord'
 components:
   schemas:
-    Greeting:
+    GameRecord:
       type: object
       properties:
         message:

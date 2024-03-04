@@ -30,6 +30,8 @@
 		A4A9DE2B2B95B0AB00E6B72F /* MiToolAPIClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4A9DE332B95B0CD00E6B72F /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = A4A9DE322B95B0CD00E6B72F /* openapi.yaml */; };
 		A4A9DE352B95B0D700E6B72F /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = A4A9DE342B95B0D700E6B72F /* openapi-generator-config.yaml */; };
+		A4A9DE392B95B59900E6B72F /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = A4A9DE382B95B59900E6B72F /* OpenAPIRuntime */; };
+		A4A9DE3C2B95B5B400E6B72F /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = A4A9DE3B2B95B5B400E6B72F /* OpenAPIURLSession */; };
 		BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512222B6E206A004D6878 /* MiToolTests.swift */; };
 		BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512292B6E2651004D6878 /* RoleListView.swift */; };
 		BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05122B2B6E2709004D6878 /* RoleCardView.swift */; };
@@ -259,6 +261,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A9DE3C2B95B5B400E6B72F /* OpenAPIURLSession in Frameworks */,
+				A4A9DE392B95B59900E6B72F /* OpenAPIRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +565,10 @@
 			dependencies = (
 			);
 			name = MiToolAPIClient;
+			packageProductDependencies = (
+				A4A9DE382B95B59900E6B72F /* OpenAPIRuntime */,
+				A4A9DE3B2B95B5B400E6B72F /* OpenAPIURLSession */,
+			);
 			productName = MiToolAPIClient;
 			productReference = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */;
 			productType = "com.apple.product-type.framework";
@@ -673,6 +681,9 @@
 				BFE403C12B6E3784002FF39E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				BFA75B872B7FC75B0020B246 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				BFB03B742B83772C005DD170 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				A4A9DE362B95B58700E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
+				A4A9DE372B95B59800E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
+				A4A9DE3A2B95B5B400E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
 			);
 			productRefGroup = BF4659CE2B69525500587AD3 /* Products */;
 			projectDirPath = "";
@@ -1311,6 +1322,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A4A9DE362B95B58700E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-generator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-generator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		A4A9DE372B95B59800E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-runtime";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
+		A4A9DE3A2B95B5B400E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-urlsession";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		BF4659DF2B69534B00587AD3 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
@@ -1362,6 +1397,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A4A9DE382B95B59900E6B72F /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4A9DE372B95B59800E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		A4A9DE3B2B95B5B400E6B72F /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4A9DE3A2B95B5B400E6B72F /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
 		BF4659E02B69534B00587AD3 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF4659DF2B69534B00587AD3 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
