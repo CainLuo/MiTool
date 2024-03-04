@@ -40,6 +40,17 @@
                ReferencedContainer = "container:MiTool.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A4A9DE1C2B95B0AB00E6B72F"
+               BuildableName = "MiToolAPIClientTests.xctest"
+               BlueprintName = "MiToolAPIClientTests"
+               ReferencedContainer = "container:MiTool.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

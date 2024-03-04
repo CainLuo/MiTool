@@ -23,6 +23,13 @@
 		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
 		A49FEFCF2B8D8FED00B01909 /* ApiNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */; };
 		A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */; };
+		A4A9DE1E2B95B0AB00E6B72F /* MiToolAPIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */; };
+		A4A9DE252B95B0AB00E6B72F /* MiToolAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9DE242B95B0AB00E6B72F /* MiToolAPIClientTests.swift */; };
+		A4A9DE262B95B0AB00E6B72F /* MiToolAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A4A9DE182B95B0AA00E6B72F /* MiToolAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4A9DE292B95B0AB00E6B72F /* MiToolAPIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */; };
+		A4A9DE2B2B95B0AB00E6B72F /* MiToolAPIClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A4A9DE332B95B0CD00E6B72F /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = A4A9DE322B95B0CD00E6B72F /* openapi.yaml */; };
+		A4A9DE352B95B0D700E6B72F /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = A4A9DE342B95B0D700E6B72F /* openapi-generator-config.yaml */; };
 		BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512222B6E206A004D6878 /* MiToolTests.swift */; };
 		BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512292B6E2651004D6878 /* RoleListView.swift */; };
 		BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05122B2B6E2709004D6878 /* RoleCardView.swift */; };
@@ -102,6 +109,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A4A9DE1F2B95B0AB00E6B72F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4659C52B69525500587AD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4A9DE152B95B0AA00E6B72F;
+			remoteInfo = MiToolAPIClient;
+		};
+		A4A9DE212B95B0AB00E6B72F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4659C52B69525500587AD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF4659CC2B69525500587AD3;
+			remoteInfo = MiTool;
+		};
+		A4A9DE272B95B0AB00E6B72F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4659C52B69525500587AD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4A9DE152B95B0AA00E6B72F;
+			remoteInfo = MiToolAPIClient;
+		};
 		BF0512242B6E206A004D6878 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF4659C52B69525500587AD3 /* Project object */;
@@ -110,6 +138,20 @@
 			remoteInfo = MiTool;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A4A9DE2A2B95B0AB00E6B72F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A4A9DE2B2B95B0AB00E6B72F /* MiToolAPIClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A46EF6E92B9039B100A1E6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -129,6 +171,12 @@
 		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
 		A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetworkManager.swift; sourceTree = "<group>"; };
 		A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
+		A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MiToolAPIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A9DE182B95B0AA00E6B72F /* MiToolAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiToolAPIClient.h; sourceTree = "<group>"; };
+		A4A9DE1D2B95B0AB00E6B72F /* MiToolAPIClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiToolAPIClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A9DE242B95B0AB00E6B72F /* MiToolAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolAPIClientTests.swift; sourceTree = "<group>"; };
+		A4A9DE322B95B0CD00E6B72F /* openapi.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
+		A4A9DE342B95B0D700E6B72F /* openapi-generator-config.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
 		BF0512202B6E2069004D6878 /* MiToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0512222B6E206A004D6878 /* MiToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolTests.swift; sourceTree = "<group>"; };
 		BF0512292B6E2651004D6878 /* RoleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleListView.swift"; sourceTree = "<group>"; };
@@ -207,6 +255,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A4A9DE132B95B0AA00E6B72F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4A9DE1A2B95B0AB00E6B72F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A9DE1E2B95B0AB00E6B72F /* MiToolAPIClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF05121D2B6E2069004D6878 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,6 +283,7 @@
 			files = (
 				BFA75B892B7FC75B0020B246 /* SQLite in Frameworks */,
 				BFE403C32B6E3784002FF39E /* Kingfisher in Frameworks */,
+				A4A9DE292B95B0AB00E6B72F /* MiToolAPIClient.framework in Frameworks */,
 				BF4659EA2B695EE000587AD3 /* ObjectMapper in Frameworks */,
 				BF4659E12B69534B00587AD3 /* SwiftUIX in Frameworks */,
 				BF4659E42B69537900587AD3 /* Alamofire in Frameworks */,
@@ -230,6 +294,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4A9DE172B95B0AA00E6B72F /* MiToolAPIClient */ = {
+			isa = PBXGroup;
+			children = (
+				A4A9DE182B95B0AA00E6B72F /* MiToolAPIClient.h */,
+				A4A9DE322B95B0CD00E6B72F /* openapi.yaml */,
+				A4A9DE342B95B0D700E6B72F /* openapi-generator-config.yaml */,
+			);
+			path = MiToolAPIClient;
+			sourceTree = "<group>";
+		};
+		A4A9DE232B95B0AB00E6B72F /* MiToolAPIClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4A9DE242B95B0AB00E6B72F /* MiToolAPIClientTests.swift */,
+			);
+			path = MiToolAPIClientTests;
+			sourceTree = "<group>";
+		};
 		BF0512212B6E206A004D6878 /* MiToolTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +339,8 @@
 				A46EF6E92B9039B100A1E6B7 /* .swiftlint.yml */,
 				BF4659CF2B69525500587AD3 /* MiTool */,
 				BF0512212B6E206A004D6878 /* MiToolTests */,
+				A4A9DE172B95B0AA00E6B72F /* MiToolAPIClient */,
+				A4A9DE232B95B0AB00E6B72F /* MiToolAPIClientTests */,
 				BF4659CE2B69525500587AD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -266,6 +350,8 @@
 			children = (
 				BF4659CD2B69525500587AD3 /* MiTool.app */,
 				BF0512202B6E2069004D6878 /* MiToolTests.xctest */,
+				A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */,
+				A4A9DE1D2B95B0AB00E6B72F /* MiToolAPIClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -449,7 +535,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A4A9DE112B95B0AA00E6B72F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A9DE262B95B0AB00E6B72F /* MiToolAPIClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		A4A9DE152B95B0AA00E6B72F /* MiToolAPIClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4A9DE302B95B0AB00E6B72F /* Build configuration list for PBXNativeTarget "MiToolAPIClient" */;
+			buildPhases = (
+				A4A9DE112B95B0AA00E6B72F /* Headers */,
+				A4A9DE122B95B0AA00E6B72F /* Sources */,
+				A4A9DE132B95B0AA00E6B72F /* Frameworks */,
+				A4A9DE142B95B0AA00E6B72F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiToolAPIClient;
+			productName = MiToolAPIClient;
+			productReference = A4A9DE162B95B0AA00E6B72F /* MiToolAPIClient.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A4A9DE1C2B95B0AB00E6B72F /* MiToolAPIClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4A9DE312B95B0AB00E6B72F /* Build configuration list for PBXNativeTarget "MiToolAPIClientTests" */;
+			buildPhases = (
+				A4A9DE192B95B0AB00E6B72F /* Sources */,
+				A4A9DE1A2B95B0AB00E6B72F /* Frameworks */,
+				A4A9DE1B2B95B0AB00E6B72F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4A9DE202B95B0AB00E6B72F /* PBXTargetDependency */,
+				A4A9DE222B95B0AB00E6B72F /* PBXTargetDependency */,
+			);
+			name = MiToolAPIClientTests;
+			productName = MiToolAPIClientTests;
+			productReference = A4A9DE1D2B95B0AB00E6B72F /* MiToolAPIClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BF05121F2B6E2069004D6878 /* MiToolTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF0512262B6E206A004D6878 /* Build configuration list for PBXNativeTarget "MiToolTests" */;
@@ -476,10 +610,12 @@
 				BF4659CA2B69525500587AD3 /* Frameworks */,
 				BF4659CB2B69525500587AD3 /* Resources */,
 				A46EF6E82B90370E00A1E6B7 /* SwiftLint */,
+				A4A9DE2A2B95B0AB00E6B72F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A4A9DE282B95B0AB00E6B72F /* PBXTargetDependency */,
 			);
 			name = MiTool;
 			packageProductDependencies = (
@@ -504,6 +640,13 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					A4A9DE152B95B0AA00E6B72F = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					A4A9DE1C2B95B0AB00E6B72F = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = BF4659CC2B69525500587AD3;
+					};
 					BF05121F2B6E2069004D6878 = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = BF4659CC2B69525500587AD3;
@@ -537,11 +680,29 @@
 			targets = (
 				BF4659CC2B69525500587AD3 /* MiTool */,
 				BF05121F2B6E2069004D6878 /* MiToolTests */,
+				A4A9DE152B95B0AA00E6B72F /* MiToolAPIClient */,
+				A4A9DE1C2B95B0AB00E6B72F /* MiToolAPIClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A4A9DE142B95B0AA00E6B72F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A9DE332B95B0CD00E6B72F /* openapi.yaml in Resources */,
+				A4A9DE352B95B0D700E6B72F /* openapi-generator-config.yaml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4A9DE1B2B95B0AB00E6B72F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF05121E2B6E2069004D6878 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -605,6 +766,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A4A9DE122B95B0AA00E6B72F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4A9DE192B95B0AB00E6B72F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A9DE252B95B0AB00E6B72F /* MiToolAPIClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF05121C2B6E2069004D6878 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -683,6 +859,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A4A9DE202B95B0AB00E6B72F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4A9DE152B95B0AA00E6B72F /* MiToolAPIClient */;
+			targetProxy = A4A9DE1F2B95B0AB00E6B72F /* PBXContainerItemProxy */;
+		};
+		A4A9DE222B95B0AB00E6B72F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF4659CC2B69525500587AD3 /* MiTool */;
+			targetProxy = A4A9DE212B95B0AB00E6B72F /* PBXContainerItemProxy */;
+		};
+		A4A9DE282B95B0AB00E6B72F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4A9DE152B95B0AA00E6B72F /* MiToolAPIClient */;
+			targetProxy = A4A9DE272B95B0AB00E6B72F /* PBXContainerItemProxy */;
+		};
 		BF0512252B6E206A004D6878 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF4659CC2B69525500587AD3 /* MiTool */;
@@ -703,6 +894,130 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A4A9DE2C2B95B0AB00E6B72F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cainluo.genshinImpact.Bubu.MiToolAPIClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A4A9DE2D2B95B0AB00E6B72F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = M67UHY3N8U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cainluo.genshinImpact.Bubu.MiToolAPIClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A4A9DE2E2B95B0AB00E6B72F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K22U66A47Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cainluo.genshinImpact.Bubu.MiToolAPIClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiTool.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MiTool";
+			};
+			name = Debug;
+		};
+		A4A9DE2F2B95B0AB00E6B72F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K22U66A47Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cainluo.genshinImpact.Bubu.MiToolAPIClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiTool.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MiTool";
+			};
+			name = Release;
+		};
 		BF0512272B6E206A004D6878 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -948,6 +1263,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A4A9DE302B95B0AB00E6B72F /* Build configuration list for PBXNativeTarget "MiToolAPIClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A9DE2C2B95B0AB00E6B72F /* Debug */,
+				A4A9DE2D2B95B0AB00E6B72F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4A9DE312B95B0AB00E6B72F /* Build configuration list for PBXNativeTarget "MiToolAPIClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A9DE2E2B95B0AB00E6B72F /* Debug */,
+				A4A9DE2F2B95B0AB00E6B72F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF0512262B6E206A004D6878 /* Build configuration list for PBXNativeTarget "MiToolTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
