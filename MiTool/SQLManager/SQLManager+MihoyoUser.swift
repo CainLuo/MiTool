@@ -62,8 +62,8 @@ extension SQLManager {
     }
     
     func upgradeMihoyoUser(
-        uuid: String,
-        _ model: MihoyoUserInfo,
+        _ uuid: String,
+        model: MihoyoUserInfo,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {

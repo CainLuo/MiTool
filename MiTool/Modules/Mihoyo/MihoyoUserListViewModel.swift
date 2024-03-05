@@ -45,7 +45,7 @@ class MihoyoUserListViewModel: ObservableObject {
                 self.getMihoyoUserList()
             }
         } else {
-            manager.upgradeMihoyoUser(uuid: uid, user) { success, error in
+            manager.upgradeMihoyoUser(uid, model: user) { success, error in
                 guard success else {
                     debugPrint("Upgrade failed: \(error?.localizedDescription ?? "")")
                     return
