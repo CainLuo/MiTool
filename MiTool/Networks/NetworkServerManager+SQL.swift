@@ -10,7 +10,6 @@ import Foundation
 extension NetworkServerManager {
     static func saveMihoyoUserInfo(
         _ userInfo: MihoyoUserInfo,
-        list: [MihoyoUserListModel],
         completion: ((Bool, Error?) -> Void)?
     ) {
         let userList = SQLManager.shared.getMihoyoUserList()
