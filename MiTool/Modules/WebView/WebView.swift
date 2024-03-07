@@ -15,7 +15,7 @@ struct WiKiMap: View {
     
     var body: some View {
         WebView(url: viewModel.url)
-            .onAppear {
+            .task {
                 viewModel.fetchURL(sideBarType: selection)
             }
     }
