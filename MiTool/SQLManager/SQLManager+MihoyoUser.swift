@@ -8,15 +8,15 @@
 import Foundation
 import SQLite
 
-private let index = Expression<Int64>("index")              // 索引
-private let uid = Expression<String?>("uid")                // 米游社uid
-private let cookie = Expression<String?>("cookie")          // 米游社Cookie
-private let nickname = Expression<String?>("nickname")      // 昵称
-private let createTime = Expression<Int?>("createTime")     // 创建时间
-private let introduce = Expression<String?>("introduce")    // 简介
-private let gender = Expression<Int?>("gender")             // 性别，0：保密，1：男，2：女
-private let avatarURL = Expression<String?>("avatarURL")    // 头像链接
-private let ipRegion = Expression<String?>("ipRegion")      // 头像链接
+private let index = Expression<Int64>("index")                      // 索引
+private let uid = Expression<String?>("uid")                        // 米游社uid
+private let cookie = Expression<String?>("cookie")                  // 米游社Cookie
+private let nickname = Expression<String?>("nickname")              // 昵称
+private let communityInfo = Expression<String?>("communityInfo")    // 创建时间
+private let introduce = Expression<String?>("introduce")            // 简介
+private let gender = Expression<Int?>("gender")                     // 性别，0：保密，1：男，2：女
+private let avatarURL = Expression<String?>("avatarURL")            // 头像链接
+private let ipRegion = Expression<String?>("ipRegion")              // IP地址
 
 extension SQLManager {
     func createMihoyoUserTable(_ dataBase: Connection) {
@@ -26,7 +26,7 @@ extension SQLManager {
                 table.column(uid, unique: true)
                 table.column(cookie)
                 table.column(nickname)
-                table.column(createTime)
+                table.column(communityInfo)
                 table.column(introduce)
                 table.column(gender)
                 table.column(avatarURL)
@@ -48,7 +48,7 @@ extension SQLManager {
                 uid <- model.uid,
                 nickname <- model.nickname,
                 cookie <- model.cookie,
-                createTime <- model.communityInfo?.createdAt,
+                communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
                 avatarURL <- model.avatarURL,
@@ -72,7 +72,7 @@ extension SQLManager {
                 uid <- uuid,
                 nickname <- model.nickname,
                 cookie <- model.cookie,
-                createTime <- model.communityInfo?.createdAt,
+                communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
                 avatarURL <- model.avatarURL,
@@ -118,17 +118,17 @@ extension SQLManager {
         }
     }
 
-    func getMihoyoUserList() -> [MihoyoUserListModel] {
-        var list: [MihoyoUserListModel] = []
+    func getMihoyoUserList() -> [MihoyoUserInfo] {
+        var list: [MihoyoUserInfo] = []
         do {
             try dataBase.transaction {
                 try dataBase.prepare(mihoyoUser).forEach { item in
-                    let account = MihoyoUserListModel(
+                    let account = MihoyoUserInfo(
                         uid: item[uid] ?? "",
                         nickname: item[nickname] ?? "",
                         introduce: item[introduce] ?? "",
                         gender: item[gender] ?? 1,
-                        createdAt: item[createTime] ?? 0,
+                        communityInfo: item[communityInfo],
                         avatarURL: item[avatarURL] ?? "",
                         ipRegion: item[ipRegion] ?? "",
                         cookie: item[cookie] ?? ""
@@ -147,17 +147,17 @@ extension SQLManager {
 
     func getMihoyoUser(
         _ uuid: String,
-        complete: ((_ model: MihoyoUserListModel) -> Void)?
+        complete: ((_ model: MihoyoUserInfo) -> Void)?
     ) {
         let query = mihoyoUser.filter(uid == uuid)
         do {
             try dataBase.prepare(query).forEach { item in
-                complete?(MihoyoUserListModel(
+                complete?(MihoyoUserInfo(
                     uid: item[uid] ?? "",
                     nickname: item[nickname] ?? "",
                     introduce: item[introduce] ?? "",
                     gender: item[gender] ?? 0,
-                    createdAt: item[createTime] ?? 0,
+                    communityInfo: item[communityInfo],
                     avatarURL: item[avatarURL] ?? "",
                     ipRegion: item[ipRegion] ?? "",
                     cookie: item[cookie] ?? ""
