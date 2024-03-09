@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct GenshinWidgetCard: View {
-    @StateObject var viewModel = GenshinWeightCardViewModel()
+    @StateObject var viewModel = GenshinWidgetCardViewModel()
 
     var body: some View {
         HStack {
@@ -38,7 +38,7 @@ struct GenshinWidgetCard: View {
 }
 
 struct GenshinWidgetInfoView: View {
-    @StateObject var viewModel: GenshinWeightCardViewModel
+    @StateObject var viewModel: GenshinWidgetCardViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -63,7 +63,7 @@ struct GenshinWidgetInfoView: View {
 }
 
 struct GenshinWidgetDailyNodeCard: View {
-    @StateObject var viewModel: GenshinWeightCardViewModel
+    @StateObject var viewModel: GenshinWidgetCardViewModel
 
     var columns = Array(
         repeating: GridItem(.flexible()),
@@ -99,7 +99,7 @@ struct GenshinWidgetOtherCardSubview: View {
 }
 
 struct GenshinWidgetExpeditionView: View {
-    @StateObject var viewModel: GenshinWeightCardViewModel
+    @StateObject var viewModel: GenshinWidgetCardViewModel
     var columns = Array(
         repeating: GridItem(.flexible()),
         count: 2

@@ -11,7 +11,7 @@ import Kingfisher
 struct StarRailWidgetCard: View {
     
     @State var fill: CGFloat = 0
-    @StateObject var viewModel = StarRailWeightCardViewModel()
+    @StateObject var viewModel = StarRailWidgetCardViewModel()
     
     var body: some View {
         HStack {
@@ -45,7 +45,7 @@ struct StarRailWidgetInfoView: View {
         static let height: CGFloat = 50
     }
     
-    @StateObject var viewModel: StarRailWeightCardViewModel
+    @StateObject var viewModel: StarRailWidgetCardViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {

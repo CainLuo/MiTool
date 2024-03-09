@@ -1,5 +1,5 @@
 //
-//  WeightView.swift
+//  WidgetView.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeightView: View {
+struct WidgetView: View {
     @StateObject var viewModel = WidgetViewModel()
     
     var body: some View {
@@ -27,12 +27,12 @@ struct WeightView: View {
         .frame(minWidth: 776,
                maxWidth: .infinity)
         .task {
-            
+            viewModel.getWidgetSections()
         }
     }
 }
 
 #Preview {
-    WeightView()
+    WidgetView()
         .frame(width: 800, height: 1000)
 }

@@ -1,5 +1,5 @@
 //
-//  GenshinWeightCardViewModel.swift
+//  GenshinWidgetCardViewModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class GenshinWeightCardViewModel: ObservableObject {
+class GenshinWidgetCardViewModel: ObservableObject {
     private let manager = MockApi.shared
 
     @Published var data = GenshinImpactDailyNodeData()

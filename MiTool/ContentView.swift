@@ -16,7 +16,7 @@ struct ContentView: View {
         } detail: {
             switch selection {
             case .notes:
-                WeightView()
+                WidgetView()
             case .users:
                 MihoyoUserListView()
             case .starRailRole:
