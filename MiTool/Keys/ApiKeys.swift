@@ -47,7 +47,7 @@ enum ApiKeys {
         case character = "/game_record/app/hkrpg/api/avatar/basic"
         // 星穹铁道所有的角色
         case avatarList = "/event/rpgcalc/avatar/list"
-        // 星穹铁道角色详情
+        // 星穹铁道角色详情（等级，行迹，光锥）
         case avatarDetail = "/event/rpgcalc/avatar/detail"
         // 星穹铁道所有光锥
         case equipmentList = "/event/rpgcalc/equipment/list"

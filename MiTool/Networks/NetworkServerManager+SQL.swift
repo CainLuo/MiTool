@@ -21,11 +21,13 @@ extension NetworkServerManager {
             )
         } else {
             SQLManager.shared.upgradeMihoyoUser(
-                userInfo.uid ?? "",
+                userInfo.uid ,
                 model: userInfo,
                 complete: completion
             )
         }
+        
+        fetchStarRailRoles(uid: userInfo.uid) { _, _ in }
     }
     
     static func saveMihoyoGameCards(
