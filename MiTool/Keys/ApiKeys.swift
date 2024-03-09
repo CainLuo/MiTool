@@ -16,6 +16,7 @@ enum ApiKeys {
     enum Mihoyo: String {
         // 获取米游社用户的游戏记录
         case gameRecord = "/game_record/card/api/getGameRecordCard"
+        case login = "https://m.bbs.mihoyo.com/ys/#/login"
     }
 
     enum GenshinImpact: String {

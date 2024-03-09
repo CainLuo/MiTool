@@ -36,22 +36,47 @@ struct MihoyoUserData: Mappable {
 }
 
 // MARK: - MihoyoUserInfo
-struct MihoyoUserInfo: Mappable {
-    var uid: String?
-    var nickname: String?
+struct MihoyoUserInfo: Mappable, Identifiable {
+    var id = UUID()
+    var uid: String = ""
+    var nickname: String = ""
     var introduce: String?
     var gender: Int?
     var communityInfo: MihoyoUserCommunityInfo?
-    var avatarURL: String?
-    var ipRegion: String?
+    var avatarURL: String = ""
+    var ipRegion: String = ""
     var cookie: String?
 
     init?(map: Map) { }
     init() { }
 
-    init(nickname: String, uid: String, cookie: String) {
-        self.nickname = nickname
+    var createdAt: Int {
+        communityInfo?.createdAt ?? 0
+    }
+    var createTime: String {
+        let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
+        let dateFormart = DateFormatter()
+        dateFormart.dateFormat = CopyGenshinWeight.date
+        return dateFormart.string(from: date)
+    }
+    
+    init(
+        uid: String,
+        nickname: String,
+        introduce: String?,
+        gender: Int?,
+        communityInfo: String?,
+        avatarURL: String?,
+        ipRegion: String?,
+        cookie: String
+    ) {
         self.uid = uid
+        self.nickname = nickname
+        self.introduce = introduce
+        self.gender = gender
+        self.communityInfo = MihoyoUserCommunityInfo(JSONString: communityInfo ?? "")
+        self.avatarURL = avatarURL ?? ""
+        self.ipRegion = ipRegion ?? ""
         self.cookie = cookie
     }
 
@@ -74,29 +99,5 @@ struct MihoyoUserCommunityInfo: Mappable {
 
     mutating func mapping(map: ObjectMapper.Map) {
         createdAt <- map["created_at"]
-    }
-}
-
-// MARK: - MihoyoUserListModel
-struct MihoyoUserListModel: Identifiable, Hashable {
-    var id = UUID()
-    var uid: String = ""
-    var nickname: String = ""
-    var introduce: String = ""
-    var gender: Int = 0
-    var createdAt: Int = 0
-    var avatarURL: String = ""
-    var ipRegion: String = ""
-    var cookie: String = ""
-
-    var createTime: String {
-        guard createdAt != 0 else {
-            return ""
-        }
-
-        let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
-        let dateFormart = DateFormatter()
-        dateFormart.dateFormat = CopyGenshinWeight.date
-        return dateFormart.string(from: date)
     }
 }

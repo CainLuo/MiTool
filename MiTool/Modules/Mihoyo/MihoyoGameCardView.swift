@@ -61,7 +61,7 @@ struct MihoyoGameCardView: View {
                 .padding()
             }
         }
-        .onAppear {
+        .task {
             viewModel.getMihoyoGameCard(uid)
         }
     }

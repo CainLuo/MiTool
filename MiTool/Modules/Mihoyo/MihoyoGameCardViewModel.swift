@@ -10,27 +10,12 @@ import SwiftUI
 import ObjectMapper
 
 class MihoyoGameCardViewModel: ObservableObject {
-    private let api = MockApi.shared
-    private let manager = SQLManager.shared
-    
     @Published var gameRecord: [MihoyoGameCardsList] = []
     @Published var language: String = ""
-
+    
     func getMihoyoGameCard(_ uid: String) {
-        guard let gameRecord = api.getMihoyoGameCards().data?.list,
-              let gameCardJSON = gameRecord.toJSONString() else {
-            return
+        NetworkServerManager.fetchMihoyoGameCards(uid: uid) { [weak self] gameList in
+            self?.gameRecord = gameList
         }
-        
-        language = Locale.autoupdatingCurrent.identifier
-        
-        self.gameRecord = gameRecord
-        
-        debugPrint(gameCardJSON)
-        
-//        manager.upgradeMihoyoUserGameCard(uid,
-//                                          gameCardJSON: gameCardJSON) { success, error in
-//            
-//        }
     }
 }

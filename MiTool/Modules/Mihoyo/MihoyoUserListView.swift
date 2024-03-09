@@ -20,7 +20,7 @@ struct MihoyoUserListView: View {
     var body: some View {
         ScrollView(.horizontal) {
             if viewModel.userList.isEmpty {
-                MihoyoAddUserView(viewModel: viewModel)
+                MihoyoAddUserView()
                     .padding()
                     .border(cornerRadius: 8,
                             style: StrokeStyle(lineWidth: 1))
@@ -42,7 +42,7 @@ struct MihoyoUserListView: View {
                     }
                     .frame(width: 600)
                     
-                    MihoyoAddUserView(viewModel: viewModel)
+                    MihoyoAddUserView()
                         .padding()
                         .border(cornerRadius: 8,
                                 style: StrokeStyle(lineWidth: 1))
@@ -58,7 +58,7 @@ struct MihoyoUserListView: View {
 struct MihoyoUserCardView: View {
     @StateObject var viewModel: MihoyoUserListViewModel
 
-    let user: MihoyoUserListModel
+    let user: MihoyoUserInfo
     
     var body: some View {
         HStack {
@@ -87,10 +87,8 @@ struct MihoyoUserCardView: View {
 }
 
 struct MihoyoAddUserView: View {
-    @StateObject var viewModel: MihoyoUserListViewModel
-
     var body: some View {
-        NavigationLink(destination: MihoyoUserEditView(viewModel: viewModel)) {
+        NavigationLink(destination: MihoyoUserEditView()) {
             HStack {
                 HStack {
                     Image(systemName: "plus.app.fill")

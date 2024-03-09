@@ -37,6 +37,10 @@
 		BF3F43EB2B9C3C0100B5C3FD /* StarRailDestinyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43EA2B9C3C0100B5C3FD /* StarRailDestinyKeys.swift */; };
 		BF3F43ED2B9C3C2500B5C3FD /* StarRailRarityKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43EC2B9C3C2500B5C3FD /* StarRailRarityKeys.swift */; };
 		BF3F43EF2B9C3C5F00B5C3FD /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43EE2B9C3C5F00B5C3FD /* SideBarKeys.swift */; };
+		BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F02B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift */; };
+		BF3F43F42B9C3DEB00B5C3FD /* NetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */; };
+		BF3F43F52B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */; };
+		BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */; };
 		BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D02B69525500587AD3 /* MiToolApp.swift */; };
 		BF4659D32B69525500587AD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D22B69525500587AD3 /* ContentView.swift */; };
 		BF4659D52B69525600587AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4659D42B69525600587AD3 /* Assets.xcassets */; };
@@ -150,6 +154,10 @@
 		BF3F43EA2B9C3C0100B5C3FD /* StarRailDestinyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailDestinyKeys.swift; sourceTree = "<group>"; };
 		BF3F43EC2B9C3C2500B5C3FD /* StarRailRarityKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRarityKeys.swift; sourceTree = "<group>"; };
 		BF3F43EE2B9C3C5F00B5C3FD /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
+		BF3F43F02B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserEditViewModel.swift; sourceTree = "<group>"; };
+		BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServerManager.swift; sourceTree = "<group>"; };
+		BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkServerManager+SQL.swift"; sourceTree = "<group>"; };
+		BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJSWebView.swift; sourceTree = "<group>"; };
 		BF4659CD2B69525500587AD3 /* MiTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4659D02B69525500587AD3 /* MiToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolApp.swift; sourceTree = "<group>"; };
 		BF4659D22B69525500587AD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -266,6 +274,7 @@
 			children = (
 				BF2D06902B72A8EC0013DD7D /* WebView.swift */,
 				BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */,
+				BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -438,9 +447,11 @@
 			isa = PBXGroup;
 			children = (
 				BFE403BC2B6E2C48002FF39E /* Api.swift */,
+				A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */,
 				BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */,
 				BFE403B52B6E2A69002FF39E /* MockApi.swift */,
-				A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */,
+				BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */,
+				BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */,
 				A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */,
 			);
 			path = Networks;
@@ -475,6 +486,7 @@
 				BFA75B802B7FC4760020B246 /* MihoyoGameCardsModel.swift */,
 				BFB03B702B825680005DD170 /* MihoyoGameCardView.swift */,
 				BFB03B6E2B8255E2005DD170 /* MihoyoGameCardViewModel.swift */,
+				BF3F43F02B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift */,
 				BFB03B722B831393005DD170 /* MihoyoUserEditView.swift */,
 				BFB03B6C2B80FF9B005DD170 /* MihoyoUserListView.swift */,
 				BFB03B6A2B80FEFA005DD170 /* MihoyoUserListViewModel.swift */,
@@ -692,6 +704,7 @@
 				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
 				BFE403BB2B6E2C21002FF39E /* ApiProtocol.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
+				BF3F43F52B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift in Sources */,
 				BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */,
 				BFE403BD2B6E2C48002FF39E /* Api.swift in Sources */,
 				BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */,
@@ -712,6 +725,8 @@
 				BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */,
 				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,
 				BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */,
+				BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */,
+				BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */,
 				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
 				BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,
@@ -731,6 +746,7 @@
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
 				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
+				BF3F43F42B9C3DEB00B5C3FD /* NetworkServerManager.swift in Sources */,
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,

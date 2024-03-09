@@ -10,7 +10,7 @@ import SwiftUI
 struct MihoyoUserEditView: View {
     @Environment (\.presentationMode) var presentationMode
     
-    @StateObject var viewModel: MihoyoUserListViewModel
+    @StateObject var viewModel = MihoyoUserEditViewModel()
     
     @State var nickename: String = ""
     @State var uid: String = ""
@@ -42,6 +42,15 @@ struct MihoyoUserEditView: View {
                 TextField(text: $uid)
 
                 Text(CopyGameName.inputCookie)
+                NavigationLink(destination: CookieJSWebView()) {
+                    HStack {
+                        Text("登录网页版获取Cookie")
+                            .multilineTextAlignment(.leading)
+                            .padding([.top, .bottom], 5)
+                        Spacer()
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
                 TextEditor(text: $cookie)
                     .onChange(of: cookie) { value in
                         let strings = value.components(separatedBy: ";")
@@ -79,6 +88,6 @@ struct MihoyoUserEditView: View {
 }
 
 #Preview {
-    MihoyoUserEditView(viewModel: MihoyoUserListViewModel())
+    MihoyoUserEditView(viewModel: MihoyoUserEditViewModel())
         .frame(width: 600, height: 600)
 }

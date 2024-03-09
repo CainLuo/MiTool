@@ -11,7 +11,7 @@ import SwiftUI
 class MockApi: ApiProtocol {
     static let shared = MockApi()
 
-    private init() { }
+//    private init() { }
 
     func getMihoyoUserInfo() -> MihoyoUserModel {
         guard let model = Bundle.getJSONFile(
