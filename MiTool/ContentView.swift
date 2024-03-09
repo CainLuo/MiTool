@@ -20,8 +20,8 @@ struct ContentView: View {
             case .users:
                 MihoyoUserListView()
             case .starRailRole:
-//                RoleListView()
-                RoleInfoView(id: "1003")
+                RoleListView()
+//                RoleInfoView(id: "1003")
             case .starRailWiki:
                 WiKiMap(selection: $selection)
             case .starRailMap:

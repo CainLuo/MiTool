@@ -17,22 +17,26 @@ struct RoleInfoView: View {
         VStack {
             HStack {
                 RoleInfoDrawingView(viewModel: viewModel)
-                        
-                VStack(spacing: 10) {
-                    HStack(spacing: 10) {
-                        RoleInfoEquipment(viewModel: viewModel)
-
-                        RoleInfoSkillsView(
-                            skills: viewModel.skills,
-                            talentSkills: viewModel.talentSkills,
-                            otherSkills: viewModel.otherSkills
-                        )
-                    }
-                    RoleInfoConsumeView(viewModel: viewModel)
+                
+                if viewModel.equipment.itemID != nil {
+                    RoleInfoEquipment(viewModel: viewModel)
                 }
+                
+                RoleInfoSkillsView(
+                    skills: viewModel.skills,
+                    talentSkills: viewModel.talentSkills,
+                    otherSkills: viewModel.otherSkills
+                )
+                
+                RoleInfoSkillsComputeView(viewModel: viewModel)
             }
+            RoleInfoConsumeView(viewModel: viewModel)
         }
-        .onAppear {
+        .padding()
+        .background(.black.opacity(0.4))
+        .cornerRadius(10)
+        .frame(maxWidth: .infinity)
+        .task {
             viewModel.getRoleInfo(id: id)
         }
     }
@@ -43,27 +47,22 @@ struct RoleInfoEquipment: View {
 
     var body: some View {
         VStack {
-            Text(CopyStarRailRole.equipmentTitle)
-                .boldModifier(size: 24)
-                .padding(.top, 10)
-            
             KFImage(URL(string: viewModel.equipment.itemURL ?? ""))
-                .sizeFillModifier(width: 150, height: 150)
-                .padding(0)
-            
-            Image(viewModel.equipment.rarity.ratityImage)
-                .sizeModifier(width: 100, height: 30)
-                .padding(0)
-            
-            Text(viewModel.equipment.itemName ?? "")
-                .boldModifier(size: 24)
-
-            Text(viewModel.equipment.levelString)
-                .sizeModifier(size: 16)
-                .padding(.bottom, 5)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50)
+    
+            VStack {  
+                Text(viewModel.equipment.itemName ?? "")
+                    .boldModifier(size: 14)
+                
+                HStack {
+                    Text(viewModel.equipment.levelString)
+                        .sizeModifier(size: 14)
+                    Text("叠影1")
+                }
+            }
         }
-        .background(.black.opacity(0.5))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
@@ -72,46 +71,38 @@ struct RoleInfoSkillsView: View {
     let talentSkills: [StarRailRoleInfoSkill]
     let otherSkills: [StarRailRoleInfoSkill]
 
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 5
+    )
+
     var body: some View {
         VStack {
             HStack {
                 ForEach(skills) { skill in
                     VStack {
-                        VStack {
-                            KFImage(URL(string: skill.itemURL ?? ""))
-                                .sizeModifier(width: 30, height: 30)
-                            Text(skill.skillLevel)
-                        }
-                        .padding()
-                        .background(.black.opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        KFImage(URL(string: skill.itemURL ?? ""))
+                            .sizeModifier(width: 30, height: 30)
+                        Text(skill.skillLevel)
                     }
                 }
             }
             
             HStack {
                 ForEach(talentSkills) { skill in
-                    VStack {
-                        KFImage(URL(string: skill.itemURL ?? ""))
-                            .sizeModifier(width: 30, height: 30)
-                    }
-                    .padding(5)
-                    .background(.black.opacity(0.5))
-                    .clipShape(Circle())
+                    KFImage(URL(string: skill.itemURL ?? ""))
+                        .sizeModifier(width: 30, height: 30)
                 }
             }
             
             HStack {
-                ForEach(otherSkills) { skill in
-                    VStack {
+                LazyVGrid(columns: columns) {
+                    ForEach(otherSkills) { skill in
                         KFImage(URL(string: skill.itemURL ?? ""))
                             .sizeModifier(width: 30, height: 30)
                     }
-                    .padding(5)
-                    .background(.black.opacity(0.5))
-                    .clipShape(Circle())
                 }
-            }
+            }.frame(maxWidth: 300)
         }
     }
 }
@@ -120,22 +111,26 @@ struct RoleInfoDrawingView: View {
     @StateObject var viewModel = RoleInfoViewModel()
 
     var body: some View {
-        VStack {
-            Image(viewModel.avatar.itemID ?? "")
-                .sizeFillModifier(width: 250, height: 600)
-                .background(.black.opacity(0.5))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+        HStack {
+            KFImage(URL(string: viewModel.avatar.iconURL ?? ""))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 120)
+                .background(
+                    LinearGradient(
+                        gradient: viewModel.avatar.rarity.ratityColor,
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
             
-            Image(viewModel.avatar.rarity.ratityImage)
-                .sizeModifier(width: 200, height: 44)
-            
-            HStack {
-                VStack(spacing: 8) {
+            VStack {
+                VStack {
                     Text(viewModel.avatar.itemName ?? "")
-                        .boldModifier(size: 24)
+                        .boldModifier(size: 26)
                         .foregroundColor(.white)
                     Text(viewModel.avatar.level)
-                        .sizeModifier(size: 16)
+                        .sizeModifier(size: 20)
                 }
                 
                 HStack {
@@ -154,33 +149,40 @@ struct RoleInfoConsumeView: View {
 
     var columns = Array(
         repeating: GridItem(.flexible()),
-        count: 10
+        count: 6
     )
 
     var body: some View {
         if viewModel.consumeSections.isEmpty {
             Text(CopyStarRailRole.finishedConsume)
                 .boldModifier(size: 24)
-                .frame(width: 650, height: 200)
+                .frame(width: 280, height: 200)
                 .background(.black.opacity(0.5))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         } else {
             LazyVGrid(columns: columns) {
                 ForEach(viewModel.consumeSections) { section in
-                    Section(section.title) {
+                    Section {
                         ForEach(section.consume) { item in
-                            VStack {
+                            HStack {
                                 StarRaillRarityView(
                                     rarity: item.rarity ?? .one,
                                     urlString: item.itemURL ?? ""
                                 )
-                                .frame(width: 50, height: 50)
+                                .frame(width: 30, height: 30)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                
-                                Text("\(item.itemName ?? "")\n\(item.num ?? 0)")
-                                    .frame(width: 100)
-                                    .multilineTextAlignment(.center)
+                                VStack(alignment: .trailing) {
+                                    Text("\(item.itemName ?? "")")
+                                    Text("\(item.num ?? 0)")
+                                }
                             }
+                        }
+                    } header: {
+                        HStack {
+                            Text(section.title)
+                                .font(.system(size: 18, weight: .bold))
+                                .padding(.leading, 20)
+                            Spacer()
                         }
                     }
                 }
@@ -189,7 +191,44 @@ struct RoleInfoConsumeView: View {
     }
 }
 
+struct RoleInfoSkillsComputeView: View {
+    @StateObject var viewModel: RoleInfoViewModel
+
+    var columns = Array(
+        repeating: GridItem(.flexible()),
+        count: 3
+    )
+
+    var body: some View {
+        VStack {
+            HStack {
+                Text(viewModel.skillsCompute.title)
+                    .font(.system(size: 18, weight: .bold))
+                    .padding(.leading, 20)
+                Spacer()
+            }
+            LazyVGrid(columns: columns) {
+                ForEach(viewModel.skillsCompute.consume) { item in
+                    HStack {
+                        StarRaillRarityView(
+                            rarity: item.rarity ?? .one,
+                            urlString: item.itemURL ?? ""
+                        )
+                        .frame(width: 30, height: 30)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        VStack(alignment: .trailing) {
+                            Text("\(item.itemName ?? "")")
+                            Text("\(item.num ?? 0)")
+                        }
+                    }
+                }
+            }
+        }
+        .frame(minWidth: 350, maxWidth: 350)
+    }
+}
+
 #Preview {
-    RoleInfoView(id: "1003")
-        .frame(width: 1200, height: 800)
+    RoleInfoView(id: "1111")
+        .frame(width: 800, height: 400)
 }
