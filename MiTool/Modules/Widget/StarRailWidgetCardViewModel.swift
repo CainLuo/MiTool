@@ -1,5 +1,5 @@
 //
-//  StarRailWeightCardViewModel.swift
+//  StarRailWidgetCardViewModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class StarRailWeightCardViewModel: ObservableObject {
+class StarRailWidgetCardViewModel: ObservableObject {
     private let manager = MockApi.shared
         
     /// 0~0.3 is Color.red

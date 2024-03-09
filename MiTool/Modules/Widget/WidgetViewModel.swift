@@ -13,6 +13,9 @@ class WidgetViewModel: ObservableObject {
     private let dbManager = SQLManager.shared
     
     func getWidgetSections() {
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.character.rawValue
+        ApiNetworkManager().getRequest(url: URL(string: url)!)
+        
         let userList = dbManager.getMihoyoUserList()
         
         _ = userList.map { $0.uid }
