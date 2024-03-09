@@ -17,7 +17,8 @@ class RoleInfoViewModel: ObservableObject {
     @Published var equipment = StarRailRoleInfoEquipment()
         
     @Published var consumeSections: [StarRailLocalCompute] = []
-    
+    @Published var skillsCompute = StarRailLocalCompute()
+
     func getRoleInfo(id: String) {
         let model = api.getRoleInfo(id: id)
         
@@ -42,18 +43,8 @@ class RoleInfoViewModel: ObservableObject {
             $0.pointType == .other &&
             $0.progress == .learned
         }
-
-        let skillsNeedLearn = data.skills.compactMap { $0.curLevel }
-        let skillsOhterNeedLearn = data.skillsOther.filter {
-            $0.progress == .canLearnButStillNotLearn
-        }
         
-        if skillsNeedLearn != [6, 10, 10, 10],
-           skillsOhterNeedLearn.isEmpty != true,
-           (data.avatar?.curLevel ?? 1) < 80,
-           (data.equipment?.curLevel ?? 1) < 80 {
-            getRoleSkilCoupute(id: id)
-        }
+        getRoleSkilCoupute(id: id)
     }
     
     private func getRoleSkilCoupute(id: String) {
@@ -62,6 +53,8 @@ class RoleInfoViewModel: ObservableObject {
         guard let data = model.data else {
             return
         }
+        
+        var consumeSections: [StarRailLocalCompute] = []
         
         if let consume = data.avatarConsume,
             !consume.isEmpty {
@@ -78,7 +71,7 @@ class RoleInfoViewModel: ObservableObject {
                 title: CopyStarRailRole.skillsConsume,
                 consume: consume
             )
-            consumeSections.append(compute)
+            skillsCompute = compute
         }
         
         if let consume = data.equipmentConsume,
@@ -89,5 +82,6 @@ class RoleInfoViewModel: ObservableObject {
             )
             consumeSections.append(compute)
         }
+        self.consumeSections = consumeSections
     }
 }

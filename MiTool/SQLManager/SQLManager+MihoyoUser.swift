@@ -163,6 +163,7 @@ extension SQLManager {
                     cookie: item[cookie] ?? ""
                 ))
             }
+            complete?(false, nil)
         } catch {
             debugPrint(error)
             complete?(false, nil)

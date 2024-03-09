@@ -17,8 +17,7 @@ class MihoyoUserEditViewModel: ObservableObject {
         cookie: String
     ) {
         SQLManager.shared.getMihoyoUser(uid) { [weak self] success, _ in
-            guard success else {
-                self?.saveUserFailed = true
+            guard !success else {
                 return
             }
             let userInfo = MihoyoUserInfo(uid: uid, nickname: nickname, cookie: cookie)

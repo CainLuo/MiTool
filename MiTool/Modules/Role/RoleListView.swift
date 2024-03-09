@@ -24,35 +24,10 @@ struct RoleListView: View {
     ]
 
     var body: some View {
-        ScrollView {
-            VStack {
-                if !viewModel.roleList.isEmpty {
-                    ForEach(destiny.indices, id: \.self) { section in
-                        Section {
-                            HStack {
-                                Image("abundance")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 25)
-                                
-                                Text("毁灭")
-    
-                                Spacer()
-                            }
-                        }
-
-                        LazyVGrid(columns: columns, spacing: 15) {
-                            let list = viewModel.roleList.filter { $0.avatarBaseType == destiny[section] }
-                            ForEach(list.indices, id: \.self) { index in
-                                RoleCardView(item: list[index])
-                            }
-                        }
-                        Divider()
-                    }
-                }
-            }
+        List(viewModel.roleList) { item in
+            RoleInfoView(id: item.itemID ?? "")
         }
-        .onAppear {
+        .task {
             viewModel.fetchRoleAllList()
         }
     }

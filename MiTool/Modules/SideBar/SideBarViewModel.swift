@@ -29,13 +29,13 @@ class SideBarViewModel: ObservableObject {
                 sectionName: "",
                 sectionIcon: "",
                 items: notes
-            )//,
-//            getStarRailSesction(),
+            ),
+            getStarRailSesction() // ,
 //            getGenshinImpactSesction()
         ]
     }
 
-    func getStarRailSesction() -> SideBarSectionModel {
+    private func getStarRailSesction() -> SideBarSectionModel {
         let starRailItems = [
             SideBarItemModel(
                 name: CopySideBar.starRailRole,
@@ -60,7 +60,7 @@ class SideBarViewModel: ObservableObject {
         )
     }
 
-    func getGenshinImpactSesction() -> SideBarSectionModel {
+    private func getGenshinImpactSesction() -> SideBarSectionModel {
         let starRailItems = [
             SideBarItemModel(
                 name: CopySideBar.genshinRole,

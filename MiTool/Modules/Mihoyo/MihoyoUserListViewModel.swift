@@ -15,5 +15,5 @@ class MihoyoUserListViewModel: ObservableObject {
     
     func getMihoyoUserList() {
         userList = manager.getMihoyoUserList()
-    }    
+    }
 }

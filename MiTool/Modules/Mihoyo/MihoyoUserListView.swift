@@ -30,9 +30,10 @@ struct MihoyoUserListView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            if !viewModel.userList.isEmpty {
+            if viewModel.userList.isEmpty {
                 Spacer()
                 Text("暂无任何用户信息")
+                    .padding()
                 Spacer()
             } else {
                 List {
@@ -40,18 +41,37 @@ struct MihoyoUserListView: View {
                         Section {
                             MihoyoGameCardView(uid: user.uid)
                         } header: {
-                            MihoyoUserCardView(
-                                viewModel: viewModel,
-                                user: user
-                            )
-                            .padding(.top, 10)
+                            NavigationLink(destination: 
+                                            MihoyoUserEditView(
+                                                nickename: user.nickname,
+                                                uid: user.uid, 
+                                                cookie: user.cookie ?? ""
+                                            )
+                            ) {
+                                HStack {
+                                    MihoyoUserCardView(
+                                        viewModel: viewModel,
+                                        user: user
+                                    )
+                                    .padding(.top, 10)
+                                    Spacer()
+                                    Image(systemName: "arrow.right")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 20)
+                                }
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
-                .frame(maxHeight: .infinity)
+                .frame(
+                    minWidth: 776,
+                    maxHeight: .infinity
+                )
             }
         }
-        .task {
+        .onAppear {
             viewModel.getMihoyoUserList()
         }
     }
@@ -64,25 +84,12 @@ struct MihoyoUserCardView: View {
     
     var body: some View {
         HStack {
-            HStack(spacing: 10) {
-                KFImage(URL(string: user.avatarURL))
-                    .placeholder {
-                        Image(systemName: "person.circle.fill")
-                            .circleModifier(width: 60, height: 60)
-                    }
-                    .circleModifier(width: 60, height: 60)
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(user.nickname)
-                        .font(.system(size: 18, weight: .semibold))
-                    
-                    Text("\(CopyGameName.uid)\(user.uid)")
-                                        
-                    Text(String(format: CopyGameName.region, user.ipRegion))
-                }
+            VStack(alignment: .leading, spacing: 5) {
+                Text(user.nickname)
+                    .font(.system(size: 18, weight: .semibold))
+                Text("\(CopyGameName.uid)\(user.uid)")
+                    .font(.system(size: 15))
             }
-            .padding(.leading, 10)
-            
             Spacer()
         }
     }

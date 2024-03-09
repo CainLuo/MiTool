@@ -29,28 +29,31 @@ struct MihoyoGameCardView: View {
                         .background(.red)
                         .cornerRadius(8)
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 15) {
                         HStack {
                             Text(item.gameName)
-                                .font(.system(size: 24, weight: .bold))
+                                .font(.system(size: 28, weight: .bold))
                                 .multilineTextAlignment(.leading)
                                 .padding(.top, 10)
                             Spacer()
                         }
                         
                         HStack {
-                            Text(String(format: CopyGameName.uid, item.gameRoleID))
+                            Text(CopyGameName.uid + item.gameRoleID)
+                                .font(.system(size: 18, weight: .bold))
                             Text(String(format: CopyGameName.regionName, item.regionName))
+                                .font(.system(size: 18))
                         }
                         
                         HStack {
                             Text(String(format: CopyGameName.nickname, item.nickname))
+                                .font(.system(size: 18))
                             Text(String(format: CopyGameName.level, item.level))
+                                .font(.system(size: 18))
                         }
                         
                         if let data = item.data {
                             MihoyoGameCardDataView(data: data)
-                                .padding(.top, 10)
                         }
                     }
                     .padding()
@@ -65,18 +68,15 @@ struct MihoyoGameCardView: View {
 
 struct MihoyoGameCardDataView: View {
     let data: [MihoyoGameCardsDatum]
-    
-    var rows = Array(
-        repeating: GridItem(.flexible()),
-        count: 1
-    )
 
     var body: some View {
-        LazyHGrid(rows: rows) {
+        HStack {
             ForEach(data) { dataItem in
                 VStack(spacing: 8) {
                     Text("\(dataItem.name)")
+                        .font(.system(size: 18))
                     Text("\(dataItem.value)")
+                        .font(.system(size: 18))
                         .multilineTextAlignment(.center)
                 }
             }

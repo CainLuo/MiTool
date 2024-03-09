@@ -73,7 +73,7 @@ struct StarRailRoleInfoAvatar: Mappable {
     var isUp: Bool?
 
     var level: String {
-        "Lv.\(curLevel)/\(maxLevel)"
+        "Lv.\(curLevel)"
     }
 
     init?(map: ObjectMapper.Map) { }

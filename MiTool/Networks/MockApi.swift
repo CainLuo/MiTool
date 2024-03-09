@@ -58,7 +58,7 @@ extension MockApi {
 
     func getRoleInfo(id: String) -> StarRailRoleInfoModel {
         guard let model = Bundle.getJSONFile(
-            "\(id)Skil",
+            "\(id)Skill",
             responseType: StarRailRoleInfoModel.self) else {
             return StarRailRoleInfoModel()
         }
