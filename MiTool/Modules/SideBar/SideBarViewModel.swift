@@ -11,7 +11,6 @@ class SideBarViewModel: ObservableObject {
     @Published var sections: [SideBarSectionModel] = []
 
     func fetchSideBarSections() {
-
         let notes = [
             SideBarItemModel(
                 name: CopySideBar.notesTitle,
@@ -30,9 +29,9 @@ class SideBarViewModel: ObservableObject {
                 sectionName: "",
                 sectionIcon: "",
                 items: notes
-            ),
-            getStarRailSesction(),
-            getGenshinImpactSesction()
+            )//,
+//            getStarRailSesction(),
+//            getGenshinImpactSesction()
         ]
     }
 

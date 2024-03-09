@@ -42,15 +42,15 @@ struct MihoyoUserEditView: View {
                 TextField(text: $uid)
 
                 Text(CopyGameName.inputCookie)
-                NavigationLink(destination: CookieJSWebView()) {
-                    HStack {
-                        Text("登录网页版获取Cookie")
-                            .multilineTextAlignment(.leading)
-                            .padding([.top, .bottom], 5)
-                        Spacer()
-                    }
-                }
-                .buttonStyle(PlainButtonStyle())
+//                NavigationLink(destination: CookieJSWebView()) {
+//                    HStack {
+//                        Text("登录网页版获取Cookie")
+//                            .multilineTextAlignment(.leading)
+//                            .padding([.top, .bottom], 5)
+//                        Spacer()
+//                    }
+//                }
+//                .buttonStyle(PlainButtonStyle())
                 TextEditor(text: $cookie)
                     .onChange(of: cookie) { value in
                         let strings = value.components(separatedBy: ";")
@@ -83,6 +83,11 @@ struct MihoyoUserEditView: View {
             .padding(.top, 0)
             .padding(.bottom, 10)
             .buttonStyle(PlainButtonStyle())
+            .alert("保存用户失败了", isPresented: $viewModel.saveUserFailed) {
+                Button("ok") {
+                    viewModel.saveUserFailed.toggle()
+                }
+            }
         }
     }
 }

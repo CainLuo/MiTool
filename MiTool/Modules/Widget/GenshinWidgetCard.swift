@@ -16,16 +16,12 @@ struct GenshinWidgetCard: View {
             GenshinWidgetInfoView(viewModel: viewModel)
             
             Divider()
-                .padding([.top, .bottom], 20)
             
             GenshinWidgetDailyNodeCard(viewModel: viewModel)
-                .padding([.top, .bottom])
             
             Divider()
-                .padding([.top, .bottom], 20)
             
             GenshinWidgetExpeditionView(viewModel: viewModel)
-                .padding(.top)
         }
         .padding()
         .background(.black.opacity(0.4))
@@ -92,9 +88,10 @@ struct GenshinWidgetOtherCardSubview: View {
         HStack {
             Image(iconName)
                 .circleModifier(width: 40, height: 40)
+            Spacer()
             Text(text)
         }
-        .frame(minWidth: 150)
+        .frame(minWidth: 150, maxWidth: 150)
     }
 }
 

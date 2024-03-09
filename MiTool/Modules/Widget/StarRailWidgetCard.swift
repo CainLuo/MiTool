@@ -9,7 +9,6 @@ import SwiftUI
 import Kingfisher
 
 struct StarRailWidgetCard: View {
-    
     @State var fill: CGFloat = 0
     @StateObject var viewModel = StarRailWidgetCardViewModel()
     
@@ -18,21 +17,19 @@ struct StarRailWidgetCard: View {
             StarRailWidgetInfoView(viewModel: viewModel)
             
             Divider()
-                .padding([.top, .bottom], 20)
             
             StarRailWidgetOtherCard(weightTypes: viewModel.localModels)
             
             Divider()
-                .padding([.top, .bottom], 20)
             
             if !viewModel.expeditions.isEmpty {
                 StarRailExpeditionView(expeditions: viewModel.expeditions)
             }
         }
-        .padding([.top, .bottom], 30)
+        .padding()
         .background(.black.opacity(0.4))
         .cornerRadius(10)
-        .frame(maxWidth: .infinity, minHeight: 210)
+        .frame(maxWidth: .infinity)
         .task {
             viewModel.getStarRailWeight()
         }
@@ -72,9 +69,11 @@ struct StarRailWidgetInfoView: View {
                     .circleModifier(width: IconSize.width,
                                     height: IconSize.height)
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(CopyStarRailWeight.reserveTrailblazePower)
-                    Text(viewModel.reserveStamina)
-                        .font(.system(size: 20, weight: .semibold))
+                    HStack {
+                        Text(CopyStarRailWeight.reserveTrailblazePower)
+                        Text(viewModel.reserveStamina)
+                            .font(.system(size: 20, weight: .semibold))
+                    }
                     Text(viewModel.reserveStaminaFull)
                 }
             }

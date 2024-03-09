@@ -63,11 +63,11 @@ struct MihoyoUserInfo: Mappable, Identifiable {
     init(
         uid: String,
         nickname: String,
-        introduce: String?,
-        gender: Int?,
-        communityInfo: String?,
-        avatarURL: String?,
-        ipRegion: String?,
+        introduce: String? = nil,
+        gender: Int? = nil,
+        communityInfo: String? = nil,
+        avatarURL: String? = nil,
+        ipRegion: String? = nil,
         cookie: String
     ) {
         self.uid = uid

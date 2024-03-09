@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct WidgetSectionModel {
+struct WidgetSectionModel: Identifiable {
+    var id = UUID()
     var uid: String
     var title: String
-    var starRailDailyNode: StarRailWeightDataModel
-    var genshinDailyNode: GenshinImpactWidgetData
+    var genshinUID: String
+    var starRailUID: String
+    
+    var uidString: String {
+        "UID: \(uid)"
+    }
 }

@@ -59,4 +59,3 @@ enum ApiKeys {
         case challenge = "/game_record/app/hkrpg/api/challenge"
     }
 }
-

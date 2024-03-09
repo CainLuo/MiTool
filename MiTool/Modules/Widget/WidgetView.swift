@@ -11,23 +11,31 @@ struct WidgetView: View {
     @StateObject var viewModel = WidgetViewModel()
     
     var body: some View {
-        List {
-            Section {
-                StarRailWidgetCard()
-                GenshinWidgetCard()
-            } header: {
-                VStack(alignment: .leading) {
-                    Text("噼里啪啦")
-                        .font(.system(size: 26, weight: .bold))
-                    Text("UID: 173612938123")
-                        .font(.system(size: 26, weight: .bold))
+        if viewModel.widgetSections.isNotEmpty {
+            List {
+                ForEach(viewModel.widgetSections) { section in
+                    Section {
+                        StarRailWidgetCard()
+                        GenshinWidgetCard()
+                    } header: {
+                        VStack(alignment: .leading) {
+                            Text(section.title)
+                                .font(.system(size: 26, weight: .bold))
+                            Text(section.uidString)
+                                .font(.system(size: 26, weight: .bold))
+                        }
+                    }
                 }
             }
-        }
-        .frame(minWidth: 776,
-               maxWidth: .infinity)
-        .task {
-            viewModel.getWidgetSections()
+            .frame(minWidth: 776,
+                   maxWidth: .infinity)
+        } else {
+            VStack {
+                Text("暂无任何游戏记录")
+            }
+            .task {
+                viewModel.getWidgetSections()
+            }
         }
     }
 }

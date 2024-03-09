@@ -18,35 +18,37 @@ struct MihoyoUserListView: View {
     )
 
     var body: some View {
-        ScrollView(.horizontal) {
-            if viewModel.userList.isEmpty {
-                MihoyoAddUserView()
-                    .padding()
-                    .border(cornerRadius: 8,
-                            style: StrokeStyle(lineWidth: 1))
+        VStack {
+            HStack {
+                Spacer()
+                NavigationLink(destination: MihoyoUserEditView()) {
+                    Text(CopyGameName.addUser)
+                        .frame(width: 120, height: 28)
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .cornerRadius(8)
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            if !viewModel.userList.isEmpty {
+                Spacer()
+                Text("暂无任何用户信息")
+                Spacer()
             } else {
-                HStack {
+                List {
                     ForEach(viewModel.userList) { user in
-                        VStack {
+                        Section {
+                            MihoyoGameCardView(uid: user.uid)
+                        } header: {
                             MihoyoUserCardView(
                                 viewModel: viewModel,
                                 user: user
                             )
                             .padding(.top, 10)
-                            
-                            MihoyoGameCardView(uid: user.uid)
                         }
-                        .border(cornerRadius: 8,
-                                style: StrokeStyle(lineWidth: 1))
-                        .padding()
                     }
-                    .frame(width: 600)
-                    
-                    MihoyoAddUserView()
-                        .padding()
-                        .border(cornerRadius: 8,
-                                style: StrokeStyle(lineWidth: 1))
                 }
+                .frame(maxHeight: .infinity)
             }
         }
         .task {
@@ -83,25 +85,6 @@ struct MihoyoUserCardView: View {
             
             Spacer()
         }
-    }
-}
-
-struct MihoyoAddUserView: View {
-    var body: some View {
-        NavigationLink(destination: MihoyoUserEditView()) {
-            HStack {
-                HStack {
-                    Image(systemName: "plus.app.fill")
-                        .circleModifier(width: 60, height: 60)
-                    Text(CopyGameName.addUser)
-                        .font(.system(size: 20, weight: .semibold))
-                }
-                .padding(.leading, 10)
-                
-                Spacer()
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
