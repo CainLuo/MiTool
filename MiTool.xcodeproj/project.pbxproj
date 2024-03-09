@@ -41,6 +41,7 @@
 		BF3F43F42B9C3DEB00B5C3FD /* NetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */; };
 		BF3F43F52B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */; };
 		BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */; };
+		BF3F43FA2B9C40BF00B5C3FD /* ArrayX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */; };
 		BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D02B69525500587AD3 /* MiToolApp.swift */; };
 		BF4659D32B69525500587AD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4659D22B69525500587AD3 /* ContentView.swift */; };
 		BF4659D52B69525600587AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4659D42B69525600587AD3 /* Assets.xcassets */; };
@@ -158,6 +159,7 @@
 		BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServerManager.swift; sourceTree = "<group>"; };
 		BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkServerManager+SQL.swift"; sourceTree = "<group>"; };
 		BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJSWebView.swift; sourceTree = "<group>"; };
+		BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayX.swift; sourceTree = "<group>"; };
 		BF4659CD2B69525500587AD3 /* MiTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4659D02B69525500587AD3 /* MiToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolApp.swift; sourceTree = "<group>"; };
 		BF4659D22B69525500587AD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */,
 				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
 				A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */,
+				BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
 				BF3F43F52B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift in Sources */,
 				BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */,
+				BF3F43FA2B9C40BF00B5C3FD /* ArrayX.swift in Sources */,
 				BFE403BD2B6E2C48002FF39E /* Api.swift in Sources */,
 				BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */,
 				BFB03BB12B8B0B93005DD170 /* RoleInfoViewModel.swift in Sources */,

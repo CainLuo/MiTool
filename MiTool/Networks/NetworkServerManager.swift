@@ -21,8 +21,10 @@ class NetworkServerManager {
         completion: ((MihoyoUserInfo, [MihoyoGameCardsList]?) -> Void)?
     ) {
         let sql = SQLManager.shared
-        sql.getMihoyoUser(uid) { userInfo in
-            completion?(userInfo, sql.getAllMihoyoGameCards(uuid: uid))
+        sql.getMihoyoUser(uid) { _, userInfo in
+            if let userInfo = userInfo {
+                completion?(userInfo, sql.getAllMihoyoGameCards(uuid: uid))
+            }
         }
 
         let fetchModel = api().getMihoyoUserInfo()
@@ -31,7 +33,7 @@ class NetworkServerManager {
         }
         
         completion?(userInfo, nil)
-        saveMihoyoUserInfo(userInfo) { success, error in }
+        saveMihoyoUserInfo(userInfo) { _, _ in }
         
         fetchMihoyoGameCards(uid: uid) { list in
             completion?(userInfo, list)
@@ -42,7 +44,6 @@ class NetworkServerManager {
         uid: String,
         completion: (([MihoyoGameCardsList]) -> Void)?
     ) {
-        
         let fetchModel = api().getMihoyoGameCards()
         
         guard let gameCards = fetchModel.data?.list else {
@@ -52,7 +53,7 @@ class NetworkServerManager {
         saveMihoyoGameCards(
             uid,
             gameCards: gameCards
-        ) { success, error in
+        ) { _, _ in
             completion?(gameCards)
         }
     }

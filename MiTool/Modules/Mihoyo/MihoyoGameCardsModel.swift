@@ -39,8 +39,11 @@ struct MihoyoGameCardsData: Mappable {
 }
 
 enum MihoyoGameID: Int {
+    // 崩坏三
     case honkai3 = 1
+    // 原神
     case genshin = 2
+    // 星穹铁道
     case starRail = 6
 }
 

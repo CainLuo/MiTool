@@ -13,11 +13,29 @@ class WidgetViewModel: ObservableObject {
     private let dbManager = SQLManager.shared
     
     func getWidgetSections() {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.character.rawValue
-        ApiNetworkManager().getRequest(url: URL(string: url)!)
-        
         let userList = dbManager.getMihoyoUserList()
+        var sections: [WidgetSectionModel] = []
         
-        _ = userList.map { $0.uid }
+        for user in userList {
+            let gameCards = dbManager.getAllMihoyoGameCards(uuid: user.uid)
+            
+            let genshinID = gameCards.first {
+                $0.gameID == .genshin
+            }?.gameRoleID ?? ""
+
+            let starRailID = gameCards.first {
+                $0.gameID == .starRail
+            }?.gameRoleID ?? ""
+
+            sections.append(
+                WidgetSectionModel(
+                    uid: user.uid,
+                    title: user.nickname,
+                    genshinUID: genshinID,
+                    starRailUID: starRailID
+                )
+            )
+        }
+        widgetSections = sections
     }
 }

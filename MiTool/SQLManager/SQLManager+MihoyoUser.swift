@@ -147,12 +147,12 @@ extension SQLManager {
 
     func getMihoyoUser(
         _ uuid: String,
-        complete: ((_ model: MihoyoUserInfo) -> Void)?
+        complete: ((Bool, MihoyoUserInfo?) -> Void)?
     ) {
         let query = mihoyoUser.filter(uid == uuid)
         do {
             try dataBase.prepare(query).forEach { item in
-                complete?(MihoyoUserInfo(
+                complete?(true, MihoyoUserInfo(
                     uid: item[uid] ?? "",
                     nickname: item[nickname] ?? "",
                     introduce: item[introduce] ?? "",
@@ -162,14 +162,10 @@ extension SQLManager {
                     ipRegion: item[ipRegion] ?? "",
                     cookie: item[cookie] ?? ""
                 ))
-                #if DEBUG
-                print("")
-                #endif
             }
         } catch {
-            #if DEBUG
-            print(error)
-            #endif
+            debugPrint(error)
+            complete?(false, nil)
         }
     }
 }

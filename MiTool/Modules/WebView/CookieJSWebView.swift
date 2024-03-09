@@ -9,10 +9,28 @@ import WebKit
 import SwiftUI
 
 struct CookieJSWebView: View {
+    @Environment (\.presentationMode) var presentationMode
+
     let viewModel = CookieJSWebViewModel()
     
     var body: some View {
         VStack {
+            HStack {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text(CopyGameName.returnTitle)
+                        .frame(width: 60, height: 28)
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .cornerRadius(8)
+                })
+                .buttonStyle(PlainButtonStyle())
+                .padding([.leading, .top], 10)
+                
+                Spacer()
+            }
+
             CookieWebView(viewModel: viewModel)
             
             Button(action: {
@@ -40,8 +58,10 @@ class CookieJSWebViewModel: ObservableObject {
     init(webResource: String? = nil) {
         self.webResource = webResource
         
-        self.webView = WKWebView(frame: .zero,
-                                 configuration: WKWebViewConfiguration())
+        self.webView = WKWebView(
+            frame: .zero,
+            configuration: WKWebViewConfiguration()
+        )
     }
     
     func loadWebViewContnet() {
