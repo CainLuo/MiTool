@@ -16,17 +16,31 @@ class MihoyoUserEditViewModel: ObservableObject {
         uid: String,
         cookie: String
     ) {
-        SQLManager.shared.getMihoyoUser(uid) { [weak self] success, _ in
-            guard !success else {
-                return
-            }
+        SQLManager.shared.getMihoyoUser(uid) { [weak self] success, user in
             let userInfo = MihoyoUserInfo(uid: uid, nickname: nickname, cookie: cookie)
-            self?.saveMihoyoUser(userInfo)
+            if user == nil {
+                self?.saveMihoyoUser(userInfo)
+            } else {
+                self?.upgradeMihoyoUser(userInfo)
+            }
         }
     }
     
     private func saveMihoyoUser(_ userInfo: MihoyoUserInfo) {
         SQLManager.shared.addMihoyoUser(userInfo) { [weak self] success, error in
+            guard error == nil else {
+                self?.saveUserFailed = true
+                return
+            }
+            self?.saveUserSuccess = success
+        }
+    }
+    
+    private func upgradeMihoyoUser(_ userInfo: MihoyoUserInfo) {
+        SQLManager.shared.upgradeMihoyoUser(
+            userInfo.uid,
+            model: userInfo
+        ) { [weak self] success, error in
             guard error == nil else {
                 self?.saveUserFailed = true
                 return
