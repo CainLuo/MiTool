@@ -9,23 +9,23 @@ import SwiftUI
 import SwiftUIX
 
 struct RoleListView: View {
-    @StateObject var viewModel = RoleAllViewModel()
-    
-    var columns = Array(
-        repeating: GridItem(.flexible()),
-        count: 8
-    )
-    
-    var destiny = [
-        Destiny.destruction, Destiny.theHunt,
-        Destiny.erudition, Destiny.harmony,
-        Destiny.nihility, Destiny.preservation,
-        Destiny.abundance
-    ]
+    @StateObject var viewModel = RoleListViewModel()
 
     var body: some View {
-        List(viewModel.roleList) { item in
-            RoleInfoView(id: item.itemID ?? "")
+        Section {
+            List(viewModel.roleList) { item in
+                RoleInfoView(id: item.itemID ?? "")
+            }
+        } header: {
+            HStack {
+                SectionHeaderView(
+                    userName: viewModel.userName,
+                    uid: viewModel.uid
+                )
+                
+                Spacer()
+            }
+            .padding([.top, .leading])
         }
         .task {
             viewModel.fetchRoleAllList()

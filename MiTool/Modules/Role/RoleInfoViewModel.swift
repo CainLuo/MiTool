@@ -11,38 +11,17 @@ class RoleInfoViewModel: ObservableObject {
     let api = MockApi.shared
     
     @Published var avatar = StarRailRoleInfoAvatar()
-    @Published var skills: [StarRailRoleInfoSkill] = []
-    @Published var talentSkills: [StarRailRoleInfoSkill] = []
-    @Published var otherSkills: [StarRailRoleInfoSkill] = []
-    @Published var equipment = StarRailRoleInfoEquipment()
-        
     @Published var consumeSections: [StarRailLocalCompute] = []
 
     func getRoleInfo(id: String) {
         let model = api.getRoleInfo(id: id)
-        
         guard let data = model.data else {
             return
         }
-                
         if let avatar = data.avatar {
             self.avatar = avatar
         }
-        
-        if let equipment = data.equipment {
-            self.equipment = equipment
-        }
-        
-        self.skills = data.skills
-        self.talentSkills = data.skillsOther.filter {
-            $0.pointType != .other &&
-            $0.progress == .learned
-        }
-        self.otherSkills = data.skillsOther.filter {
-            $0.pointType == .other &&
-            $0.progress == .learned
-        }
-        
+
         getRoleSkilCoupute(id: id)
     }
     

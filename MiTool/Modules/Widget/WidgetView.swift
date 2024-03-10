@@ -18,12 +18,10 @@ struct WidgetView: View {
                         StarRailWidgetCard()
                         GenshinWidgetCard()
                     } header: {
-                        VStack(alignment: .leading) {
-                            Text(section.title)
-                                .font(.system(size: 18, weight: .semibold))
-                            Text(section.uidString)
-                                .font(.system(size: 15))
-                        }
+                        SectionHeaderView(
+                            userName: section.title,
+                            uid: section.uidString
+                        )
                     }
                 }
             }
