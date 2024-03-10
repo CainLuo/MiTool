@@ -50,9 +50,14 @@ struct MihoyoUserInfo: Mappable, Identifiable {
     init?(map: Map) { }
     init() { }
 
+    var uidString: String {
+        "UID: \(uid)"
+    }
+
     var createdAt: Int {
         communityInfo?.createdAt ?? 0
     }
+
     var createTime: String {
         let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
         let dateFormart = DateFormatter()

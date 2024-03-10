@@ -49,11 +49,11 @@ struct MihoyoUserListView: View {
                                             )
                             ) {
                                 HStack {
-                                    MihoyoUserCardView(
-                                        viewModel: viewModel,
-                                        user: user
+                                    SectionHeaderView(
+                                        userName: user.nickname,
+                                        uid: user.uidString
                                     )
-                                    .padding(.top, 10)
+
                                     Spacer()
                                     Image(systemName: "arrow.right")
                                         .resizable()
@@ -73,24 +73,6 @@ struct MihoyoUserListView: View {
         }
         .onAppear {
             viewModel.getMihoyoUserList()
-        }
-    }
-}
-
-struct MihoyoUserCardView: View {
-    @StateObject var viewModel: MihoyoUserListViewModel
-
-    let user: MihoyoUserInfo
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(user.nickname)
-                    .font(.system(size: 18, weight: .semibold))
-                Text("\(CopyGameName.uid)\(user.uid)")
-                    .font(.system(size: 15))
-            }
-            Spacer()
         }
     }
 }
