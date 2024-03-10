@@ -19,22 +19,19 @@ extension NetworkServerManager {
         }
         
         complete?(true, list)
-        
-        var tempRoleList: [StarRailAllRoleListModel] = []
-        
+                
         for role in list {
-            SQLManager.shared.addStarRailRoleInfo(
-                uuid: uid,
-                model: role
-            ) {  _, error in
-                guard error == nil else {
-                    tempRoleList.append(role)
-                    return
+            SQLManager.shared.getStarRailRoleInfo(
+                uid, roleID: role.itemID ?? ""
+            ) { _, item in
+                if item != nil {
+                    NetworkServerManager.upgradeStarRailRoleInfo(uid: uid, role: role)
+                } else {
+                    NetworkServerManager.saveStarRailRoleInfo(uid: uid, role: role)
                 }
-                debugPrint("Save role info success")
             }
             
-            fetchStarRailRoleDetail(
+            fetchStarRailRoleSkill(
                 uid: uid,
                 roleID: role.itemID ?? ""
             )
@@ -45,7 +42,33 @@ extension NetworkServerManager {
         }
     }
     
-    static func fetchStarRailRoleDetail(
+    static func saveStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
+        SQLManager.shared.addStarRailRoleInfo(
+            uuid: uid,
+            model: role
+        ) {  _, error in
+            guard error == nil else {
+                return
+            }
+            debugPrint("Save role info success")
+        }
+    }
+    
+    static func upgradeStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
+        SQLManager.shared.upgradeStarRailRoleInfo(
+            uuid: uid, model: role
+        ) {  _, error in
+            guard error == nil else {
+                return
+            }
+            debugPrint("Upgrade role info success")
+        }
+    }
+}
+
+// MARK: - Honkai: StarRail Role Skills
+extension NetworkServerManager {
+    static func fetchStarRailRoleSkill(
         uid: String,
         roleID: String
     ) {
@@ -55,18 +78,50 @@ extension NetworkServerManager {
             return
         }
         
-        SQLManager.shared.addStarRailRoleSkillInfo(
-            uuid: uid,
-            model: info) { success, error in
-                guard error == nil else {
-                    return
-                }
-                debugPrint("Save role info success")
+        SQLManager.shared.getStarRailRoleSkills(uid, roleID: roleID) { _, item in
+            if item != nil {
+                NetworkServerManager.upgradeStarRailRoleSkill(uid: uid, info: info)
+            } else {
+                NetworkServerManager.saveStarRailRoleSkill(uid: uid, info: info)
             }
+        }
     }
     
-    static func fetchStarRailRoleSkillCompute(
+    static func saveStarRailRoleSkill(
         uid: String, 
+        info: StarRailRoleInfoData
+    ) {
+        SQLManager.shared.addStarRailRoleSkillInfo(
+            uuid: uid,
+            model: info
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            debugPrint("Save role Skill success")
+        }
+    }
+    
+    static func upgradeStarRailRoleSkill(
+        uid: String,
+        info: StarRailRoleInfoData
+    ) {
+        SQLManager.shared.upgradeStarRailRoleSkillInfo(
+            uuid: uid,
+            model: info
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            debugPrint("Upgrade role Skill success")
+        }
+    }
+}
+
+// MARK: - Honkai: StarRail Role Compute
+extension NetworkServerManager {
+    static func fetchStarRailRoleSkillCompute(
+        uid: String,
         roleID: String
     ) {
         let model = api().getSkillCompute(id: roleID)
@@ -74,16 +129,49 @@ extension NetworkServerManager {
         guard let info = model.data else {
             return
         }
-
+        
+        SQLManager.shared.getStarRailRoleCompute(
+            uid, roleID: roleID
+        ) { _, item in
+            if item != nil {
+                NetworkServerManager.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+            } else {
+                NetworkServerManager.saveStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+            }
+        }
+    }
+    
+    static func saveStarRailRoleCompute(
+        uid: String,
+        roleID: String,
+        info: StarRailSkillComputeData
+    ) {
         SQLManager.shared.addStarRailRoleComputeInfo(
             uuid: uid,
             roleID: roleID,
             model: info
-        ) { success, error in
+        ) { _, error in
             guard error == nil else {
                 return
             }
-            debugPrint("Save role info success")
+            debugPrint("Save role Compute success")
+        }
+    }
+    
+    static func upgradeStarRailRoleCompute(
+        uid: String,
+        roleID: String,
+        info: StarRailSkillComputeData
+    ) {
+        SQLManager.shared.upgradeStarRailRoleComputeInfo(
+            uuid: uid,
+            roleID: roleID,
+            model: info
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            debugPrint("Upgrade role Compute success")
         }
     }
 }
