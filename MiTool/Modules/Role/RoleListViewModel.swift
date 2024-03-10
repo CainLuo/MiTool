@@ -28,7 +28,7 @@ class RoleListViewModel: ObservableObject {
         let localList = SQLManager.shared.getAllStarRailRoleList(uuid: uid)
         roleList = localList
         
-        NetworkServerManager.fetchStarRailRoles(uid: uid) { [weak self] _, list in
+        ApiManager.fetchStarRailRoles(uid: uid) { [weak self] _, list in
             self?.roleList = list
         }
     }

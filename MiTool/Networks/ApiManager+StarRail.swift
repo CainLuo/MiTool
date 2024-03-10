@@ -1,5 +1,5 @@
 //
-//  NetworkServerManager+StarRail.swift
+//  ApiManager+StarRail.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/3/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NetworkServerManager {
+extension ApiManager {
     static func fetchStarRailRoles(
         uid: String,
         complete: ((Bool, [StarRailAllRoleListModel]) -> Void)?
@@ -25,9 +25,9 @@ extension NetworkServerManager {
                 uid, roleID: role.itemID ?? ""
             ) { _, item in
                 if item != nil {
-                    NetworkServerManager.upgradeStarRailRoleInfo(uid: uid, role: role)
+                    ApiManager.upgradeStarRailRoleInfo(uid: uid, role: role)
                 } else {
-                    NetworkServerManager.saveStarRailRoleInfo(uid: uid, role: role)
+                    ApiManager.saveStarRailRoleInfo(uid: uid, role: role)
                 }
             }
             
@@ -67,7 +67,7 @@ extension NetworkServerManager {
 }
 
 // MARK: - Honkai: StarRail Role Skills
-extension NetworkServerManager {
+extension ApiManager {
     static func fetchStarRailRoleSkill(
         uid: String,
         roleID: String
@@ -80,9 +80,9 @@ extension NetworkServerManager {
         
         SQLManager.shared.getStarRailRoleSkills(uid, roleID: roleID) { _, item in
             if item != nil {
-                NetworkServerManager.upgradeStarRailRoleSkill(uid: uid, info: info)
+                ApiManager.upgradeStarRailRoleSkill(uid: uid, info: info)
             } else {
-                NetworkServerManager.saveStarRailRoleSkill(uid: uid, info: info)
+                ApiManager.saveStarRailRoleSkill(uid: uid, info: info)
             }
         }
     }
@@ -119,7 +119,7 @@ extension NetworkServerManager {
 }
 
 // MARK: - Honkai: StarRail Role Compute
-extension NetworkServerManager {
+extension ApiManager {
     static func fetchStarRailRoleSkillCompute(
         uid: String,
         roleID: String
@@ -134,9 +134,9 @@ extension NetworkServerManager {
             uid, roleID: roleID
         ) { _, item in
             if item != nil {
-                NetworkServerManager.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+                ApiManager.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
             } else {
-                NetworkServerManager.saveStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+                ApiManager.saveStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
             }
         }
     }

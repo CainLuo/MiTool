@@ -13,7 +13,7 @@ class MihoyoGameCardViewModel: ObservableObject {
     @Published var gameRecord: [MihoyoGameCardsList] = []
     
     func getMihoyoGameCard(_ uid: String) {
-        NetworkServerManager.fetchMihoyoGameCards(uid: uid) { [weak self] gameList in
+        ApiManager.fetchMihoyoGameCards(uid: uid) { [weak self] gameList in
             self?.gameRecord = gameList
         }
     }

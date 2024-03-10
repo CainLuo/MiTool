@@ -1,5 +1,5 @@
 //
-//  NetworkServerManager+SQL.swift
+//  ApiManager+SQL.swift
 //  MiTool
 //
 //  Created by Cain on 2024/3/5.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NetworkServerManager {
+extension ApiManager {
     static func saveMihoyoUserInfo(
         _ userInfo: MihoyoUserInfo,
         completion: ((Bool, Error?) -> Void)?
