@@ -102,6 +102,40 @@ extension SQLManager {
             complete?(false, error)
         }
     }
+    
+    func getStarRailRoleInfo(
+        _ uuid: String,
+        roleID: String,
+        complete: ((Bool, StarRailAllRoleListModel?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = starRailRole.filter(
+                    uid == uuid &&
+                    itemID == roleID
+                )
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, StarRailAllRoleListModel(
+                        itemID: item[itemID],
+                        itemName: item[itemName],
+                        iconURL: item[iconURL],
+                        damageType: Damage(rawValue: item[damageType] ?? ""),
+                        rarity: RarityType(rawValue: item[rarity] ?? ""),
+                        avatarBaseType: Destiny(rawValue: item[avatarBaseType] ?? ""),
+                        maxLevel: item[maxLevel],
+                        curLevel: item[curLevel],
+                        targetLevel: item[targetLevel],
+                        verticalIconURL: item[verticalIconURL],
+                        isForward: item[isForward]
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            debugPrint(error)
+            complete?(false, nil)
+        }
+    }
 
     func getAllStarRailRoleList(uuid: String) -> [StarRailAllRoleListModel] {
         var list: [StarRailAllRoleListModel] = []

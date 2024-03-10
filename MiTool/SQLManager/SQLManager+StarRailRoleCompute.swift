@@ -11,20 +11,21 @@ import SQLite
 private let index = Expression<Int64>("index")                              // 索引
 private let uid = Expression<String?>("uid")                                // UID
 private let itemID = Expression<String?>("itemID")                          // 角色 ID
-private let avatarConsume = Expression<String?>("avatar_consume")           // 角色等级培养耗材
-private let skillConsume = Expression<String?>("skill_consume")             // 角色行迹培养耗材
-private let equipmentConsume = Expression<String?>("equipment_consume")     // 角色光锥培养耗材
-private let userOwnsMaterials = Expression<String?>("user_owns_materials")  // 用户已有耗材的类型
-private let needGetMaterials = Expression<String?>("need_get_materials")    // 需要获取的耗材
-private let canPayMaterials = Expression<String?>("can_pay_materials")      // 可以支出的耗材
-private let canMergeMaterials = Expression<String?>("can_merge_materials")  // 可以合成的耗材
-private let coinID = Expression<String?>("coin_id")                         // coinID
+private let avatarConsume = Expression<String?>("avatarConsume")           // 角色等级培养耗材
+private let skillConsume = Expression<String?>("skillConsume")             // 角色行迹培养耗材
+private let equipmentConsume = Expression<String?>("equipmentConsume")     // 角色光锥培养耗材
+private let userOwnsMaterials = Expression<String?>("userOwnsMaterials")  // 用户已有耗材的类型
+private let needGetMaterials = Expression<String?>("needGetMaterials")    // 需要获取的耗材
+private let canPayMaterials = Expression<String?>("canPayMaterials")      // 可以支出的耗材
+private let canMergeMaterials = Expression<String?>("canMergeMaterials")  // 可以合成的耗材
+private let coinID = Expression<String?>("coinID")                         // coinID
 
 extension SQLManager {
     func cretestarRailRoleComputeTable(_ dataBase: Connection) {
         do {
             try dataBase.run(starRailRoleCompute.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
+                table.column(uid)
                 table.column(itemID)
                 table.column(avatarConsume)
                 table.column(skillConsume)
@@ -94,6 +95,37 @@ extension SQLManager {
             }
         } catch {
             complete?(false, error)
+        }
+    }
+    
+    func getStarRailRoleCompute(
+        _ uuid: String,
+        roleID: String,
+        complete: ((Bool, StarRailSkillComputeData?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = starRailRoleCompute.filter(
+                    uid == uuid &&
+                    itemID == roleID
+                )
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, StarRailSkillComputeData(
+                        avatarConsume: item[avatarConsume],
+                        skillConsume: item[skillConsume],
+                        equipmentConsume: item[equipmentConsume],
+                        userOwnsMaterials: item[userOwnsMaterials],
+                        needGetMaterials: item[needGetMaterials],
+                        canPayMaterials: item[canPayMaterials],
+                        canMergeMaterials: item[canMergeMaterials],
+                        coinID: item[coinID]
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            debugPrint(error)
+            complete?(false, nil)
         }
     }
 

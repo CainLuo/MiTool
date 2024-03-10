@@ -84,6 +84,34 @@ extension SQLManager {
             complete?(false, error)
         }
     }
+    
+    func getStarRailRoleSkills(
+        _ uuid: String,
+        roleID: String,
+        complete: ((Bool, StarRailRoleInfoData?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = starRailRoleSkill.filter(
+                    uid == uuid &&
+                    itemID == roleID
+                )
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, StarRailRoleInfoData(
+                        avatar: item[itemID],
+                        skills: item[skills],
+                        skillsOther: item[skillsOther],
+                        equipment: item[equipment],
+                        isLogin: item[isLogin] ?? false
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            debugPrint(error)
+            complete?(false, nil)
+        }
+    }
 
     func getAllStarRailRoleSkillList(uuid: String) -> [StarRailRoleInfoData] {
         var list: [StarRailRoleInfoData] = []
