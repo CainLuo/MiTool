@@ -14,22 +14,21 @@ struct StarRaillRarityView: View {
     var radius: CGFloat = 0
     
     var body: some View {
-        ZStack {
-            LinearGradient(
-                gradient: rarity.ratityColor,
-                startPoint: .top,
-                endPoint: .bottom
+        KFImage(URL(string: urlString))
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .background(
+                LinearGradient(
+                    gradient: rarity.ratityColor,
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
             )
-
-            KFImage(URL(string: urlString))
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        }
-        .clipShape(
-            .rect(
-                topTrailingRadius: radius
+            .clipShape(
+                .rect(
+                    topTrailingRadius: radius
+                )
             )
-        )
     }
 }
 
