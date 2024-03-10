@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkServerManager {
-    private static func api() -> ApiProtocol {
+    static func api() -> ApiProtocol {
         #if DEBUG
         return MockApi()
         #else
@@ -38,6 +38,8 @@ class NetworkServerManager {
         fetchMihoyoGameCards(uid: uid) { list in
             completion?(userInfo, list)
         }
+        
+        fetchStarRailRoles(uid: uid) { _, _ in }
     }
     
     static func fetchMihoyoGameCards(

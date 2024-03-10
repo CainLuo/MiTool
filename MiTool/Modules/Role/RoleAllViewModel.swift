@@ -14,10 +14,8 @@ class RoleAllViewModel: ObservableObject {
     private let manager = MockApi.shared
 
     func fetchRoleAllList() {
-        let model = manager.getStarRailAllRoleList()
-        guard let roleList = model.data?.list else {
-            return
+        NetworkServerManager.fetchStarRailRoles(uid: "") { [weak self] _, list in
+            self?.roleList = list
         }
-        self.roleList = roleList
     }
 }

@@ -25,7 +25,7 @@ protocol ApiProtocol {
     func getGshinImpactSpiralAbyss() -> Any
 
     // MARK: - Honkai: StarRail
-    func getStarRailWeight() -> StarRailWeightModel
+    func getStarRailWidget() -> StarRailWeightModel
     func getStarRailDailyNote() -> StarRailWeightModel
     func getStarRailCharacter() -> Any
     func getStarRailAvatarList() -> Any

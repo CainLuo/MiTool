@@ -112,6 +112,7 @@
 		BFFCC1EA2B9C7E5100780742 /* 1111SkillCompute.json in Resources */ = {isa = PBXBuildFile; fileRef = BFFCC1E92B9C7E5100780742 /* 1111SkillCompute.json */; };
 		BFFCC1EC2B9C89BC00780742 /* 1112SkillCompute.json in Resources */ = {isa = PBXBuildFile; fileRef = BFFCC1EB2B9C89BC00780742 /* 1112SkillCompute.json */; };
 		BFFCC1EE2B9C89DC00780742 /* 1112Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = BFFCC1ED2B9C89DC00780742 /* 1112Skill.json */; };
+		BFFCC1F02B9CC84F00780742 /* NetworkServerManager+StarRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCC1EF2B9CC84F00780742 /* NetworkServerManager+StarRail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,7 @@
 		BFFCC1E92B9C7E5100780742 /* 1111SkillCompute.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111SkillCompute.json; sourceTree = "<group>"; };
 		BFFCC1EB2B9C89BC00780742 /* 1112SkillCompute.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1112SkillCompute.json; sourceTree = "<group>"; };
 		BFFCC1ED2B9C89DC00780742 /* 1112Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1112Skill.json; sourceTree = "<group>"; };
+		BFFCC1EF2B9CC84F00780742 /* NetworkServerManager+StarRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkServerManager+StarRail.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +465,7 @@
 				BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */,
 				BFE403B52B6E2A69002FF39E /* MockApi.swift */,
 				BF3F43F22B9C3DEB00B5C3FD /* NetworkServerManager.swift */,
+				BFFCC1EF2B9CC84F00780742 /* NetworkServerManager+StarRail.swift */,
 				BF3F43F32B9C3DEB00B5C3FD /* NetworkServerManager+SQL.swift */,
 				A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */,
 			);
@@ -743,6 +746,7 @@
 				BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */,
 				BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */,
 				BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */,
+				BFFCC1F02B9CC84F00780742 /* NetworkServerManager+StarRail.swift in Sources */,
 				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
 				BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,

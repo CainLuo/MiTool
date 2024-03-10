@@ -24,7 +24,7 @@ extension Api {
         StarRailAllRoleModel()
     }
 
-    func getStarRailWeight() -> StarRailWeightModel {
+    func getStarRailWidget() -> StarRailWeightModel {
         StarRailWeightModel()
     }
 

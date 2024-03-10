@@ -17,7 +17,6 @@ class RoleInfoViewModel: ObservableObject {
     @Published var equipment = StarRailRoleInfoEquipment()
         
     @Published var consumeSections: [StarRailLocalCompute] = []
-    @Published var skillsCompute = StarRailLocalCompute()
 
     func getRoleInfo(id: String) {
         let model = api.getRoleInfo(id: id)
@@ -71,7 +70,7 @@ class RoleInfoViewModel: ObservableObject {
                 title: CopyStarRailRole.skillsConsume,
                 consume: consume
             )
-            skillsCompute = compute
+            consumeSections.append(compute)
         }
         
         if let consume = data.equipmentConsume,
