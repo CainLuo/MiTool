@@ -21,6 +21,7 @@ class SQLManager {
     let starRailRoleCompute = Table("starRailRoleCompute")
     let mihoyoUser = Table("mihoyoUser")
     let mihoyoGameCards = Table("mihoyoGameCards")
+    let genshinImpactWidget = Table("genshinImpactWidget")
 
     // 获取/设置数据库User version
     var userVersion: Int32 {
@@ -64,6 +65,7 @@ class SQLManager {
             cretestarRailRoleComputeTable(dataBase)
             creteStarRailRoleSkillTable(dataBase)
             createMihoyoGameCardsTable(dataBase)
+            createGenshinImpactWidgetTable(dataBase)
         } catch {
             Logger.error(message: error)
         }
