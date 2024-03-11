@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A41389982B9EAEED00F94141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41389972B9EAEED00F94141 /* Logger.swift */; };
+		A413899A2B9EB34100F94141 /* ApiDSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41389992B9EB34100F94141 /* ApiDSHelper.swift */; };
+		A413899C2B9EB3C000F94141 /* ApiHeaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413899B2B9EB3C000F94141 /* ApiHeaderConfiguration.swift */; };
+		A413899E2B9EB51A00F94141 /* LocaleX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413899D2B9EB51A00F94141 /* LocaleX.swift */; };
 		A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */; };
 		A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */; };
 		A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB92B8DE9C000C091BB /* starRailWidget.json */; };
@@ -128,6 +131,9 @@
 
 /* Begin PBXFileReference section */
 		A41389972B9EAEED00F94141 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A41389992B9EB34100F94141 /* ApiDSHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDSHelper.swift; sourceTree = "<group>"; };
+		A413899B2B9EB3C000F94141 /* ApiHeaderConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeaderConfiguration.swift; sourceTree = "<group>"; };
+		A413899D2B9EB51A00F94141 /* LocaleX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleX.swift; sourceTree = "<group>"; };
 		A46EF6E92B9039B100A1E6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailDailyNode.json; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
 				A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */,
 				BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */,
+				A413899D2B9EB51A00F94141 /* LocaleX.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -479,6 +486,8 @@
 				BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */,
 				BFE403B52B6E2A69002FF39E /* MockApi.swift */,
 				A4871DB42B8DC8AA00C091BB /* RequestHeader.swift */,
+				A41389992B9EB34100F94141 /* ApiDSHelper.swift */,
+				A413899B2B9EB3C000F94141 /* ApiHeaderConfiguration.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -756,6 +765,7 @@
 				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,
 				BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */,
 				BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */,
+				A413899E2B9EB51A00F94141 /* LocaleX.swift in Sources */,
 				BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */,
 				BFFCC1F02B9CC84F00780742 /* ApiManager+StarRail.swift in Sources */,
 				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
@@ -773,6 +783,7 @@
 				BF3F43ED2B9C3C2500B5C3FD /* StarRailRarityKeys.swift in Sources */,
 				BF5581C32B6FAFB3003A5487 /* LocalizableKeys.swift in Sources */,
 				A4871DBF2B8DEAB200C091BB /* GenshinImpactWidgetModel.swift in Sources */,
+				A413899C2B9EB3C000F94141 /* ApiHeaderConfiguration.swift in Sources */,
 				BFB03BBA2B8CE55A005DD170 /* StarRailSkillComputeModel.swift in Sources */,
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
@@ -787,6 +798,7 @@
 				A4871DB52B8DC8AA00C091BB /* RequestHeader.swift in Sources */,
 				BFA75B7F2B7FC3740020B246 /* ProfileInfoModel.swift in Sources */,
 				BFB03BA52B845263005DD170 /* GenshinImpactDailyNodeModel.swift in Sources */,
+				A413899A2B9EB34100F94141 /* ApiDSHelper.swift in Sources */,
 				A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */,
 				BFFCC1F42B9DA02E00780742 /* SectionHeaderView.swift in Sources */,
 				BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */,
