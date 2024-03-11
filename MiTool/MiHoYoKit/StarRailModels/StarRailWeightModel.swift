@@ -9,15 +9,15 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailWeightModel
-struct StarRailWeightModel: Mappable {
-    var retcode: Int?
-    var message: String?
-    var data: StarRailWeightDataModel?
+public struct StarRailWeightModel: Mappable {
+    public var retcode: Int?
+    public var message: String?
+    public var data: StarRailWeightDataModel?
     
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     init() { }
     
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
@@ -25,37 +25,37 @@ struct StarRailWeightModel: Mappable {
 }
 
 // MARK: - StarRailWeightDataModel
-struct StarRailWeightDataModel: Mappable {
+public struct StarRailWeightDataModel: Mappable {
     // 当前体力
-    var currentStamina: Int = 0
+    public var currentStamina: Int = 0
     // 最大体力
-    var maxStamina: Int = 0
+    public var maxStamina: Int = 0
     // 恢复体力时间
-    var staminaRecoverTime: Int = 0
+    public var staminaRecoverTime: Int = 0
     // 探险数量
-    var acceptedEpeditionNum: Int = 0
+    public var acceptedEpeditionNum: Int = 0
     // 总的最大可探险数量
-    var totalExpeditionNum: Int = 0
+    public var totalExpeditionNum: Int = 0
     // 探险详情
-    var expeditions: [StarRailWeightExpeditionModel]?
+    public var expeditions: [StarRailWeightExpeditionModel]?
     // 当前当日活跃度
-    var currentTrainScore: Int = 0
+    public var currentTrainScore: Int = 0
     // 总的当日活跃度
-    var maxTrainScore: Int = 0
+    public var maxTrainScore: Int = 0
     // 本周积分
-    var currentRogueScore: Int = 0
+    public var currentRogueScore: Int = 0
     // 总的最大本周积分
-    var maxRogueScore: Int = 0
+    public var maxRogueScore: Int = 0
     // 当前可用历战余响次数
-    var weeklyCocoonCnt: Int = 0
+    public var weeklyCocoonCnt: Int = 0
     // 最大可用历战余响次数
-    var weeklyCocoonLimit: Int = 0
+    public var weeklyCocoonLimit: Int = 0
     // 当前体力储备
-    var currentReserveStamina: Int = 0
+    public var currentReserveStamina: Int = 0
     // 是否有体力存储
-    var isReserveStaminaFull = false
+    public var isReserveStaminaFull = false
     
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     
     init(
         currentStamina: Int,
@@ -89,7 +89,7 @@ struct StarRailWeightDataModel: Mappable {
         self.isReserveStaminaFull = isReserveStaminaFull
     }
     
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         currentStamina <- map["current_stamina"]
         maxStamina <- map["max_stamina"]
         staminaRecoverTime <- map["stamina_recover_time"]
@@ -107,7 +107,7 @@ struct StarRailWeightDataModel: Mappable {
     }
 }
 
-enum StarRailWeightExpeditionStatus: String {
+public enum StarRailWeightExpeditionStatus: String {
     case ongoing = "Ongoing"
     case finish = "Finished"
     
@@ -115,20 +115,20 @@ enum StarRailWeightExpeditionStatus: String {
 }
 
 // MARK: - StarRailWeightExpeditionModel
-struct StarRailWeightExpeditionModel: Mappable, Identifiable {
-    var id = UUID()
+public struct StarRailWeightExpeditionModel: Mappable, Identifiable {
+    public var id = UUID()
     // 探险角色头像列表
-    var avatars: [String]?
+    public var avatars: [String]?
     // 探险状态
-    var status: StarRailWeightExpeditionStatus = .ongoing
+    public var status: StarRailWeightExpeditionStatus = .ongoing
     // 探险剩余时间
-    var remainingTime: Int = 0
+    public var remainingTime: Int = 0
     // 探险名称
-    var name: String = ""
+    public var name: String = ""
     // 探险icon地址
-    var itemURL: String = ""
+    public var itemURL: String = ""
     
-    var timeString: String {
+    public var timeString: String {
         if remainingTime == 0 {
             return CopyStarRailWeight.finished
         } else if remainingTime < 3600 {
@@ -141,7 +141,7 @@ struct StarRailWeightExpeditionModel: Mappable, Identifiable {
         }
     }
     
-    var timeProgress: CGFloat {
+    public var timeProgress: CGFloat {
         if remainingTime == 0 {
             return 1
         } else {
@@ -149,9 +149,9 @@ struct StarRailWeightExpeditionModel: Mappable, Identifiable {
         }
     }
     
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         avatars <- map["avatars"]
         status <- map["status"]
         remainingTime <- map["remaining_time"]
@@ -160,20 +160,20 @@ struct StarRailWeightExpeditionModel: Mappable, Identifiable {
     }
 }
 
-enum StarRailLocalType {
+public enum StarRailLocalType {
     case daily
     case weekly
     case entrusted
     case weeklyMonster
 }
 
-struct StarRailLocalModel: Identifiable, Hashable {
-    var id = UUID()
-    var type: StarRailLocalType
-    var currentValue: Int = 0
-    var maxValue: Int = 0
+public struct StarRailLocalModel: Identifiable, Hashable {
+    public var id = UUID()
+    public var type: StarRailLocalType
+    public var currentValue: Int = 0
+    public var maxValue: Int = 0
     
-    var name: String {
+    public var name: String {
         switch type {
         case .daily:
             return CopyStarRailWeight.daily

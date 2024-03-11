@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 class Api: ApiProtocol {
     func getMihoyoUserInfo() -> MihoyoUserModel {

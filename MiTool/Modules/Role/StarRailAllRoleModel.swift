@@ -9,16 +9,16 @@ import SwiftUI
 import ObjectMapper
 
 // MARK: - StarRailAllRoleModel
-struct StarRailAllRoleModel: Mappable, Identifiable {
-    var id = UUID()
-    var retcode: Int?
-    var message: String?
-    var data: StarRailAllRoleDataModel?
+public struct StarRailAllRoleModel: Mappable, Identifiable {
+    public var id = UUID()
+    public var retcode: Int?
+    public var message: String?
+    public var data: StarRailAllRoleDataModel?
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
     init() { }
 
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
@@ -26,34 +26,34 @@ struct StarRailAllRoleModel: Mappable, Identifiable {
 }
 
 // MARK: - StarRailAllRoleDataModel
-struct StarRailAllRoleDataModel: Mappable, Identifiable {
-    var id = UUID()
-    var list: [StarRailAllRoleListModel]?
-    var isLogin: Bool?
+public struct StarRailAllRoleDataModel: Mappable, Identifiable {
+    public var id = UUID()
+    public var list: [StarRailAllRoleListModel]?
+    public var isLogin: Bool?
 
-    init?(map: Map) {
+    public init?(map: Map) {
     }
 
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         list <- map["list"]
         isLogin <- map["isLogin"]
     }
 }
 
 // MARK: - StarRailAllRoleListModel
-struct StarRailAllRoleListModel: Mappable, Identifiable {
-    var id = UUID()
-    var itemID: String?
-    var itemName: String?
-    var iconURL: String?
-    var damageType: Damage?
-    var rarity: RarityType?
-    var avatarBaseType: Destiny?
-    var maxLevel: Int?
-    var curLevel: Int?
-    var targetLevel: Int?
-    var verticalIconURL: String?
-    var isForward: Bool?
+public struct StarRailAllRoleListModel: Mappable, Identifiable {
+    public var id = UUID()
+    public var itemID: String?
+    public var itemName: String?
+    public var iconURL: String?
+    public var damageType: Damage?
+    public var rarity: RarityType?
+    public var avatarBaseType: Destiny?
+    public var maxLevel: Int?
+    public var curLevel: Int?
+    public var targetLevel: Int?
+    public var verticalIconURL: String?
+    public var isForward: Bool?
 
     init(
         itemID: String?,
@@ -81,9 +81,9 @@ struct StarRailAllRoleListModel: Mappable, Identifiable {
         self.isForward = isForward
     }
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
 
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
         iconURL <- map["icon_url"]

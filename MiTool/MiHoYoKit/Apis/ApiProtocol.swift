@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import Alamofire
-import CryptoSwift
 
-protocol ApiProtocol {
+public protocol ApiProtocol {
     // MARK: - Mihoyo User
     func getMihoyoUserInfo() -> MihoyoUserModel
     func getMihoyoGameCards() -> MihoyoGameCardsModel

@@ -9,15 +9,15 @@ import Foundation
 import ObjectMapper
 
 // MARK: - MihoyoUserModel
-struct MihoyoUserModel: Mappable {
-    var retcode: Int?
-    var message: String?
-    var data: MihoyoUserData?
+public struct MihoyoUserModel: Mappable {
+    public var retcode: Int?
+    public var message: String?
+    public var data: MihoyoUserData?
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
@@ -25,40 +25,40 @@ struct MihoyoUserModel: Mappable {
 }
 
 // MARK: - MihoyoUserData
-struct MihoyoUserData: Mappable {
-    var userInfo: MihoyoUserInfo?
+public struct MihoyoUserData: Mappable {
+    public var userInfo: MihoyoUserInfo?
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         userInfo <- map["user_info"]
     }
 }
 
 // MARK: - MihoyoUserInfo
-struct MihoyoUserInfo: Mappable, Identifiable {
-    var id = UUID()
-    var uid: String = ""
-    var nickname: String = ""
-    var introduce: String?
-    var gender: Int?
-    var communityInfo: MihoyoUserCommunityInfo?
-    var avatarURL: String = ""
-    var ipRegion: String = ""
-    var cookie: String?
+public struct MihoyoUserInfo: Mappable, Identifiable {
+    public var id = UUID()
+    public var uid: String = ""
+    public var nickname: String = ""
+    public var introduce: String?
+    public var gender: Int?
+    public var communityInfo: MihoyoUserCommunityInfo?
+    public var avatarURL: String = ""
+    public var ipRegion: String = ""
+    public var cookie: String?
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
     init() { }
 
-    var uidString: String {
+    public var uidString: String {
         "UID: \(uid)"
     }
 
-    var createdAt: Int {
+    public var createdAt: Int {
         communityInfo?.createdAt ?? 0
     }
 
-    var createTime: String {
+    public var createTime: String {
         let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
         let dateFormart = DateFormatter()
         dateFormart.dateFormat = CopyGenshinWeight.date
@@ -85,7 +85,7 @@ struct MihoyoUserInfo: Mappable, Identifiable {
         self.cookie = cookie
     }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         uid <- map["uid"]
         nickname <- map["nickname"]
         introduce <- map["introduce"]
@@ -97,12 +97,12 @@ struct MihoyoUserInfo: Mappable, Identifiable {
 }
 
 // MARK: - MihoyoUserCommunityInfo
-struct MihoyoUserCommunityInfo: Mappable {
-    var createdAt: Int?
+public struct MihoyoUserCommunityInfo: Mappable {
+    public var createdAt: Int?
 
-    init?(map: Map) { }
+    public init?(map: Map) { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         createdAt <- map["created_at"]
     }
 }

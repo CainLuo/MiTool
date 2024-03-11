@@ -9,16 +9,16 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailSkillComputeModel
-struct StarRailSkillComputeModel: Mappable {
-    var retcode: Int?
-    var message: String?
-    var data: StarRailSkillComputeData?
+public struct StarRailSkillComputeModel: Mappable {
+    public var retcode: Int?
+    public var message: String?
+    public var data: StarRailSkillComputeData?
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
 
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
@@ -26,29 +26,29 @@ struct StarRailSkillComputeModel: Mappable {
 }
 
 // MARK: - StarRailSkillComputeData
-struct StarRailSkillComputeData: Mappable {
+public struct StarRailSkillComputeData: Mappable {
     // 等级培养耗材
-    var avatarConsume: [StarRailSkillComputeAvatarConsume]?
+    public var avatarConsume: [StarRailSkillComputeAvatarConsume]?
     // 行迹培养耗材
-    var skillConsume: [StarRailSkillComputeAvatarConsume]?
+    public var skillConsume: [StarRailSkillComputeAvatarConsume]?
     // 光锥培养耗材
-    var equipmentConsume: [StarRailSkillComputeAvatarConsume]?
+    public var equipmentConsume: [StarRailSkillComputeAvatarConsume]?
     // 用户需要自备的材料
-    var userOwnsMaterials: [String: Int]?
+    public var userOwnsMaterials: [String: Int]?
     // 除去背包内还需要获取的材料
-    var needGetMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var needGetMaterials: [StarRailSkillComputeAvatarConsume]?
     // 背包里可以支出的材料
-    var canPayMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var canPayMaterials: [StarRailSkillComputeAvatarConsume]?
     // 背包里可以合并的材料
-    var canMergeMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var canMergeMaterials: [StarRailSkillComputeAvatarConsume]?
     // ID
-    var coinID: String?
+    public var coinID: String?
 
-    var userOwnsMaterialsString: String? {
+    public var userOwnsMaterialsString: String? {
         userOwnsMaterials?.toJSONString
     }
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
 
     init(
         avatarConsume: String?,
@@ -70,7 +70,7 @@ struct StarRailSkillComputeData: Mappable {
         self.coinID = coinID
     }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         avatarConsume <- map["avatar_consume"]
         skillConsume <- map["skill_consume"]
         equipmentConsume <- map["equipment_consume"]
@@ -83,20 +83,20 @@ struct StarRailSkillComputeData: Mappable {
 }
 
 // MARK: - StarRailSkillComputeAvatarConsume
-struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
-    var id = UUID()
-    var itemID: String?
-    var itemName: String?
-    var itemURL: String?
-    var num: Int?
-    var wikiURL: String?
-    var rarity: RarityType?
+public struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
+    public var id = UUID()
+    public var itemID: String?
+    public var itemName: String?
+    public var itemURL: String?
+    public var num: Int?
+    public var wikiURL: String?
+    public var rarity: RarityType?
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
 
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
         itemURL <- map["item_url"]
@@ -107,8 +107,8 @@ struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
 }
 
 // MARK: - Local Model
-struct StarRailLocalCompute: Identifiable {
-    var id = UUID()
-    var title: String = ""
-    var consume: [StarRailSkillComputeAvatarConsume] = []
+public struct StarRailLocalCompute: Identifiable {
+    public var id = UUID()
+    public var title: String = ""
+    public var consume: [StarRailSkillComputeAvatarConsume] = []
 }

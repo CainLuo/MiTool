@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-class MockApi: ApiProtocol {
-    static let shared = MockApi()
+public class MockApi: ApiProtocol {
+    public static let shared = MockApi()
 
 //    private init() { }
 
-    func getMihoyoUserInfo() -> MihoyoUserModel {
+    public func getMihoyoUserInfo() -> MihoyoUserModel {
         guard let model = Bundle.getJSONFile(
             "mihoyoUser",
             responseType: MihoyoUserModel.self
@@ -23,7 +23,7 @@ class MockApi: ApiProtocol {
         return model
     }
     
-    func getMihoyoGameCards() -> MihoyoGameCardsModel {
+    public func getMihoyoGameCards() -> MihoyoGameCardsModel {
         guard let model = Bundle.getJSONFile(
             "mihoyoPersonal",
             responseType: MihoyoGameCardsModel.self
@@ -36,7 +36,7 @@ class MockApi: ApiProtocol {
 
 // MARK: - Get Star Rail Info
 extension MockApi {
-    func getStarRailAllRoleList() -> StarRailAllRoleModel {
+    public func getStarRailAllRoleList() -> StarRailAllRoleModel {
         guard let model = Bundle.getJSONFile(
             "starRailAllAvatars",
             responseType: StarRailAllRoleModel.self
@@ -46,7 +46,7 @@ extension MockApi {
         return model
     }
 
-    func getStarRailWidget() -> StarRailWeightModel {
+    public func getStarRailWidget() -> StarRailWeightModel {
         guard let model = Bundle.getJSONFile(
             "starRailDailyNode",
             responseType: StarRailWeightModel.self
@@ -56,7 +56,7 @@ extension MockApi {
         return model
     }
 
-    func getRoleInfo(id: String) -> StarRailRoleInfoModel {
+    public func getRoleInfo(id: String) -> StarRailRoleInfoModel {
         guard let model = Bundle.getJSONFile(
             "\(id)Skill",
             responseType: StarRailRoleInfoModel.self) else {
@@ -65,7 +65,7 @@ extension MockApi {
         return model
     }
 
-    func getSkillCompute(id: String) -> StarRailSkillComputeModel {
+    public func getSkillCompute(id: String) -> StarRailSkillComputeModel {
         guard let model = Bundle.getJSONFile(
             "\(id)SkillCompute",
             responseType: StarRailSkillComputeModel.self
@@ -75,66 +75,66 @@ extension MockApi {
         return model
     }
 
-    func getStarRailDailyNote() -> StarRailWeightModel {
+    public func getStarRailDailyNote() -> StarRailWeightModel {
         StarRailWeightModel()
     }
 
-    func getStarRailCharacter() -> Any {
+    public func getStarRailCharacter() -> Any {
         ""
     }
 
-    func getStarRailAvatarList() -> Any {
+    public func getStarRailAvatarList() -> Any {
         ""
     }
 
-    func getStarRailAvatarDetail() -> Any {
+    public func getStarRailAvatarDetail() -> Any {
         ""
     }
 
-    func getStarRailEquipmentList() -> Any {
+    public func getStarRailEquipmentList() -> Any {
         ""
     }
 
-    func getSkillRogue(id: String) -> Any {
+    public func getSkillRogue(id: String) -> Any {
         ""
     }
 
-    func getSkillChallenge(id: String) -> Any {
+    public func getSkillChallenge(id: String) -> Any {
         ""
     }
 }
 
 // MARK: - Get Genshin Impact Info
 extension MockApi {
-    func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel {
+    public func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel {
         GenshinImpactDailyNodeModel()
     }
 
-    func getGshinImpactCharacter() -> GenshinImpactCharacterModel {
+    public func getGshinImpactCharacter() -> GenshinImpactCharacterModel {
         GenshinImpactCharacterModel()
     }
 
-    func getGshinImpactAvatarList() -> Any {
+    public func getGshinImpactAvatarList() -> Any {
         ""
     }
 
-    func getGshinImpactFilterList() -> Any {
+    public func getGshinImpactFilterList() -> Any {
         ""
     }
 
-    func getGshinImpactAvatarSkill() -> Any {
+    public func getGshinImpactAvatarSkill() -> Any {
         ""
     }
 
-    func getGshinImpactCompute() -> Any {
+    public func getGshinImpactCompute() -> Any {
         ""
     }
 
-    func getGshinImpactSpiralAbyss() -> Any {
+    public func getGshinImpactSpiralAbyss() -> Any {
         ""
     }
 
-    func getGshinImpactWeight() -> GenshinImpactDailyNodeModel {
+    public func getGshinImpactWeight() -> GenshinImpactDailyNodeModel {
         guard let model = Bundle.getJSONFile(
             "genshinDailyNote",
             responseType: GenshinImpactDailyNodeModel.self)

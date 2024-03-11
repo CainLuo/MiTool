@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Destiny: String {
+public enum Destiny: String {
     case destruction = "1"     // 毁灭
     case theHunt = "2"         // 巡猎
     case erudition = "3"       // 智识
@@ -16,7 +16,7 @@ enum Destiny: String {
     case preservation = "6"    // 存护
     case abundance = "7"       // 丰饶
 
-    var destinyIcon: String {
+    public var destinyIcon: String {
         switch self {
         case .destruction:
             return DestinyIcon.destructionIcon.rawValue
@@ -36,7 +36,7 @@ enum Destiny: String {
     }
 }
 
-enum DestinyIcon: String {
+public enum DestinyIcon: String {
     case destructionIcon = "destruction"      // 毁灭
     case theHuntIcon = "theHunt"              // 巡猎
     case eruditionIcon = "erudition"          // 智识
