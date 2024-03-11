@@ -29,18 +29,14 @@ class SQLManager {
                 let version = try dataBase?.scalar("PRAGMA user_version") as? Int64
                 return Int32(version ?? 0)
             } catch {
-                #if DEBUG
-                print(error)
-                #endif
+                Logger.error(message: error)
             }
             return 0
         } set {
             do {
                 try dataBase?.run("PRAGMA user_version = \(newValue)")
             } catch {
-                #if DEBUG
-                debugPrint(error)
-                #endif
+                Logger.error(message: error)
             }
         }
     }
@@ -54,8 +50,8 @@ class SQLManager {
         ).first else {
             return
         }
-        
-        debugPrint("⚠️⚠️⚠️ ---------- Database path: \(path)/db.sqlite3 ---------- ⚠️⚠️⚠️")
+
+        Logger.info(message: "Database path: \(path)/db.sqlite3")
         
         do {
             dataBase = try Connection("\(path)/db.sqlite3")
@@ -69,9 +65,7 @@ class SQLManager {
             creteStarRailRoleSkillTable(dataBase)
             createMihoyoGameCardsTable(dataBase)
         } catch {
-            #if DEBUG
-            debugPrint("💥💥💥 ---------- \(error.localizedDescription) ---------- 💥💥💥")
-            #endif
+            Logger.error(message: error)
         }
     }
     

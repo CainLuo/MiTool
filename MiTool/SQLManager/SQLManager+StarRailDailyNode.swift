@@ -47,7 +47,7 @@ extension SQLManager {
                 table.column(isReserveStaminaFull)
             })
         } catch {
-            debugPrint(error)
+            Logger.error(message: error)
         }
     }
 
@@ -135,9 +135,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            #if DEBUG
-            print(error)
-            #endif
+            Logger.error(message: error)
             return list
         }
     }

@@ -50,7 +50,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Save role info success")
+            Logger.info(message: "Save role info success")
         }
     }
     
@@ -61,7 +61,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Upgrade role info success")
+            Logger.info(message: "Upgrade role info success")
         }
     }
 }
@@ -98,7 +98,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Save role Skill success")
+            Logger.info(message: "Save role Skill success")
         }
     }
     
@@ -113,7 +113,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Upgrade role Skill success")
+            Logger.info(message: "Upgrade role Skill success")
         }
     }
 }
@@ -154,7 +154,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Save role Compute success")
+            Logger.info(message: "Save role Compute success")
         }
     }
     
@@ -171,7 +171,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            debugPrint("Upgrade role Compute success")
+            Logger.info(message: "Upgrade role Compute success")
         }
     }
 }

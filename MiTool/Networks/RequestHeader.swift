@@ -132,7 +132,7 @@ struct RequestHeader {
             let auth = try hmac.authenticate(messageData.bytes)
             return auth.toHexString()
         } catch {
-            print("Error calculating HMAC-SHA256: \(error)")
+            Logger.error(message: "Error calculating HMAC-SHA256: \(error)")
             return ""
         }
     }
