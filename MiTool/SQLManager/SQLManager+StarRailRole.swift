@@ -41,7 +41,7 @@ extension SQLManager {
                 table.column(isForward)
             })
         } catch {
-            debugPrint(error)
+            Logger.error(message: error)
         }
     }
 
@@ -68,7 +68,7 @@ extension SQLManager {
             try dataBase.run(insert)
             complete?(true, nil)
         } catch {
-            debugPrint(error)
+            Logger.error(message: error)
             complete?(false, error)
         }
     }
@@ -132,7 +132,7 @@ extension SQLManager {
             }
             complete?(false, nil)
         } catch {
-            debugPrint(error)
+            Logger.error(message: error)
             complete?(false, nil)
         }
     }
@@ -160,7 +160,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            print(error)
+            Logger.error(message: error)
             return list
         }
     }
