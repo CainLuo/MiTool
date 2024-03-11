@@ -6,59 +6,72 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
 
-class ApiNetworkManager {
-    func getRequest(
+enum ApiNetworkError: Error {
+    case invalidData
+    case requestFailed(Error)
+}
+
+protocol ApiNetworkService {
+    func createServerError() -> NSError
+    func performRequest<T: Mappable>(
         url: URL,
-        parameters: Parameters? = nil,
-        completionHandler: ((String, AFError?) -> Void)? = nil
-    ) {
-        AF.request(
-            url,
-            method: .get,
-            parameters: [:],
-            headers: [:]
-        )
-        .response { data in
-            switch data.result {
-            case .success(let result):
-                guard let result = result,
-                   let jsonString = String(data: result, encoding: .utf8) else {
-                    completionHandler?("Request success, but result is not json", nil)
-                    return
-                }
-                completionHandler?(jsonString, nil)
-            case .failure(let error):
-                completionHandler?("", error)
+        parameters: [String: String]?
+    ) async throws -> T
+}
+
+class ApiNetworkManager: ApiNetworkService {
+    func createServerError() -> NSError {
+        return NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)
+    }
+    
+    func performRequest<T: Mappable>(
+        url: URL,
+        parameters: [String: String]? = nil
+    ) async throws -> T {
+        let finalURL = try buildURL(with: url, parameters: parameters)
+        let (data, response) = try await URLSession.shared.data(from: finalURL)
+        
+        try validateResponse(response)
+        
+        let json = try parseJSON(data)
+        
+        guard let object = Mapper<T>().map(JSON: json) else {
+            throw ApiNetworkError.invalidData
+        }
+        
+        return object
+    }
+    
+    private func buildURL(with url: URL, parameters: [String: String]?) throws -> URL {
+        guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            throw ApiNetworkError.invalidData
+        }
+        
+        if let params = parameters {
+            urlComponents.queryItems = params.map { key, value in
+                URLQueryItem(name: key, value: value)
             }
+        }
+        
+        guard let finalURL = urlComponents.url else {
+            throw ApiNetworkError.invalidData
+        }
+        
+        return finalURL
+    }
+    
+    private func validateResponse(_ response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw ApiNetworkError.requestFailed(createServerError())
         }
     }
-
-    func postReuqest(
-        url: URL,
-        parameters: Parameters? = nil,
-        completionHandler: ((String, AFError?) -> Void)? = nil
-    ) {
-        AF.request(
-            url,
-            method: .get,
-            parameters: [:],
-            headers: [:]
-        )
-        .response { data in
-            switch data.result {
-            case .success(let result):
-                guard let result = result,
-                   let jsonString = String(data: result, encoding: .utf8) else {
-                    completionHandler?("Request success, but result is not json", nil)
-                    return
-                }
-                completionHandler?(jsonString, nil)
-            case .failure(let error):
-                completionHandler?("", error)
-            }
+    
+    private func parseJSON(_ data: Data) throws -> [String: Any] {
+        guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            throw ApiNetworkError.invalidData
         }
+        return json
     }
 }
