@@ -8,7 +8,6 @@
 import Foundation
 
 enum ApiHeaderConfiguration {
-    
     static let userAgent: String = """
     Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) \
     AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1
@@ -107,10 +106,10 @@ enum ApiHeaderConfiguration {
             
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Site": "same-site",
-            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Mode": "cors"
         ]
         if let additionalHeaders {
-            headers.merge(additionalHeaders, uniquingKeysWith: { $1 })
+            headers.merge(additionalHeaders) { $1 }
         }
         return headers
     }

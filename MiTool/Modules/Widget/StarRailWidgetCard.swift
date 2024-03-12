@@ -31,7 +31,7 @@ struct StarRailWidgetCard: View {
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
         .task {
-            viewModel.getStarRailWeight()
+            viewModel.getStarRailWidget()
         }
     }
 }
@@ -57,7 +57,7 @@ struct StarRailWidgetInfoView: View {
                                     height: IconSize.height)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(CopyStarRailWeight.trailblazePower)
+                    Text(CopyStarRailWidget.trailblazePower)
                     Text(viewModel.stamina)
                         .font(.system(size: 20, weight: .semibold))
                     Text(viewModel.recoveryTime)
@@ -70,7 +70,7 @@ struct StarRailWidgetInfoView: View {
                                     height: IconSize.height)
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text(CopyStarRailWeight.reserveTrailblazePower)
+                        Text(CopyStarRailWidget.reserveTrailblazePower)
                         Text(viewModel.reserveStamina)
                             .font(.system(size: 20, weight: .semibold))
                     }
@@ -120,7 +120,7 @@ struct StarRailExpeditionView: View {
         static let height: CGFloat = 50
     }
 
-    let expeditions: [StarRailWeightExpeditionModel]
+    let expeditions: [StarRailWidgetExpeditionModel]
     
     var columns = Array(
         repeating: GridItem(.flexible()),

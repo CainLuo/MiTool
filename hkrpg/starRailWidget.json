@@ -2,30 +2,30 @@
     "retcode": 0,
     "message": "OK",
     "data": {
-        "current_stamina": 112,
+        "current_stamina": 66,
         "max_stamina": 240,
-        "stamina_recover_time": 45965,
+        "stamina_recover_time": 62442,
         "accepted_expedition_num": 4,
         "total_expedition_num": 4,
         "expeditions": [{
-            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/bea98c6b93566547d0ffd4566d98b7d8.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/63e4efe649801ddef6eece29629e046d.png"],
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/aade5996c740ff0d6fdf472a3a5bd4b0.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/689840b2bd85a84bb77538587445d29f.png"],
             "status": "Ongoing",
-            "remaining_time": 33694,
+            "remaining_time": 14228,
             "name": "无名之地，无名之人"
         }, {
-            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/94dfc863bd9e2733d61ecfc3e0bb145b.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/c5e2442cade78c7690545c2227910c82.png"],
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/ead734e0c353add824509e21ad8e3875.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/4cd0a8befcdf1ca262b47572e856ea2f.png"],
             "status": "Ongoing",
-            "remaining_time": 33695,
+            "remaining_time": 14230,
             "name": "阿卡夏记录"
         }, {
-            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/4785614f7cace4a3a02e45cd07e9d094.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/e8993a7e84b2b3291913462066498f4d.png"],
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/f8766aea1f02b8214869b54d4fcf6cec.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/0526550adf0c38eab5ecde566c33a0cd.png"],
             "status": "Ongoing",
-            "remaining_time": 33696,
+            "remaining_time": 14232,
             "name": "看不见的手"
         }, {
-            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/ba1ddfbec41619921da91c6764db1c16.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_ud9dkb/9ae6a8cc4c19d70d06ed0fe120482a0e.png"],
+            "avatars": ["https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/f299fd66cebfe9d157b085e7594dfa04.png", "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u642mb/c1701a9422cfe7cda6471d95ba93d2b9.png"],
             "status": "Ongoing",
-            "remaining_time": 33698,
+            "remaining_time": 14235,
             "name": "幻梦的残片"
         }],
         "current_train_score": 500,
