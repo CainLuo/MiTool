@@ -24,8 +24,8 @@ extension Api {
         StarRailAllRoleModel()
     }
 
-    func getStarRailWidget() -> StarRailWidgetModel {
-        StarRailWidgetModel()
+    func getStarRailWidget() -> StarRailWeightModel {
+        StarRailWeightModel()
     }
 
     func getRoleInfo(id: String) -> StarRailRoleInfoModel {
@@ -36,8 +36,8 @@ extension Api {
         StarRailSkillComputeModel()
     }
 
-    func getStarRailDailyNote() -> StarRailWidgetModel {
-        StarRailWidgetModel()
+    func getStarRailDailyNote() -> StarRailWeightModel {
+        StarRailWeightModel()
     }
 
     func getStarRailCharacter() -> Any {

@@ -53,7 +53,7 @@ extension SQLManager {
 
     func addStarRailDailyNode(
         uuid: String,
-        model: StarRailWidgetDataModel,
+        model: StarRailWeightDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -81,7 +81,7 @@ extension SQLManager {
 
     func upgradeStarRailDailyNode(
         _ uuid: String,
-        model: StarRailWidgetDataModel,
+        model: StarRailWeightDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -109,12 +109,12 @@ extension SQLManager {
         }
     }
 
-    func getStarRaillAllDailyNode() -> [StarRailWidgetDataModel] {
-        var list: [StarRailWidgetDataModel] = []
+    func getStarRaillAllDailyNode() -> [StarRailWeightDataModel] {
+        var list: [StarRailWeightDataModel] = []
         do {
             try dataBase.transaction {
                 try dataBase.prepare(starRailDailyNode).forEach { item in
-                    let account = StarRailWidgetDataModel(
+                    let account = StarRailWeightDataModel(
                         currentStamina: item[currentStamina],
                         maxStamina: item[maxStamina],
                         staminaRecoverTime: item[staminaRecoverTime],
