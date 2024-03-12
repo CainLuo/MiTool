@@ -1,5 +1,5 @@
 //
-//  GenshinImpactWidgetModel.swift
+//  GenshinWidgetModel.swift
 //  MiTool
 //
 //  Created by Cain on 2024/2/27.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - GenshinImpactWidgetModel
-public struct GenshinImpactWidgetModel: Mappable {
+// MARK: - GenshinWidgetModel
+public struct GenshinWidgetModel: Mappable {
     public var retcode: Int?
     public var message: String?
-    public var data: GenshinImpactWidgetData?
+    public var data: GenshinWidgetData?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -24,8 +24,8 @@ public struct GenshinImpactWidgetModel: Mappable {
     }
 }
 
-// MARK: - GenshinImpactWidgetData
-public struct GenshinImpactWidgetData: Mappable {
+// MARK: - GenshinWidgetData
+public struct GenshinWidgetData: Mappable {
     public var currentResin: Int?
     public var maxResin: Int?
     public var resinRecoveryTime: String?
@@ -34,7 +34,7 @@ public struct GenshinImpactWidgetData: Mappable {
     public var isExtraTaskRewardReceived: Bool?
     public var currentExpeditionNum: Int?
     public var maxExpeditionNum: Int?
-    public var expeditions: [GenshinImpactWidgetExpedition]?
+    public var expeditions: [GenshinWidgetExpedition]?
     public var currentHomeCoin: Int?
     public var maxHomeCoin: Int?
     public var hasSigned: Bool?
@@ -66,8 +66,8 @@ public struct GenshinImpactWidgetData: Mappable {
     }
 }
 
-// MARK: - GenshinImpactWidgetExpedition
-public struct GenshinImpactWidgetExpedition: Mappable {
+// MARK: - GenshinWidgetExpedition
+public struct GenshinWidgetExpedition: Mappable {
     public var avatarSideIcon: String?
     public var status: String?
 

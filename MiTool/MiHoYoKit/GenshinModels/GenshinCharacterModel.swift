@@ -1,5 +1,5 @@
 //
-//  GenshinImpactCharacterModel.swift
+//  GenshinCharacterModel.swift
 //  MiTool
 //
 //  Created by Cain on 2024/2/27.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - GenshinImpactCharacterModel
-public struct GenshinImpactCharacterModel: Mappable {
+// MARK: - GenshinCharacterModel
+public struct GenshinCharacterModel: Mappable {
     public var retcode: Int?
     public var message: String?
-    public var data: GenshinImpactCharacterData?
+    public var data: GenshinCharacterData?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -24,10 +24,10 @@ public struct GenshinImpactCharacterModel: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterData
-public struct GenshinImpactCharacterData: Mappable {
-    public var avatars: [GenshinImpactCharacterAvatar]?
-    public var role: GenshinImpactCharacterRole?
+// MARK: - GenshinCharacterData
+public struct GenshinCharacterData: Mappable {
+    public var avatars: [GenshinCharacterAvatar]?
+    public var role: GenshinCharacterRole?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -38,8 +38,8 @@ public struct GenshinImpactCharacterData: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterAvatar
-public struct GenshinImpactCharacterAvatar: Mappable {
+// MARK: - GenshinCharacterAvatar
+public struct GenshinCharacterAvatar: Mappable {
     public var id: Int?
     public var image: String?
     public var icon: String?
@@ -48,9 +48,9 @@ public struct GenshinImpactCharacterAvatar: Mappable {
     public var fetter: Int?
     public var level: Int?
     public var rarity: Int?
-    public var weapon: GenshinImpactCharacterWeapon?
-    public var reliquaries: [GenshinImpactCharacterReliquary]?
-    public var constellations: [GenshinImpactCharacterConstellation]?
+    public var weapon: GenshinCharacterWeapon?
+    public var reliquaries: [GenshinCharacterReliquary]?
+    public var constellations: [GenshinCharacterConstellation]?
     public var activedConstellationNum: Int?
     public var costumes: [Any?]?
     public var external: NSNull?
@@ -76,8 +76,8 @@ public struct GenshinImpactCharacterAvatar: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterConstellation
-public struct GenshinImpactCharacterConstellation: Mappable {
+// MARK: - GenshinCharacterConstellation
+public struct GenshinCharacterConstellation: Mappable {
     public var id: Int?
     public var name: String?
     public var icon: String?
@@ -98,15 +98,15 @@ public struct GenshinImpactCharacterConstellation: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterReliquary
-public struct GenshinImpactCharacterReliquary: Mappable {
+// MARK: - GenshinCharacterReliquary
+public struct GenshinCharacterReliquary: Mappable {
     public var id: Int?
     public var name: String?
     public var icon: String?
     public var pos: Int?
     public var rarity: Int?
     public var level: Int?
-    public var reliquarySet: GenshinImpactCharacterSet?
+    public var reliquarySet: GenshinCharacterSet?
     public var posName: String?
 
     public init?(map: ObjectMapper.Map) { }
@@ -124,11 +124,11 @@ public struct GenshinImpactCharacterReliquary: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterSet
-public struct GenshinImpactCharacterSet: Mappable {
+// MARK: - GenshinCharacterSet
+public struct GenshinCharacterSet: Mappable {
     public var id: Int?
     public var name: String?
-    public var affixes: [GenshinImpactCharacterAffix]?
+    public var affixes: [GenshinCharacterAffix]?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -140,8 +140,8 @@ public struct GenshinImpactCharacterSet: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterAffix
-public struct GenshinImpactCharacterAffix: Mappable {
+// MARK: - GenshinCharacterAffix
+public struct GenshinCharacterAffix: Mappable {
     public var activationNumber: Int?
     public var effect: String?
 
@@ -154,8 +154,8 @@ public struct GenshinImpactCharacterAffix: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterWeapon
-public struct GenshinImpactCharacterWeapon: Mappable {
+// MARK: - GenshinCharacterWeapon
+public struct GenshinCharacterWeapon: Mappable {
     public var id: Int?
     public var name: String?
     public var icon: String?
@@ -184,8 +184,8 @@ public struct GenshinImpactCharacterWeapon: Mappable {
     }
 }
 
-// MARK: - GenshinImpactCharacterRole
-public struct GenshinImpactCharacterRole: Mappable {
+// MARK: - GenshinCharacterRole
+public struct GenshinCharacterRole: Mappable {
     public var avatarURL: String?
     public var nickname: String?
     public var region: String?

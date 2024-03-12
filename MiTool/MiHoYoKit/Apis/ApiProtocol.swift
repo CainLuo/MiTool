@@ -13,9 +13,9 @@ public protocol ApiProtocol {
     func getMihoyoGameCards() -> MihoyoGameCardsModel
 
     // MARK: - GenshinImpact
-    func getGshinImpactWeight() -> GenshinImpactDailyNodeModel
-    func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel
-    func getGshinImpactCharacter() -> GenshinImpactCharacterModel
+    func getGshinImpactWeight() -> GenshinDailyNodeModel
+    func getGshinImpactDailyNote() -> GenshinDailyNodeModel
+    func getGshinImpactCharacter() -> GenshinCharacterModel
     func getGshinImpactAvatarList() -> Any
     func getGshinImpactFilterList() -> Any
     func getGshinImpactAvatarSkill() -> Any

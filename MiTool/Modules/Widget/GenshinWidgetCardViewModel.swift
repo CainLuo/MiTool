@@ -10,10 +10,10 @@ import SwiftUI
 class GenshinWidgetCardViewModel: ObservableObject {
     private let manager = MockApi.shared
 
-    @Published var data = GenshinImpactDailyNodeData()
+    @Published var data = GenshinDailyNodeData()
     @Published var recoveryTime: String = ""
     @Published var staminaColor: Color = .red
-    @Published var dailyNodes: [GenshinImpactLocalDailyModel] = []
+    @Published var dailyNodes: [GenshinLocalDailyModel] = []
 
     func getGenshinWeight() {
         guard let data = manager.getGshinImpactWeight().data else {
@@ -54,22 +54,22 @@ class GenshinWidgetCardViewModel: ObservableObject {
     
     private func setupDailyNode() {
         dailyNodes = [
-            GenshinImpactLocalDailyModel(
+            GenshinLocalDailyModel(
                 iconNmae: "homeCoin",
                 currentValue: data.currentHomeCoin,
                 maxValue: data.maxHomeCoin
             ),
-            GenshinImpactLocalDailyModel(
+            GenshinLocalDailyModel(
                 iconNmae: "resinDiscount",
                 currentValue: data.remainResinDiscountNum,
                 maxValue: data.resinDiscountNumLimit
             ),
-            GenshinImpactLocalDailyModel(
+            GenshinLocalDailyModel(
                 iconNmae: "task",
                 currentValue: data.finishedTaskNum,
                 maxValue: data.totalTaskNum
             ),
-            GenshinImpactLocalDailyModel(
+            GenshinLocalDailyModel(
                 iconNmae: "transformer",
                 otherContent: data.transformerTime
             )

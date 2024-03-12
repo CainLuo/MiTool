@@ -1,5 +1,5 @@
 //
-//  GenshinImpactDailyNodeModel.swift
+//  GenshinDailyNodeModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/20.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - GenshinImpactDailyNodeModel
-public struct GenshinImpactDailyNodeModel: Mappable {
+// MARK: - GenshinDailyNodeModel
+public struct GenshinDailyNodeModel: Mappable {
     public var retcode: Int?
     public var message: String?
-    public var data: GenshinImpactDailyNodeData?
+    public var data: GenshinDailyNodeData?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -24,8 +24,8 @@ public struct GenshinImpactDailyNodeModel: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeData
-public struct GenshinImpactDailyNodeData: Mappable {
+// MARK: - GenshinDailyNodeData
+public struct GenshinDailyNodeData: Mappable {
     // 当前体力
     public var currentResin: Int = 0
     // 最大体力
@@ -47,7 +47,7 @@ public struct GenshinImpactDailyNodeData: Mappable {
     // 最大派遣角色数量
     public var maxExpeditionNum: Int = 0
     // 派遣角色详情
-    public var expeditions: [GenshinImpactDailyNodeExpedition]?
+    public var expeditions: [GenshinDailyNodeExpedition]?
     // 当前尘歌壶的金币
     public var currentHomeCoin: Int = 0
     // 最大尘歌壶的金币
@@ -57,11 +57,11 @@ public struct GenshinImpactDailyNodeData: Mappable {
     // 暂时未知
     public var calendarURL: String = ""
     // 参量质变仪的恢复时间
-    public var transformer: GenshinImpactDailyNodeTransformer?
+    public var transformer: GenshinDailyNodeTransformer?
     // 每日委托的详情：委托任务、历练点
-    public var dailyTask: GenshinImpactDailyNodeDailyTask?
+    public var dailyTask: GenshinDailyNodeDailyTask?
     // 魔神任务、支线任务详情
-    public var archonQuestProgress: GenshinImpactArchonQuestProgress?
+    public var archonQuestProgress: GenshinArchonQuestProgress?
     
     public var resinContent: String {
         "\(currentResin)/\(maxResin)"
@@ -108,8 +108,8 @@ public struct GenshinImpactDailyNodeData: Mappable {
     }
 }
 
-// MARK: - GenshinImpactArchonQuestProgress
-public struct GenshinImpactArchonQuestProgress: Mappable {
+// MARK: - GenshinArchonQuestProgress
+public struct GenshinArchonQuestProgress: Mappable {
     public var list: [Any?]?
     public var isOpenArchonQuest = false
     public var isFinishAllMainline = false
@@ -127,13 +127,13 @@ public struct GenshinImpactArchonQuestProgress: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeDailyTask
-public struct GenshinImpactDailyNodeDailyTask: Mappable {
+// MARK: - GenshinDailyNodeDailyTask
+public struct GenshinDailyNodeDailyTask: Mappable {
     public var totalNum: Int = 0
     public var finishedNum: Int = 0
     public var isExtraTaskRewardReceived = false
-    public var taskRewards: [GenshinImpactDailyNodeTaskReward]?
-    public var attendanceRewards: [GenshinImpactDailyNodeAttendanceReward]?
+    public var taskRewards: [GenshinDailyNodeTaskReward]?
+    public var attendanceRewards: [GenshinDailyNodeAttendanceReward]?
     public var attendanceVisible = false
 
     public init?(map: ObjectMapper.Map) { }
@@ -148,8 +148,8 @@ public struct GenshinImpactDailyNodeDailyTask: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeAttendanceReward
-public struct GenshinImpactDailyNodeAttendanceReward: Mappable {
+// MARK: - GenshinDailyNodeAttendanceReward
+public struct GenshinDailyNodeAttendanceReward: Mappable {
     public var status: String = ""
     public var progress: Int = 0
 
@@ -161,8 +161,8 @@ public struct GenshinImpactDailyNodeAttendanceReward: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeTaskReward
-public struct GenshinImpactDailyNodeTaskReward: Mappable {
+// MARK: - GenshinDailyNodeTaskReward
+public struct GenshinDailyNodeTaskReward: Mappable {
     public var status: String = ""
 
     public init?(map: ObjectMapper.Map) { }
@@ -172,8 +172,8 @@ public struct GenshinImpactDailyNodeTaskReward: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeExpedition
-public struct GenshinImpactDailyNodeExpedition: Mappable, Identifiable {
+// MARK: - GenshinDailyNodeExpedition
+public struct GenshinDailyNodeExpedition: Mappable, Identifiable {
     public var id = UUID()
     public var avatarSideIcon: String = ""
     public var status: String = ""
@@ -210,10 +210,10 @@ public struct GenshinImpactDailyNodeExpedition: Mappable, Identifiable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeTransformer
-public struct GenshinImpactDailyNodeTransformer: Mappable {
+// MARK: - GenshinDailyNodeTransformer
+public struct GenshinDailyNodeTransformer: Mappable {
     public var obtained = false
-    public var recoveryTime: GenshinImpactDailyNodeRecoveryTime?
+    public var recoveryTime: GenshinDailyNodeRecoveryTime?
     public var wiki: String = ""
     public var noticed = false
     public var latestJobID: String = ""
@@ -229,8 +229,8 @@ public struct GenshinImpactDailyNodeTransformer: Mappable {
     }
 }
 
-// MARK: - GenshinImpactDailyNodeRecoveryTime
-public struct GenshinImpactDailyNodeRecoveryTime: Mappable {
+// MARK: - GenshinDailyNodeRecoveryTime
+public struct GenshinDailyNodeRecoveryTime: Mappable {
     public var day: Int = 0
     public var hour: Int = 0
     public var minute: Int = 0
@@ -249,7 +249,7 @@ public struct GenshinImpactDailyNodeRecoveryTime: Mappable {
 }
 
 // MARK:
-public struct GenshinImpactLocalDailyModel: Identifiable {
+public struct GenshinLocalDailyModel: Identifiable {
     public var id = UUID()
     public var iconNmae: String
     public var currentValue: Int = 0

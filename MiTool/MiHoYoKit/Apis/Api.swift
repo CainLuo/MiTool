@@ -66,12 +66,12 @@ extension Api {
 
 // MARK: - Get Genshin Impact Info
 extension Api {
-    func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel {
-        GenshinImpactDailyNodeModel()
+    func getGshinImpactDailyNote() -> GenshinDailyNodeModel {
+        GenshinDailyNodeModel()
     }
 
-    func getGshinImpactCharacter() -> GenshinImpactCharacterModel {
-        GenshinImpactCharacterModel()
+    func getGshinImpactCharacter() -> GenshinCharacterModel {
+        GenshinCharacterModel()
     }
 
     func getGshinImpactAvatarList() -> Any {
@@ -94,7 +94,7 @@ extension Api {
         ""
     }
 
-    func getGshinImpactWeight() -> GenshinImpactDailyNodeModel {
-        GenshinImpactDailyNodeModel()
+    func getGshinImpactWeight() -> GenshinDailyNodeModel {
+        GenshinDailyNodeModel()
     }
 }

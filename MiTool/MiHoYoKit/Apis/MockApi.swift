@@ -106,12 +106,12 @@ extension MockApi {
 
 // MARK: - Get Genshin Impact Info
 extension MockApi {
-    public func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel {
-        GenshinImpactDailyNodeModel()
+    public func getGshinImpactDailyNote() -> GenshinDailyNodeModel {
+        GenshinDailyNodeModel()
     }
 
-    public func getGshinImpactCharacter() -> GenshinImpactCharacterModel {
-        GenshinImpactCharacterModel()
+    public func getGshinImpactCharacter() -> GenshinCharacterModel {
+        GenshinCharacterModel()
     }
 
     public func getGshinImpactAvatarList() -> Any {
@@ -134,12 +134,12 @@ extension MockApi {
         ""
     }
 
-    public func getGshinImpactWeight() -> GenshinImpactDailyNodeModel {
+    public func getGshinImpactWeight() -> GenshinDailyNodeModel {
         guard let model = Bundle.getJSONFile(
             "genshinDailyNote",
-            responseType: GenshinImpactDailyNodeModel.self)
+            responseType: GenshinDailyNodeModel.self)
         else {
-            return GenshinImpactDailyNodeModel()
+            return GenshinDailyNodeModel()
         }
         return model
     }
