@@ -29,7 +29,6 @@
 		BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512222B6E206A004D6878 /* MiToolTests.swift */; };
 		BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512292B6E2651004D6878 /* RoleListView.swift */; };
 		BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05122B2B6E2709004D6878 /* RoleCardView.swift */; };
-		BF19842F2BA0A15C00466091 /* BaseApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19842E2BA0A15C00466091 /* BaseApiManager.swift */; };
 		BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06872B712A200013DD7D /* SideBarViewModel.swift */; };
 		BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */; };
 		BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06902B72A8EC0013DD7D /* WebView.swift */; };
@@ -58,7 +57,7 @@
 		BF5581BE2B6FAED7003A5487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF5581C02B6FAED7003A5487 /* Localizable.strings */; };
 		BF5581C32B6FAFB3003A5487 /* LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */; };
 		BF5581C82B70B52F003A5487 /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581C72B70B52F003A5487 /* SideBarModel.swift */; };
-		BFA75B752B7E74180020B246 /* StarRailWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B742B7E74180020B246 /* StarRailWidgetModel.swift */; };
+		BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */; };
 		BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */; };
 		BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B782B7E79E50020B246 /* StarRailWidgetCardViewModel.swift */; };
 		BFA75B7B2B7F86840020B246 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7A2B7F86840020B246 /* WidgetView.swift */; };
@@ -154,7 +153,6 @@
 		BF0512222B6E206A004D6878 /* MiToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolTests.swift; sourceTree = "<group>"; };
 		BF0512292B6E2651004D6878 /* RoleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleListView.swift"; sourceTree = "<group>"; };
 		BF05122B2B6E2709004D6878 /* RoleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleCardView.swift; sourceTree = "<group>"; };
-		BF19842E2BA0A15C00466091 /* BaseApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiManager.swift; sourceTree = "<group>"; };
 		BF2D06872B712A200013DD7D /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
 		BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		BF2D06902B72A8EC0013DD7D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -184,7 +182,7 @@
 		BF5581C12B6FAED8003A5487 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BF5581C22B6FAFB3003A5487 /* LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKeys.swift; sourceTree = "<group>"; };
 		BF5581C72B70B52F003A5487 /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
-		BFA75B742B7E74180020B246 /* StarRailWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetModel.swift; sourceTree = "<group>"; };
+		BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightModel.swift; sourceTree = "<group>"; };
 		BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetCard.swift; sourceTree = "<group>"; };
 		BFA75B782B7E79E50020B246 /* StarRailWidgetCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetCardViewModel.swift; sourceTree = "<group>"; };
 		BFA75B7A2B7F86840020B246 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
@@ -456,7 +454,7 @@
 				BFA75B7E2B7FC3740020B246 /* ProfileInfoModel.swift */,
 				BFB03BB92B8CE55A005DD170 /* StarRailSkillComputeModel.swift */,
 				BFB03BBD2B8CE66C005DD170 /* StarRailSkillComputeRequestModel.swift */,
-				BFA75B742B7E74180020B246 /* StarRailWidgetModel.swift */,
+				BFA75B742B7E74180020B246 /* StarRailWeightModel.swift */,
 				A4871DC82B8F0A7C00C091BB /* StarRailCharacterDetailsModel.swift */,
 			);
 			path = Models;
@@ -483,7 +481,6 @@
 				BF3F43F32B9C3DEB00B5C3FD /* ApiManager+SQL.swift */,
 				BFFCC1EF2B9CC84F00780742 /* ApiManager+StarRail.swift */,
 				A49FEFCE2B8D8FED00B01909 /* ApiNetworkManager.swift */,
-				BF19842E2BA0A15C00466091 /* BaseApiManager.swift */,
 				BFE403BA2B6E2C21002FF39E /* ApiProtocol.swift */,
 				BFE403B52B6E2A69002FF39E /* MockApi.swift */,
 				A41389992B9EB34100F94141 /* ApiDSHelper.swift */,
@@ -737,7 +734,7 @@
 				BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */,
 				BFE403B92B6E2B55002FF39E /* RoleListViewModel.swift in Sources */,
 				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
-				BFA75B752B7E74180020B246 /* StarRailWidgetModel.swift in Sources */,
+				BFA75B752B7E74180020B246 /* StarRailWeightModel.swift in Sources */,
 				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
 				BFE403BB2B6E2C21002FF39E /* ApiProtocol.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
@@ -792,7 +789,6 @@
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
-				BF19842F2BA0A15C00466091 /* BaseApiManager.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,
 				BFB03BB42B8B986F005DD170 /* GameServerKeys.swift in Sources */,
 				BF3F43EF2B9C3C5F00B5C3FD /* SideBarKeys.swift in Sources */,

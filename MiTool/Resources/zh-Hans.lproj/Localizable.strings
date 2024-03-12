@@ -23,17 +23,17 @@
 
 // MARK: - 崩坏: 星穹铁道
 
-"StarRailWidgetDaily" = "每日实训";
-"StarRailWidgetWeekly" = "本周积分";
-"StarRailWidgetEntrusted" = "委托执行";
-"StarRailWidgetWeeklyMonster" = "历战余响";
-"StarRailWidgetRecoveryTime" = "恢复时间";
-"StarRailWidgetTrailblazePower" = "开拓力";
-"StarRailWidgetCacheTrailblazePower" = "存储开拓力：";
-"StarRailWidgetTrailblazePowerFull" = "存储开拓力是否已满：";
-"StarRailWidgetTrailblazePowerYes" = "是";
-"StarRailWidgetTrailblazePowerNo" = "否";
-"StarRailWidgetWeightFinished" = "已完成";
+"StarRailWeightDaily" = "每日实训";
+"StarRailWeightWeekly" = "本周积分";
+"StarRailWeightEntrusted" = "委托执行";
+"StarRailWeightWeeklyMonster" = "历战余响";
+"StarRailWeightRecoveryTime" = "恢复时间";
+"StarRailWeightTrailblazePower" = "开拓力";
+"StarRailWeightCacheTrailblazePower" = "存储开拓力：";
+"StarRailWeightTrailblazePowerFull" = "存储开拓力是否已满：";
+"StarRailWeightTrailblazePowerYes" = "是";
+"StarRailWeightTrailblazePowerNo" = "否";
+"StarRailWeightWeightFinished" = "已完成";
 
 "StarRailRoleAvatarConsume" = "角色培养";
 "StarRailRoleSkillsConsume" = "行迹培养";

@@ -46,12 +46,12 @@ extension MockApi {
         return model
     }
 
-    func getStarRailWidget() -> StarRailWidgetModel {
+    func getStarRailWidget() -> StarRailWeightModel {
         guard let model = Bundle.getJSONFile(
             "starRailDailyNode",
-            responseType: StarRailWidgetModel.self
+            responseType: StarRailWeightModel.self
         ) else {
-            return StarRailWidgetModel()
+            return StarRailWeightModel()
         }
         return model
     }
@@ -75,8 +75,8 @@ extension MockApi {
         return model
     }
 
-    func getStarRailDailyNote() -> StarRailWidgetModel {
-        StarRailWidgetModel()
+    func getStarRailDailyNote() -> StarRailWeightModel {
+        StarRailWeightModel()
     }
 
     func getStarRailCharacter() -> Any {

@@ -23,17 +23,17 @@
 
 // MARK: - 崩坏: 星穹铁道
 
-"StarRailWidgetDaily" = "Daily";
-"StarRailWidgetWeekly" = "Weekly";
-"StarRailWidgetEntrusted" = "Entrusted";
-"StarRailWidgetWeeklyMonster" = "Weekly monster";
-"StarRailWidgetRecoveryTime" = "Recovery time";
-"StarRailWidgetTrailblazePower" = "Trailblaze power";
-"StarRailWidgetCacheTrailblazePower" = "Reserved Trailblaze Power: ";
-"StarRailWidgetTrailblazePowerFull" = "Reserved trailblaze power is full: ";
-"StarRailWidgetTrailblazePowerYes" = "Yes";
-"StarRailWidgetTrailblazePowerNo" = "No";
-"StarRailWidgetWeightFinished" = "Finished";
+"StarRailWeightDaily" = "Daily";
+"StarRailWeightWeekly" = "Weekly";
+"StarRailWeightEntrusted" = "Entrusted";
+"StarRailWeightWeeklyMonster" = "Weekly monster";
+"StarRailWeightRecoveryTime" = "Recovery time";
+"StarRailWeightTrailblazePower" = "Trailblaze power";
+"StarRailWeightCacheTrailblazePower" = "Reserved Trailblaze Power: ";
+"StarRailWeightTrailblazePowerFull" = "Reserved trailblaze power is full: ";
+"StarRailWeightTrailblazePowerYes" = "Yes";
+"StarRailWeightTrailblazePowerNo" = "No";
+"StarRailWeightWeightFinished" = "Finished";
 
 "StarRailRoleAvatarConsume" = "Avatar consume";
 "StarRailRoleSkillsConsume" = "Skills consume";
