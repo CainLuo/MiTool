@@ -8,7 +8,7 @@
 import SwiftUI
 
 typealias CopySideBar = LocalizableKeys.SideBar
-typealias CopyStarRailWeight = LocalizableKeys.StarRailWeight
+typealias CopyStarRailWidget = LocalizableKeys.StarRailWidget
 typealias CopyStarRailRole = LocalizableKeys.StarRailRole
 typealias CopyGenshinWeight = LocalizableKeys.GenshinWeight
 typealias CopyGameName = LocalizableKeys.MihoyoGameName
@@ -30,18 +30,18 @@ struct LocalizableKeys {
         static let starRailWiki = String(localized: "SideBarStarRailWiki")
     }
 
-    struct StarRailWeight {
-        static let daily = String(localized: "StarRailWeightDaily")
-        static let weekly = String(localized: "StarRailWeightWeekly")
-        static let entrusted = String(localized: "StarRailWeightEntrusted")
-        static let weeklyMonster = String(localized: "StarRailWeightWeeklyMonster")
-        static let recoveryTime = String(localized: "StarRailWeightRecoveryTime")
-        static let trailblazePower = String(localized: "StarRailWeightTrailblazePower")
-        static let reserveTrailblazePower = String(localized: "StarRailWeightTrailblazePower")
-        static let reserveTrailblazePowerFull = String(localized: "StarRailWeightTrailblazePowerFull")
-        static let fullYes = String(localized: "StarRailWeightTrailblazePowerYes")
-        static let fullNo = String(localized: "StarRailWeightTrailblazePowerNo")
-        static let finished = String(localized: "StarRailWeightWeightFinished")
+    struct StarRailWidget {
+        static let daily = String(localized: "StarRailWidgetDaily")
+        static let weekly = String(localized: "StarRailWidgetWeekly")
+        static let entrusted = String(localized: "StarRailWidgetEntrusted")
+        static let weeklyMonster = String(localized: "StarRailWidgetWeeklyMonster")
+        static let recoveryTime = String(localized: "StarRailWidgetRecoveryTime")
+        static let trailblazePower = String(localized: "StarRailWidgetTrailblazePower")
+        static let reserveTrailblazePower = String(localized: "StarRailWidgetTrailblazePower")
+        static let reserveTrailblazePowerFull = String(localized: "StarRailWidgetTrailblazePowerFull")
+        static let fullYes = String(localized: "StarRailWidgetTrailblazePowerYes")
+        static let fullNo = String(localized: "StarRailWidgetTrailblazePowerNo")
+        static let finished = String(localized: "StarRailWidgetWeightFinished")
     }
 
     struct StarRailRole {

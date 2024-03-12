@@ -1,5 +1,5 @@
 //
-//  StarRailWeightModel.swift
+//  StarRailWidgetModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/16.
@@ -8,11 +8,11 @@
 import Foundation
 import ObjectMapper
 
-// MARK: - StarRailWeightModel
-struct StarRailWeightModel: Mappable {
+// MARK: - StarRailWidgetModel
+struct StarRailWidgetModel: Mappable {
     var retcode: Int?
     var message: String?
-    var data: StarRailWeightDataModel?
+    var data: StarRailWidgetDataModel?
     
     init?(map: ObjectMapper.Map) { }
     init() { }
@@ -24,8 +24,8 @@ struct StarRailWeightModel: Mappable {
     }
 }
 
-// MARK: - StarRailWeightDataModel
-struct StarRailWeightDataModel: Mappable {
+// MARK: - StarRailWidgetDataModel
+struct StarRailWidgetDataModel: Mappable {
     // 当前体力
     var currentStamina: Int = 0
     // 最大体力
@@ -37,7 +37,7 @@ struct StarRailWeightDataModel: Mappable {
     // 总的最大可探险数量
     var totalExpeditionNum: Int = 0
     // 探险详情
-    var expeditions: [StarRailWeightExpeditionModel]?
+    var expeditions: [StarRailWidgetExpeditionModel]?
     // 当前当日活跃度
     var currentTrainScore: Int = 0
     // 总的当日活跃度
@@ -78,7 +78,7 @@ struct StarRailWeightDataModel: Mappable {
         self.staminaRecoverTime = staminaRecoverTime
         self.acceptedEpeditionNum = acceptedEpeditionNum
         self.totalExpeditionNum = totalExpeditionNum
-        self.expeditions = [StarRailWeightExpeditionModel](JSONString: expeditions ?? "")
+        self.expeditions = [StarRailWidgetExpeditionModel](JSONString: expeditions ?? "")
         self.currentTrainScore = currentTrainScore
         self.maxTrainScore = maxTrainScore
         self.currentRogueScore = currentRogueScore
@@ -107,20 +107,20 @@ struct StarRailWeightDataModel: Mappable {
     }
 }
 
-enum StarRailWeightExpeditionStatus: String {
+enum StarRailWidgetExpeditionStatus: String {
     case ongoing = "Ongoing"
     case finish = "Finished"
     
     // 原神：Finished
 }
 
-// MARK: - StarRailWeightExpeditionModel
-struct StarRailWeightExpeditionModel: Mappable, Identifiable {
+// MARK: - StarRailWidgetExpeditionModel
+struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
     var id = UUID()
     // 探险角色头像列表
     var avatars: [String]?
     // 探险状态
-    var status: StarRailWeightExpeditionStatus = .ongoing
+    var status: StarRailWidgetExpeditionStatus = .ongoing
     // 探险剩余时间
     var remainingTime: Int = 0
     // 探险名称
@@ -130,7 +130,7 @@ struct StarRailWeightExpeditionModel: Mappable, Identifiable {
     
     var timeString: String {
         if remainingTime == 0 {
-            return CopyStarRailWeight.finished
+            return CopyStarRailWidget.finished
         } else if remainingTime < 3600 {
             let minutes = remainingTime / 60
             return String(format: CopyGenshinWeight.transformerMinutes, minutes)
@@ -176,13 +176,13 @@ struct StarRailLocalModel: Identifiable, Hashable {
     var name: String {
         switch type {
         case .daily:
-            return CopyStarRailWeight.daily
+            return CopyStarRailWidget.daily
         case .weekly:
-            return CopyStarRailWeight.weekly
+            return CopyStarRailWidget.weekly
         case .entrusted:
-            return CopyStarRailWeight.entrusted
+            return CopyStarRailWidget.entrusted
         case .weeklyMonster:
-            return CopyStarRailWeight.weeklyMonster
+            return CopyStarRailWidget.weeklyMonster
         }
     }
 }
