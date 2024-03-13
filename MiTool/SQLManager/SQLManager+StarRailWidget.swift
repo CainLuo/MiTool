@@ -53,7 +53,7 @@ extension SQLManager {
 
     func addStarRailDailyNode(
         _ uuid: String,
-        model: StarRailWeightDataModel,
+        model: StarRailWidgetDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -81,7 +81,7 @@ extension SQLManager {
 
     func upgradeStarRailDailyNode(
         _ uuid: String,
-        model: StarRailWeightDataModel,
+        model: StarRailWidgetDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -111,7 +111,7 @@ extension SQLManager {
 
     func getStarRailRoleDailyNode(
         _ uuid: String,
-        complete: ((Bool, StarRailWeightDataModel?) -> Void)?
+        complete: ((Bool, StarRailWidgetDataModel?) -> Void)?
     ) {
         do {
             try dataBase.transaction {
@@ -119,7 +119,7 @@ extension SQLManager {
                     uid == uuid
                 )
                 try dataBase.prepare(query).forEach { item in
-                    complete?(true, StarRailWeightDataModel(
+                    complete?(true, StarRailWidgetDataModel(
                         currentStamina: item[currentStamina],
                         maxStamina: item[maxStamina],
                         staminaRecoverTime: item[staminaRecoverTime],
@@ -144,12 +144,12 @@ extension SQLManager {
         }
     }
 
-    func getStarRaillAllDailyNode() -> [StarRailWeightDataModel] {
-        var list: [StarRailWeightDataModel] = []
+    func getStarRaillAllDailyNode() -> [StarRailWidgetDataModel] {
+        var list: [StarRailWidgetDataModel] = []
         do {
             try dataBase.transaction {
                 try dataBase.prepare(starRailDailyNode).forEach { item in
-                    let account = StarRailWeightDataModel(
+                    let account = StarRailWidgetDataModel(
                         currentStamina: item[currentStamina],
                         maxStamina: item[maxStamina],
                         staminaRecoverTime: item[staminaRecoverTime],

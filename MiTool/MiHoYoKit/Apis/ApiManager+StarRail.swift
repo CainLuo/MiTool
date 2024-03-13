@@ -12,13 +12,13 @@ extension ApiManager {
     static func fetchStarRailWidget(
         uid: String,
         serverType: StarRailServerType
-    ) -> StarRailWeightDataModel? {
+    ) -> StarRailWidgetDataModel? {
         let parameters = ["server": "prod_gf_cn",
                           "role_id": "102731382"]
         let ds = ApiDSHelper.getDS(region: .china, query: parameters.toJSONString ?? "")
         let headers = ApiHeaderConfiguration.defaultHeaders(region: .china, additionalHeaders: ["DS": ds])
         
-        NetworkManager<StarRailWeightModel>().get(
+        NetworkManager<StarRailWidgetModel>().get(
             from: ApiKeys.StarRail.dailyNote.rawValue,
             host: ApiKeys.Host.mihoyo.rawValue, scheme: "https",
             headers: HTTPHeaders(headers),
@@ -34,7 +34,7 @@ extension ApiManager {
         return nil
     }
     
-    private static func saveStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+    private static func saveStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
         SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
             if item == nil {
                 ApiManager.addStarRailWidget(uid: uid, model: model)
@@ -44,7 +44,7 @@ extension ApiManager {
         }
     }
     
-    private static func addStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+    private static func addStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
         SQLManager.shared.addStarRailDailyNode(
             uid,
             model: model
@@ -56,7 +56,7 @@ extension ApiManager {
         }
     }
     
-    private static func upgradeStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+    private static func upgradeStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
         SQLManager.shared.upgradeStarRailDailyNode(
             uid,
             model: model

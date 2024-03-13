@@ -23,14 +23,14 @@ extension Api {
         StarRailAllRoleModel()
     }
 
-    func getStarRailWidget() async -> StarRailWeightModel? {
+    func getStarRailWidget() async -> StarRailWidgetModel? {
         let url = URL(string: ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue)!
         let parameters = ["server": "prod_gf_cn",
                           "role_id": ""]
         let ds = ApiDSHelper.getDS(region: .china, query: parameters.toJSONString ?? "")
         let headers = ApiHeaderConfiguration.defaultHeaders(region: .china, additionalHeaders: ["DS": ds])
         do {
-            let model: StarRailWeightModel = try await ApiNetworkManager().performRequest(
+            let model: StarRailWidgetModel = try await ApiNetworkManager().performRequest(
                 url: url,
                 headers: headers,
                 parameters: parameters
@@ -59,8 +59,8 @@ extension Api {
         StarRailSkillComputeModel()
     }
 
-    func getStarRailDailyNote() -> StarRailWeightModel {
-        StarRailWeightModel()
+    func getStarRailDailyNote() -> StarRailWidgetModel {
+        StarRailWidgetModel()
     }
 
     func getStarRailCharacter() -> Any {

@@ -16,13 +16,13 @@ class StarRailWidgetCardViewModel: ObservableObject {
     @Published var staminaColor: Color = .red
     @Published var stamina: String = "0/0"
     @Published var staminaLastTime: CGFloat = 0
-    @Published var expeditions: [StarRailWeightExpeditionModel] = []
+    @Published var expeditions: [StarRailWidgetExpeditionModel] = []
     @Published var localModels: [StarRailLocalModel] = []
     @Published var recoveryTime: String = ""
     @Published var reserveStamina: String = ""
     @Published var reserveStaminaFull: String = ""
 
-    func getStarRailWeight() {
+    func getStarRailWidget() {
         let model = manager.getStarRailWidget()
         
         _ = ApiManager.fetchStarRailWidget(uid: "", serverType: .gdCN)
@@ -34,8 +34,8 @@ class StarRailWidgetCardViewModel: ObservableObject {
         expeditions = data.expeditions ?? []
         stamina = "\(data.currentStamina)/\(data.maxStamina)"
         reserveStamina = "\(data.currentReserveStamina)"
-        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWeight.fullYes : CopyStarRailWeight.fullNo)"
-        reserveStaminaFull = CopyStarRailWeight.reserveTrailblazePowerFull + tipsString
+        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
+        reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
         
         setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
         setUpLocalModels(data: data)
@@ -55,7 +55,7 @@ class StarRailWidgetCardViewModel: ObservableObject {
         }
     }
     
-    private func setUpLocalModels(data: StarRailWeightDataModel) {
+    private func setUpLocalModels(data: StarRailWidgetDataModel) {
         localModels = [
             StarRailLocalModel(
                 type: .daily,
