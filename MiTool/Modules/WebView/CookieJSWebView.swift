@@ -66,7 +66,7 @@ class CookieJSWebViewModel: ObservableObject {
     
     func loadWebViewContnet() {
         guard let url = URL(string: ApiKeys.Mihoyo.login.rawValue) else {
-            Logger.error(message: "Bad URL")
+            Logger.error("Bad URL")
             return
         }
         
@@ -77,11 +77,11 @@ class CookieJSWebViewModel: ObservableObject {
     func readCookie() {
         webView.evaluateJavaScript("document.cookie") { result, error in
             if let result {
-                Logger.info(message: "get cookie success: \(result)")
+                Logger.info("get cookie success: \(result)")
             }
             
             if let error {
-                Logger.error(message: "Errpr \(error)")
+                Logger.error("Errpr \(error)")
             }
         }
     }

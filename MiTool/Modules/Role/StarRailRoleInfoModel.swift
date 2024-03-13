@@ -9,15 +9,15 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailRoleInfoModel
-struct StarRailRoleInfoModel: Mappable {
+public struct StarRailRoleInfoModel: Mappable {
     var retcode: Int?
     var message: String?
     var data: StarRailRoleInfoData?
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
@@ -25,14 +25,14 @@ struct StarRailRoleInfoModel: Mappable {
 }
 
 // MARK: - StarRailRoleInfoData
-struct StarRailRoleInfoData: Mappable {
+public struct StarRailRoleInfoData: Mappable {
     var avatar: StarRailRoleInfoAvatar?
     var skills: [StarRailRoleInfoSkill] = []
     var skillsOther: [StarRailRoleInfoSkill] = []
     var equipment: StarRailRoleInfoEquipment?
     var isLogin: Bool?
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
 
     init(
         avatar: String?,
@@ -48,7 +48,7 @@ struct StarRailRoleInfoData: Mappable {
         self.isLogin = isLogin
     }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         avatar <- map["avatar"]
         skills <- map["skills"]
         skillsOther <- map["skills_other"]
@@ -58,7 +58,7 @@ struct StarRailRoleInfoData: Mappable {
 }
 
 // MARK: - StarRailRoleInfoAvatar
-struct StarRailRoleInfoAvatar: Mappable {
+public struct StarRailRoleInfoAvatar: Mappable {
     var itemID: String?
     var itemName: String?
     var iconURL: String?
@@ -76,10 +76,10 @@ struct StarRailRoleInfoAvatar: Mappable {
         "Lv.\(curLevel)"
     }
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
         iconURL <- map["icon_url"]
@@ -96,7 +96,7 @@ struct StarRailRoleInfoAvatar: Mappable {
 }
 
 // MARK: - StarRailRoleInfoEquipment
-struct StarRailRoleInfoEquipment: Mappable {
+public struct StarRailRoleInfoEquipment: Mappable {
     var itemID: String?
     var itemName: String?
     var itemURL: String?
@@ -111,10 +111,10 @@ struct StarRailRoleInfoEquipment: Mappable {
         "Lv.\(curLevel)/\(maxLevel)"
     }
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
     init() { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
         itemURL <- map["item_url"]
@@ -128,8 +128,8 @@ struct StarRailRoleInfoEquipment: Mappable {
 }
 
 // MARK: - StarRailRoleInfoSkill
-struct StarRailRoleInfoSkill: Mappable, Identifiable {
-    var id = UUID()
+public struct StarRailRoleInfoSkill: Mappable, Identifiable {
+    public var id = UUID()
     var pointID: String?
     var prePoint: String?
     var pointType: StarRailRoleInfoPointType?
@@ -149,9 +149,9 @@ struct StarRailRoleInfoSkill: Mappable, Identifiable {
         return "Lv.\(curLevel)/\(maxLevel)"
     }
 
-    init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) { }
 
-    mutating func mapping(map: ObjectMapper.Map) {
+    mutating public func mapping(map: ObjectMapper.Map) {
         pointID <- map["point_id"]
         prePoint <- map["pre_point"]
         pointType <- map["point_type"]

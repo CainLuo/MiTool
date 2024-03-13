@@ -30,14 +30,14 @@ class SQLManager {
                 let version = try dataBase?.scalar("PRAGMA user_version") as? Int64
                 return Int32(version ?? 0)
             } catch {
-                Logger.error(message: error)
+                Logger.error(error)
             }
             return 0
         } set {
             do {
                 try dataBase?.run("PRAGMA user_version = \(newValue)")
             } catch {
-                Logger.error(message: error)
+                Logger.error(error)
             }
         }
     }
@@ -52,7 +52,7 @@ class SQLManager {
             return
         }
 
-        Logger.info(message: "Database path: \(path)/db.sqlite3")
+        Logger.info("Database path: \(path)/db.sqlite3")
         
         do {
             dataBase = try Connection("\(path)/db.sqlite3")
@@ -67,7 +67,7 @@ class SQLManager {
             createMihoyoGameCardsTable(dataBase)
             createGenshinImpactWidgetTable(dataBase)
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
     

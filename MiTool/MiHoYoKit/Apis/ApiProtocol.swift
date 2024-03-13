@@ -6,18 +6,16 @@
 //
 
 import Foundation
-import Alamofire
-import CryptoSwift
 
-protocol ApiProtocol {
+public protocol ApiProtocol {
     // MARK: - Mihoyo User
     func getMihoyoUserInfo() -> MihoyoUserModel
     func getMihoyoGameCards() -> MihoyoGameCardsModel
 
     // MARK: - GenshinImpact
-    func getGshinImpactWeight() -> GenshinImpactDailyNodeModel
-    func getGshinImpactDailyNote() -> GenshinImpactDailyNodeModel
-    func getGshinImpactCharacter() -> GenshinImpactCharacterModel
+    func getGshinImpactWeight() -> GenshinDailyNodeModel
+    func getGshinImpactDailyNote() -> GenshinDailyNodeModel
+    func getGshinImpactCharacter() -> GenshinCharacterModel
     func getGshinImpactAvatarList() -> Any
     func getGshinImpactFilterList() -> Any
     func getGshinImpactAvatarSkill() -> Any
@@ -25,8 +23,8 @@ protocol ApiProtocol {
     func getGshinImpactSpiralAbyss() -> Any
 
     // MARK: - Honkai: StarRail
-    func getStarRailWidget() -> StarRailWeightModel
-    func getStarRailDailyNote() -> StarRailWeightModel
+    func getStarRailWidget() async -> StarRailWidgetModel?
+    func getStarRailDailyNote() -> StarRailWidgetModel
     func getStarRailCharacter() -> Any
     func getStarRailAvatarList() -> Any
     func getStarRailAvatarDetail() -> Any
@@ -35,6 +33,6 @@ protocol ApiProtocol {
     func getSkillRogue(id: String) -> Any
     func getSkillChallenge(id: String) -> Any
 
-    func getStarRailAllRoleList() -> StarRailAllRoleModel
+    func getStarRailMyRoleList() -> StarRailAllRoleModel
     func getRoleInfo(id: String) -> StarRailRoleInfoModel
 }

@@ -21,7 +21,7 @@ extension SQLManager {
                 table.column(gameCard)
             })
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
     
@@ -38,7 +38,7 @@ extension SQLManager {
             try dataBase.run(insert)
             complete?(true, nil)
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             complete?(false, error)
         }
     }
@@ -76,7 +76,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             return list
         }
     }

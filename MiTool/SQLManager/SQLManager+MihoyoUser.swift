@@ -33,7 +33,7 @@ extension SQLManager {
                 table.column(ipRegion)
             })
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
 
@@ -85,12 +85,12 @@ extension SQLManager {
     func removeMihoyoUsers() {
         do {
             if try dataBase.run(mihoyoUser.delete()) > 0 {
-                Logger.info(message: "删除所有用户成功")
+                Logger.info("删除所有用户成功")
             } else {
-                Logger.error(message: "没有找对应的用户")
+                Logger.error("没有找对应的用户")
             }
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
 
@@ -101,13 +101,13 @@ extension SQLManager {
         let mihoyoUser = mihoyoUser.filter(uid == uuid)
         do {
             if try dataBase.run(mihoyoUser.delete()) > 0 {
-                Logger.info(message: "删除用户成功")
+                Logger.info("删除用户成功")
                 complete(true, nil)
             } else {
                 complete(false, nil)
             }
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             complete(false, error)
         }
     }
@@ -132,7 +132,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             return list
         }
     }
@@ -157,7 +157,7 @@ extension SQLManager {
             }
             complete?(false, nil)
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             complete?(false, nil)
         }
     }

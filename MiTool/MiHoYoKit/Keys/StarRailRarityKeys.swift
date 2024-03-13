@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-enum RarityType: String {
-    case one = "1"
-    case two = "2"
-    case three = "3"
-    case four = "4"
-    case five = "5"
+public enum RarityType: String {
+    case one = "1"      // 一星
+    case two = "2"      // 二星
+    case three = "3"    // 三星
+    case four = "4"     // 四星
+    case five = "5"     // 五星
 
-    var ratityColor: Gradient {
+    public var ratityColor: Gradient {
         switch self {
         case .one:
             return Gradient(colors: [
@@ -44,7 +44,7 @@ enum RarityType: String {
         }
     }
 
-    var ratityImage: String {
+    public var ratityImage: String {
         "starRailRarity\(self.rawValue)"
     }
 }

@@ -14,7 +14,7 @@ extension Bundle {
         responseType: T.Type
     ) -> T? {
         guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            Logger.error(message: "File not found: \(fileName).json")
+            Logger.error("File not found: \(fileName).json")
             return nil
         }
 
@@ -23,7 +23,7 @@ extension Bundle {
             let jsonStriing = String(data: data, encoding: .utf8) ?? ""
             return T(JSONString: jsonStriing)
         } catch {
-            Logger.error(message: "Error parsing JSON file: \(error)")
+            Logger.error("Error parsing JSON file: \(error)")
             return nil
         }
     }
@@ -47,7 +47,7 @@ extension String {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Int]
             } catch {
-                Logger.error(message: error.localizedDescription)
+                Logger.error(error.localizedDescription)
             }
         }
         return nil

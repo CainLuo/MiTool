@@ -5,7 +5,6 @@
 //  Created by Cain Luo on 2024/2/3.
 //
 
-import Foundation
 import SwiftUI
 
 class RoleListViewModel: ObservableObject {
@@ -28,8 +27,8 @@ class RoleListViewModel: ObservableObject {
         let localList = SQLManager.shared.getAllStarRailRoleList(uuid: uid)
         roleList = localList
         
-        ApiManager.fetchStarRailRoles(uid: uid) { [weak self] _, list in
-            self?.roleList = list
-        }
+//        ApiManager.fetchStarRailRoles(uid: uid) { [weak self] _, list in
+//            self?.roleList = list
+//        }
     }
 }

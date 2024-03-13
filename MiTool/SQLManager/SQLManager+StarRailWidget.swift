@@ -47,13 +47,13 @@ extension SQLManager {
                 table.column(isReserveStaminaFull)
             })
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
 
     func addStarRailDailyNode(
-        uuid: String,
-        model: StarRailWeightDataModel,
+        _ uuid: String,
+        model: StarRailWidgetDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -81,7 +81,7 @@ extension SQLManager {
 
     func upgradeStarRailDailyNode(
         _ uuid: String,
-        model: StarRailWeightDataModel,
+        model: StarRailWidgetDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
@@ -109,12 +109,47 @@ extension SQLManager {
         }
     }
 
-    func getStarRaillAllDailyNode() -> [StarRailWeightDataModel] {
-        var list: [StarRailWeightDataModel] = []
+    func getStarRailRoleDailyNode(
+        _ uuid: String,
+        complete: ((Bool, StarRailWidgetDataModel?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = starRailDailyNode.filter(
+                    uid == uuid
+                )
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, StarRailWidgetDataModel(
+                        currentStamina: item[currentStamina],
+                        maxStamina: item[maxStamina],
+                        staminaRecoverTime: item[staminaRecoverTime],
+                        acceptedEpeditionNum: item[acceptedEpeditionNum],
+                        totalExpeditionNum: item[totalExpeditionNum],
+                        expeditions: item[expeditions],
+                        currentTrainScore: item[currentTrainScore],
+                        maxTrainScore: item[maxTrainScore],
+                        currentRogueScore: item[currentRogueScore],
+                        maxRogueScore: item[maxRogueScore],
+                        weeklyCocoonCnt: item[weeklyCocoonCnt],
+                        weeklyCocoonLimit: item[weeklyCocoonLimit],
+                        currentReserveStamina: item[currentReserveStamina],
+                        isReserveStaminaFull: item[isReserveStaminaFull]
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            Logger.error(error)
+            complete?(false, nil)
+        }
+    }
+
+    func getStarRaillAllDailyNode() -> [StarRailWidgetDataModel] {
+        var list: [StarRailWidgetDataModel] = []
         do {
             try dataBase.transaction {
                 try dataBase.prepare(starRailDailyNode).forEach { item in
-                    let account = StarRailWeightDataModel(
+                    let account = StarRailWidgetDataModel(
                         currentStamina: item[currentStamina],
                         maxStamina: item[maxStamina],
                         staminaRecoverTime: item[staminaRecoverTime],
@@ -135,7 +170,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             return list
         }
     }

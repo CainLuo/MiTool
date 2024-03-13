@@ -31,7 +31,7 @@ extension SQLManager {
                 table.column(isLogin)
             })
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
 
@@ -53,7 +53,7 @@ extension SQLManager {
             try dataBase.run(insert)
             complete?(true, nil)
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             complete?(false, error)
         }
     }
@@ -108,7 +108,7 @@ extension SQLManager {
             }
             complete?(false, nil)
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             complete?(false, nil)
         }
     }
@@ -130,7 +130,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             return list
         }
     }

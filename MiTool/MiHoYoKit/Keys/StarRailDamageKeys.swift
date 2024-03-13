@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Damage: String {
+public enum Damage: String {
     case physical = "1"   // 物理
     case fire = "2"       // 火
     case ice = "4"        // 冰
@@ -16,7 +16,7 @@ enum Damage: String {
     case quantum = "32"   // 量子
     case imaginary = "64" // 虚数
 
-    var damagetIcon: String {
+    public var damagetIcon: String {
         switch self {
         case .physical:
             return DamageIcon.physicalIcon.rawValue
@@ -36,7 +36,7 @@ enum Damage: String {
     }
 }
 
-enum DamageIcon: String {
+public enum DamageIcon: String {
     case physicalIcon = "physical"    // 物理
     case fireIcon = "fire"            // 火
     case iceIcon = "ice"              // 冰
