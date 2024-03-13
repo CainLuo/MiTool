@@ -70,3 +70,5 @@
 "MihoyoGameSave" = "Save or upgrade info";
 "MihoyoGameRegion" = "Region：%@";
 "MihoyoGameAddUser" = "Add new user";
+"MihoyoGameSToken" = "MiHoYo SToken";
+"MihoyoGameDeivceFP" = "Device FP Content";

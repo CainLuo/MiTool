@@ -12,6 +12,7 @@ private let index = Expression<Int64>("index")                      // 索引
 private let uid = Expression<String?>("uid")                        // 米游社uid
 private let cookie = Expression<String?>("cookie")                  // 米游社Cookie
 private let sToken = Expression<String?>("sToken")                  // 米游社sToken-V2
+private let deivceFP = Expression<String?>("deivceFP")              // 米游社设备签证
 private let nickname = Expression<String?>("nickname")              // 昵称
 private let communityInfo = Expression<String?>("communityInfo")    // 创建时间
 private let introduce = Expression<String?>("introduce")            // 简介
@@ -27,6 +28,7 @@ extension SQLManager {
                 table.column(uid, unique: true)
                 table.column(cookie)
                 table.column(sToken)
+                table.column(deivceFP)
                 table.column(nickname)
                 table.column(communityInfo)
                 table.column(introduce)
@@ -49,6 +51,7 @@ extension SQLManager {
                 nickname <- model.nickname,
                 cookie <- model.cookie,
                 sToken <- model.sToken,
+                deivceFP <- model.deivceFP,
                 communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
@@ -74,6 +77,7 @@ extension SQLManager {
                 nickname <- model.nickname,
                 cookie <- model.cookie,
                 sToken <- model.sToken,
+                deivceFP <- model.deivceFP,
                 communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
@@ -130,7 +134,8 @@ extension SQLManager {
                         avatarURL: item[avatarURL] ?? "",
                         ipRegion: item[ipRegion] ?? "",
                         cookie: item[cookie] ?? "",
-                        sToken: item[sToken] ?? ""
+                        sToken: item[sToken] ?? "",
+                        deivceFP: item[deivceFP] ?? ""
                     )
                     list.append(account)
                 }
@@ -158,7 +163,8 @@ extension SQLManager {
                     avatarURL: item[avatarURL] ?? "",
                     ipRegion: item[ipRegion] ?? "",
                     cookie: item[cookie] ?? "",
-                    sToken: item[sToken] ?? ""
+                    sToken: item[sToken] ?? "",
+                    deivceFP: item[deivceFP] ?? ""
                 ))
             }
             complete?(false, nil)

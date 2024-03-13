@@ -16,6 +16,7 @@ struct MihoyoUserEditView: View {
     @State var uid: String = ""
     @State var cookie: String = ""
     @State var sToken: String = ""
+    @State var deivceFP: String = ""
 
     var body: some View {
         VStack {
@@ -42,17 +43,15 @@ struct MihoyoUserEditView: View {
                 Text(CopyGameName.uid)
                 TextField(text: $uid)
 
+                Text(CopyGameName.sToken)
+                TextField(text: $sToken)
+
+                Text(CopyGameName.deviceFP)
+                TextField(text: $deivceFP)
+
                 Text(CopyGameName.inputCookie)
-//                NavigationLink(destination: CookieJSWebView()) {
-//                    HStack {
-//                        Text("登录网页版获取Cookie")
-//                            .multilineTextAlignment(.leading)
-//                            .padding([.top, .bottom], 5)
-//                        Spacer()
-//                    }
-//                }
-//                .buttonStyle(PlainButtonStyle())
                 TextEditor(text: $cookie)
+//                    .frame(maxHeight: 300)
                     .onChange(of: cookie) { value in
                         let strings = value.components(separatedBy: ";")
                         if let uidString = strings.filter({ $0.contains("stuid=") }).first {
@@ -68,7 +67,8 @@ struct MihoyoUserEditView: View {
                     nickname: nickename,
                     uid: uid,
                     cookie: cookie, 
-                    sToken: sToken
+                    sToken: sToken,
+                    deivceFP: deivceFP
                 )
                 
                 if viewModel.saveUserSuccess {

@@ -15,10 +15,17 @@ class MihoyoUserEditViewModel: ObservableObject {
         nickname: String,
         uid: String,
         cookie: String,
-        sToken: String
+        sToken: String,
+        deivceFP: String
     ) {
         SQLManager.shared.getMihoyoUser(uid) { [weak self] success, user in
-            let userInfo = MihoyoUserInfo(uid: uid, nickname: nickname, cookie: cookie, sToken: sToken)
+            let userInfo = MihoyoUserInfo(
+                uid: uid,
+                nickname: nickname,
+                cookie: cookie,
+                sToken: sToken,
+                deivceFP: deivceFP
+            )
             if user == nil {
                 self?.saveMihoyoUser(userInfo)
             } else {

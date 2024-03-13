@@ -79,6 +79,8 @@ struct LocalizableKeys {
         static let save = String(localized: "MihoyoGameSave")
         static let region = String(localized: "MihoyoGameRegion")
         static let addUser = String(localized: "MihoyoGameAddUser")
+        static let sToken = String(localized: "MihoyoGameSToken")
+        static let deviceFP = String(localized: "MihoyoGameDeivceFP")
     }
 }
 

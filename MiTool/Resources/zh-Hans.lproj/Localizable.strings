@@ -71,3 +71,5 @@
 "MihoyoGameSave" = "保存/更新用户信息";
 "MihoyoGameRegion" = "地区：%@";
 "MihoyoGameAddUser" = "添加新用户";
+"MihoyoGameSToken" = "米游社SToken";
+"MihoyoGameDeivceFP" = "设备签证";
