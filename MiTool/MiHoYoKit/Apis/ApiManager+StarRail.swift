@@ -2,238 +2,172 @@
 //  ApiManager+StarRail.swift
 //  MiTool
 //
-//  Created by Cain Luo on 2024/3/10.
+//  Created by Cain on 2024/3/13.
 //
 
 import Foundation
 import Alamofire
 
 extension ApiManager {
-    static func fetchStarRailWidget(
+    func fetchStarRailWidget(
         uid: String,
-        serverType: StarRailServerType
-    ) -> StarRailWidgetDataModel? {
-        let parameters = ["server": "prod_gf_cn",
-                          "role_id": "102731382"]
-        let ds = ApiDSHelper.getDS(region: .china, query: parameters.toJSONString ?? "")
-        let headers = ApiHeaderConfiguration.defaultHeaders(region: .china, additionalHeaders: ["DS": ds])
+        parameters: Parameters,
+        server: Region = .china,
+        completion: @escaping (Result<StarRailWidgetModel, Error>) -> Void
+    ) {
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: ["DS": decodeSalt,
+                                "Cookie": cookie,
+                                "x-rpc-device_fp": deviceFP,
+                                "x-rpc-device_id": deviceID]
+        )
         
-        NetworkManager<StarRailWidgetModel>().get(
-            from: ApiKeys.StarRail.dailyNote.rawValue,
-            host: ApiKeys.Host.mihoyo.rawValue, scheme: "https",
-            headers: HTTPHeaders(headers),
-            parameters: parameters) { result in
-                switch result {
-                case .success(let success):
-                    break
-                case .failure(let failure):
-                    break
+        get(
+            url: url,
+            parameters: nil,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<StarRailWidgetModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let data = success.data else {
+                    return
                 }
-            }
-        
-        return nil
-    }
-    
-    private static func saveStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
-        SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
-            if item == nil {
-                ApiManager.addStarRailWidget(uid: uid, model: model)
-            } else {
-                ApiManager.upgradeStarRailWidget(uid: uid, model: model)
+                SQLManagerHelper.saveStarRailWidget(uid: uid, model: data)
+            case .failure(let failure):
+                Logger.error(failure)
             }
         }
     }
-    
-    private static func addStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
-        SQLManager.shared.addStarRailDailyNode(
-            uid,
-            model: model
-        ) { _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Upgrade role info success")
-        }
-    }
-    
-    private static func upgradeStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
-        SQLManager.shared.upgradeStarRailDailyNode(
-            uid,
-            model: model
-        ) { _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Upgrade role info success")
-        }
-    }
-}
 
-extension ApiManager {
-    static func fetchStarRailRoles(
+    func fetchStarRailRoles(
         uid: String,
-        complete: ((Bool, [StarRailAllRoleListModel]) -> Void)?
+        parameters: Parameters,
+        server: Region = .china,
+        completion: @escaping (Result<StarRailAllRoleModel, Error>) -> Void
     ) {
-        let model = api().getStarRailMyRoleList()
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: ["DS": decodeSalt,
+                                "Cookie": cookie,
+                                "x-rpc-device_fp": deviceFP,
+                                "x-rpc-device_id": deviceID]
+        )
         
-        guard let list = model.data?.list else {
-            return
-        }
-        
-        complete?(true, list)
-                
-        for role in list {
-            SQLManager.shared.getStarRailRoleInfo(
-                uid, roleID: role.itemID ?? ""
-            ) { _, item in
-                if item != nil {
-                    ApiManager.upgradeStarRailRoleInfo(uid: uid, role: role)
-                } else {
-                    ApiManager.saveStarRailRoleInfo(uid: uid, role: role)
+        get(
+            url: url,
+            parameters: nil,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<StarRailAllRoleModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let list = success.data?.list else {
+                    return
                 }
+                SQLManagerHelper.fetchStarRailRoleDetail(uid: uid, list: list)
+            case .failure(let failure):
+                Logger.error(failure)
             }
-            
-            fetchStarRailRoleSkill(
-                uid: uid,
-                roleID: role.itemID ?? ""
-            )
-            fetchStarRailRoleSkillCompute(
-                uid: uid,
-                roleID: role.itemID ?? ""
-            )
         }
     }
-    
-    static func saveStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
-        SQLManager.shared.addStarRailRoleInfo(
-            uuid: uid,
-            model: role
-        ) {  _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Save role info success")
-        }
-    }
-    
-    static func upgradeStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
-        SQLManager.shared.upgradeStarRailRoleInfo(
-            uuid: uid, model: role
-        ) {  _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Upgrade role info success")
-        }
-    }
-}
 
-// MARK: - Honkai: StarRail Role Skills
-extension ApiManager {
-    static func fetchStarRailRoleSkill(
-        uid: String,
-        roleID: String
-    ) {
-        let model = api().getRoleInfo(id: roleID)
-        
-        guard let info = model.data else {
-            return
-        }
-        
-        SQLManager.shared.getStarRailRoleSkills(uid, roleID: roleID) { _, item in
-            if item != nil {
-                ApiManager.upgradeStarRailRoleSkill(uid: uid, info: info)
-            } else {
-                ApiManager.saveStarRailRoleSkill(uid: uid, info: info)
-            }
-        }
-    }
-    
-    static func saveStarRailRoleSkill(
-        uid: String, 
-        info: StarRailRoleInfoData
-    ) {
-        SQLManager.shared.addStarRailRoleSkillInfo(
-            uuid: uid,
-            model: info
-        ) { _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Save role Skill success")
-        }
-    }
-    
-    static func upgradeStarRailRoleSkill(
-        uid: String,
-        info: StarRailRoleInfoData
-    ) {
-        SQLManager.shared.upgradeStarRailRoleSkillInfo(
-            uuid: uid,
-            model: info
-        ) { _, error in
-            guard error == nil else {
-                return
-            }
-            Logger.info("Upgrade role Skill success")
-        }
-    }
-}
-
-// MARK: - Honkai: StarRail Role Compute
-extension ApiManager {
-    static func fetchStarRailRoleSkillCompute(
-        uid: String,
-        roleID: String
-    ) {
-        let model = api().getSkillCompute(id: roleID)
-        
-        guard let info = model.data else {
-            return
-        }
-        
-        SQLManager.shared.getStarRailRoleCompute(
-            uid, roleID: roleID
-        ) { _, item in
-            if item != nil {
-                ApiManager.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
-            } else {
-                ApiManager.saveStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
-            }
-        }
-    }
-    
-    static func saveStarRailRoleCompute(
+    func fetchStarRailRoleSkill(
         uid: String,
         roleID: String,
-        info: StarRailSkillComputeData
+        server: Region = .china,
+        completion: @escaping (Result<StarRailRoleInfoModel, Error>) -> Void
     ) {
-        SQLManager.shared.addStarRailRoleComputeInfo(
-            uuid: uid,
-            roleID: roleID,
-            model: info
-        ) { _, error in
-            guard error == nil else {
-                return
+        let parameters: Parameters = ["game": "hkrpg",
+                                      "lang": "zh-cn",
+                                      "item_id": roleID,
+                                      "tab_from": "TabAll",
+                                      "change_target_level": 0,
+                                      "uid": uid,
+                                      "region": "prod_gf_cn"]
+        
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: ["DS": decodeSalt,
+                                "Cookie": cookie,
+                                "x-rpc-device_fp": deviceFP,
+                                "x-rpc-device_id": deviceID]
+        )
+        
+        get(
+            url: url,
+            parameters: parameters,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<StarRailRoleInfoModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let info = success.data else {
+                    return
+                }
+                SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: info)
+            case .failure(let failure):
+                Logger.error(failure)
             }
-            Logger.info("Save role Compute success")
         }
     }
-    
-    static func upgradeStarRailRoleCompute(
+
+    func fetchStarRailRoleSkillCompute(
         uid: String,
         roleID: String,
-        info: StarRailSkillComputeData
+        server: Region = .china,
+        deviceFP: String,
+        deviceID: String,
+        completion: @escaping (Result<StarRailSkillComputeModel, Error>) -> Void
     ) {
-        SQLManager.shared.upgradeStarRailRoleComputeInfo(
-            uuid: uid,
-            roleID: roleID,
-            model: info
-        ) { _, error in
-            guard error == nil else {
-                return
+        let parameters: Parameters = ["game": "hkrpg",
+                                      "lang": "zh-cn",
+                                      "item_id": roleID,
+                                      "tab_from": "TabAll",
+                                      "change_target_level": 0,
+                                      "uid": uid,
+                                      "region": "prod_gf_cn"]
+        
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: ["DS": decodeSalt,
+                                "Cookie": cookie,
+                                "x-rpc-device_fp": deviceFP,
+                                "x-rpc-device_id": deviceID]
+        )
+        
+        get(
+            url: url,
+            parameters: parameters,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<StarRailSkillComputeModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let info = success.data else {
+                    return
+                }
+                SQLManagerHelper.saveStarRailRole(uid: uid, roleID: roleID, info: info)
+            case .failure(let failure):
+                Logger.error(failure)
             }
-            Logger.info("Upgrade role Compute success")
         }
     }
 }

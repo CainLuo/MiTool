@@ -9,6 +9,7 @@ import Foundation
 
 enum ApiKeys {
     enum Host: String {
+        case stokenV2 = "https://passport-api.mihoyo.com"
         case mihoyo = "https://api-takumi-record.mihoyo.com"
         case enka = ""
     }
@@ -17,6 +18,7 @@ enum ApiKeys {
         // 获取米游社用户的游戏记录
         case gameRecord = "/game_record/card/api/getGameRecordCard"
         case login = "https://m.bbs.mihoyo.com/ys/#/login"
+        case stoken = "/account/ma-cn-session/app/getTokenBySToken"
     }
 
     enum GenshinImpact: String {

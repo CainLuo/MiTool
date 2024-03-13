@@ -12,8 +12,6 @@ class RoleListViewModel: ObservableObject {
     @Published var userName: String = ""
     @Published var uid: String = ""
 
-    private let manager = MockApi.shared
-
     func fetchRoleAllList() {
         let users = SQLManager.shared.getMihoyoUserList()
         for user in users {

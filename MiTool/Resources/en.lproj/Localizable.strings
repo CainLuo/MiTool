@@ -44,14 +44,14 @@
 
 // MARK: - 原神
 
-"GenshinWeightResin" = "Resin";
-"GenshinWeightRecoveryTime" = "Recovery time";
-"GenshinWeightRecoveryDone" = "Recovery done";
-"GenshinWeightTransformerDay" = "%dDay%dHour";
-"GenshinWeightTransformerHour" = "%dHour%dMinute";
-"GenshinWeightTransformerMinutes" = "0Hour%dMinute";
-"GenshinWeightTransformerReady" = "Ready";
-"GenshinWeightTransformerDate" = "MM-DD-yyyy";
+"GenshinWidgetResin" = "Resin";
+"GenshinWidgetRecoveryTime" = "Recovery time";
+"GenshinWidgetRecoveryDone" = "Recovery done";
+"GenshinWidgetTransformerDay" = "%dDay%dHour";
+"GenshinWidgetTransformerHour" = "%dHour%dMinute";
+"GenshinWidgetTransformerMinutes" = "0Hour%dMinute";
+"GenshinWidgetTransformerReady" = "Ready";
+"GenshinWidgetTransformerDate" = "MM-DD-yyyy";
 
 // MARK: - 米游社
 

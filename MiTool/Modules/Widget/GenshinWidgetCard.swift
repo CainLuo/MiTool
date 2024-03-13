@@ -28,7 +28,7 @@ struct GenshinWidgetCard: View {
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
         .task {
-            viewModel.getGenshinWeight()
+            viewModel.getGenshinWidget()
         }
     }
 }
@@ -47,7 +47,7 @@ struct GenshinWidgetInfoView: View {
                 Image("resin")
                     .circleModifier(width: 50, height: 50)
                 VStack(spacing: 8) {
-                    Text(CopyGenshinWeight.resin)
+                    Text(CopyGenshinWidget.resin)
                     Text(viewModel.data.resinContent)
                         .font(.system(size: 20, weight: .semibold))
                     Text(viewModel.recoveryTime)

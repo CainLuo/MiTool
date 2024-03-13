@@ -44,14 +44,14 @@
 
 // MARK: - 原神
 
-"GenshinWeightResin" = "原粹树脂";
-"GenshinWeightRecoveryTime" = "剩余恢复时间";
-"GenshinWeightRecoveryDone" = "已恢复";
-"GenshinWeightTransformerDay" = "%d日%d小时";
-"GenshinWeightTransformerHour" = "%d小时%d分钟";
-"GenshinWeightTransformerMinutes" = "0小时%d分钟";
-"GenshinWeightTransformerReady" = "已准备就绪";
-"GenshinWeightTransformerDate" = "yyyy-MM-DD";
+"GenshinWidgetResin" = "原粹树脂";
+"GenshinWidgetRecoveryTime" = "剩余恢复时间";
+"GenshinWidgetRecoveryDone" = "已恢复";
+"GenshinWidgetTransformerDay" = "%d日%d小时";
+"GenshinWidgetTransformerHour" = "%d小时%d分钟";
+"GenshinWidgetTransformerMinutes" = "0小时%d分钟";
+"GenshinWidgetTransformerReady" = "已准备就绪";
+"GenshinWidgetTransformerDate" = "yyyy-MM-DD";
 
 // MARK: - 米游社
 

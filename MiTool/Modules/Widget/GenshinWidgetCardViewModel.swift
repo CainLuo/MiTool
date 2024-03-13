@@ -8,35 +8,33 @@
 import SwiftUI
 
 class GenshinWidgetCardViewModel: ObservableObject {
-    private let manager = MockApi.shared
-
     @Published var data = GenshinDailyNodeData()
     @Published var recoveryTime: String = ""
     @Published var staminaColor: Color = .red
     @Published var dailyNodes: [GenshinLocalDailyModel] = []
 
-    func getGenshinWeight() {
-        guard let data = manager.getGshinImpactWeight().data else {
-            return
-        }
-
-        self.data = data
-        let time = Int(data.resinRecoveryTime) ?? 0
-        setUpRecoveryTime(staminaRecoverTime: time)
-        setUpStaminaColor(staminaRecoverTime: time)
-        setupDailyNode()
+    func getGenshinWidget() {
+//        guard let data = manager.getGshinImpactWeight().data else {
+//            return
+//        }
+//
+//        self.data = data
+//        let time = Int(data.resinRecoveryTime) ?? 0
+//        setUpRecoveryTime(staminaRecoverTime: time)
+//        setUpStaminaColor(staminaRecoverTime: time)
+//        setupDailyNode()
     }
 
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
         if staminaRecoverTime == 0 {
-            recoveryTime = CopyGenshinWeight.recoveryDone
+            recoveryTime = CopyGenshinWidget.recoveryDone
         } else if staminaRecoverTime < 3600 {
             let minutes = staminaRecoverTime / 60
-            recoveryTime = String(format: CopyGenshinWeight.transformerMinutes, minutes)
+            recoveryTime = String(format: CopyGenshinWidget.transformerMinutes, minutes)
         } else {
             let minutes = staminaRecoverTime % 3600 / 60
             let hour = Int(staminaRecoverTime / 3600)
-            recoveryTime = String(format: CopyGenshinWeight.transformerHour, hour, minutes)
+            recoveryTime = String(format: CopyGenshinWidget.transformerHour, hour, minutes)
         }
     }
 

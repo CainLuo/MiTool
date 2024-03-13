@@ -8,7 +8,6 @@
 import SwiftUI
 
 class StarRailWidgetCardViewModel: ObservableObject {
-    private let manager = MockApi.shared
         
     /// 0~0.3 is Color.red
     /// 0.3~0.8 is Color.blue
@@ -23,22 +22,22 @@ class StarRailWidgetCardViewModel: ObservableObject {
     @Published var reserveStaminaFull: String = ""
 
     func getStarRailWidget() {
-        let model = manager.getStarRailWidget()
-        
-        _ = ApiManager.fetchStarRailWidget(uid: "", serverType: .gdCN)
-        
-        guard let data = model?.data else {
-            return
-        }
-        
-        expeditions = data.expeditions ?? []
-        stamina = "\(data.currentStamina)/\(data.maxStamina)"
-        reserveStamina = "\(data.currentReserveStamina)"
-        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
-        reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
-        
-        setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
-        setUpLocalModels(data: data)
+//        let model = manager.getStarRailWidget()
+//        
+//        _ = ApiManager.fetchStarRailWidget(uid: "", serverType: .gdCN)
+//        
+//        guard let data = model?.data else {
+//            return
+//        }
+//        
+//        expeditions = data.expeditions ?? []
+//        stamina = "\(data.currentStamina)/\(data.maxStamina)"
+//        reserveStamina = "\(data.currentReserveStamina)"
+//        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
+//        reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
+//        
+//        setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
+//        setUpLocalModels(data: data)
     }
     
     private func setUpStaminaColor(staminaRecoverTime: Int) {
@@ -82,14 +81,14 @@ class StarRailWidgetCardViewModel: ObservableObject {
     
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
         if staminaRecoverTime == 0 {
-            recoveryTime = CopyGenshinWeight.recoveryDone
+            recoveryTime = CopyGenshinWidget.recoveryDone
         } else if staminaRecoverTime < 3600 {
             let minutes = staminaRecoverTime / 60
-            recoveryTime = String(format: CopyGenshinWeight.transformerMinutes, minutes)
+            recoveryTime = String(format: CopyGenshinWidget.transformerMinutes, minutes)
         } else {
             let minutes = staminaRecoverTime % 3600 / 60
             let hour = Int(staminaRecoverTime / 3600)
-            recoveryTime = String(format: CopyGenshinWeight.transformerHour, hour, minutes)
+            recoveryTime = String(format: CopyGenshinWidget.transformerHour, hour, minutes)
         }
     }
 }
