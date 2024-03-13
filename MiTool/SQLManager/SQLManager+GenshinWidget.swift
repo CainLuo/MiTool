@@ -49,7 +49,7 @@ extension SQLManager {
             })
         } catch {
             #if DEBUG
-            Logger.error(message: error)
+            Logger.error(error)
             #endif
         }
     }

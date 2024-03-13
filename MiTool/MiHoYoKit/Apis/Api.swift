@@ -19,12 +19,36 @@ class Api: ApiProtocol {
 
 // MARK: - Get Star Rail Info
 extension Api {
-    func getStarRailAllRoleList() -> StarRailAllRoleModel {
+    func getStarRailMyRoleList() -> StarRailAllRoleModel {
         StarRailAllRoleModel()
     }
 
-    func getStarRailWidget() -> StarRailWeightModel {
-        StarRailWeightModel()
+    func getStarRailWidget() async -> StarRailWeightModel? {
+        let url = URL(string: ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue)!
+        let parameters = ["server": "prod_gf_cn",
+                          "role_id": ""]
+        let ds = ApiDSHelper.getDS(region: .china, query: parameters.toJSONString ?? "")
+        let headers = ApiHeaderConfiguration.defaultHeaders(region: .china, additionalHeaders: ["DS": ds])
+        do {
+            let model: StarRailWeightModel = try await ApiNetworkManager().performRequest(
+                url: url,
+                headers: headers,
+                parameters: parameters
+            )
+            return model
+        } catch {
+            if let apiError = error as? ApiNetworkError {
+                switch apiError {
+                case .invalidData:
+                    Logger.error("Invalid data error occurred.")
+                case .requestFailed(let underlyingError):
+                    Logger.error("Request failed with error: \(underlyingError)")
+                }
+            } else {
+                Logger.error(error)
+            }
+        }
+        return nil
     }
 
     func getRoleInfo(id: String) -> StarRailRoleInfoModel {

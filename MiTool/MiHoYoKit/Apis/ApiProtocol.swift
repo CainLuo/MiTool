@@ -23,7 +23,7 @@ public protocol ApiProtocol {
     func getGshinImpactSpiralAbyss() -> Any
 
     // MARK: - Honkai: StarRail
-    func getStarRailWidget() -> StarRailWeightModel
+    func getStarRailWidget() async -> StarRailWeightModel?
     func getStarRailDailyNote() -> StarRailWeightModel
     func getStarRailCharacter() -> Any
     func getStarRailAvatarList() -> Any
@@ -33,6 +33,6 @@ public protocol ApiProtocol {
     func getSkillRogue(id: String) -> Any
     func getSkillChallenge(id: String) -> Any
 
-    func getStarRailAllRoleList() -> StarRailAllRoleModel
+    func getStarRailMyRoleList() -> StarRailAllRoleModel
     func getRoleInfo(id: String) -> StarRailRoleInfoModel
 }

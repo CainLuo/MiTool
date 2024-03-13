@@ -15,7 +15,7 @@ enum Logger {
     #endif
     
     static func info<T>(
-        message: T,
+        _ message: T,
         file: String = #file,
         function: String = #function,
         line: Int = #line
@@ -31,7 +31,7 @@ enum Logger {
     }
 
     static func error<T>(
-        message: T,
+        _ message: T,
         file: String = #file,
         function: String = #function,
         line: Int = #line
@@ -47,7 +47,7 @@ enum Logger {
     }
 
     static func warning<T>(
-        message: T,
+        _ message: T,
         file: String = #file,
         function: String = #function,
         line: Int = #line

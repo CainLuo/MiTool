@@ -31,7 +31,7 @@ struct StarRailWidgetCard: View {
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
         .task {
-            viewModel.getStarRailWeight()
+            await viewModel.getStarRailWeight()
         }
     }
 }

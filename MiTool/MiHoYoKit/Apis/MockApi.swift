@@ -36,7 +36,7 @@ public class MockApi: ApiProtocol {
 
 // MARK: - Get Star Rail Info
 extension MockApi {
-    public func getStarRailAllRoleList() -> StarRailAllRoleModel {
+    public func getStarRailMyRoleList() -> StarRailAllRoleModel {
         guard let model = Bundle.getJSONFile(
             "starRailAllAvatars",
             responseType: StarRailAllRoleModel.self
@@ -46,7 +46,7 @@ extension MockApi {
         return model
     }
 
-    public func getStarRailWidget() -> StarRailWeightModel {
+    public func getStarRailWidget() -> StarRailWeightModel? {
         guard let model = Bundle.getJSONFile(
             "starRailDailyNode",
             responseType: StarRailWeightModel.self

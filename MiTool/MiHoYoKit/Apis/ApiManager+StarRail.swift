@@ -6,13 +6,75 @@
 //
 
 import Foundation
+import Alamofire
+
+extension ApiManager {
+    static func fetchStarRailWidget(
+        uid: String,
+        serverType: StarRailServerType
+    ) -> StarRailWeightDataModel? {
+        let parameters = ["server": "prod_gf_cn",
+                          "role_id": "102731382"]
+        let ds = ApiDSHelper.getDS(region: .china, query: parameters.toJSONString ?? "")
+        let headers = ApiHeaderConfiguration.defaultHeaders(region: .china, additionalHeaders: ["DS": ds])
+        
+        NetworkManager<StarRailWeightModel>().get(
+            from: ApiKeys.StarRail.dailyNote.rawValue,
+            host: ApiKeys.Host.mihoyo.rawValue, scheme: "https",
+            headers: HTTPHeaders(headers),
+            parameters: parameters) { result in
+                switch result {
+                case .success(let success):
+                    break
+                case .failure(let failure):
+                    break
+                }
+            }
+        
+        return nil
+    }
+    
+    private static func saveStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+        SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
+            if item == nil {
+                ApiManager.addStarRailWidget(uid: uid, model: model)
+            } else {
+                ApiManager.upgradeStarRailWidget(uid: uid, model: model)
+            }
+        }
+    }
+    
+    private static func addStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+        SQLManager.shared.addStarRailDailyNode(
+            uid,
+            model: model
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            Logger.info("Upgrade role info success")
+        }
+    }
+    
+    private static func upgradeStarRailWidget(uid: String, model: StarRailWeightDataModel) {
+        SQLManager.shared.upgradeStarRailDailyNode(
+            uid,
+            model: model
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            Logger.info("Upgrade role info success")
+        }
+    }
+}
 
 extension ApiManager {
     static func fetchStarRailRoles(
         uid: String,
         complete: ((Bool, [StarRailAllRoleListModel]) -> Void)?
     ) {
-        let model = api().getStarRailAllRoleList()
+        let model = api().getStarRailMyRoleList()
         
         guard let list = model.data?.list else {
             return
@@ -50,7 +112,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Save role info success")
+            Logger.info("Save role info success")
         }
     }
     
@@ -61,7 +123,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Upgrade role info success")
+            Logger.info("Upgrade role info success")
         }
     }
 }
@@ -98,7 +160,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Save role Skill success")
+            Logger.info("Save role Skill success")
         }
     }
     
@@ -113,7 +175,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Upgrade role Skill success")
+            Logger.info("Upgrade role Skill success")
         }
     }
 }
@@ -154,7 +216,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Save role Compute success")
+            Logger.info("Save role Compute success")
         }
     }
     
@@ -171,7 +233,7 @@ extension ApiManager {
             guard error == nil else {
                 return
             }
-            Logger.info(message: "Upgrade role Compute success")
+            Logger.info("Upgrade role Compute success")
         }
     }
 }

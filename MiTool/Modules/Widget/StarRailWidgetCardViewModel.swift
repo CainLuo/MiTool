@@ -22,10 +22,12 @@ class StarRailWidgetCardViewModel: ObservableObject {
     @Published var reserveStamina: String = ""
     @Published var reserveStaminaFull: String = ""
 
-    func getStarRailWeight() {        
+    func getStarRailWeight() {
         let model = manager.getStarRailWidget()
         
-        guard let data = model.data else {
+        _ = ApiManager.fetchStarRailWidget(uid: "", serverType: .gdCN)
+        
+        guard let data = model?.data else {
             return
         }
         

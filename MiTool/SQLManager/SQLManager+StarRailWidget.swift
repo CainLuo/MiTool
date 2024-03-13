@@ -47,12 +47,12 @@ extension SQLManager {
                 table.column(isReserveStaminaFull)
             })
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
         }
     }
 
     func addStarRailDailyNode(
-        uuid: String,
+        _ uuid: String,
         model: StarRailWeightDataModel,
         complete: ((Bool, Error?) -> Void)?
     ) {
@@ -109,6 +109,41 @@ extension SQLManager {
         }
     }
 
+    func getStarRailRoleDailyNode(
+        _ uuid: String,
+        complete: ((Bool, StarRailWeightDataModel?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = starRailDailyNode.filter(
+                    uid == uuid
+                )
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, StarRailWeightDataModel(
+                        currentStamina: item[currentStamina],
+                        maxStamina: item[maxStamina],
+                        staminaRecoverTime: item[staminaRecoverTime],
+                        acceptedEpeditionNum: item[acceptedEpeditionNum],
+                        totalExpeditionNum: item[totalExpeditionNum],
+                        expeditions: item[expeditions],
+                        currentTrainScore: item[currentTrainScore],
+                        maxTrainScore: item[maxTrainScore],
+                        currentRogueScore: item[currentRogueScore],
+                        maxRogueScore: item[maxRogueScore],
+                        weeklyCocoonCnt: item[weeklyCocoonCnt],
+                        weeklyCocoonLimit: item[weeklyCocoonLimit],
+                        currentReserveStamina: item[currentReserveStamina],
+                        isReserveStaminaFull: item[isReserveStaminaFull]
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            Logger.error(error)
+            complete?(false, nil)
+        }
+    }
+
     func getStarRaillAllDailyNode() -> [StarRailWeightDataModel] {
         var list: [StarRailWeightDataModel] = []
         do {
@@ -135,7 +170,7 @@ extension SQLManager {
             }
             return list
         } catch {
-            Logger.error(message: error)
+            Logger.error(error)
             return list
         }
     }
