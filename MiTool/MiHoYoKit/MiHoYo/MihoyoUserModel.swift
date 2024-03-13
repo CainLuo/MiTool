@@ -46,6 +46,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
     public var avatarURL: String = ""
     public var ipRegion: String = ""
     public var cookie: String?
+    public var sToken: String?
 
     public init?(map: Map) { }
     init() { }
@@ -73,7 +74,8 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
         communityInfo: String? = nil,
         avatarURL: String? = nil,
         ipRegion: String? = nil,
-        cookie: String
+        cookie: String,
+        sToken: String
     ) {
         self.uid = uid
         self.nickname = nickname
@@ -83,6 +85,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
         self.avatarURL = avatarURL ?? ""
         self.ipRegion = ipRegion ?? ""
         self.cookie = cookie
+        self.sToken = sToken
     }
 
     mutating public func mapping(map: ObjectMapper.Map) {

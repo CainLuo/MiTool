@@ -15,6 +15,7 @@ struct MihoyoUserEditView: View {
     @State var nickename: String = ""
     @State var uid: String = ""
     @State var cookie: String = ""
+    @State var sToken: String = ""
 
     var body: some View {
         VStack {
@@ -66,7 +67,8 @@ struct MihoyoUserEditView: View {
                 viewModel.saveMihoyoUser(
                     nickname: nickename,
                     uid: uid,
-                    cookie: cookie
+                    cookie: cookie, 
+                    sToken: sToken
                 )
                 
                 if viewModel.saveUserSuccess {

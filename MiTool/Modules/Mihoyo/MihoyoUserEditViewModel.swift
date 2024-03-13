@@ -14,10 +14,11 @@ class MihoyoUserEditViewModel: ObservableObject {
     func saveMihoyoUser(
         nickname: String,
         uid: String,
-        cookie: String
+        cookie: String,
+        sToken: String
     ) {
         SQLManager.shared.getMihoyoUser(uid) { [weak self] success, user in
-            let userInfo = MihoyoUserInfo(uid: uid, nickname: nickname, cookie: cookie)
+            let userInfo = MihoyoUserInfo(uid: uid, nickname: nickname, cookie: cookie, sToken: sToken)
             if user == nil {
                 self?.saveMihoyoUser(userInfo)
             } else {
