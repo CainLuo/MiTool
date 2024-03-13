@@ -10,7 +10,7 @@ import SwiftUI
 typealias CopySideBar = LocalizableKeys.SideBar
 typealias CopyStarRailWidget = LocalizableKeys.StarRailWidget
 typealias CopyStarRailRole = LocalizableKeys.StarRailRole
-typealias CopyGenshinWeight = LocalizableKeys.GenshinWeight
+typealias CopyGenshinWidget = LocalizableKeys.GenshinWidget
 typealias CopyGameName = LocalizableKeys.MihoyoGameName
 
 // swiftlint: disable convenience_type
@@ -52,15 +52,15 @@ struct LocalizableKeys {
         static let equipmentTitle = String(localized: "StarRailRoleEquipmentTitle")
     }
 
-    struct GenshinWeight {
-        static let resin = String(localized: "GenshinWeightResin")
-        static let recoveryTime = String(localized: "GenshinWeightRecoveryTime")
-        static let recoveryDone = String(localized: "GenshinWeightRecoveryDone")
-        static let transformerDay = String(localized: "GenshinWeightTransformerDay")
-        static let transformerHour = String(localized: "GenshinWeightTransformerHour")
-        static let transformerMinutes = String(localized: "GenshinWeightTransformerMinutes")
-        static let ready = String(localized: "GenshinWeightTransformerReady")
-        static let date = String(localized: "GenshinWeightTransformerDate")
+    struct GenshinWidget {
+        static let resin = String(localized: "GenshinWidgetResin")
+        static let recoveryTime = String(localized: "GenshinWidgetRecoveryTime")
+        static let recoveryDone = String(localized: "GenshinWidgetRecoveryDone")
+        static let transformerDay = String(localized: "GenshinWidgetTransformerDay")
+        static let transformerHour = String(localized: "GenshinWidgetTransformerHour")
+        static let transformerMinutes = String(localized: "GenshinWidgetTransformerMinutes")
+        static let ready = String(localized: "GenshinWidgetTransformerReady")
+        static let date = String(localized: "GenshinWidgetTransformerDate")
     }
 
     struct MihoyoGameName {

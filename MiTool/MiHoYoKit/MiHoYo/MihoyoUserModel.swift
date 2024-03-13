@@ -61,7 +61,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
     public var createTime: String {
         let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
         let dateFormart = DateFormatter()
-        dateFormart.dateFormat = CopyGenshinWeight.date
+        dateFormart.dateFormat = CopyGenshinWidget.date
         return dateFormart.string(from: date)
     }
     

@@ -73,12 +73,12 @@ public struct GenshinDailyNodeData: Mappable {
         }
 
         if recoveryTime.reached {
-            return CopyGenshinWeight.ready
+            return CopyGenshinWidget.ready
         } else {
             if recoveryTime.day > 0 {
-                return String(format: CopyGenshinWeight.transformerDay, recoveryTime.day, recoveryTime.hour)
+                return String(format: CopyGenshinWidget.transformerDay, recoveryTime.day, recoveryTime.hour)
             } else {
-                return String(format: CopyGenshinWeight.transformerHour, recoveryTime.hour, recoveryTime.minute)
+                return String(format: CopyGenshinWidget.transformerHour, recoveryTime.hour, recoveryTime.minute)
             }
         }
     }
@@ -187,7 +187,7 @@ public struct GenshinDailyNodeExpedition: Mappable, Identifiable {
         let tempMinute = remainedTime % 3600
         let minute = tempMinute / 60
         let hour = (remainedTime - tempMinute) / 3600
-        return String(format: CopyGenshinWeight.transformerHour, hour, minute)
+        return String(format: CopyGenshinWidget.transformerHour, hour, minute)
     }
 
     public var timeProgress: CGFloat {

@@ -133,11 +133,11 @@ public struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
             return CopyStarRailWidget.finished
         } else if remainingTime < 3600 {
             let minutes = remainingTime / 60
-            return String(format: CopyGenshinWeight.transformerMinutes, minutes)
+            return String(format: CopyGenshinWidget.transformerMinutes, minutes)
         } else {
             let minutes = remainingTime % 3600 / 60
             let hour = Int(remainingTime / 3600)
-            return String(format: CopyGenshinWeight.transformerHour, hour, minutes)
+            return String(format: CopyGenshinWidget.transformerHour, hour, minutes)
         }
     }
     

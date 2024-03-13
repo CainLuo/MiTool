@@ -25,17 +25,11 @@
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
 		A4CFC2212B9F097C0082734B /* LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2202B9F097C0082734B /* LocalizableKeys.swift */; };
 		A4CFC2242B9F0A650082734B /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = A4CFC2232B9F0A650082734B /* ObjectMapper */; };
-		A4CFC2412B9F0A910082734B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22E2B9F0A720082734B /* Api.swift */; };
-		A4CFC2422B9F0A910082734B /* ApiManager+StarRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22C2B9F0A720082734B /* ApiManager+StarRail.swift */; };
 		A4CFC2432B9F0A910082734B /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22A2B9F0A720082734B /* ApiKeys.swift */; };
-		A4CFC2442B9F0A910082734B /* ApiManager+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22D2B9F0A720082734B /* ApiManager+SQL.swift */; };
-		A4CFC2452B9F0A910082734B /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2302B9F0A720082734B /* MockApi.swift */; };
-		A4CFC2462B9F0A910082734B /* ApiNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2292B9F0A720082734B /* ApiNetworkManager.swift */; };
+		A4CFC2462B9F0A910082734B /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2292B9F0A720082734B /* ApiManager.swift */; };
 		A4CFC2472B9F0A910082734B /* ApiGameServerKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22F2B9F0A720082734B /* ApiGameServerKeys.swift */; };
 		A4CFC2482B9F0A910082734B /* ApiHeaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2262B9F0A720082734B /* ApiHeaderConfiguration.swift */; };
-		A4CFC2492B9F0A910082734B /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2272B9F0A720082734B /* ApiProtocol.swift */; };
 		A4CFC24A2B9F0A910082734B /* ApiDSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2282B9F0A720082734B /* ApiDSHelper.swift */; };
-		A4CFC24B2B9F0A910082734B /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC22B2B9F0A720082734B /* ApiManager.swift */; };
 		A4CFC24C2B9F0A950082734B /* StarRailRarityKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2352B9F0A720082734B /* StarRailRarityKeys.swift */; };
 		A4CFC24D2B9F0A950082734B /* StarRailDamageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2362B9F0A720082734B /* StarRailDamageKeys.swift */; };
 		A4CFC24E2B9F0A950082734B /* StarRailDestinyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2372B9F0A720082734B /* StarRailDestinyKeys.swift */; };
@@ -49,6 +43,14 @@
 		A4CFC2562B9F0AB40082734B /* GenshinDailyNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC23C2B9F0A720082734B /* GenshinDailyNodeModel.swift */; };
 		A4CFC2572B9F0AB40082734B /* GenshinWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC23B2B9F0A720082734B /* GenshinWidgetModel.swift */; };
 		A4CFC25D2BA060150082734B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A4CFC25C2BA060150082734B /* Alamofire */; };
+		A4CFC2612BA17EA30082734B /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2602BA17EA30082734B /* BaseApi.swift */; };
+		A4CFC2632BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2622BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift */; };
+		A4CFC2652BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2642BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift */; };
+		A4CFC2672BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */; };
+		A4CFC2692BA19B740082734B /* SQLManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2682BA19B740082734B /* SQLManagerHelper.swift */; };
+		A4CFC26B2BA19CFE0082734B /* ApiManager+StarRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */; };
+		A4CFC26D2BA1A4120082734B /* ApiManager+Stoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */; };
+		A4CFC26F2BA1AB450082734B /* MihoyoSTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC26E2BA1AB440082734B /* MihoyoSTokenModel.swift */; };
 		BF0512232B6E206A004D6878 /* MiToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512222B6E206A004D6878 /* MiToolTests.swift */; };
 		BF05122A2B6E2651004D6878 /* RoleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0512292B6E2651004D6878 /* RoleListView.swift */; };
 		BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05122B2B6E2709004D6878 /* RoleCardView.swift */; };
@@ -147,16 +149,10 @@
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
 		A4CFC2202B9F097C0082734B /* LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKeys.swift; sourceTree = "<group>"; };
 		A4CFC2262B9F0A720082734B /* ApiHeaderConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeaderConfiguration.swift; sourceTree = "<group>"; };
-		A4CFC2272B9F0A720082734B /* ApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
 		A4CFC2282B9F0A720082734B /* ApiDSHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDSHelper.swift; sourceTree = "<group>"; };
-		A4CFC2292B9F0A720082734B /* ApiNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetworkManager.swift; sourceTree = "<group>"; };
+		A4CFC2292B9F0A720082734B /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		A4CFC22A2B9F0A720082734B /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
-		A4CFC22B2B9F0A720082734B /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		A4CFC22C2B9F0A720082734B /* ApiManager+StarRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+StarRail.swift"; sourceTree = "<group>"; };
-		A4CFC22D2B9F0A720082734B /* ApiManager+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+SQL.swift"; sourceTree = "<group>"; };
-		A4CFC22E2B9F0A720082734B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A4CFC22F2B9F0A720082734B /* ApiGameServerKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGameServerKeys.swift; sourceTree = "<group>"; };
-		A4CFC2302B9F0A720082734B /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
 		A4CFC2322B9F0A720082734B /* MihoyoUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserModel.swift; sourceTree = "<group>"; };
 		A4CFC2332B9F0A720082734B /* MihoyoGameCardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoGameCardsModel.swift; sourceTree = "<group>"; };
 		A4CFC2352B9F0A720082734B /* StarRailRarityKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRarityKeys.swift; sourceTree = "<group>"; };
@@ -169,6 +165,14 @@
 		A4CFC23D2B9F0A720082734B /* StarRailSkillComputeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailSkillComputeModel.swift; sourceTree = "<group>"; };
 		A4CFC23E2B9F0A720082734B /* StarRailWeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWeightModel.swift; sourceTree = "<group>"; };
 		A4CFC23F2B9F0A720082734B /* GenshinCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinCharacterModel.swift; sourceTree = "<group>"; };
+		A4CFC2602BA17EA30082734B /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		A4CFC2622BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiHoYoDeviceFPFetchModel.swift; sourceTree = "<group>"; };
+		A4CFC2642BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiHoYoDeviceFPResponseModel.swift; sourceTree = "<group>"; };
+		A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiNetworkManager+MiHoYoDeivceFP.swift"; sourceTree = "<group>"; };
+		A4CFC2682BA19B740082734B /* SQLManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManagerHelper.swift; sourceTree = "<group>"; };
+		A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+StarRail.swift"; sourceTree = "<group>"; };
+		A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+Stoken.swift"; sourceTree = "<group>"; };
+		A4CFC26E2BA1AB440082734B /* MihoyoSTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoSTokenModel.swift; sourceTree = "<group>"; };
 		BF0512202B6E2069004D6878 /* MiToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0512222B6E206A004D6878 /* MiToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiToolTests.swift; sourceTree = "<group>"; };
 		BF0512292B6E2651004D6878 /* RoleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U001dRoleListView.swift"; sourceTree = "<group>"; };
@@ -273,17 +277,15 @@
 		A4CFC2252B9F0A720082734B /* Apis */ = {
 			isa = PBXGroup;
 			children = (
-				A4CFC22E2B9F0A720082734B /* Api.swift */,
 				A4CFC2282B9F0A720082734B /* ApiDSHelper.swift */,
 				A4CFC22F2B9F0A720082734B /* ApiGameServerKeys.swift */,
 				A4CFC2262B9F0A720082734B /* ApiHeaderConfiguration.swift */,
 				A4CFC22A2B9F0A720082734B /* ApiKeys.swift */,
-				A4CFC22B2B9F0A720082734B /* ApiManager.swift */,
-				A4CFC22D2B9F0A720082734B /* ApiManager+SQL.swift */,
-				A4CFC22C2B9F0A720082734B /* ApiManager+StarRail.swift */,
-				A4CFC2292B9F0A720082734B /* ApiNetworkManager.swift */,
-				A4CFC2272B9F0A720082734B /* ApiProtocol.swift */,
-				A4CFC2302B9F0A720082734B /* MockApi.swift */,
+				A4CFC2292B9F0A720082734B /* ApiManager.swift */,
+				A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */,
+				A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */,
+				A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */,
+				A4CFC2602BA17EA30082734B /* BaseApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -291,8 +293,11 @@
 		A4CFC2312B9F0A720082734B /* MiHoYo */ = {
 			isa = PBXGroup;
 			children = (
+				A4CFC2622BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift */,
+				A4CFC2642BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift */,
 				A4CFC2322B9F0A720082734B /* MihoyoUserModel.swift */,
 				A4CFC2332B9F0A720082734B /* MihoyoGameCardsModel.swift */,
+				A4CFC26E2BA1AB440082734B /* MihoyoSTokenModel.swift */,
 			);
 			path = MiHoYo;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				A4871DCC2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift */,
 				A4871DCA2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift */,
 				A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */,
+				A4CFC2682BA19B740082734B /* SQLManagerHelper.swift */,
 			);
 			path = SQLManager;
 			sourceTree = "<group>";
@@ -751,13 +757,14 @@
 				BFA75B7B2B7F86840020B246 /* WidgetView.swift in Sources */,
 				A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */,
 				A4CFC2432B9F0A910082734B /* ApiKeys.swift in Sources */,
+				A4CFC26F2BA1AB450082734B /* MihoyoSTokenModel.swift in Sources */,
 				BFA75B8F2B7FC8680020B246 /* SQLManager.swift in Sources */,
 				A4CFC2212B9F097C0082734B /* LocalizableKeys.swift in Sources */,
-				A4CFC2442B9F0A910082734B /* ApiManager+SQL.swift in Sources */,
 				BFE403B92B6E2B55002FF39E /* RoleListViewModel.swift in Sources */,
 				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
-				A4CFC2412B9F0A910082734B /* Api.swift in Sources */,
+				A4CFC2692BA19B740082734B /* SQLManagerHelper.swift in Sources */,
 				A4CFC2472B9F0A910082734B /* ApiGameServerKeys.swift in Sources */,
+				A4CFC2672BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift in Sources */,
 				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
 				A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
@@ -765,13 +772,13 @@
 				BF3F43FA2B9C40BF00B5C3FD /* ArrayX.swift in Sources */,
 				A4CFC24E2B9F0A950082734B /* StarRailDestinyKeys.swift in Sources */,
 				A4CFC2552B9F0AB40082734B /* StarRailSkillComputeRequestModel.swift in Sources */,
-				A4CFC2422B9F0A910082734B /* ApiManager+StarRail.swift in Sources */,
 				BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */,
 				BFB03BB12B8B0B93005DD170 /* RoleInfoViewModel.swift in Sources */,
 				BF05122C2B6E2709004D6878 /* RoleCardView.swift in Sources */,
 				BFA75B902B7FC8680020B246 /* SQLManager+StarRailRole.swift in Sources */,
 				BFE403C02B6E2FD6002FF39E /* ThemeColor.swift in Sources */,
 				A4CFC2542B9F0AB40082734B /* StarRailSkillComputeModel.swift in Sources */,
+				A4CFC2612BA17EA30082734B /* BaseApi.swift in Sources */,
 				A41389982B9EAEED00F94141 /* Logger.swift in Sources */,
 				A4871DCF2B901B7300C091BB /* SQLManager+StarRailWidget.swift in Sources */,
 				BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */,
@@ -780,6 +787,7 @@
 				A4CFC2532B9F0AB40082734B /* GenshinCharacterModel.swift in Sources */,
 				BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */,
 				BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */,
+				A4CFC26D2BA1A4120082734B /* ApiManager+Stoken.swift in Sources */,
 				A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */,
 				A4CFC2572B9F0AB40082734B /* GenshinWidgetModel.swift in Sources */,
 				A4CFC2482B9F0A910082734B /* ApiHeaderConfiguration.swift in Sources */,
@@ -788,13 +796,14 @@
 				A4CFC2562B9F0AB40082734B /* GenshinDailyNodeModel.swift in Sources */,
 				A4CFC24C2B9F0A950082734B /* StarRailRarityKeys.swift in Sources */,
 				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,
+				A4CFC2652BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift in Sources */,
 				BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */,
 				A413899E2B9EB51A00F94141 /* LocaleX.swift in Sources */,
 				BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */,
 				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
 				BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* RoleDetailView.swift in Sources */,
-				A4CFC2462B9F0A910082734B /* ApiNetworkManager.swift in Sources */,
+				A4CFC2462B9F0A910082734B /* ApiManager.swift in Sources */,
 				BFB03B732B831393005DD170 /* MihoyoUserEditView.swift in Sources */,
 				BF4659D32B69525500587AD3 /* ContentView.swift in Sources */,
 				A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */,
@@ -803,15 +812,15 @@
 				BFA75B8E2B7FC8680020B246 /* SQLManager+GenshinWidget.swift in Sources */,
 				A4CFC24F2B9F0A9B0082734B /* MihoyoUserModel.swift in Sources */,
 				BF5581B92B6FAADE003A5487 /* SideBar.swift in Sources */,
+				A4CFC26B2BA19CFE0082734B /* ApiManager+StarRail.swift in Sources */,
 				A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */,
 				A4CFC24D2B9F0A950082734B /* StarRailDamageKeys.swift in Sources */,
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
-				A4CFC2452B9F0A910082734B /* MockApi.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
 				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
+				A4CFC2632BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift in Sources */,
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
-				A4CFC2492B9F0A910082734B /* ApiProtocol.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
 				A4CFC2522B9F0AB40082734B /* StarRailWeightModel.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,
@@ -819,7 +828,6 @@
 				BFFCC1F42B9DA02E00780742 /* SectionHeaderView.swift in Sources */,
 				BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */,
 				BFB03B712B825680005DD170 /* MihoyoGameCardView.swift in Sources */,
-				A4CFC24B2B9F0A910082734B /* ApiManager.swift in Sources */,
 				BFB03BA92B84A58C005DD170 /* GenshinWidgetCardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

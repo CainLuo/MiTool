@@ -8,7 +8,6 @@
 import SwiftUI
 
 class MihoyoUserListViewModel: ObservableObject {
-    private let api = MockApi.shared
     private let manager = SQLManager.shared
     
     @Published var userList: [MihoyoUserInfo] = []
