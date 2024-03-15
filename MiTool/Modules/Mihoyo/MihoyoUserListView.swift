@@ -28,6 +28,7 @@ struct MihoyoUserListView: View {
                         .background(.blue)
                         .cornerRadius(8)
                 }
+                .padding([.trailing, .top], 10)
                 .buttonStyle(PlainButtonStyle())
             }
             if viewModel.userList.isEmpty {

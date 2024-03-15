@@ -17,6 +17,9 @@ struct MihoyoUserEditView: View {
     @State var cookie: String = ""
     @State var sToken: String = ""
     @State var deivceFP: String = ""
+    
+    @State var selection = Region.china
+    let regions: [Region] = [.china, .global]
 
     var body: some View {
         VStack {
@@ -37,21 +40,43 @@ struct MihoyoUserEditView: View {
             }
             
             VStack(alignment: .leading) {
-                Text(CopyGameName.inputNickname)
-                TextField(text: $nickename)
                 
-                Text(CopyGameName.uid)
-                TextField(text: $uid)
+                HStack {
+                    VStack {
+                        Text(CopyGameName.inputNickname)
+                        TextField(text: $nickename)
+                    }
+                    
+                    VStack {
+                        Text(CopyGameName.uid)
+                        TextField(text: $uid)
+                    }
+                }
 
-                Text(CopyGameName.sToken)
-                TextField(text: $sToken)
-
-                Text(CopyGameName.deviceFP)
-                TextField(text: $deivceFP)
+                HStack {
+                    VStack {
+                        Text(CopyGameName.sToken)
+                        TextField(text: $sToken)
+                    }
+                    VStack {
+                        Text(CopyGameName.deviceFP)
+                        TextField(text: $deivceFP)
+                    }
+                }
+                
+                Picker(
+                    "Select Region",
+                    selection: $selection
+                ) {
+                    ForEach(regions, id: \.self) { region in
+                        Text(region.rawValue)
+                    }
+                }
+                .pickerStyle(.menu)
 
                 Text(CopyGameName.inputCookie)
                 TextEditor(text: $cookie)
-//                    .frame(maxHeight: 300)
+                    .frame(maxHeight: 300)
                     .onChange(of: cookie) { value in
                         let strings = value.components(separatedBy: ";")
                         if let uidString = strings.filter({ $0.contains("stuid=") }).first {
@@ -59,6 +84,8 @@ struct MihoyoUserEditView: View {
                             self.uid = uid
                         }
                     }
+                
+                Spacer()
             }
             .padding()
             
