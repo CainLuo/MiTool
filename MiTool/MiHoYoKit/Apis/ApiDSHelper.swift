@@ -11,6 +11,19 @@ import CryptoSwift
 public enum Region: String {
     case china = "hk4e_cn"
     case global = "hk4e_global"
+    
+    static let regions = [
+        Region.china: "China",
+        Region.global: "Global"
+    ]
+    
+    static func region(_ regionString: String) -> Region {
+        let regionSever = Region.regions.filter { $0.value == regionString }.compactMap { $0.key }
+        guard let region = regionSever.first else {
+            return .china
+        }
+        return region
+    }
 }
 
 enum ApiDSHelper {

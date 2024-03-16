@@ -28,6 +28,7 @@ struct MihoyoUserListView: View {
                         .background(.blue)
                         .cornerRadius(8)
                 }
+                .padding([.trailing, .top], 10)
                 .buttonStyle(PlainButtonStyle())
             }
             if viewModel.userList.isEmpty {
@@ -43,9 +44,8 @@ struct MihoyoUserListView: View {
                         } header: {
                             NavigationLink(destination: 
                                             MihoyoUserEditView(
-                                                nickename: user.nickname,
-                                                uid: user.uid, 
-                                                cookie: user.cookie ?? ""
+                                                isNew: false,
+                                                uid: user.uid
                                             )
                             ) {
                                 HStack {
