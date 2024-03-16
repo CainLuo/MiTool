@@ -44,9 +44,8 @@ struct MihoyoUserListView: View {
                         } header: {
                             NavigationLink(destination: 
                                             MihoyoUserEditView(
-                                                nickename: user.nickname,
-                                                uid: user.uid, 
-                                                cookie: user.cookie ?? ""
+                                                isNew: false,
+                                                uid: user.uid
                                             )
                             ) {
                                 HStack {

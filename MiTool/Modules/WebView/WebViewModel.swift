@@ -11,17 +11,19 @@ class WebViewModel: ObservableObject {
     @Published var url: URL?
     
     func fetchURL(sideBarType: SideBarType) {
-        switch sideBarType {
-        case .starRailMap:
-            url = URL(string: "https://webstatic.mihoyo.com/sr/app/interactive-map/index.html")
-        case .starRailWiki:
-            url = URL(string: "https://bbs.mihoyo.com/sr/wiki/")
-        case .genshinImpactMap:
-            url = URL(string: "https://act.mihoyo.com/ys/app/interactive-map/index.html")
-        case .genshinImpactWiki:
-            url = URL(string: "https://bbs.mihoyo.com/ys/obc/")
-        default:
-            break
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            switch sideBarType {
+            case .starRailMap:
+                self.url = URL(string: "https://webstatic.mihoyo.com/sr/app/interactive-map/index.html")
+            case .starRailWiki:
+                self.url = URL(string: "https://bbs.mihoyo.com/sr/wiki/")
+            case .genshinImpactMap:
+                self.url = URL(string: "https://act.mihoyo.com/ys/app/interactive-map/index.html")
+            case .genshinImpactWiki:
+                self.url = URL(string: "https://bbs.mihoyo.com/ys/obc/")
+            default:
+                break
+            }
         }
     }
 }

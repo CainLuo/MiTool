@@ -8,7 +8,52 @@
 import Foundation
 
 class SQLManagerHelper {
+    static func saveMihoyoUser(
+        userInfo: MihoyoUserInfo,
+        complete: @escaping (Bool, Error?) -> Void
+    ) {
+        SQLManager.shared.getMihoyoUser(userInfo.uid) { _, user in
+            if user == nil {
+                SQLManagerHelper.addMihoyoUser(userInfo, complete: complete)
+            } else {
+                SQLManagerHelper.upgradeMihoyoUser(userInfo, complete: complete)
+            }
+        }
+    }
     
+    static func getMihoyoUser(
+        uid: String,
+        complete: @escaping (MihoyoUserInfo) -> Void
+    ) {
+        SQLManager.shared.getMihoyoUser(uid) { _, user in
+            guard let user = user else {
+                return
+            }
+            complete(user)
+        }
+    }
+    
+    private static func addMihoyoUser(
+        _ userInfo: MihoyoUserInfo,
+        complete: @escaping (Bool, Error?) -> Void
+    ) {
+        SQLManager.shared.addMihoyoUser(userInfo) { success, error in
+            complete(success, error)
+        }
+    }
+    
+    private static func upgradeMihoyoUser(
+        _ userInfo: MihoyoUserInfo,
+        complete: @escaping (Bool, Error?) -> Void
+    ) {
+        SQLManager.shared.upgradeMihoyoUser(
+            userInfo.uid,
+            model: userInfo
+        ) { success, error in
+            complete(success, error)
+        }
+    }
+
     static func saveMihoyoGameCards(
         _ uid: String,
         gameCards: [MihoyoGameCardsList]

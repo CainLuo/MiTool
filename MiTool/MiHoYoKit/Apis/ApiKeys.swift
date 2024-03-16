@@ -11,12 +11,14 @@ enum ApiKeys {
     enum Host: String {
         case stokenV2 = "https://passport-api.mihoyo.com"
         case mihoyo = "https://api-takumi-record.mihoyo.com"
+        case bbsMihoyo = "https://bbs-api.miyoushe.com"
         case enka = ""
     }
-
     enum Mihoyo: String {
         // 获取米游社用户的游戏记录
         case gameRecord = "/game_record/card/api/getGameRecordCard"
+        case userFullInfo = "/user/api/getUserFullInfo"
+        
         case login = "https://m.bbs.mihoyo.com/ys/#/login"
         case stoken = "/account/ma-cn-session/app/getTokenBySToken"
     }

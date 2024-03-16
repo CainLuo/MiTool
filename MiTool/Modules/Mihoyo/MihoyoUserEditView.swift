@@ -10,17 +10,13 @@ import SwiftUI
 struct MihoyoUserEditView: View {
     @Environment (\.presentationMode) var presentationMode
     
+    var isNew = true
+    var uid: String = ""
+    
     @StateObject var viewModel = MihoyoUserEditViewModel()
-    
-    @State var nickename: String = ""
-    @State var uid: String = ""
-    @State var cookie: String = ""
-    @State var sToken: String = ""
-    @State var deivceFP: String = ""
-    
-    @State var selection = Region.china
-    let regions: [Region] = [.china, .global]
 
+    @State var selection = "China"
+    
     var body: some View {
         VStack {
             HStack {
@@ -40,27 +36,26 @@ struct MihoyoUserEditView: View {
             }
             
             VStack(alignment: .leading) {
-                
                 HStack {
                     VStack {
                         Text(CopyGameName.inputNickname)
-                        TextField(text: $nickename)
+                        TextField(text: $viewModel.nickname)
                     }
                     
                     VStack {
                         Text(CopyGameName.uid)
-                        TextField(text: $uid)
+                        TextField(text: $viewModel.uid)
                     }
                 }
 
                 HStack {
                     VStack {
                         Text(CopyGameName.sToken)
-                        TextField(text: $sToken)
+                        TextField(text: $viewModel.sTokenV2)
                     }
                     VStack {
                         Text(CopyGameName.deviceFP)
-                        TextField(text: $deivceFP)
+                        TextField(text: $viewModel.deivceFP)
                     }
                 }
                 
@@ -68,34 +63,30 @@ struct MihoyoUserEditView: View {
                     "Select Region",
                     selection: $selection
                 ) {
-                    ForEach(regions, id: \.self) { region in
-                        Text(region.rawValue)
+                    ForEach(Region.regions.map { $0.value }, id: \.self) { region in
+                        Text(region)
                     }
                 }
                 .pickerStyle(.menu)
 
                 Text(CopyGameName.inputCookie)
-                TextEditor(text: $cookie)
+                TextEditor(text: $viewModel.cookie)
                     .frame(maxHeight: 300)
-                    .onChange(of: cookie) { value in
-                        let strings = value.components(separatedBy: ";")
-                        if let uidString = strings.filter({ $0.contains("stuid=") }).first {
-                            let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
-                            self.uid = uid
+                    .onChange(of: viewModel.cookie) { value in
+                        if isNew {
+                            viewModel.fetchDeivceFP(cookie: value)
+                            viewModel.fetchSTokenV2(cookie: value)
+                            viewModel.cookieConvertUID(cookie: value)
+                            viewModel.fetchMihoyoUserInfo(region: selection)
                         }
                     }
-                
                 Spacer()
             }
             .padding()
             
             Button(action: {
                 viewModel.saveMihoyoUser(
-                    nickname: nickename,
-                    uid: uid,
-                    cookie: cookie, 
-                    sToken: sToken,
-                    deivceFP: deivceFP
+                    region: selection
                 )
                 
                 if viewModel.saveUserSuccess {
@@ -116,6 +107,11 @@ struct MihoyoUserEditView: View {
                 Button("ok") {
                     viewModel.saveUserFailed.toggle()
                 }
+            }
+        }
+        .task {
+            if !uid.isEmpty {
+                viewModel.getUserInfo(uid: uid)
             }
         }
     }

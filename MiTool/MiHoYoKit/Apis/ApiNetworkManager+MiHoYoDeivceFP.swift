@@ -11,6 +11,7 @@ import Foundation
 extension ApiManager {
     func fetchDeivceFP(
         deviceId: UUID,
+        cookie: String,
         completion: @escaping (String) -> Void
     ) {
         func generateSeed() -> String {
@@ -43,7 +44,8 @@ extension ApiManager {
         post(
             url: url,
             parameters: body,
-            headers: nil
+            encoding: JSONEncoding.default,
+            headers: HTTPHeaders(["Cookie": cookie])
         ) { (result: Result<MiHoYoDeviceFPResponseModel, Error>) in
             switch result {
             case .success(let success):

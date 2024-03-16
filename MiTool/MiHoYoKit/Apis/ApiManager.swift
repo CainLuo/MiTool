@@ -21,9 +21,40 @@ class ApiManager: BaseRequestable {
     
     func fetchMihoyoUserInfo(
         uid: String,
-        completion: @escaping (Result<MihoyoUserModel, Error>) -> Void
+        region: Region = .china,
+        completion: @escaping (MihoyoUserInfo) -> Void
     ) {
+        let url = ApiKeys.Host.bbsMihoyo.rawValue + ApiKeys.Mihoyo.userFullInfo.rawValue
+        let parameters: Parameters = ["uid": uid]
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: [
+                "DS": decodeSalt,
+                "Cookie": cookie,
+                "x-rpc-device_fp": deviceFP,
+                "x-rpc-device_id": deviceID
+            ]
+        )
         
+        get(
+            url: url,
+            parameters: parameters,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<MihoyoUserModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let userInfo = success.data?.userInfo else {
+                    return
+                }
+                completion(userInfo)
+            case .failure(let failure):
+                Logger.error(failure)
+            }
+        }
     }
     
     /// Get MiHoYo User Game Cards
@@ -42,10 +73,12 @@ class ApiManager: BaseRequestable {
         )
         let headers = ApiHeaderConfiguration.defaultHeaders(
             region: region,
-            additionalHeaders: ["DS": decodeSalt,
-                                "Cookie": cookie,
-                                "x-rpc-device_fp": deviceFP,
-                                "x-rpc-device_id": deviceID]
+            additionalHeaders: [
+                "DS": decodeSalt,
+                "Cookie": cookie,
+                "x-rpc-device_fp": deviceFP,
+                "x-rpc-device_id": deviceID
+            ]
         )
 
         get(
