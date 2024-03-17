@@ -13,6 +13,7 @@ private let uid = Expression<String?>("uid")                        // 米游社
 private let cookie = Expression<String?>("cookie")                  // 米游社Cookie
 private let sToken = Expression<String?>("sToken")                  // 米游社sToken-V2
 private let deivceFP = Expression<String?>("deivceFP")              // 米游社设备签证
+private let deviceID = Expression<String?>("deviceID")              // 米游社设备ID
 private let nickname = Expression<String?>("nickname")              // 昵称
 private let communityInfo = Expression<String?>("communityInfo")    // 创建时间
 private let introduce = Expression<String?>("introduce")            // 简介
@@ -30,6 +31,7 @@ extension SQLManager {
                 table.column(cookie)
                 table.column(sToken)
                 table.column(deivceFP)
+                table.column(deviceID)
                 table.column(nickname)
                 table.column(communityInfo)
                 table.column(introduce)
@@ -54,6 +56,7 @@ extension SQLManager {
                 cookie <- model.cookie,
                 sToken <- model.sToken,
                 deivceFP <- model.deivceFP,
+                deviceID <- model.deviceID,
                 communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
@@ -81,6 +84,7 @@ extension SQLManager {
                 cookie <- model.cookie,
                 sToken <- model.sToken,
                 deivceFP <- model.deivceFP,
+                deviceID <- model.deviceID,
                 communityInfo <- model.communityInfo?.toJSONString(),
                 introduce <- model.introduce,
                 gender <- model.gender,
@@ -140,6 +144,7 @@ extension SQLManager {
                         cookie: item[cookie] ?? "",
                         sToken: item[sToken] ?? "",
                         deivceFP: item[deivceFP] ?? "",
+                        deviceID: item[deviceID] ?? UUID().uuidString,
                         region: item[region] ?? ""
                     )
                     list.append(account)
@@ -170,6 +175,7 @@ extension SQLManager {
                     cookie: item[cookie] ?? "",
                     sToken: item[sToken] ?? "",
                     deivceFP: item[deivceFP] ?? "",
+                    deviceID: item[deviceID] ?? UUID().uuidString,
                     region: item[region] ?? ""
                 ))
             }

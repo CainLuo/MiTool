@@ -37,8 +37,13 @@ class MihoyoUserEditViewModel: ObservableObject {
             cookie: cookie,
             sToken: sTokenV2,
             deivceFP: deivceFP,
+            deviceID: UUID().uuidString,
             region: regionSever.rawValue
         )
+
+        ApiManager.shared.deviceID = userInfo.deviceID ?? UUID().uuidString
+        ApiManager.shared.region = regionSever
+
         SQLManagerHelper.saveMihoyoUser(userInfo: userInfo) { [weak self] _, error in
             guard error == nil else {
                 self?.saveUserFailed = true
@@ -49,11 +54,13 @@ class MihoyoUserEditViewModel: ObservableObject {
     }
     
     func fetchDeivceFP(cookie: String) {
+        ApiManager.shared.cookie = cookie
         ApiManager.shared.fetchDeivceFP(deviceId: UUID(), cookie: cookie) { [weak self] deivceFP in
             guard !deivceFP.isEmpty else {
                 return
             }
             self?.deivceFP = deivceFP
+            ApiManager.shared.deviceFP = deivceFP
         }
     }
     
@@ -63,6 +70,7 @@ class MihoyoUserEditViewModel: ObservableObject {
                 return
             }
             self?.sTokenV2 = sTokenV2
+            ApiManager.shared.sToken = sTokenV2
         }
     }
     
@@ -73,7 +81,12 @@ class MihoyoUserEditViewModel: ObservableObject {
         ApiManager.shared.fetchMihoyoUserInfo(uid: uid, region: regionSever) { [weak self] result in
             self?.uid = result.uid
             self?.nickname = result.nickname
+            self?.fetchGameCard()
         }
+    }
+    
+    func fetchGameCard() {
+        ApiManager.shared.fetchStarRailGameCards(uid: uid, server: StarRailGameBiz.china.rawValue)
     }
     
     func cookieConvertUID(cookie: String) {

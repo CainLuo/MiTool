@@ -53,6 +53,7 @@ public struct MihoyoGameCardsList: Mappable, Identifiable {
     public var hasRole: Bool?
     public var gameID: MihoyoGameID?
     public var gameRoleID: String = ""
+    public var gameUID: String = ""
     public var nickname: String = ""
     public var region: String = ""
     public var level: Int = 1
@@ -79,6 +80,8 @@ public struct MihoyoGameCardsList: Mappable, Identifiable {
         }
     }
 
+    public init() { }
+    
     public init?(map: ObjectMapper.Map) {
     }
 
@@ -86,6 +89,7 @@ public struct MihoyoGameCardsList: Mappable, Identifiable {
         hasRole <- map["has_role"]
         gameID <- map["game_id"]
         gameRoleID <- map["game_role_id"]
+        gameUID <- map["game_uid"]
         nickname <- map["nickname"]
         region <- map["region"]
         level <- map["level"]

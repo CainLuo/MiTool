@@ -15,8 +15,10 @@ extension ApiManager {
     func fetchSTokenV2(cookie: String, completion: @escaping (String) -> Void) {
         let url = ApiKeys.Host.stokenV2.rawValue + ApiKeys.Mihoyo.stoken.rawValue
         let headers = HTTPHeaders(
-            ["x-rpc-app_id": "bll8iq97cem8",
-             "Cookie": cookie]
+            [
+                "x-rpc-app_id": "bll8iq97cem8",
+                "Cookie": cookie
+            ]
         )
         post(
             url: url,

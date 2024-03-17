@@ -12,9 +12,15 @@ struct StarRailWidgetCard: View {
     @State var fill: CGFloat = 0
     @StateObject var viewModel = StarRailWidgetCardViewModel()
     
+    var widgetItem: WidgetSectionItem
+    
     var body: some View {
         HStack {
-            StarRailWidgetInfoView(viewModel: viewModel)
+            StarRailWidgetInfoView(
+                uid: widgetItem.uidString,
+                nickname: widgetItem.nicknameString,
+                viewModel: viewModel
+            )
             
             Divider()
             
@@ -30,8 +36,8 @@ struct StarRailWidgetCard: View {
         .background(.black.opacity(0.4))
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
-        .task {
-            await viewModel.getStarRailWidget()
+        .onAppear {
+            viewModel.fetchStarRailWidget(item: widgetItem)
         }
     }
 }
@@ -42,13 +48,16 @@ struct StarRailWidgetInfoView: View {
         static let height: CGFloat = 50
     }
     
+    var uid = ""
+    var nickname = ""
+
     @StateObject var viewModel: StarRailWidgetCardViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("昵称：凹凸曼的小怪兽")
+            Text(nickname)
                 .font(.system(size: 16, weight: .semibold))
-            Text("UID：109020123")
+            Text(uid)
                 .font(.system(size: 16, weight: .semibold))
             
             HStack {
@@ -103,6 +112,7 @@ struct StarRailWidgetOtherCard: View {
                     Text("\(type.currentValue) / \(type.maxValue)")
                         .font(.system(size: 14))
                 }
+                .frame(height: 40)
             }
         }
         .frame(minWidth: 150, maxWidth: .infinity)
@@ -152,6 +162,6 @@ struct StarRailExpeditionView: View {
 }
 
 #Preview {
-    StarRailWidgetCard()
+    StarRailWidgetCard(widgetItem: .init())
         .frame(width: 750, height: 250)
 }
