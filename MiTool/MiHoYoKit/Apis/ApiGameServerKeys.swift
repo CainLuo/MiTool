@@ -16,7 +16,6 @@ import Foundation
 /// officialASIA: Asia Server
 /// officialCHT: Cht Server
 enum StarRailServerType: String {
-    
     case gdCN = "prod_gf_cn"
     case qdCN = "prod_qd_cn"
     case officialUSA = "prod_official_usa"
@@ -25,10 +24,18 @@ enum StarRailServerType: String {
     case officialCHT = "prod_official_cht"
 }
 
+enum StarRailGameBiz: String {
+    case china = "hkrpg_cn"
+}
+
 /// Genshin Impact Server
 /// gfCN: Mihoyo Server
 /// qdCN: China Server, like XiaoMi, Bilibili Server
 enum GenshinServerType: String {
     case gfCN = "cn_gf01"
     case qdCN = "cn_qd01"
+}
+
+enum GenshinGameBiz: String {
+    case china = "hk4e_cn"
 }

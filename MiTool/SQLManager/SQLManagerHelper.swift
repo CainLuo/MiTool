@@ -58,9 +58,9 @@ class SQLManagerHelper {
         _ uid: String,
         gameCards: [MihoyoGameCardsList]
     ) {
-        let gameCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
+        let localCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
         
-        if gameCards.isEmpty {
+        if localCards.isEmpty {
             SQLManager.shared.addMihoyoGameCards(
                 uuid: uid,
                 model: gameCards
@@ -74,6 +74,30 @@ class SQLManagerHelper {
                 uuid: uid,
                 model: gameCards
             ) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        }
+    }
+    
+    static func saveStarRailCards(
+        _ uid: String,
+        gameCards: [MihoyoGameCardsList]
+    ) {
+        guard let gameCard = gameCards.first else {
+            return
+        }
+        let localCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
+        
+        if localCards.isEmpty {
+            SQLManager.shared.addStarRailCards(uuid: uid, model: gameCard) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        } else {
+            SQLManager.shared.upgradeStarRailGameCards(uuid: uid, model: gameCard) { _, error in
                 if let error {
                     Logger.error(error)
                 }

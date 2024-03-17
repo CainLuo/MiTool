@@ -15,7 +15,7 @@ struct WidgetView: View {
             List {
                 ForEach(viewModel.widgetSections) { section in
                     Section {
-                        StarRailWidgetCard()
+                        StarRailWidgetCard(widgetItem: section.starRailItem)
                         GenshinWidgetCard()
                     } header: {
                         SectionHeaderView(

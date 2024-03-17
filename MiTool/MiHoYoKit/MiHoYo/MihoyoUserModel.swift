@@ -48,6 +48,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
     public var cookie: String?
     public var sToken: String?
     public var deivceFP: String?
+    public var deviceID: String?
     public var region: String?
 
     public init?(map: Map) { }
@@ -79,6 +80,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
         cookie: String,
         sToken: String,
         deivceFP: String,
+        deviceID: String,
         region: String
     ) {
         self.uid = uid
@@ -91,6 +93,7 @@ public struct MihoyoUserInfo: Mappable, Identifiable {
         self.cookie = cookie
         self.sToken = sToken
         self.deivceFP = deivceFP
+        self.deviceID = deviceID
         self.region = region
     }
 

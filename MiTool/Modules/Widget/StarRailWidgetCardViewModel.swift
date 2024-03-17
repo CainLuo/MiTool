@@ -8,7 +8,6 @@
 import SwiftUI
 
 class StarRailWidgetCardViewModel: ObservableObject {
-        
     /// 0~0.3 is Color.red
     /// 0.3~0.8 is Color.blue
     /// 0.8~1 is Color.green
@@ -21,23 +20,18 @@ class StarRailWidgetCardViewModel: ObservableObject {
     @Published var reserveStamina: String = ""
     @Published var reserveStaminaFull: String = ""
 
-    func getStarRailWidget() {
-//        let model = manager.getStarRailWidget()
-//        
-//        _ = ApiManager.fetchStarRailWidget(uid: "", serverType: .gdCN)
-//        
-//        guard let data = model?.data else {
-//            return
-//        }
-//        
-//        expeditions = data.expeditions ?? []
-//        stamina = "\(data.currentStamina)/\(data.maxStamina)"
-//        reserveStamina = "\(data.currentReserveStamina)"
-//        let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
-//        reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
-//        
-//        setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
-//        setUpLocalModels(data: data)
+    func fetchStarRailWidget(item: WidgetSectionItem) {
+        ApiManager.shared.fetchStarRailWidget(uid: item.uid) { [weak self] data in
+            self?.expeditions = data.expeditions ?? []
+            self?.stamina = "\(data.currentStamina)/\(data.maxStamina)"
+            self?.reserveStamina = "\(data.currentReserveStamina)"
+            
+            let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
+            self?.reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
+            
+            self?.setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
+            self?.setUpLocalModels(data: data)
+        }
     }
     
     private func setUpStaminaColor(staminaRecoverTime: Int) {
@@ -70,12 +64,12 @@ class StarRailWidgetCardViewModel: ObservableObject {
                 type: .entrusted,
                 currentValue: data.acceptedEpeditionNum,
                 maxValue: data.totalExpeditionNum
-            ),
-            StarRailLocalModel(
-                type: .weeklyMonster,
-                currentValue: data.weeklyCocoonCnt,
-                maxValue: data.weeklyCocoonLimit
-            )
+            )// ,
+//            StarRailLocalModel(
+//                type: .weeklyMonster,
+//                currentValue: data.weeklyCocoonCnt,
+//                maxValue: data.weeklyCocoonLimit
+//            )
         ]
     }
     

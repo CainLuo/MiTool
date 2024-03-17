@@ -44,4 +44,24 @@ enum ApiDSHelper {
         
         return time + "," + randomNumber + "," + verification
     }
+    
+    static func getDS1() -> String {
+        let lettersAndNumbers = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+        // 将要使用的 salt，此为 2.63.1 版本的 K2 salt。
+        let salt = "BIPaooxbWZW02fGHZL1If26mYCljPgst"
+
+        let time = Int(Date().timeIntervalSince1970)
+        let randomNumber = String((0..<6).compactMap { _ in lettersAndNumbers.randomElement() })
+        let main = "salt=\(salt)&t=\(time)&r=\(randomNumber)"
+
+        if let data = main.data(using: .utf8) {
+            let decodeSalt = data.md5().map { String(format: "%02hhx", $0) }.joined()
+
+            let final = "\(time),\(randomNumber),\(decodeSalt)"
+            Logger.info(final)
+            return final
+        }
+       return ""
+    }
 }

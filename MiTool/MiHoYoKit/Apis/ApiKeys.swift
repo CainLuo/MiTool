@@ -13,7 +13,9 @@ enum ApiKeys {
         case mihoyo = "https://api-takumi-record.mihoyo.com"
         case bbsMihoyo = "https://bbs-api.miyoushe.com"
         case enka = ""
+        case takumi = "https://api-takumi.mihoyo.com"
     }
+    
     enum Mihoyo: String {
         // 获取米游社用户的游戏记录
         case gameRecord = "/game_record/card/api/getGameRecordCard"
@@ -21,6 +23,8 @@ enum ApiKeys {
         
         case login = "https://m.bbs.mihoyo.com/ys/#/login"
         case stoken = "/account/ma-cn-session/app/getTokenBySToken"
+        // 获取游戏信息
+        case gameRoles = "/binding/api/getUserGameRolesByCookie"
     }
 
     enum GenshinImpact: String {

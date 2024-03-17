@@ -9,11 +9,42 @@ import Foundation
 import Alamofire
 
 extension ApiManager {
+    func fetchStarRailGameRoleInfo(parameters: [String: Any]) {
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.Mihoyo.gameRoles.rawValue
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: ""
+        )
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: [
+                "DS": decodeSalt,
+                "Cookie": cookie,
+                "x-rpc-device_fp": deviceFP,
+                "x-rpc-device_id": deviceID
+            ]
+        )
+        get(
+            url: url,
+            parameters: parameters,
+            headers: HTTPHeaders(headers)
+        ) { (result: Result<StarRailWidgetModel, Error>) in
+            switch result {
+            case .success(let success):
+                guard let data = success.data else {
+                    return
+                }
+                Logger.info(data)
+            case .failure(let failure):
+                Logger.error(failure)
+            }
+        }
+    }
+    
     func fetchStarRailWidget(
         uid: String,
-        parameters: Parameters,
         server: Region = .china,
-        completion: @escaping (Result<StarRailWidgetModel, Error>) -> Void
+        completion: @escaping (StarRailWidgetDataModel) -> Void
     ) {
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
@@ -22,10 +53,12 @@ extension ApiManager {
         )
         let headers = ApiHeaderConfiguration.defaultHeaders(
             region: region,
-            additionalHeaders: ["DS": decodeSalt,
-                                "Cookie": cookie,
-                                "x-rpc-device_fp": deviceFP,
-                                "x-rpc-device_id": deviceID]
+            additionalHeaders: [
+                "DS": decodeSalt,
+                "Cookie": cookie,
+                "x-rpc-device_fp": deviceFP,
+                "x-rpc-device_id": deviceID
+            ]
         )
         
         get(
@@ -39,6 +72,7 @@ extension ApiManager {
                     return
                 }
                 SQLManagerHelper.saveStarRailWidget(uid: uid, model: data)
+                completion(data)
             case .failure(let failure):
                 Logger.error(failure)
             }
@@ -58,10 +92,12 @@ extension ApiManager {
         )
         let headers = ApiHeaderConfiguration.defaultHeaders(
             region: region,
-            additionalHeaders: ["DS": decodeSalt,
-                                "Cookie": cookie,
-                                "x-rpc-device_fp": deviceFP,
-                                "x-rpc-device_id": deviceID]
+            additionalHeaders: [
+                "DS": decodeSalt,
+                "Cookie": cookie,
+                "x-rpc-device_fp": deviceFP,
+                "x-rpc-device_id": deviceID
+            ]
         )
         
         get(
