@@ -23,8 +23,11 @@ class WidgetViewModel: ObservableObject {
             ApiManager.shared.sToken = user.sToken ?? ""
             ApiManager.shared.region = Region(rawValue: user.region ?? "") ?? .china
             
-            var genshinItem = WidgetSectionItem()
+            ApiManager.shared.fetchStarRailGameCards(uid: user.uid, server: StarRailGameBiz.china.rawValue)
+            ApiManager.shared.fetchStarRailGameCards(uid: user.uid, server: GenshinGameBiz.china.rawValue)
+
             var starRailItem = WidgetSectionItem()
+            var genshinItem = WidgetSectionItem()
 
             dbManager.getStarRailGameCard(uuid: user.uid) { starRailInfo in
                 starRailItem = WidgetSectionItem(
@@ -33,23 +36,13 @@ class WidgetViewModel: ObservableObject {
                     server: starRailInfo.region
                 )
             }
-
-            let gameCards = dbManager.getAllMihoyoGameCards(uuid: user.uid)
             
-            let genshinInfo = gameCards.first { 
-                $0.gameID == .genshin
-            }
-
-            if let genshinInfo = genshinInfo {
+            dbManager.getGenshinGameCard(uuid: user.uid) { starRailInfo in
                 genshinItem = WidgetSectionItem(
-                    uid: genshinInfo.gameRoleID,
-                    nickname: genshinInfo.nickname,
-                    server: genshinInfo.region
+                    uid: starRailInfo.gameUID,
+                    nickname: starRailInfo.nickname,
+                    server: starRailInfo.region
                 )
-            }
-            
-            let starRailInfo = gameCards.first {
-                $0.gameID == .starRail
             }
 
             sections.append(

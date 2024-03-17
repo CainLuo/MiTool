@@ -87,6 +87,7 @@ class MihoyoUserEditViewModel: ObservableObject {
     
     func fetchGameCard() {
         ApiManager.shared.fetchStarRailGameCards(uid: uid, server: StarRailGameBiz.china.rawValue)
+        ApiManager.shared.fetchStarRailGameCards(uid: uid, server: GenshinGameBiz.china.rawValue)
     }
     
     func cookieConvertUID(cookie: String) {

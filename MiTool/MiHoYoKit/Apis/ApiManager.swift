@@ -128,7 +128,12 @@ class ApiManager: BaseRequestable {
                 guard let list = success.data?.list else {
                     return
                 }
-                SQLManagerHelper.saveStarRailCards(uid, gameCards: list)
+                if server == StarRailGameBiz.china.rawValue {
+                    SQLManagerHelper.saveStarRailCards(uid, gameCards: list)
+                }
+                if server == GenshinGameBiz.china.rawValue {
+                    SQLManagerHelper.saveGenshinCards(uid, gameCards: list)
+                }
             case .failure(let failure):
                 Logger.error(failure)
             }

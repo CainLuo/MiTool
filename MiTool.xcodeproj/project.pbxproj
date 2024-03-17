@@ -46,7 +46,7 @@
 		A4CFC2612BA17EA30082734B /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2602BA17EA30082734B /* BaseApi.swift */; };
 		A4CFC2632BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2622BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift */; };
 		A4CFC2652BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2642BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift */; };
-		A4CFC2672BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */; };
+		A4CFC2672BA18D070082734B /* ApiManager+MiHoYoDeivceFP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2662BA18D070082734B /* ApiManager+MiHoYoDeivceFP.swift */; };
 		A4CFC2692BA19B740082734B /* SQLManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC2682BA19B740082734B /* SQLManagerHelper.swift */; };
 		A4CFC26B2BA19CFE0082734B /* ApiManager+StarRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */; };
 		A4CFC26D2BA1A4120082734B /* ApiManager+Stoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */; };
@@ -169,7 +169,7 @@
 		A4CFC2602BA17EA30082734B /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		A4CFC2622BA18B770082734B /* MiHoYoDeviceFPFetchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiHoYoDeviceFPFetchModel.swift; sourceTree = "<group>"; };
 		A4CFC2642BA18B950082734B /* MiHoYoDeviceFPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiHoYoDeviceFPResponseModel.swift; sourceTree = "<group>"; };
-		A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiNetworkManager+MiHoYoDeivceFP.swift"; sourceTree = "<group>"; };
+		A4CFC2662BA18D070082734B /* ApiManager+MiHoYoDeivceFP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+MiHoYoDeivceFP.swift"; sourceTree = "<group>"; };
 		A4CFC2682BA19B740082734B /* SQLManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManagerHelper.swift; sourceTree = "<group>"; };
 		A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+StarRail.swift"; sourceTree = "<group>"; };
 		A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiManager+Stoken.swift"; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 				A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */,
 				A4CFC2702BA1AD510082734B /* ApiManager+Genshin.swift */,
 				A4CFC26C2BA1A4120082734B /* ApiManager+Stoken.swift */,
-				A4CFC2662BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift */,
+				A4CFC2662BA18D070082734B /* ApiManager+MiHoYoDeivceFP.swift */,
 				A4CFC2602BA17EA30082734B /* BaseApi.swift */,
 			);
 			path = Apis;
@@ -767,7 +767,7 @@
 				BFB03B6B2B80FEFA005DD170 /* MihoyoUserListViewModel.swift in Sources */,
 				A4CFC2692BA19B740082734B /* SQLManagerHelper.swift in Sources */,
 				A4CFC2472B9F0A910082734B /* ApiGameServerKeys.swift in Sources */,
-				A4CFC2672BA18D070082734B /* ApiNetworkManager+MiHoYoDeivceFP.swift in Sources */,
+				A4CFC2672BA18D070082734B /* ApiManager+MiHoYoDeivceFP.swift in Sources */,
 				A4871DCD2B8F307B00C091BB /* SQLManager+StarRailRoleCompute.swift in Sources */,
 				A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,

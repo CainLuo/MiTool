@@ -35,12 +35,14 @@ extension SQLManager {
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
-            let insert = mihoyoGameCards.insert(
-                uid <- uuid,
-                gameCard <- model.toJSONString()
-            )
-            try dataBase.run(insert)
-            complete?(true, nil)
+            try dataBase.transaction {
+                let insert = mihoyoGameCards.insert(
+                    uid <- uuid,
+                    gameCard <- model.toJSONString()
+                )
+                try dataBase.run(insert)
+                complete?(true, nil)
+            }
         } catch {
             Logger.error(error)
             complete?(false, error)
@@ -53,12 +55,14 @@ extension SQLManager {
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
-            let insert = mihoyoGameCards.insert(
-                uid <- uuid,
-                starRail <- model.toJSONString()
-            )
-            try dataBase.run(insert)
-            complete?(true, nil)
+            try dataBase.transaction {
+                let insert = mihoyoGameCards.insert(
+                    uid <- uuid,
+                    starRail <- model.toJSONString()
+                )
+                try dataBase.run(insert)
+                complete?(true, nil)
+            }
         } catch {
             Logger.error(error)
             complete?(false, error)
@@ -71,12 +75,14 @@ extension SQLManager {
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
-            let insert = mihoyoGameCards.insert(
-                uid <- uuid,
-                genshin <- model.toJSONString()
-            )
-            try dataBase.run(insert)
-            complete?(true, nil)
+            try dataBase.transaction {
+                let insert = mihoyoGameCards.insert(
+                    uid <- uuid,
+                    genshin <- model.toJSONString()
+                )
+                try dataBase.run(insert)
+                complete?(true, nil)
+            }
         } catch {
             Logger.error(error)
             complete?(false, error)
@@ -148,9 +154,17 @@ extension SQLManager {
         do {
             try dataBase.transaction {
                 try dataBase.prepare(mihoyoGameCards).forEach { item in
-                    if let gameCard = item[gameCard],
-                       let models = [MihoyoGameCardsList](JSONString: gameCard) {
-                        list = models
+//                    if let gameCard = item[gameCard],
+//                       let models = [MihoyoGameCardsList](JSONString: gameCard) {
+//                        list = models
+//                    }
+                    if let jsonString = item[starRail],
+                       let gameCard = MihoyoGameCardsList(JSONString: jsonString) {
+                        list.append(gameCard)
+                    }
+                    if let jsonString = item[genshin],
+                       let gameCard = MihoyoGameCardsList(JSONString: jsonString) {
+                        list.append(gameCard)
                     }
                 }
             }
@@ -172,6 +186,27 @@ extension SQLManager {
                 )
                 try dataBase.prepare(query).forEach { item in
                     if let gameCard = item[starRail],
+                       let starRail = MihoyoGameCardsList(JSONString: gameCard) {
+                        completion(starRail)
+                    }
+                }
+            }
+        } catch {
+            Logger.error(error)
+        }
+    }
+    
+    func getGenshinGameCard(
+        uuid: String,
+        completion: (MihoyoGameCardsList) -> Void
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = mihoyoGameCards.filter(
+                    uid == uuid
+                )
+                try dataBase.prepare(query).forEach { item in
+                    if let gameCard = item[genshin],
                        let starRail = MihoyoGameCardsList(JSONString: gameCard) {
                         completion(starRail)
                     }

@@ -8,21 +8,19 @@
 import SwiftUI
 
 class GenshinWidgetCardViewModel: ObservableObject {
-    @Published var data = GenshinDailyNodeData()
+    @Published var data = GenshinWidgetData()
     @Published var recoveryTime: String = ""
     @Published var staminaColor: Color = .red
     @Published var dailyNodes: [GenshinLocalDailyModel] = []
 
-    func getGenshinWidget() {
-//        guard let data = manager.getGshinImpactWeight().data else {
-//            return
-//        }
-//
-//        self.data = data
-//        let time = Int(data.resinRecoveryTime) ?? 0
-//        setUpRecoveryTime(staminaRecoverTime: time)
-//        setUpStaminaColor(staminaRecoverTime: time)
-//        setupDailyNode()
+    func getGenshinWidget(item: WidgetSectionItem) {
+        ApiManager.shared.fetchGenshinWidget(uid: item.uid) { [weak self] data in
+            self?.data = data
+            let time = Int(data.resinRecoveryTime) ?? 0
+            self?.setUpRecoveryTime(staminaRecoverTime: time)
+            self?.setUpStaminaColor(staminaRecoverTime: time)
+            self?.setupDailyNode()
+        }
     }
 
     private func setUpRecoveryTime(staminaRecoverTime: Int) {
@@ -58,18 +56,9 @@ class GenshinWidgetCardViewModel: ObservableObject {
                 maxValue: data.maxHomeCoin
             ),
             GenshinLocalDailyModel(
-                iconNmae: "resinDiscount",
-                currentValue: data.remainResinDiscountNum,
-                maxValue: data.resinDiscountNumLimit
-            ),
-            GenshinLocalDailyModel(
                 iconNmae: "task",
                 currentValue: data.finishedTaskNum,
                 maxValue: data.totalTaskNum
-            ),
-            GenshinLocalDailyModel(
-                iconNmae: "transformer",
-                otherContent: data.transformerTime
             )
         ]
     }

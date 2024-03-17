@@ -7,7 +7,6 @@
 
 import Foundation
 import SQLite
-import ObjectMapper
 
 private let index                  = Expression<Int64>("index")                     // 索引
 private let uid                    = Expression<String?>("uid")                     // 用户uid
@@ -16,15 +15,16 @@ private let maxResin               = Expression<Int?>("maxResin")               
 private let resinRecoveryTime      = Expression<String?>("resinRecoveryTime")       // 树脂回复时间
 private let finishedTaskNum        = Expression<Int?>("finishedTaskNum")            // 完成日常数
 private let totalTaskNum           = Expression<Int?>("totalTaskNum")               // 最大日常数
-private let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
-private let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
+//private let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
+//private let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
+private let isExtraTaskRewardReceived = Expression<Bool>("isExtraTaskRewardReceived")       // 是否已经获取每日委托后的额外奖励
 private let currentExpeditionNum   = Expression<Int?>("currentExpeditionNum")       // 派遣数
 private let maxExpeditionNum       = Expression<Int?>("maxExpeditionNum")           // 最大派遣数
 private let expeditions            = Expression<String?>("expeditions")             // 派遣人数列表
 private let currentHomeCoin        = Expression<Int?>("currentHomeCoin")            // 宝钱
 private let maxHomeCoin            = Expression<Int?>("maxHomeCoin")                // 最大宝钱
-private let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
-private let transformer            = Expression<String?>("transformer")             // 转换仪器
+//private let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
+//private let transformer            = Expression<String?>("transformer")             // 转换仪器
 
 extension SQLManager {
     func createGenshinImpactWidgetTable(_ dataBase: Connection) {
@@ -37,15 +37,12 @@ extension SQLManager {
                 table.column(resinRecoveryTime)
                 table.column(finishedTaskNum)
                 table.column(totalTaskNum)
-                table.column(remainResinDiscountNum)
-                table.column(resinDiscountNumLimit)
+                table.column(isExtraTaskRewardReceived)
                 table.column(currentExpeditionNum)
                 table.column(maxExpeditionNum)
                 table.column(expeditions)
                 table.column(currentHomeCoin)
                 table.column(maxHomeCoin)
-                table.column(homeCoinRecoveryTime)
-                table.column(transformer)
             })
         } catch {
             #if DEBUG
@@ -54,136 +51,93 @@ extension SQLManager {
         }
     }
 
-//    func insertRecord(into dataBase: Connection, record: YourRecordType) {
-//        do {
-//            let insert = genshinImpactWidget.insert(
-//                index <- record.index,
-//                uid <- record.uid,
-//                currentResin <- record.currentResin,
-//                maxResin <- record.maxResin,
-//                resinRecoveryTime <- record.resinRecoveryTime,
-//                finishedTaskNum <- record.finishedTaskNum,
-//                totalTaskNum <- record.totalTaskNum,
-//                remainResinDiscountNum <- record.remainResinDiscountNum,
-//                resinDiscountNumLimit <- record.resinDiscountNumLimit,
-//                currentExpeditionNum <- record.currentExpeditionNum,
-//                maxExpeditionNum <- record.maxExpeditionNum,
-//                expeditions <- record.expeditions,
-//                currentHomeCoin <- record.currentHomeCoin,
-//                maxHomeCoin <- record.maxHomeCoin,
-//                homeCoinRecoveryTime <- record.homeCoinRecoveryTime,
-//                transformer <- record.transformer
-//            )
-//            try dataBase.run(insert)
-//        } catch {
-//            print("Insert record failed: \(error)")
-//        }
-//    }
+    func addGenshinImpactWidgetInfo(
+        uuid: String,
+        model: GenshinWidgetData,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
+        do {
+            let insert = genshinImpactWidget.insert(
+                uid <- uuid,
+                currentResin <- model.currentResin,
+                maxResin <- model.maxResin,
+                resinRecoveryTime <- model.resinRecoveryTime,
+                finishedTaskNum <- model.finishedTaskNum,
+                totalTaskNum <- model.totalTaskNum,
+                isExtraTaskRewardReceived <- model.isExtraTaskRewardReceived,
+                currentExpeditionNum <- model.currentExpeditionNum,
+                maxExpeditionNum <- model.maxExpeditionNum,
+                expeditions <- model.expeditions?.toJSONString(),
+                currentHomeCoin <- model.currentHomeCoin,
+                maxHomeCoin <- model.maxHomeCoin
+            )
+            try dataBase.run(insert)
+            complete?(true, nil)
+        } catch {
+            Logger.error(error)
+            complete?(false, error)
+        }
+    }
 
-//    func updateRecord(in dataBase: Connection, record: YourRecordType) {
-//        do {
-//            let update = genshinImpactWidget.filter(index == record.index).update(
-//                uid <- record.uid,
-//                currentResin <- record.currentResin,
-//                maxResin <- record.maxResin,
-//                resinRecoveryTime <- record.resinRecoveryTime,
-//                finishedTaskNum <- record.finishedTaskNum,
-//                totalTaskNum <- record.totalTaskNum,
-//                remainResinDiscountNum <- record.remainResinDiscountNum,
-//                resinDiscountNumLimit <- record.resinDiscountNumLimit,
-//                currentExpeditionNum <- record.currentExpeditionNum,
-//                maxExpeditionNum <- record.maxExpeditionNum,
-//                expeditions <- record.expeditions,
-//                currentHomeCoin <- record.currentHomeCoin,
-//                maxHomeCoin <- record.maxHomeCoin,
-//                homeCoinRecoveryTime <- record.homeCoinRecoveryTime,
-//                transformer <- record.transformer
-//            )
-//            try dataBase.run(update)
-//        } catch {
-//            print("Update record failed: \(error)")
-//        }
-//    }
+    func updateGenshinImpactWidget(
+        uuid: String,
+        model: GenshinWidgetData,
+        complete: ((Bool, Error?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let genshinImpactWidget = genshinImpactWidget.filter(
+                    uid == uuid
+                )
+                try dataBase.run(genshinImpactWidget.update(
+                    uid <- uuid,
+                    currentResin <- model.currentResin,
+                    maxResin <- model.maxResin,
+                    resinRecoveryTime <- model.resinRecoveryTime,
+                    finishedTaskNum <- model.finishedTaskNum,
+                    totalTaskNum <- model.totalTaskNum,
+                    isExtraTaskRewardReceived <- model.isExtraTaskRewardReceived,
+                    currentExpeditionNum <- model.currentExpeditionNum,
+                    maxExpeditionNum <- model.maxExpeditionNum,
+                    expeditions <- model.expeditions?.toJSONString(),
+                    currentHomeCoin <- model.currentHomeCoin,
+                    maxHomeCoin <- model.maxHomeCoin
+                ))
+                complete?(true, nil)
+            }
+        } catch {
+            Logger.error(error)
+            complete?(false, error)
+        }
+    }
 
-//    func getRecord(forUid uidValue: String, from dataBase: Connection) async -> YourRecordType? {
-//        do {
-//            let query = genshinImpactWidget.filter(uid == uidValue)
-//            if let record = try await dataBase.pluck(query) {
-//                return YourRecordType(
-//                    index: record[index],
-//                    uid: record[uid],
-//                    currentResin: record[currentResin],
-//                    maxResin: record[maxResin],
-//                    resinRecoveryTime: record[resinRecoveryTime],
-//                    finishedTaskNum: record[finishedTaskNum],
-//                    totalTaskNum: record[totalTaskNum],
-//                    remainResinDiscountNum: record[remainResinDiscountNum],
-//                    resinDiscountNumLimit: record[resinDiscountNumLimit],
-//                    currentExpeditionNum: record[currentExpeditionNum],
-//                    maxExpeditionNum: record[maxExpeditionNum],
-//                    expeditions: record[expeditions],
-//                    currentHomeCoin: record[currentHomeCoin],
-//                    maxHomeCoin: record[maxHomeCoin],
-//                    homeCoinRecoveryTime: record[homeCoinRecoveryTime],
-//                    transformer: record[transformer]
-//                )
-//            } else {
-//                return nil
-//            }
-//        } catch {
-//            print("Query failed: \(error)")
-//            return nil
-//        }
-//    }
-    
-//    func getAllRecords(from dataBase: Connection) -> [YourRecordType] {
-//        var records: [YourRecordType] = []
-//
-//        do {
-//            let query = genshinImpactWidget
-//            for row in try dataBase.prepare(query) {
-//                let record = YourRecordType(
-//                    index: row[index],
-//                    uid: row[uid],
-//                    currentResin: row[currentResin],
-//                    maxResin: row[maxResin],
-//                    resinRecoveryTime: row[resinRecoveryTime],
-//                    finishedTaskNum: row[finishedTaskNum],
-//                    totalTaskNum: row[totalTaskNum],
-//                    remainResinDiscountNum: row[remainResinDiscountNum],
-//                    resinDiscountNumLimit: row[resinDiscountNumLimit],
-//                    currentExpeditionNum: row[currentExpeditionNum],
-//                    maxExpeditionNum: row[maxExpeditionNum],
-//                    expeditions: row[expeditions],
-//                    currentHomeCoin: row[currentHomeCoin],
-//                    maxHomeCoin: row[maxHomeCoin],
-//                    homeCoinRecoveryTime: row[homeCoinRecoveryTime],
-//                    transformer: row[transformer]
-//                )
-//                records.append(record)
-//            }
-//        } catch {
-//            print("Query all records failed: \(error)")
-//        }
-//
-//        return records
-//    }
-
-//    func deleteRecord(in dataBase: Connection, index: Int) {
-//        do {
-//            let delete = genshinImpactWidget.filter(self.index == index).delete()
-//            try dataBase.run(delete)
-//        } catch {
-//            print("Delete record failed: \(error)")
-//        }
-//    }
-
-//    func deleteAllRecords(from dataBase: Connection) {
-//        do {
-//            let delete = genshinImpactWidget.delete()
-//            try dataBase.run(delete)
-//        } catch {
-//            print("Delete all records failed: \(error)")
-//        }
-//    }
+    func getGenshinImpactWidget(
+        _ uuid: String,
+        complete: ((Bool, GenshinWidgetData?) -> Void)?
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = genshinImpactWidget.filter(uid == uuid)
+                try dataBase.prepare(query).forEach { item in
+                    complete?(true, GenshinWidgetData(
+                        currentResin: item[currentResin] ?? 0,
+                        maxResin: item[maxResin] ?? 0,
+                        resinRecoveryTime: item[resinRecoveryTime] ?? "",
+                        finishedTaskNum: item[finishedTaskNum] ?? 0,
+                        totalTaskNum: item[totalTaskNum] ?? 0,
+                        isExtraTaskRewardReceived: item[isExtraTaskRewardReceived],
+                        currentExpeditionNum: item[currentExpeditionNum] ?? 0,
+                        maxExpeditionNum: item[maxExpeditionNum] ?? 0,
+                        expeditions: item[expeditions],
+                        currentHomeCoin: item[currentHomeCoin] ?? 0,
+                        maxHomeCoin: item[maxHomeCoin] ?? 0
+                    ))
+                }
+            }
+            complete?(false, nil)
+        } catch {
+            Logger.error(error)
+            complete?(false, nil)
+        }
+    }
 }
