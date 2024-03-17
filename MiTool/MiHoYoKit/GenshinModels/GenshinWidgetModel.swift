@@ -107,11 +107,18 @@ public struct GenshinWidgetData: Mappable {
     }
 }
 
+public enum GenshinWidgetExpeditionStatus: String {
+    case ongoing = "Ongoing"
+    case finish = "Finished"
+    
+    // 原神：Finished
+}
+
 // MARK: - GenshinWidgetExpedition
 public struct GenshinWidgetExpedition: Mappable, Identifiable {
     public var id = UUID()
     public var avatarSideIcon: String = ""
-    public var status: String?
+    public var status: GenshinWidgetExpeditionStatus?
 
     public init?(map: ObjectMapper.Map) { }
     init() { }

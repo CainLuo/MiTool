@@ -122,10 +122,15 @@ struct GenshinWidgetExpeditionView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 15) {
             ForEach(viewModel.data.expeditions ?? []) { item in
-                KFImage(URL(string: item.avatarSideIcon))
-                    .circleModifier(width: 50, height: 50)
-                    .padding(.bottom)
-                    .padding([.leading, .trailing], 10)
+                ZStack {
+                    (item.status == .ongoing ? Color.gray.opacity(0.4) : .green.opacity(0.4))
+                        .frame(width: 60, height: 60)
+                        .clipShape(Circle())
+                    KFImage(URL(string: item.avatarSideIcon))
+                        .circleModifier(width: 50, height: 50)
+                        .padding(.bottom)
+                        .padding([.leading, .trailing], 10)
+                }
             }
         }
         .frame(minWidth: 350)

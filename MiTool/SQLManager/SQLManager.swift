@@ -17,7 +17,7 @@ class SQLManager {
     
     let starRailRole = Table("starRailRole")
     let starRailRoleSkill = Table("starRailRoleSkill")
-    let starRailDailyNode = Table("StarRailDailyNode")
+    let starRailDailyNode = Table("starRailDailyNode")
     let starRailRoleCompute = Table("starRailRoleCompute")
     let mihoyoUser = Table("mihoyoUser")
     let mihoyoGameCards = Table("mihoyoGameCards")
@@ -64,6 +64,7 @@ class SQLManager {
             creteStarRailRoleTable(dataBase)
             cretestarRailRoleComputeTable(dataBase)
             creteStarRailRoleSkillTable(dataBase)
+            createStarRailDailyNodeTable(dataBase)
             createMihoyoGameCardsTable(dataBase)
             createGenshinImpactWidgetTable(dataBase)
         } catch {

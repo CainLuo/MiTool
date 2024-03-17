@@ -168,7 +168,7 @@ extension SQLManagerHelper {
 
 extension SQLManagerHelper {
     static func saveGenshinWidget(uid: String, model: GenshinWidgetData) {
-        SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
+        SQLManager.shared.getGenshinImpactWidget(uid) { _, item in
             if item == nil {
                 SQLManagerHelper.addGenshinWidget(uid: uid, model: model)
             } else {
