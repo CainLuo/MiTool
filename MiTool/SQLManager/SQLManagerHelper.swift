@@ -104,6 +104,30 @@ class SQLManagerHelper {
             }
         }
     }
+    
+    static func saveGenshinCards(
+        _ uid: String,
+        gameCards: [MihoyoGameCardsList]
+    ) {
+        guard let gameCard = gameCards.first else {
+            return
+        }
+        let localCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
+        
+        if localCards.isEmpty {
+            SQLManager.shared.addGenshinCards(uuid: uid, model: gameCard) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        } else {
+            SQLManager.shared.upgradeGenshinGameCards(uuid: uid, model: gameCard) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        }
+    }
 }
 
 extension SQLManagerHelper {
@@ -132,6 +156,42 @@ extension SQLManagerHelper {
     static func upgradeStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
         SQLManager.shared.upgradeStarRailDailyNode(
             uid,
+            model: model
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            Logger.info("Upgrade role info success")
+        }
+    }
+}
+
+extension SQLManagerHelper {
+    static func saveGenshinWidget(uid: String, model: GenshinWidgetData) {
+        SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
+            if item == nil {
+                SQLManagerHelper.addGenshinWidget(uid: uid, model: model)
+            } else {
+                SQLManagerHelper.upgradeGenshinWidget(uid: uid, model: model)
+            }
+        }
+    }
+    
+    private static func addGenshinWidget(uid: String, model: GenshinWidgetData) {
+        SQLManager.shared.addGenshinImpactWidgetInfo(
+            uuid: uid,
+            model: model
+        ) { _, error in
+            guard error == nil else {
+                return
+            }
+            Logger.info("Upgrade role info success")
+        }
+    }
+    
+    private static func upgradeGenshinWidget(uid: String, model: GenshinWidgetData) {
+        SQLManager.shared.updateGenshinImpactWidget(
+            uuid: uid,
             model: model
         ) { _, error in
             guard error == nil else {

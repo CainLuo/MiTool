@@ -15,8 +15,12 @@ struct WidgetView: View {
             List {
                 ForEach(viewModel.widgetSections) { section in
                     Section {
-                        StarRailWidgetCard(widgetItem: section.starRailItem)
-                        GenshinWidgetCard()
+                        if !section.starRailItem.uid.isEmpty {
+                            StarRailWidgetCard(widgetItem: section.starRailItem)
+                        }
+                        if !section.genshinItem.uid.isEmpty {
+                            GenshinWidgetCard(widgetItem: section.genshinItem)
+                        }
                     } header: {
                         SectionHeaderView(
                             userName: section.title,

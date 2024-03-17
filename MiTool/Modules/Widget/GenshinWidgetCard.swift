@@ -11,9 +11,15 @@ import Kingfisher
 struct GenshinWidgetCard: View {
     @StateObject var viewModel = GenshinWidgetCardViewModel()
 
+    var widgetItem: WidgetSectionItem
+
     var body: some View {
         HStack {
-            GenshinWidgetInfoView(viewModel: viewModel)
+            GenshinWidgetInfoView(
+                uid: widgetItem.uidString,
+                nickname: widgetItem.nicknameString,
+                viewModel: viewModel
+            )
             
             Divider()
             
@@ -27,25 +33,36 @@ struct GenshinWidgetCard: View {
         .background(.black.opacity(0.4))
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
-        .task {
-            viewModel.getGenshinWidget()
+        .onAppear {
+            viewModel.getGenshinWidget(item: widgetItem)
         }
     }
 }
 
 struct GenshinWidgetInfoView: View {
+    enum IconSize {
+        static let width: CGFloat = 50
+        static let height: CGFloat = 50
+    }
+
+    var uid = ""
+    var nickname = ""
+
     @StateObject var viewModel: GenshinWidgetCardViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("昵称：凹凸曼的小怪兽")
+            Text(nickname)
                 .font(.system(size: 16, weight: .semibold))
-            Text("UID：109020123")
+            Text(uid)
                 .font(.system(size: 16, weight: .semibold))
             
             HStack {
                 Image("resin")
-                    .circleModifier(width: 50, height: 50)
+                    .circleModifier(
+                        width: IconSize.width,
+                        height: IconSize.height
+                    )
                 VStack(spacing: 8) {
                     Text(CopyGenshinWidget.resin)
                     Text(viewModel.data.resinContent)
@@ -105,14 +122,10 @@ struct GenshinWidgetExpeditionView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 15) {
             ForEach(viewModel.data.expeditions ?? []) { item in
-                HStack {
-                    KFImage(URL(string: item.avatarSideIcon))
-                        .circleModifier(width: 50, height: 50)
-                        .padding(.bottom)
-
-                    Text(item.remainedTimeString)
-                }
-                .padding([.leading, .trailing], 10)
+                KFImage(URL(string: item.avatarSideIcon))
+                    .circleModifier(width: 50, height: 50)
+                    .padding(.bottom)
+                    .padding([.leading, .trailing], 10)
             }
         }
         .frame(minWidth: 350)
@@ -120,6 +133,6 @@ struct GenshinWidgetExpeditionView: View {
 }
 
 #Preview {
-    GenshinWidgetCard()
+    GenshinWidgetCard(widgetItem: WidgetSectionItem())
         .frame(width: 750, height: 284)
 }

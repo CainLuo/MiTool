@@ -19,7 +19,7 @@ extension ApiManager {
             region: region,
             additionalHeaders: [
                 "DS": decodeSalt,
-                "Cookie": cookie,
+                "Cookie": cookie + "stoken=\(sToken)",
                 "x-rpc-device_fp": deviceFP,
                 "x-rpc-device_id": deviceID
             ]
