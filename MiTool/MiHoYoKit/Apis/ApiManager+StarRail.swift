@@ -7,9 +7,11 @@
 
 import Foundation
 import Alamofire
+import Combine
+import ObjectMapper
 
 extension ApiManager {
-    func fetchStarRailGameRoleInfo(parameters: [String: Any]) {
+    func fetchStarRailGameRoleInfo<T: Mappable>(with parameters: [String: Any]) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.Mihoyo.gameRoles.rawValue
         let decodeSalt = ApiDSHelper.getDS(
             region: region,
@@ -24,28 +26,28 @@ extension ApiManager {
                 "x-rpc-device_id": deviceID
             ]
         )
-        get(
+        return get(
             url: url,
             parameters: parameters,
             headers: HTTPHeaders(headers)
-        ) { (result: Result<StarRailWidgetModel, Error>) in
-            switch result {
-            case .success(let success):
-                guard let data = success.data else {
-                    return
-                }
-                Logger.info(data)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
+//        { (result: Result<StarRailWidgetModel, Error>) in
+//            switch result {
+//            case .success(let success):
+//                guard let data = success.data else {
+//                    return
+//                }
+//                Logger.info(data)
+//            case .failure(let failure):
+//                Logger.error(failure)
+//            }
+//        }
     }
     
-    func fetchStarRailWidget(
+    func fetchStarRailWidget<T: Mappable>(with
         uid: String,
-        server: Region = .china,
-        completion: @escaping (StarRailWidgetDataModel) -> Void
-    ) {
+        server: Region = .china
+    ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
             region: region,
@@ -61,30 +63,30 @@ extension ApiManager {
             ]
         )
         
-        get(
+        return get(
             url: url,
             parameters: nil,
             headers: HTTPHeaders(headers)
-        ) { (result: Result<StarRailWidgetModel, Error>) in
-            switch result {
-            case .success(let success):
-                guard let data = success.data else {
-                    return
-                }
-                SQLManagerHelper.saveStarRailWidget(uid: uid, model: data)
-                completion(data)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
+//        { (result: Result<StarRailWidgetModel, Error>) in
+//            switch result {
+//            case .success(let success):
+//                guard let data = success.data else {
+//                    return
+//                }
+//                SQLManagerHelper.saveStarRailWidget(uid: uid, model: data)
+//                completion(data)
+//            case .failure(let failure):
+//                Logger.error(failure)
+//            }
+//        }
     }
 
-    func fetchStarRailRoles(
+    func fetchStarRailRoles<T: Mappable>(with
         uid: String,
         parameters: Parameters,
-        server: Region = .china,
-        completion: @escaping (Result<StarRailAllRoleModel, Error>) -> Void
-    ) {
+        server: Region = .china
+    ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
             region: region,
@@ -100,29 +102,29 @@ extension ApiManager {
             ]
         )
         
-        get(
+        return get(
             url: url,
             parameters: nil,
             headers: HTTPHeaders(headers)
-        ) { (result: Result<StarRailAllRoleModel, Error>) in
-            switch result {
-            case .success(let success):
-                guard let list = success.data?.list else {
-                    return
-                }
-                SQLManagerHelper.fetchStarRailRoleDetail(uid: uid, list: list)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
+//        { (result: Result<StarRailAllRoleModel, Error>) in
+//            switch result {
+//            case .success(let success):
+//                guard let list = success.data?.list else {
+//                    return
+//                }
+//                SQLManagerHelper.fetchStarRailRoleDetail(uid: uid, list: list)
+//            case .failure(let failure):
+//                Logger.error(failure)
+//            }
+//        }
     }
 
-    func fetchStarRailRoleSkill(
+    func fetchStarRailRoleSkill<T: Mappable>(with
         uid: String,
         roleID: String,
-        server: Region = .china,
-        completion: @escaping (Result<StarRailRoleInfoModel, Error>) -> Void
-    ) {
+        server: Region = .china
+    ) -> AnyPublisher<T, Never> {
         let parameters: Parameters = ["game": "hkrpg",
                                       "lang": "zh-cn",
                                       "item_id": roleID,
@@ -144,38 +146,40 @@ extension ApiManager {
                                 "x-rpc-device_id": deviceID]
         )
         
-        get(
+        return get(
             url: url,
             parameters: parameters,
             headers: HTTPHeaders(headers)
-        ) { (result: Result<StarRailRoleInfoModel, Error>) in
-            switch result {
-            case .success(let success):
-                guard let info = success.data else {
-                    return
-                }
-                SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: info)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
+//        { (result: Result<StarRailRoleInfoModel, Error>) in
+//            switch result {
+//            case .success(let success):
+//                guard let info = success.data else {
+//                    return
+//                }
+//                SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: info)
+//            case .failure(let failure):
+//                Logger.error(failure)
+//            }
+//        }
     }
 
-    func fetchStarRailRoleSkillCompute(
+    func fetchStarRailRoleSkillCompute<T: Mappable>(with
         uid: String,
         roleID: String,
         server: Region = .china,
         deviceFP: String,
-        deviceID: String,
-        completion: @escaping (Result<StarRailSkillComputeModel, Error>) -> Void
-    ) {
-        let parameters: Parameters = ["game": "hkrpg",
-                                      "lang": "zh-cn",
-                                      "item_id": roleID,
-                                      "tab_from": "TabAll",
-                                      "change_target_level": 0,
-                                      "uid": uid,
-                                      "region": "prod_gf_cn"]
+        deviceID: String
+    ) -> AnyPublisher<T, Never> {
+        let parameters: Parameters = [
+            "game": "hkrpg",
+            "lang": "zh-cn",
+            "item_id": roleID,
+            "tab_from": "TabAll",
+            "change_target_level": 0,
+            "uid": uid,
+            "region": "prod_gf_cn"
+        ]
         
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
@@ -190,20 +194,21 @@ extension ApiManager {
                                 "x-rpc-device_id": deviceID]
         )
         
-        get(
+        return get(
             url: url,
             parameters: parameters,
             headers: HTTPHeaders(headers)
-        ) { (result: Result<StarRailSkillComputeModel, Error>) in
-            switch result {
-            case .success(let success):
-                guard let info = success.data else {
-                    return
-                }
-                SQLManagerHelper.saveStarRailRole(uid: uid, roleID: roleID, info: info)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
+//        { (result: Result<StarRailSkillComputeModel, Error>) in
+//            switch result {
+//            case .success(let success):
+//                guard let info = success.data else {
+//                    return
+//                }
+//                SQLManagerHelper.saveStarRailRole(uid: uid, roleID: roleID, info: info)
+//            case .failure(let failure):
+//                Logger.error(failure)
+//            }
+//        }
     }
 }

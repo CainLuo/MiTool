@@ -5,15 +5,16 @@
 //  Created by Cain on 2024/3/13.
 //
 
-import Alamofire
 import Foundation
+import Combine
+import ObjectMapper
+import Alamofire
 
 extension ApiManager {
-    func fetchDeivceFP(
+    func fetchDeivceFP<T: Mappable>(
         deviceId: UUID,
-        cookie: String,
-        completion: @escaping (String) -> Void
-    ) {
+        cookie: String
+    ) -> AnyPublisher<T, Never>  {
         func generateSeed() -> String {
             let characters = "0123456789abcdef"
             var result = ""
@@ -41,21 +42,11 @@ extension ApiManager {
             "device_fp": "38d7ebd3b45ae",
         ]
         
-        post(
+        return post(
             url: url,
             parameters: body,
             encoding: JSONEncoding.default,
             headers: HTTPHeaders(["Cookie": cookie])
-        ) { (result: Result<MiHoYoDeviceFPResponseModel, Error>) in
-            switch result {
-            case .success(let success):
-                if let deviceFp = success.data?.deviceFp {
-                    completion(deviceFp)
-                }
-                Logger.info(success)
-            case .failure(let failure):
-                Logger.error(failure)
-            }
-        }
+        )
     }
 }

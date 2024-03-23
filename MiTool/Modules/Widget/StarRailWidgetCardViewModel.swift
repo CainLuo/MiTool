@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class StarRailWidgetCardViewModel: ObservableObject {
+class StarRailWidgetCardViewModel: BaseViewModel {
     /// 0~0.3 is Color.red
     /// 0.3~0.8 is Color.blue
     /// 0.8~1 is Color.green
@@ -21,17 +21,22 @@ class StarRailWidgetCardViewModel: ObservableObject {
     @Published var reserveStaminaFull: String = ""
 
     func fetchStarRailWidget(item: WidgetSectionItem) {
-        ApiManager.shared.fetchStarRailWidget(uid: item.uid) { [weak self] data in
-            self?.expeditions = data.expeditions ?? []
-            self?.stamina = "\(data.currentStamina)/\(data.maxStamina)"
-            self?.reserveStamina = "\(data.currentReserveStamina)"
-            
-            let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
-            self?.reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
-            
-            self?.setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
-            self?.setUpLocalModels(data: data)
-        }
+        ApiManager.shared.fetchStarRailWidget(with: item.uid)
+            .sink { [weak self] (result: StarRailWidgetModel) in
+                guard let data = result.data else {
+                    return
+                }
+                self?.expeditions = data.expeditions ?? []
+                self?.stamina = "\(data.currentStamina)/\(data.maxStamina)"
+                self?.reserveStamina = "\(data.currentReserveStamina)"
+                
+                let tipsString = "\(data.isReserveStaminaFull ? CopyStarRailWidget.fullYes : CopyStarRailWidget.fullNo)"
+                self?.reserveStaminaFull = CopyStarRailWidget.reserveTrailblazePowerFull + tipsString
+                
+                self?.setUpStaminaColor(staminaRecoverTime: data.staminaRecoverTime)
+                self?.setUpLocalModels(data: data)
+            }
+            .store(in: &cancellables)
     }
     
     private func setUpStaminaColor(staminaRecoverTime: Int) {
