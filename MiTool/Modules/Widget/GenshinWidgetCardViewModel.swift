@@ -7,20 +7,25 @@
 
 import SwiftUI
 
-class GenshinWidgetCardViewModel: ObservableObject {
+class GenshinWidgetCardViewModel: BaseViewModel {
     @Published var data = GenshinWidgetData()
     @Published var recoveryTime: String = ""
     @Published var staminaColor: Color = .red
     @Published var dailyNodes: [GenshinLocalDailyModel] = []
 
     func getGenshinWidget(item: WidgetSectionItem) {
-        ApiManager.shared.fetchGenshinWidget(uid: item.uid) { [weak self] data in
-            self?.data = data
-            let time = Int(data.resinRecoveryTime) ?? 0
-            self?.setUpRecoveryTime(staminaRecoverTime: time)
-            self?.setUpStaminaColor(staminaRecoverTime: time)
-            self?.setupDailyNode()
-        }
+        ApiManager.shared.fetchGenshinWidget(uid: item.uid)
+            .sink { [weak self] (result: GenshinWidgetModel) in
+                guard let data = result.data else {
+                    return
+                }
+                self?.data = data
+                let time = Int(data.resinRecoveryTime) ?? 0
+                self?.setUpRecoveryTime(staminaRecoverTime: time)
+                self?.setUpStaminaColor(staminaRecoverTime: time)
+                self?.setupDailyNode()
+            }
+            .store(in: &cancellables)
     }
 
     private func setUpRecoveryTime(staminaRecoverTime: Int) {

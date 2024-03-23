@@ -8,12 +8,17 @@
 import SwiftUI
 import ObjectMapper
 
-class MihoyoGameCardViewModel: ObservableObject {
+class MihoyoGameCardViewModel: BaseViewModel {
     @Published var gameRecord: [MihoyoGameCardsList] = []
     
     func getMihoyoGameCard(_ uid: String) {
-//        ApiManager.fetchMihoyoGameCards(uid: uid) { [weak self] gameList in
-//            self?.gameRecord = gameList
-//        }
+        ApiManager.shared.fetchMihoyoGameCards(uid: uid)
+            .sink { [weak self] (result: MihoyoGameCardsModel) in
+                guard let gameList = result.data?.list else {
+                    return
+                }
+                self?.gameRecord = gameList
+            }
+            .store(in: &cancellables)
     }
 }

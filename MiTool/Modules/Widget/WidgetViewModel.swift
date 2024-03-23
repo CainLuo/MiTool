@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class WidgetViewModel: ObservableObject {
+class WidgetViewModel: BaseViewModel {
     @Published var widgetSections: [WidgetSectionModel] = []
     
     private let dbManager = SQLManager.shared
@@ -22,9 +22,9 @@ class WidgetViewModel: ObservableObject {
             ApiManager.shared.deviceID = user.deviceID ?? UUID().uuidString
             ApiManager.shared.sToken = user.sToken ?? ""
             ApiManager.shared.region = Region(rawValue: user.region ?? "") ?? .china
-            
-            ApiManager.shared.fetchStarRailGameCards(uid: user.uid, server: StarRailGameBiz.china.rawValue)
-            ApiManager.shared.fetchStarRailGameCards(uid: user.uid, server: GenshinGameBiz.china.rawValue)
+
+            fetchGameCard(uid: user.uid, server: StarRailGameBiz.china.rawValue)
+            fetchGameCard(uid: user.uid, server: GenshinGameBiz.china.rawValue)
 
             var starRailItem = WidgetSectionItem()
             var genshinItem = WidgetSectionItem()
@@ -55,5 +55,24 @@ class WidgetViewModel: ObservableObject {
             )
         }
         widgetSections = sections
+    }
+    
+    private func fetchGameCard(uid: String, server: String) {
+        ApiManager.shared.fetchStarRailGameCards(
+            uid: uid,
+            server: StarRailGameBiz.china.rawValue
+        )
+            .sink { (result: MihoyoGameCardsModel) in
+                guard let list = result.data?.list else {
+                    return
+                }
+                if server == StarRailGameBiz.china.rawValue {
+                    SQLManagerHelper.saveStarRailCards(uid, gameCards: list)
+                }
+                if server == GenshinGameBiz.china.rawValue {
+                    SQLManagerHelper.saveGenshinCards(uid, gameCards: list)
+                }
+            }
+            .store(in: &cancellables)
     }
 }

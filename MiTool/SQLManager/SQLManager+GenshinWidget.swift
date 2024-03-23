@@ -15,16 +15,16 @@ private let maxResin               = Expression<Int?>("maxResin")               
 private let resinRecoveryTime      = Expression<String?>("resinRecoveryTime")       // 树脂回复时间
 private let finishedTaskNum        = Expression<Int?>("finishedTaskNum")            // 完成日常数
 private let totalTaskNum           = Expression<Int?>("totalTaskNum")               // 最大日常数
-//private let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
-//private let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
+private let remainResinDiscountNum = Expression<Int?>("remainResinDiscountNum")     // 可用周本数
+private let resinDiscountNumLimit  = Expression<Int?>("resinDiscountNumLimit")      // 最大周本数
 private let isExtraTaskRewardReceived = Expression<Bool>("isExtraTaskRewardReceived")       // 是否已经获取每日委托后的额外奖励
 private let currentExpeditionNum   = Expression<Int?>("currentExpeditionNum")       // 派遣数
 private let maxExpeditionNum       = Expression<Int?>("maxExpeditionNum")           // 最大派遣数
 private let expeditions            = Expression<String?>("expeditions")             // 派遣人数列表
 private let currentHomeCoin        = Expression<Int?>("currentHomeCoin")            // 宝钱
 private let maxHomeCoin            = Expression<Int?>("maxHomeCoin")                // 最大宝钱
-//private let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
-//private let transformer            = Expression<String?>("transformer")             // 转换仪器
+private let homeCoinRecoveryTime   = Expression<String?>("homeCoinRecoveryTime")    // 宝钱回复时间
+private let transformer            = Expression<String?>("transformer")             // 转换仪器
 
 extension SQLManager {
     func createGenshinImpactWidgetTable(_ dataBase: Connection) {
@@ -37,12 +37,16 @@ extension SQLManager {
                 table.column(resinRecoveryTime)
                 table.column(finishedTaskNum)
                 table.column(totalTaskNum)
+                table.column(remainResinDiscountNum)
+                table.column(resinDiscountNumLimit)
                 table.column(isExtraTaskRewardReceived)
                 table.column(currentExpeditionNum)
                 table.column(maxExpeditionNum)
                 table.column(expeditions)
                 table.column(currentHomeCoin)
                 table.column(maxHomeCoin)
+                table.column(homeCoinRecoveryTime)
+                table.column(transformer)
             })
         } catch {
             #if DEBUG
@@ -64,12 +68,16 @@ extension SQLManager {
                 resinRecoveryTime <- model.resinRecoveryTime,
                 finishedTaskNum <- model.finishedTaskNum,
                 totalTaskNum <- model.totalTaskNum,
+//                remainResinDiscountNum <- model.remainResinDiscountNum,
+//                resinDiscountNumLimit <- model.resinDiscountNumLimit,
                 isExtraTaskRewardReceived <- model.isExtraTaskRewardReceived,
                 currentExpeditionNum <- model.currentExpeditionNum,
                 maxExpeditionNum <- model.maxExpeditionNum,
                 expeditions <- model.expeditions?.toJSONString(),
                 currentHomeCoin <- model.currentHomeCoin,
-                maxHomeCoin <- model.maxHomeCoin
+                maxHomeCoin <- model.maxHomeCoin //,
+//                homeCoinRecoveryTime <- model.homeCoinRecoveryTime,
+//                transformer <- model.transformer
             )
             try dataBase.run(insert)
             complete?(true, nil)
@@ -84,6 +92,7 @@ extension SQLManager {
         model: GenshinWidgetData,
         complete: ((Bool, Error?) -> Void)?
     ) {
+        Logger.warning("Update widget data with uid: \(uuid), model: \(model)")
         do {
             try dataBase.transaction {
                 let genshinImpactWidget = genshinImpactWidget.filter(
