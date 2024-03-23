@@ -23,6 +23,7 @@ enum ApiKeys {
         
         case login = "https://m.bbs.mihoyo.com/ys/#/login"
         case stoken = "/account/ma-cn-session/app/getTokenBySToken"
+        case cookieToken = "/auth/api/getCookieAccountInfoBySToken"
         // 获取游戏信息
         case gameRoles = "/binding/api/getUserGameRolesByCookie"
     }
