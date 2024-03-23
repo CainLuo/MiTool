@@ -1,5 +1,5 @@
 //
-//  MiHoYoDeviceFPFetchModel.swift
+//  MihoyoDeviceFPFetchModel.swift
 //  MiTool
 //
 //  Created by Cain on 2024/3/13.
@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-public struct MiHoYoDeviceFPFetchModel: Mappable {
+public struct MihoyoDeviceFPFetchModel: Mappable {
     public var appName: String = ""
     public var platform: String = ""
     public var seedId: String = ""

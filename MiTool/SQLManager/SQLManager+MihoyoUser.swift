@@ -21,6 +21,7 @@ private let gender = Expression<Int?>("gender")                     // 性别，
 private let avatarURL = Expression<String?>("avatarURL")            // 头像链接
 private let ipRegion = Expression<String?>("ipRegion")              // IP地址
 private let region = Expression<String?>("region")                  // 服务器：China就是国服，Global就是外服
+private let cookieToken = Expression<String?>("cookieToken")                  // 服务器：China就是国服，Global就是外服
 
 extension SQLManager {
     func createMihoyoUserTable(_ dataBase: Connection) {
@@ -39,6 +40,7 @@ extension SQLManager {
                 table.column(avatarURL)
                 table.column(ipRegion)
                 table.column(region)
+                table.column(cookieToken)
             })
         } catch {
             Logger.error(error)
@@ -62,7 +64,8 @@ extension SQLManager {
                 gender <- model.gender,
                 avatarURL <- model.avatarURL,
                 ipRegion <- model.ipRegion,
-                region <- model.region
+                region <- model.region,
+                cookieToken <- model.cookieToken
             )
             try dataBase.run(insert)
             complete?(true, nil)
@@ -90,7 +93,8 @@ extension SQLManager {
                 gender <- model.gender,
                 avatarURL <- model.avatarURL,
                 ipRegion <- model.ipRegion,
-                region <- model.region
+                region <- model.region,
+                cookieToken <- model.cookieToken
             ))
             complete?(true, nil)
         } catch {
@@ -145,7 +149,8 @@ extension SQLManager {
                         sToken: item[sToken] ?? "",
                         deivceFP: item[deivceFP] ?? "",
                         deviceID: item[deviceID] ?? UUID().uuidString,
-                        region: item[region] ?? ""
+                        region: item[region] ?? "",
+                        cookieToken: item[cookieToken] ?? ""
                     )
                     list.append(account)
                 }
@@ -176,7 +181,8 @@ extension SQLManager {
                     sToken: item[sToken] ?? "",
                     deivceFP: item[deivceFP] ?? "",
                     deviceID: item[deviceID] ?? UUID().uuidString,
-                    region: item[region] ?? ""
+                    region: item[region] ?? "",
+                    cookieToken: item[cookieToken] ?? ""
                 ))
             }
             complete?(false, nil)

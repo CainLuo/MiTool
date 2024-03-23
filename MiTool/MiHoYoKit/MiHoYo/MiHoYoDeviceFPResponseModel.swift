@@ -1,5 +1,5 @@
 //
-//  MiHoYoDeviceFPFetchModel.swift
+//  MihoyoDeviceFPFetchModel.swift
 //  MiTool
 //
 //  Created by Cain on 2024/3/13.
@@ -8,10 +8,10 @@
 import Foundation
 import ObjectMapper
 
-public struct MiHoYoDeviceFPResponseModel: Mappable {
+public struct MihoyoDeviceFPResponseModel: Mappable {
     public var retcode: Int = 0
     public var message: String = ""
-    public var data: MiHoYoDeviceFPResponseDataModel?
+    public var data: MihoyoDeviceFPResponseDataModel?
 
     public init?(map: Map) {}
 
@@ -22,7 +22,7 @@ public struct MiHoYoDeviceFPResponseModel: Mappable {
     }
 }
 
-public struct MiHoYoDeviceFPResponseDataModel: Mappable {
+public struct MihoyoDeviceFPResponseDataModel: Mappable {
     public var deviceFp: String = ""
     public var code: Int = 0
     public var msg: String = ""

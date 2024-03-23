@@ -10,7 +10,7 @@ import ObjectMapper
 public struct MihoyoSTokenModel: Mappable {
     public var retcode: Int = 0
     public var message: String = ""
-    public var data: UserData?
+    public var data: MihoyoSTokenDataModel?
 
     public init?(map: Map) {}
 
@@ -21,8 +21,8 @@ public struct MihoyoSTokenModel: Mappable {
     }
 }
 
-public struct UserData: Mappable {
-    public var token: TokenInfo?
+public struct MihoyoSTokenDataModel: Mappable {
+    public var token: MihoyoSTokenTokenModel?
 
     public init?(map: Map) {}
 
@@ -31,7 +31,7 @@ public struct UserData: Mappable {
     }
 }
 
-public struct TokenInfo: Mappable {
+public struct MihoyoSTokenTokenModel: Mappable {
     public var tokenType: Int = 0
     public var token: String = ""
 

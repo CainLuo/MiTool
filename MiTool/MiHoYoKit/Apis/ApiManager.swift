@@ -18,6 +18,7 @@ class ApiManager: BaseApiManager {
     var region: Region = .china
     var cookie: String = ""
     var sToken: String = ""
+    var cookieToken: String = ""
 
     override init() {
         super.init()
@@ -84,27 +85,27 @@ class ApiManager: BaseApiManager {
     /// - Parameters:
     ///   - uid: MiHoYo user id
     ///   - completion: completion: @escaping (Result<MihoyoGameCardsModel, Error>) -> Void
-    func fetchGenshinGameCards<T: Mappable>(
-        uid: String
-    ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.Mihoyo.gameRecord.rawValue
-        let parameters: Parameters = ["uid": uid]
-        let decodeSalt = ApiDSHelper.getDS1()
-        let headers = [
-            "Referer": "https://webstatic.mihoyo.com",
-            "DS": decodeSalt,
-            "Cookie": cookie + "stoken=\(sToken)",
-            "x-rpc-device_fp": deviceFP,
-            "x-rpc-device_id": deviceID,
-            "x-rpc-client_type": "2",
-            "x-rpc-app_version": "2.63.1"
-        ]
-
-        return get(
-            url: url,
-            parameters: parameters,
-            headers: HTTPHeaders(headers)
-        )
+//    func fetchGenshinGameCards<T: Mappable>(
+//        uid: String
+//    ) -> AnyPublisher<T, Never> {
+//        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.Mihoyo.gameRecord.rawValue
+//        let parameters: Parameters = ["uid": uid]
+//        let decodeSalt = ApiDSHelper.getDS1()
+//        let headers = [
+//            "Referer": "https://webstatic.mihoyo.com",
+//            "DS": decodeSalt,
+//            "Cookie": cookie + "stoken=\(sToken)",
+//            "x-rpc-device_fp": deviceFP,
+//            "x-rpc-device_id": deviceID,
+//            "x-rpc-client_type": "2",
+//            "x-rpc-app_version": "2.63.1"
+//        ]
+//
+//        return get(
+//            url: url,
+//            parameters: parameters,
+//            headers: HTTPHeaders(headers)
+//        )
 //        { (result: Result<MihoyoGameCardsModel, Error>) in
 //            switch result {
 //            case .success(let success):
@@ -116,7 +117,7 @@ class ApiManager: BaseApiManager {
 //                Logger.error(failure)
 //            }
 //        }
-    }
+//    }
     
     /// Get MiHoYo User Game Cards
     /// - Parameters:

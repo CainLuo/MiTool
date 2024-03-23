@@ -1,20 +1,43 @@
 //
-//  ApiManager+.swift
+//  ApiManager+Auth.swift
 //  MiTool
 //
-//  Created by Cain on 2024/3/13.
+//  Created by Cain Luo on 2024/3/24.
 //
 
 import Foundation
+import Alamofire
 import Combine
 import ObjectMapper
-import Alamofire
 
 extension ApiManager {
+    /// Get SToken V2
+    /// [UIGF Documents](https://github.com/UIGF-org/mihoyo-api-collect/blob/main/hoyolab/user/token.md#%E9%80%9A%E8%BF%87stokenv1%E8%8E%B7%E5%8F%96stokenv2)
+    /// - Parameter completion: completion: @escaping (String) -> Void
+    func fetchSTokenV2<T: Mappable>(cookie: String) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.stokenV2.rawValue + ApiKeys.Mihoyo.stoken.rawValue
+        let headers = HTTPHeaders(
+            [
+                "x-rpc-app_id": "bll8iq97cem8",
+                "Cookie": cookie
+            ]
+        )
+        return post(
+            url: url,
+            parameters: nil,
+            headers: headers
+        )
+    }
+    
+    /// Get deviceFP
+    /// - Parameters:
+    ///   - deviceId: UUID
+    ///   - cookie: String
+    /// - Returns: AnyPublisher<T, Never>
     func fetchDeivceFP<T: Mappable>(
         deviceId: UUID,
         cookie: String
-    ) -> AnyPublisher<T, Never>  {
+    ) -> AnyPublisher<T, Never> {
         func generateSeed() -> String {
             let characters = "0123456789abcdef"
             var result = ""
@@ -39,13 +62,23 @@ extension ApiManager {
             """,
             // swiftlint:enable line_length
             "app_name": "bbs_cn",
-            "device_fp": "38d7ebd3b45ae",
+            "device_fp": "38d7ebd3b45ae"
         ]
         
         return post(
             url: url,
             parameters: body,
             encoding: JSONEncoding.default,
+            headers: HTTPHeaders(["Cookie": cookie])
+        )
+    }
+    
+    /// Get Cookie Token
+    /// - Returns: AnyPublisher<T, Never>
+    func fetchCookieToken<T: Mappable>(cookie: String) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.Mihoyo.cookieToken.rawValue
+        return get(
+            url: url,
             headers: HTTPHeaders(["Cookie": cookie])
         )
     }

@@ -15,6 +15,7 @@ class MihoyoUserEditViewModel: BaseViewModel {
     @Published var deivceFP: String = ""
     @Published var sTokenV2: String = ""
     @Published var cookie: String = ""
+    @Published var cookieToken: String = ""
 
     func getUserInfo(uid: String) {
         SQLManagerHelper.getMihoyoUser(uid: uid) { [weak self] userInfo in
@@ -26,6 +27,14 @@ class MihoyoUserEditViewModel: BaseViewModel {
         }
     }
 
+    func getMihoyoAuth(with cookie: String) {
+        cookieConvertUID(cookie: cookie)
+
+        fetchDeivceFP(cookie: cookie)
+        fetchSTokenV2(cookie: cookie)
+        fetchCookieToken(cookie: cookie)
+    }
+    
     func saveMihoyoUser(
         region: String
     ) {
@@ -37,7 +46,8 @@ class MihoyoUserEditViewModel: BaseViewModel {
             sToken: sTokenV2,
             deivceFP: deivceFP,
             deviceID: UUID().uuidString,
-            region: regionSever.rawValue
+            region: regionSever.rawValue,
+            cookieToken: cookieToken
         )
 
         ApiManager.shared.deviceID = userInfo.deviceID ?? UUID().uuidString
@@ -50,31 +60,6 @@ class MihoyoUserEditViewModel: BaseViewModel {
             }
             self?.saveUserSuccess = true
         }
-    }
-    
-    func fetchDeivceFP(cookie: String) {
-        ApiManager.shared.cookie = cookie
-        ApiManager.shared.fetchDeivceFP(deviceId: UUID(), cookie: cookie)
-            .sink { [weak self] (result: MiHoYoDeviceFPResponseModel) in
-                guard let deviceFp = result.data?.deviceFp else {
-                    return
-                }
-                self?.deivceFP = deviceFp
-                ApiManager.shared.deviceFP = deviceFp
-            }
-            .store(in: &cancellables)
-    }
-    
-    func fetchSTokenV2(cookie: String) {
-        ApiManager.shared.fetchSTokenV2(cookie: cookie)
-            .sink { [weak self] (result: MihoyoSTokenModel) in
-                guard let sTokenV2 = result.data?.token?.token else {
-                    return
-                }
-                self?.sTokenV2 = sTokenV2
-                ApiManager.shared.sToken = sTokenV2
-            }
-            .store(in: &cancellables)
     }
     
     func fetchMihoyoUserInfo(
@@ -113,12 +98,51 @@ class MihoyoUserEditViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
-    func cookieConvertUID(cookie: String) {
+    private func cookieConvertUID(cookie: String) {
         let strings = cookie.components(separatedBy: ";")
         let stuids = strings.filter { $0.contains("stuid=") }
         if let uidString = stuids.first {
             let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
             self.uid = uid
         }
+    }
+}
+
+extension MihoyoUserEditViewModel {
+    private func fetchDeivceFP(cookie: String) {
+        ApiManager.shared.cookie = cookie
+        ApiManager.shared.fetchDeivceFP(deviceId: UUID(), cookie: cookie)
+            .sink { [weak self] (result: MihoyoDeviceFPResponseModel) in
+                guard let deviceFp = result.data?.deviceFp else {
+                    return
+                }
+                self?.deivceFP = deviceFp
+                ApiManager.shared.deviceFP = deviceFp
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchSTokenV2(cookie: String) {
+        ApiManager.shared.fetchSTokenV2(cookie: cookie)
+            .sink { [weak self] (result: MihoyoSTokenModel) in
+                guard let sTokenV2 = result.data?.token?.token else {
+                    return
+                }
+                self?.sTokenV2 = sTokenV2
+                ApiManager.shared.sToken = sTokenV2
+            }
+            .store(in: &cancellables)
+    }
+
+    private func fetchCookieToken(cookie: String) {
+        ApiManager.shared.fetchCookieToken(cookie: cookie)
+            .sink { [weak self] (result: MihoyoCookieTokenModel) in
+                guard let cookieToken = result.data?.cookieToken else {
+                    return
+                }
+                self?.cookieToken = cookieToken
+                ApiManager.shared.cookieToken = cookieToken
+            }
+            .store(in: &cancellables)
     }
 }

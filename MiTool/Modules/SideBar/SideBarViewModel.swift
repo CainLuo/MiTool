@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SideBarViewModel: ObservableObject {
+class SideBarViewModel: BaseViewModel {
     @Published var sections: [SideBarSectionModel] = []
 
     func fetchSideBarSections() {

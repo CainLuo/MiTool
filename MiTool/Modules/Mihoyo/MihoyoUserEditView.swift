@@ -74,9 +74,7 @@ struct MihoyoUserEditView: View {
                     .frame(maxHeight: 300)
                     .onChange(of: viewModel.cookie) { value in
                         if isNew {
-                            viewModel.fetchDeivceFP(cookie: value)
-                            viewModel.fetchSTokenV2(cookie: value)
-                            viewModel.cookieConvertUID(cookie: value)
+                            viewModel.getMihoyoAuth(with: value)
                             viewModel.fetchMihoyoUserInfo(region: selection)
                         }
                     }
