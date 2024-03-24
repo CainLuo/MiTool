@@ -14,14 +14,15 @@ class SQLManager {
     private init() { }
     
     open private(set) var dataBase: Connection!
-    
+
+    let mihoyoUser = Table("mihoyoUser")
+    let mihoyoGameCards = Table("mihoyoGameCards")
     let starRailRole = Table("starRailRole")
     let starRailRoleSkill = Table("starRailRoleSkill")
     let starRailDailyNode = Table("StarRailDailyNode")
     let starRailRoleCompute = Table("starRailRoleCompute")
-    let mihoyoUser = Table("mihoyoUser")
-    let mihoyoGameCards = Table("mihoyoGameCards")
     let genshinImpactWidget = Table("genshinImpactWidget")
+    let genshinImpactCharacter = Table("genshinImpactCharacter")
 
     // 获取/设置数据库User version
     var userVersion: Int32 {
@@ -66,6 +67,7 @@ class SQLManager {
             creteStarRailRoleSkillTable(dataBase)
             createMihoyoGameCardsTable(dataBase)
             createGenshinImpactWidgetTable(dataBase)
+            createGenshiCharacterTable(dataBase)
         } catch {
             Logger.error(error)
         }

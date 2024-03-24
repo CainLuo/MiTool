@@ -1,5 +1,5 @@
 //
-//  RoleInfoView.swift
+//  StarRailRoleInfoView.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/25.
@@ -8,8 +8,8 @@
 import SwiftUI
 import Kingfisher
 
-struct RoleInfoView: View {
-    @StateObject var viewModel = RoleInfoViewModel()
+struct StarRailRoleInfoView: View {
+    @StateObject var viewModel = StarRailRoleInfoViewModel()
     
     let id: String
     
@@ -30,7 +30,7 @@ struct RoleInfoView: View {
 }
 
 struct RoleInfoDrawingView: View {
-    @StateObject var viewModel = RoleInfoViewModel()
+    @StateObject var viewModel = StarRailRoleInfoViewModel()
 
     var body: some View {
         VStack {
@@ -50,7 +50,7 @@ struct RoleInfoDrawingView: View {
 }
 
 struct RoleInfoConsumeView: View {
-    @StateObject var viewModel: RoleInfoViewModel
+    @StateObject var viewModel: StarRailRoleInfoViewModel
 
     var columns = Array(
         repeating: GridItem(.flexible()),
@@ -98,6 +98,6 @@ struct RoleInfoConsumeView: View {
 }
 
 #Preview {
-    RoleInfoView(id: "1112")
+    StarRailRoleInfoView(id: "1112")
         .frame(width: 800, height: 400)
 }

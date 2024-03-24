@@ -27,21 +27,23 @@ public enum Region: String {
 }
 
 enum ApiDSHelper {
-    static func getDS(region: Region, query: String, body: Data? = nil) -> String {
+    static func getDS(region: Region, query: String, body: String? = nil) -> String {
         let salt: String = ApiHeaderConfiguration.salt(region: region)
         
         let time = String(Int(Date().timeIntervalSince1970))
         let randomNumber = String(Int.random(in: 100_000 ..< 200_000))
         
-        let bodyString: String
+        var bodyString: String = ""
         if let body = body {
-            bodyString = String(data: body, encoding: .utf8) ?? ""
-        } else {
-            bodyString = ""
+            bodyString = body
         }
+        
+        Logger.warning("salt=\(salt)&t=\(time)&r=\(randomNumber)&b=\(bodyString)&q=\(query)")
         
         let verification = "salt=\(salt)&t=\(time)&r=\(randomNumber)&b=\(bodyString)&q=\(query)".md5()
         
+        Logger.warning("\(time + "," + randomNumber + "," + verification)")
+
         return time + "," + randomNumber + "," + verification
     }
     

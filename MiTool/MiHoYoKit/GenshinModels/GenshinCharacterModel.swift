@@ -39,8 +39,9 @@ public struct GenshinCharacterData: Mappable {
 }
 
 // MARK: - GenshinCharacterAvatar
-public struct GenshinCharacterAvatar: Mappable {
-    public var id: Int?
+public struct GenshinCharacterAvatar: Mappable, Identifiable {
+    public var id = UUID()
+    public var avatarID: Int?
     public var image: String?
     public var icon: String?
     public var name: String?
@@ -52,14 +53,42 @@ public struct GenshinCharacterAvatar: Mappable {
     public var reliquaries: [GenshinCharacterReliquary]?
     public var constellations: [GenshinCharacterConstellation]?
     public var activedConstellationNum: Int?
-    public var costumes: [Any?]?
+    public var costumes: [GenshinCharacterCostumes]?
     public var external: NSNull?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    init(
+        avatarID: Int?,
+        image: String?,
+        icon: String?,
+        name: String?,
+        element: String?,
+        fetter: Int?,
+        level: Int?,
+        rarity: Int?,
+        weapon: String?,
+        reliquaries: String?,
+        constellations: String?,
+        activedConstellationNum: Int?,
+        costumes: String?
+    ) {
+        self.avatarID = avatarID
+        self.image = image
+        self.icon = icon
+        self.name = name
+        self.element = element
+        self.fetter = fetter
+        self.level = level
+        self.rarity = rarity
+        self.weapon = GenshinCharacterWeapon(JSONString: weapon ?? "")
+        self.reliquaries = [GenshinCharacterReliquary](JSONString: reliquaries ?? "")
+        self.constellations = [GenshinCharacterConstellation](JSONString: constellations ?? "")
+        self.activedConstellationNum = activedConstellationNum
+        self.costumes = [GenshinCharacterCostumes](JSONString: costumes ?? "")
+    }
 
     mutating public func mapping(map: ObjectMapper.Map) {
-        id <- map["id"]
+        avatarID <- map["id"]
         image <- map["image"]
         icon <- map["icon"]
         name <- map["name"]
@@ -181,6 +210,20 @@ public struct GenshinCharacterWeapon: Mappable {
         typeName <- map["type_name"]
         desc <- map["desc"]
         affixLevel <- map["affix_level"]
+    }
+}
+
+public struct GenshinCharacterCostumes: Mappable {
+    public var id: Int = 0
+    public var name: String = ""
+    public var icon: String = ""
+
+    public init?(map: ObjectMapper.Map) { }
+
+    mutating public func mapping(map: ObjectMapper.Map) {
+        id <- map["id"]
+        name <- map["name"]
+        icon <- map["icon"]
     }
 }
 

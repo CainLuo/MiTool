@@ -34,17 +34,44 @@ extension ApiManager {
             parameters: nil,
             headers: HTTPHeaders(headers)
         )
-//        { (result: Result<GenshinWidgetModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let data = success.data else {
-//                    return
-//                }
-//                SQLManagerHelper.saveGenshinWidget(uid: uid, model: data)
-//                completion(data)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
+    }
+    
+    func fetchGenshinCharacter<T: Mappable>(
+        with uid: String,
+        server: String
+    ) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.GenshinImpact.character.rawValue
+        let parameters: Parameters = [
+            "role_id": "109050292",
+            "server": "cn_gf01"
+        ]
+        
+        guard let body = parameters.toJSONString?.removeNewlinesAndSpaces() else {
+            fatalError("Invalid body: \(parameters)")
+        }
+
+        let decodeSalt = ApiDSHelper.getDS(
+            region: region,
+            query: "",
+            body: body
+        )
+        
+        let headers = [
+            "DS": decodeSalt,
+            "Cookie": cookie,
+            "x-rpc-device_fp": deviceFP,
+            "x-rpc-device_id": deviceID,
+            "x-rpc-client_type": "5",
+            "x-rpc-app_version": "2.60.1",
+            "x-requested-with": "com.mihoyo.hyperion",
+            "referer": "https://webstatic.mihoyo.com"
+        ]
+
+        return post(
+            url: url,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: HTTPHeaders(headers)
+        )
     }
 }

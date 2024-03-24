@@ -22,6 +22,7 @@ class WidgetViewModel: BaseViewModel {
             ApiManager.shared.deviceID = user.deviceID ?? UUID().uuidString
             ApiManager.shared.sToken = user.sToken ?? ""
             ApiManager.shared.region = Region(rawValue: user.region ?? "") ?? .china
+            ApiManager.shared.cookieToken = user.cookieToken ?? ""
 
             fetchGameCard(uid: user.uid, server: StarRailGameBiz.china.rawValue)
             fetchGameCard(uid: user.uid, server: GenshinGameBiz.china.rawValue)
