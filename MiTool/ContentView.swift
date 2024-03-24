@@ -20,14 +20,14 @@ struct ContentView: View {
             case .users:
                 MihoyoUserListView()
             case .starRailRole:
-                RoleListView()
+                StarRailRoleListView()
 //                RoleInfoView(id: "1003")
             case .starRailWiki:
                 WiKiMap(selection: $selection)
             case .starRailMap:
                 WiKiMap(selection: $selection)
             case .genshinImpactRole:
-                EmptyView()
+                GenshinRoleView()
             case .genshinImpactMap:
                 WiKiMap(selection: $selection)
             case .genshinImpactWiki:

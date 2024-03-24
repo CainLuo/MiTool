@@ -1,5 +1,5 @@
 //
-//  RoleListViewModel.swift
+//  StarRailRoleListViewModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/3.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class RoleListViewModel: ObservableObject {
+class StarRailRoleListViewModel: ObservableObject {
     @Published var roleList: [StarRailAllRoleListModel] = []
     @Published var userName: String = ""
     @Published var uid: String = ""

@@ -30,8 +30,8 @@ class SideBarViewModel: BaseViewModel {
                 sectionIcon: "",
                 items: notes
             ),
-            getStarRailSesction() // ,
-//            getGenshinImpactSesction()
+            getStarRailSesction(),
+            getGenshinImpactSesction()
         ]
     }
 

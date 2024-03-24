@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class RoleInfoViewModel: ObservableObject {
+class StarRailRoleInfoViewModel: ObservableObject {
     @Published var avatar = StarRailRoleInfoAvatar()
     @Published var consumeSections: [StarRailLocalCompute] = []
 

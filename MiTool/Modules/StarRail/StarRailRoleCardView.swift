@@ -1,5 +1,5 @@
 //
-//  RoleCardView.swift
+//  StarRailRoleCardView.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/3.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct RoleCardView: View {    
+struct StarRailRoleCardView: View {    
     let item: StarRailAllRoleListModel
     
     var body: some View {
@@ -57,7 +57,7 @@ struct RoleCardView: View {
 }
 
 #Preview {
-    RoleCardView(item: 
+    StarRailRoleCardView(item: 
                     StarRailAllRoleListModel(
                         itemName: "",
                         iconURL: "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u17ehb/cbf5a53b27530f3b626aedc65679a3d3.png",

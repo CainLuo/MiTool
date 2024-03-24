@@ -1,5 +1,5 @@
 //
-//  RoleListView.swift
+//  StarRailRoleListView.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/3.
@@ -8,13 +8,13 @@
 import SwiftUI
 import SwiftUIX
 
-struct RoleListView: View {
-    @StateObject var viewModel = RoleListViewModel()
+struct StarRailRoleListView: View {
+    @StateObject var viewModel = StarRailRoleListViewModel()
 
     var body: some View {
         Section {
             List(viewModel.roleList) { item in
-                RoleInfoView(id: item.itemID ?? "")
+                StarRailRoleInfoView(id: item.itemID ?? "")
             }
         } header: {
             HStack {
@@ -45,5 +45,5 @@ struct SecondView: View {
 }
 
 #Preview {
-    RoleListView()
+    StarRailRoleListView()
 }

@@ -1,5 +1,5 @@
 //
-//  RoleDetailView.swift
+//  StarRailRoleDetailView.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/2/7.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoleDetailView: View {
+struct StarRailRoleDetailView: View {
     @Environment (\.presentationMode) var presentationMode
     
     var body: some View {
@@ -20,5 +20,5 @@ struct RoleDetailView: View {
 }
     
 #Preview {
-    RoleDetailView()
+    StarRailRoleDetailView()
 }
