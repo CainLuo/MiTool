@@ -74,4 +74,28 @@ extension ApiManager {
             headers: HTTPHeaders(headers)
         )
     }
+    
+    func fetchGenshinRoleSkills<T: Mappable>(
+        uid: String, 
+        server: String,
+        avatarID: String
+    ) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.roleDetail.rawValue
+        let parameters: Parameters = [
+            "uid": uid,
+            "region": server,
+            "avatar_id": avatarID
+        ]
+                
+        let headers = ApiHeaderConfiguration.defaultHeaders(
+            region: region,
+            additionalHeaders: ["Cookie": cookie]
+        )
+        
+        return get(
+            url: url,
+            parameters: parameters,
+            headers: HTTPHeaders(headers)
+        )
+    }
 }

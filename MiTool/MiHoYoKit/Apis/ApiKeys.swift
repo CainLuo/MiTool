@@ -45,6 +45,8 @@ enum ApiKeys {
         case compute = "/event/e20200928calculate/v2/compute"
         // 获取深渊记录
         case spiralAbyss = "/game_record/app/genshin/api/spiralAbyss"
+        // 获取角色的详细信息
+        case roleDetail = "/event/e20200928calculate/v1/sync/avatar/detail"
     }
 
     enum StarRail: String {
