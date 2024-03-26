@@ -61,6 +61,8 @@ struct LocalizableKeys {
         static let transformerMinutes = String(localized: "GenshinWidgetTransformerMinutes")
         static let ready = String(localized: "GenshinWidgetTransformerReady")
         static let date = String(localized: "GenshinWidgetTransformerDate")
+        static let constellation = String(localized: "GenshinRoleConstellation")
+        static let affix = String(localized: "GenshinRoleAffix")
     }
 
     struct MihoyoGameName {

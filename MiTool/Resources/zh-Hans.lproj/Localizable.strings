@@ -53,6 +53,9 @@
 "GenshinWidgetTransformerReady" = "已准备就绪";
 "GenshinWidgetTransformerDate" = "yyyy-MM-DD";
 
+"GenshinRoleConstellation" = "命";
+"GenshinRoleAffix" = "精";
+
 // MARK: - 米游社
 
 "MihoyoGameNameHonKai3" = "崩坏3";

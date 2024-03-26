@@ -24,6 +24,7 @@ private let reliquaries = Expression<String?>("reliquaries")          // 圣遗�
 private let constellations = Expression<String?>("constellations")          // 命座信息
 private let activedConstellationNum = Expression<Int?>("actived_constellation_num")          // 已激活命座
 private let costumes = Expression<String?>("costumes")          // 服装
+private let skillList = Expression<String?>("skillList")          // 技能
 
 extension SQLManager {
     func createGenshiCharacterTable(_ dataBase: Connection) {
@@ -44,6 +45,7 @@ extension SQLManager {
                 table.column(constellations)
                 table.column(activedConstellationNum)
                 table.column(costumes)
+                table.column(skillList)
             })
         } catch {
             Logger.error(error)
@@ -70,7 +72,8 @@ extension SQLManager {
                     reliquaries <- model.reliquaries?.toJSONString(),
                     constellations <- model.constellations?.toJSONString(),
                     activedConstellationNum <- model.activedConstellationNum,
-                    costumes <- model.costumes?.toJSONString()
+                    costumes <- model.costumes?.toJSONString(),
+                    skillList <- model.skillList?.toJSONString()
                 )
                 try dataBase.run(insert)
             }
@@ -100,7 +103,8 @@ extension SQLManager {
                         reliquaries: item[reliquaries],
                         constellations: item[constellations],
                         activedConstellationNum: item[activedConstellationNum],
-                        costumes: item[costumes]
+                        costumes: item[costumes],
+                        skillList: item[skillList]
                     )
                     list.append(avatar)
                 }
@@ -136,6 +140,26 @@ extension SQLManager {
                     constellations <- model.constellations?.toJSONString(),
                     activedConstellationNum <- model.activedConstellationNum,
                     costumes <- model.costumes?.toJSONString()
+                ))
+            }
+        } catch {
+            Logger.error(error)
+        }
+    }
+    
+    func upgradeGenshinCharacter(
+        uuid: String,
+        avatarID: Int,
+        model: [GenshinRoleSkillItemModel]
+    ) {
+        do {
+            try dataBase.transaction {
+                let query = genshinImpactCharacter.filter(
+                    uid == uuid &&
+                    characterID == avatarID
+                )
+                try dataBase.run(query.update(
+                    skillList <- model.toJSONString()
                 ))
             }
         } catch {

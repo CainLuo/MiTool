@@ -20,12 +20,12 @@ struct GenshinRoleView: View {
                             .sizeModifier()
                         
                         VStack {
-                            Text("Lv.\(item.level ?? 1)")
+                            Text(item.levelContent)
                             HStack(spacing: .zero) {
                                 Image(systemName: "heart")
                                 Text("\(item.fetter ?? 1)")
                             }
-                            Text("\(item.activedConstellationNum ?? 1)命")
+                            Text(item.constellation)
                         }
                         
                         VStack {
@@ -41,14 +41,15 @@ struct GenshinRoleView: View {
                                 VStack(alignment: .trailing) {
                                     Text(weapon.name ?? "")
                                         .font(.system(size: 18, weight: .bold))
-                                    Text("Lv.\(weapon.level ?? 1)")
-                                    Text("精\(weapon.affixLevel ?? 0)")
+                                    Text(weapon.levelContent)
+                                    Text(weapon.affixContent)
                                 }
                                 KFImage(URL(string: weapon.icon ?? ""))
                                     .sizeModifier()
                             }
                         }
                     }
+                    .padding()
                 }
             } header: {
                 HStack {
