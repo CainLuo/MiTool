@@ -250,6 +250,7 @@
 		BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+GameRecord.swift"; sourceTree = "<group>"; };
 		BFC3E7C72BB0191400FEE415 /* GenshinRoleSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleSectionModel.swift; sourceTree = "<group>"; };
+		BFC3E7C92BB0729B00FEE415 /* GenshinRoleSkillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleSkillModel.swift; sourceTree = "<group>"; };
 		BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailAllRoleModel.swift; sourceTree = "<group>"; };
 		BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		BFE403B82B6E2B55002FF39E /* StarRailRoleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleListViewModel.swift; sourceTree = "<group>"; };
@@ -348,8 +349,8 @@
 			children = (
 				A4CFC23F2B9F0A720082734B /* GenshinCharacterModel.swift */,
 				A4CFC23C2B9F0A720082734B /* GenshinDailyNodeModel.swift */,
-				A4CFC23B2B9F0A720082734B /* GenshinWidgetModel.swift */,
 				A48390CE2BB118790041254D /* GenshinRoleSkillModel.swift */,
+				A4CFC23B2B9F0A720082734B /* GenshinWidgetModel.swift */,
 			);
 			path = GenshinModels;
 			sourceTree = "<group>";
@@ -536,6 +537,7 @@
 				BFB5DFCD2BB00A1000682FCB /* GenshinRoleView.swift */,
 				BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewViewModel.swift */,
 				BFC3E7C72BB0191400FEE415 /* GenshinRoleSectionModel.swift */,
+				BFC3E7C92BB0729B00FEE415 /* GenshinRoleSkillModel.swift */,
 			);
 			path = GenshinImpact;
 			sourceTree = "<group>";

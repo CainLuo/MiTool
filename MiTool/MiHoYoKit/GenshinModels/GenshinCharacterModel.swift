@@ -55,6 +55,21 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     public var activedConstellationNum: Int?
     public var costumes: [GenshinCharacterCostumes]?
     public var external: NSNull?
+    public var skillList: [GenshinRoleSkillItemModel]?
+    
+    public var constellation: String {
+        guard let activedConstellationNum else {
+            return ""
+        }
+        return CopyGenshinWidget.constellation + "\(activedConstellationNum)"
+    }
+    
+    public var levelContent: String {
+        guard let level else {
+            return "Lv.1"
+        }
+        return "Lv.\(level)"
+    }
 
     public init?(map: ObjectMapper.Map) { }
     init(
@@ -70,7 +85,8 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
         reliquaries: String?,
         constellations: String?,
         activedConstellationNum: Int?,
-        costumes: String?
+        costumes: String?,
+        skillList: String?
     ) {
         self.avatarID = avatarID
         self.image = image
@@ -85,6 +101,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
         self.constellations = [GenshinCharacterConstellation](JSONString: constellations ?? "")
         self.activedConstellationNum = activedConstellationNum
         self.costumes = [GenshinCharacterCostumes](JSONString: costumes ?? "")
+        self.skillList = [GenshinRoleSkillItemModel](JSONString: skillList ?? "")
     }
 
     mutating public func mapping(map: ObjectMapper.Map) {
@@ -195,6 +212,20 @@ public struct GenshinCharacterWeapon: Mappable {
     public var typeName: String?
     public var desc: String?
     public var affixLevel: Int?
+    
+    public var affixContent: String {
+        guard let affixLevel else {
+            return ""
+        }
+        return CopyGenshinWidget.affix + "\(affixLevel)"
+    }
+    
+    public var levelContent: String {
+        guard let level else {
+            return "Lv.1"
+        }
+        return "Lv.\(level)"
+    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }

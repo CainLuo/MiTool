@@ -10,14 +10,14 @@ import ObjectMapper
 
 
 // GenshinRoleSkillDataModel
-struct GenshinRoleSkillModel: Mappable {
-    var message: String?
-    var retcode: Int?
-    var data: GenshinRoleSkillDataModel?
+public struct GenshinRoleSkillModel: Mappable {
+    public var message: String?
+    public var retcode: Int?
+    public var data: GenshinRoleSkillDataModel?
     
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         message <- map["message"]
         retcode <- map["retcode"]
         data <- map["data"]
@@ -25,14 +25,14 @@ struct GenshinRoleSkillModel: Mappable {
 }
 
 // GenshinRoleSkillDataModel
-struct GenshinRoleSkillDataModel: Mappable {
-    var skillList: [GenshinRoleSkillItemModel]?
-    var weapon: GenshinRoleWeaponModel?
-    var reliquaryList: [GenshinRoleReliquaryModel]?
+public struct GenshinRoleSkillDataModel: Mappable {
+    public var skillList: [GenshinRoleSkillItemModel]?
+    public var weapon: GenshinRoleWeaponModel?
+    public var reliquaryList: [GenshinRoleReliquaryModel]?
     
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         skillList <- map["skill_list"]
         weapon <- map["weapon"]
         reliquaryList <- map["reliquary_list"]
@@ -40,17 +40,17 @@ struct GenshinRoleSkillDataModel: Mappable {
 }
 
 // GenshinRoleSkillItemModel
-struct GenshinRoleSkillItemModel: Mappable {
-    var id: Int?
-    var groupId: Int?
-    var name: String?
-    var icon: String?
-    var maxLevel: Int?
-    var currentLevel: Int?
+public struct GenshinRoleSkillItemModel: Mappable {
+    public var id: Int?
+    public var groupId: Int?
+    public var name: String?
+    public var icon: String?
+    public var maxLevel: Int?
+    public var currentLevel: Int?
     
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         id <- map["id"]
         groupId <- map["group_id"]
         name <- map["name"]
@@ -61,18 +61,18 @@ struct GenshinRoleSkillItemModel: Mappable {
 }
 
 // GenshinRoleWeaponModel
-struct GenshinRoleWeaponModel: Mappable {
-    var id: Int?
-    var name: String?
-    var icon: String?
-    var weaponCatId: Int?
-    var weaponLevel: Int?
-    var maxLevel: Int?
-    var currentLevel: Int?
+public struct GenshinRoleWeaponModel: Mappable {
+    public var id: Int?
+    public var name: String?
+    public var icon: String?
+    public var weaponCatId: Int?
+    public var weaponLevel: Int?
+    public var maxLevel: Int?
+    public var currentLevel: Int?
     
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
         icon <- map["icon"]
@@ -84,18 +84,18 @@ struct GenshinRoleWeaponModel: Mappable {
 }
 
 // GenshinRoleReliquaryModel
-struct GenshinRoleReliquaryModel: Mappable {
-    var id: Int?
-    var name: String?
-    var icon: String?
-    var reliquaryCatId: Int?
-    var reliquaryLevel: Int?
-    var currentLevel: Int?
-    var maxLevel: Int?
+public struct GenshinRoleReliquaryModel: Mappable {
+    public var id: Int?
+    public var name: String?
+    public var icon: String?
+    public var reliquaryCatId: Int?
+    public var reliquaryLevel: Int?
+    public var currentLevel: Int?
+    public var maxLevel: Int?
     
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
         icon <- map["icon"]

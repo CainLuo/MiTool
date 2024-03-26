@@ -53,6 +53,9 @@
 "GenshinWidgetTransformerReady" = "Ready";
 "GenshinWidgetTransformerDate" = "MM-DD-yyyy";
 
+"GenshinRoleConstellation" = "C";
+"GenshinRoleAffix" = "A";
+
 // MARK: - 米游社
 
 "MihoyoGameNameHonKai3" = "HonKai3";
