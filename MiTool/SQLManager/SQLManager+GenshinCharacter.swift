@@ -116,6 +116,46 @@ extension SQLManager {
         }
     }
     
+    func getGenshinCharacter(
+        uuid: String,
+        avatarID: Int
+    ) -> AnyPublisher<GenshinCharacterAvatar?, Never> {
+        return Future<GenshinCharacterAvatar?, Never> { [weak self] promise in
+            guard let self = self else {
+                return
+            }
+            do {
+                try self.dataBase.transaction {
+                    let query = self.genshinImpactCharacter.filter(
+                        uid == uuid &&
+                        characterID == avatarID
+                    )
+                    try self.dataBase.prepare(query).forEach { item in
+                        let avatar = GenshinCharacterAvatar(
+                            avatarID: item[characterID],
+                            image: item[image],
+                            icon: item[icon],
+                            name: item[name],
+                            element: item[element],
+                            fetter: item[fetter],
+                            level: item[level],
+                            rarity: item[rarity],
+                            weapon: item[weapon],
+                            reliquaries: item[reliquaries],
+                            constellations: item[constellations],
+                            activedConstellationNum: item[activedConstellationNum],
+                            costumes: item[costumes],
+                            skillList: item[skillList]
+                        )
+                        promise(.success(avatar))
+                    }
+                }
+            } catch {
+                Logger.error(error)
+            }
+        }.eraseToAnyPublisher()
+    }
+
     func upgradeGenshinCharacter(
         uuid: String,
         model: GenshinCharacterAvatar
@@ -150,7 +190,7 @@ extension SQLManager {
     func upgradeGenshinCharacter(
         uuid: String,
         avatarID: Int,
-        model: [GenshinRoleSkillItemModel]
+        skills: [GenshinRoleSkillItemModel]
     ) {
         do {
             try dataBase.transaction {
@@ -159,7 +199,7 @@ extension SQLManager {
                     characterID == avatarID
                 )
                 try dataBase.run(query.update(
-                    skillList <- model.toJSONString()
+                    skillList <- skills.toJSONString()
                 ))
             }
         } catch {

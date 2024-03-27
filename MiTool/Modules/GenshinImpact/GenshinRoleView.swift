@@ -59,6 +59,32 @@ struct GenshinRoleView: View {
                     )
                     
                     Spacer()
+                    
+                    Button {
+                        viewModel.reloadGenshinCharacter(
+                            uid: section.uid,
+                            server: section.server
+                        )
+                    } label: {
+                        Text("获取已有的所有角色")
+                            .foregroundStyle(Color.white)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(8)
+                    }
+
+                    Button {
+                        viewModel.reloadGenshinCharacterSkills(
+                            uid: section.uid,
+                            server: section.server
+                        )
+                    } label: {
+                        Text("刷新已有的角色天赋")
+                            .foregroundStyle(Color.white)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(8)
+                    }
                 }
                 .padding([.top, .leading])
             }

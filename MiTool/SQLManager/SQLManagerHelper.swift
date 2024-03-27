@@ -6,8 +6,24 @@
 //
 
 import Foundation
+import Combine
 
 class SQLManagerHelper {
+    var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        // 初始化ViewModel
+    }
+
+    deinit {
+        cancelSubscriptions()
+    }
+    
+    func cancelSubscriptions() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+
     static func saveMihoyoUser(
         userInfo: MihoyoUserInfo,
         complete: @escaping (Bool, Error?) -> Void
@@ -80,7 +96,9 @@ class SQLManagerHelper {
             }
         }
     }
-    
+}
+
+extension SQLManagerHelper {
     static func saveStarRailCards(
         _ uid: String,
         gameCards: [MihoyoGameCardsList]
@@ -104,33 +122,7 @@ class SQLManagerHelper {
             }
         }
     }
-    
-    static func saveGenshinCards(
-        _ uid: String,
-        gameCards: [MihoyoGameCardsList]
-    ) {
-        guard let gameCard = gameCards.first else {
-            return
-        }
-        let localCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
-        
-        if localCards.isEmpty {
-            SQLManager.shared.addGenshinCards(uuid: uid, model: gameCard) { _, error in
-                if let error {
-                    Logger.error(error)
-                }
-            }
-        } else {
-            SQLManager.shared.upgradeGenshinGameCards(uuid: uid, model: gameCard) { _, error in
-                if let error {
-                    Logger.error(error)
-                }
-            }
-        }
-    }
-}
 
-extension SQLManagerHelper {
     static func saveStarRailWidget(uid: String, model: StarRailWidgetDataModel) {
         SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
             if item == nil {
@@ -167,6 +159,30 @@ extension SQLManagerHelper {
 }
 
 extension SQLManagerHelper {
+    static func saveGenshinCards(
+        _ uid: String,
+        gameCards: [MihoyoGameCardsList]
+    ) {
+        guard let gameCard = gameCards.first else {
+            return
+        }
+        let localCards = SQLManager.shared.getAllMihoyoGameCards(uuid: uid)
+        
+        if localCards.isEmpty {
+            SQLManager.shared.addGenshinCards(uuid: uid, model: gameCard) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        } else {
+            SQLManager.shared.upgradeGenshinGameCards(uuid: uid, model: gameCard) { _, error in
+                if let error {
+                    Logger.error(error)
+                }
+            }
+        }
+    }
+
     static func saveGenshinWidget(uid: String, model: GenshinWidgetData) {
         SQLManager.shared.getStarRailRoleDailyNode(uid) { _, item in
             if item == nil {
@@ -199,6 +215,25 @@ extension SQLManagerHelper {
             }
             Logger.info("Upgrade role info success")
         }
+    }
+    
+    func saveGenshinCharacter(uid: String, model: GenshinCharacterAvatar) {
+        guard let avatarID = model.avatarID else {
+            return
+        }
+        SQLManager.shared.getGenshinCharacter(uuid: uid, avatarID: avatarID)
+            .sink { item in
+                guard let item else {
+                    SQLManager.shared.addGenshinCharacter(uuid: uid, model: model)
+                    return
+                }
+                SQLManager.shared.upgradeGenshinCharacter(uuid: uid, model: model)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func saveGenshinSkills(uid: String, avatarID: Int, skills: [GenshinRoleSkillItemModel]) {
+        SQLManager.shared.upgradeGenshinCharacter(uuid: uid, avatarID: avatarID, skills: skills)
     }
 }
 
