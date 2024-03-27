@@ -10,6 +10,7 @@
 		A41389982B9EAEED00F94141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41389972B9EAEED00F94141 /* Logger.swift */; };
 		A413899E2B9EB51A00F94141 /* LocaleX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413899D2B9EB51A00F94141 /* LocaleX.swift */; };
 		A48390CF2BB118790041254D /* GenshinRoleSkillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48390CE2BB118790041254D /* GenshinRoleSkillModel.swift */; };
+		A48390D82BB3F5050041254D /* BaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48390D72BB3F5050041254D /* BaseButtonView.swift */; };
 		A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */; };
 		A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB92B8DE9C000C091BB /* starRailWidget.json */; };
 		A4871DBD2B8DE9FD00C091BB /* genshinImpactWidgetV2.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */; };
@@ -143,6 +144,7 @@
 		A413899D2B9EB51A00F94141 /* LocaleX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleX.swift; sourceTree = "<group>"; };
 		A46EF6E92B9039B100A1E6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A48390CE2BB118790041254D /* GenshinRoleSkillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleSkillModel.swift; sourceTree = "<group>"; };
+		A48390D72BB3F5050041254D /* BaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButtonView.swift; sourceTree = "<group>"; };
 		A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailDailyNode.json; sourceTree = "<group>"; };
 		A4871DB92B8DE9C000C091BB /* starRailWidget.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailWidget.json; sourceTree = "<group>"; };
 		A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinImpactWidgetV2.json; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 			children = (
 				A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */,
 				BFFCC1F32B9DA02E00780742 /* SectionHeaderView.swift */,
+				A48390D72BB3F5050041254D /* BaseButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */,
 				A4CFC2502B9F0A9B0082734B /* MihoyoGameCardsModel.swift in Sources */,
 				BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */,
+				A48390D82BB3F5050041254D /* BaseButtonView.swift in Sources */,
 				BF03A7702BAFD51F0007BAD7 /* DictionaryX.swift in Sources */,
 				A4CFC2532B9F0AB40082734B /* GenshinCharacterModel.swift in Sources */,
 				BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */,

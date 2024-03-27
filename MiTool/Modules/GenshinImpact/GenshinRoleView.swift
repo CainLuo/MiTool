@@ -52,47 +52,63 @@ struct GenshinRoleView: View {
                     .padding()
                 }
             } header: {
-                HStack {
-                    SectionHeaderView(
-                        userName: section.userName,
-                        uid: section.uid
-                    )
-                    
-                    Spacer()
-                    
-                    Button {
-                        viewModel.reloadGenshinCharacter(
-                            uid: section.uid,
-                            server: section.server
-                        )
-                    } label: {
-                        Text("获取已有的所有角色")
-                            .foregroundStyle(Color.white)
-                            .padding()
-                            .background(.blue)
-                            .cornerRadius(8)
-                    }
-
-                    Button {
-                        viewModel.reloadGenshinCharacterSkills(
-                            uid: section.uid,
-                            server: section.server
-                        )
-                    } label: {
-                        Text("刷新已有的角色天赋")
-                            .foregroundStyle(Color.white)
-                            .padding()
-                            .background(.blue)
-                            .cornerRadius(8)
-                    }
-                }
-                .padding([.top, .leading])
+                GenshinRoleSectionView(viewModel: viewModel, section: section)
             }
         }
         .task {
             viewModel.fetchUserList()
         }
     }
+}
+
+struct GenshinRoleSectionView: View {
+    @StateObject var viewModel: GenshinRoleViewViewModel
+    
+    let section: GenshinRoleSectionModel
+    
+    private enum Constants {
+        static let height = 48
+        static let width = 150
+    }
+
+    var body: some View {
+        HStack {
+            SectionHeaderView(
+                userName: section.userName,
+                uid: section.uid
+            )
+            
+            Spacer()
+                        
+            PrimaryButton(
+                title: CopyGenshinRole.rolesTitle,
+                isDisabled: viewModel.$isDisabled
+            ) {
+                viewModel.reloadGenshinCharacterSkills(
+                    uid: section.uid,
+                    server: section.server
+                )
+            }
+
+            PrimaryButton(
+                title: CopyGenshinRole.skillsTitle,
+                isDisabled: viewModel.$isDisabled
+            ) {
+                viewModel.reloadGenshinCharacterSkills(
+                    uid: section.uid,
+                    server: section.server
+                )
+            }
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    GenshinRoleSectionView(
+        viewModel: GenshinRoleViewViewModel(),
+        section: GenshinRoleSectionModel()
+    )
 }
 
 #Preview {

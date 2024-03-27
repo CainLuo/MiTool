@@ -20,16 +20,12 @@ struct MihoyoUserEditView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
+                PrimaryButton(
+                    title: CopyGameName.returnTitle,
+                    frame: CGSize(width: 65, height: 32)
+                ) {
                     self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text(CopyGameName.returnTitle)
-                        .frame(width: 60, height: 28)
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .cornerRadius(8)
-                })
-                .buttonStyle(PlainButtonStyle())
+                }
                 .padding([.leading, .top], 10)
                 
                 Spacer()
@@ -82,7 +78,7 @@ struct MihoyoUserEditView: View {
             }
             .padding()
             
-            Button(action: {
+            PrimaryButton(title: CopyGameName.save) {
                 viewModel.saveMihoyoUser(
                     region: selection
                 )
@@ -90,17 +86,9 @@ struct MihoyoUserEditView: View {
                 if viewModel.saveUserSuccess {
                     self.presentationMode.wrappedValue.dismiss()
                 }
-            }, label: {
-                Text(CopyGameName.save)
-                    .fontWeight(.semibold)
-                    .frame(width: 200, height: 50)
-                    .foregroundColor(.white)
-                    .background(.blue)
-                    .cornerRadius(8)
-            })
+            }
             .padding(.top, 0)
             .padding(.bottom, 10)
-            .buttonStyle(PlainButtonStyle())
             .alert("保存用户失败了", isPresented: $viewModel.saveUserFailed) {
                 Button("ok") {
                     viewModel.saveUserFailed.toggle()
