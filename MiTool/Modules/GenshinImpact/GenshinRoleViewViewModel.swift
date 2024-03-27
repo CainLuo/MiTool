@@ -9,6 +9,7 @@ import SwiftUI
 
 class GenshinRoleViewViewModel: BaseViewModel {
     @Published var sections: [GenshinRoleSectionModel] = []
+    @Published var reloadMesssage: String = ""
     
     func fetchUserList() {
         let users = SQLManager.shared.getMihoyoUserList()
@@ -46,5 +47,33 @@ class GenshinRoleViewViewModel: BaseViewModel {
 //                }
 //            }
 //            .store(in: &cancellables)
+    }
+    
+    func reloadGenshinCharacterSkills(uid: String, server: String) {
+        let section = sections.filter { $0.uid == uid }.first
+        guard let list = section?.roleList else {
+            return
+        }
+        list.indices.forEach { index in
+            let item = list[index]
+            guard let avatarID = item.avatarID else {
+                return
+            }
+            
+            if index != list.count - 1 {
+                reloadMesssage = "正在获取\(item.name ?? "")的天赋信息"
+            } else {
+                reloadMesssage = "已完成"
+            }
+            
+            ApiManager.shared.fetchGenshinRoleSkills(uid: uid, server: server, avatarID: avatarID)
+                .sink { (result: GenshinRoleSkillModel) in
+                    guard let list = result.data?.skillList else {
+                        return
+                    }
+                    SQLManagerHelper().saveGenshinSkills(uid: uid, avatarID: avatarID, skills: list)
+                }
+                .store(in: &cancellables)
+        }
     }
 }

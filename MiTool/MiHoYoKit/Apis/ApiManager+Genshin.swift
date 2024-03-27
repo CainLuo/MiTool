@@ -78,7 +78,7 @@ extension ApiManager {
     func fetchGenshinRoleSkills<T: Mappable>(
         uid: String, 
         server: String,
-        avatarID: String
+        avatarID: Int
     ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.roleDetail.rawValue
         let parameters: Parameters = [
