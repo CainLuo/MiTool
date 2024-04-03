@@ -40,18 +40,27 @@ public struct GenshinRoleSkillDataModel: Mappable {
 }
 
 // GenshinRoleSkillItemModel
-public struct GenshinRoleSkillItemModel: Mappable {
-    public var id: Int?
+public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
+    public var id = UUID()
+    public var skillID: Int?
     public var groupId: Int?
     public var name: String?
     public var icon: String?
     public var maxLevel: Int?
     public var currentLevel: Int?
     
+    public var level: String {
+        "Lv: \(currentLevel ?? 1)"
+    }
+    
+    public var skillURL: String {
+        icon ?? ""
+    }
+    
     public init?(map: Map) {}
     
     mutating public func mapping(map: Map) {
-        id <- map["id"]
+        skillID <- map["id"]
         groupId <- map["group_id"]
         name <- map["name"]
         icon <- map["icon"]
