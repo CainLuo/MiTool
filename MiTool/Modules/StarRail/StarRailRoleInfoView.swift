@@ -30,7 +30,7 @@ struct StarRailRoleInfoView: View {
 }
 
 struct RoleInfoDrawingView: View {
-    @StateObject var viewModel = StarRailRoleInfoViewModel()
+    @StateObject var viewModel: StarRailRoleInfoViewModel
 
     var body: some View {
         VStack {

@@ -416,8 +416,20 @@ https://march7th.xiaohei.moe/en/resource/mihomo_api.html
 Parser example:
 https://github.com/Mar-7th/mihomo.py/blob/master/mihomo/api.py
 
+抽卡分析
+```url
+https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&win_mode=fullscreen&gacha_id=afa12c87f7b4c355facc73d983f5de09731a83&timestamp=1711496725&region=prod_gf_cn&default_gacha_type=11&lang=zh-cn&authkey=CqpYcMLSzEWHP6M41HOgZg61SMmrLig1NprgjXJ5KNRgx436vzqEin0MIryABmQM%2BDYcLV%2FROsfObOK7PrWENAAu5JvTV7HzAGNet%2FuCRW6wDS0EkwVBhxPsSHG3US8i33Bokmm5feM008VhMkc%2BXETUENLU1pDNkF9%2FHJZ3RySlaNOhrAm8MXrWf0A%2Bb4oEquicnBqfbpW1SUVAcHXsnlUMJSfFBKhwG2ojbWRUSCOkZNCTmL%2BvheTpaD2IlCYDKR1IPtcUQL5k7e%2F2XhaK07jdwKLeqXjng%2FYxHEle5Wkgp4Qu4NiIMnfXCU2u%2FNgKQrVO%2BdUAr2XzxaHTR85gR4Tg0X8jxR%2BWZTplBD2aueVmSs9zzXAkexuU8hL6ahQBXBWS%2ByKJAF5D8cECaENxR7OvTT2pxrXtuvJ22qF2h7Y9g%2BcoxCFyGdSIOBtWRlbiuahJvETRYMqpFbiSencocaEZtqnQ3ElD3kPpuTV8YJRnsB2rQnyW5rJNHfRvOGEFzA4g602yprcZslwoFmBlVs6s5fHTWJSxt0%2B%2Fzmr1%2F%2FUqVU%2B1OHMBs20fQtxcfe8gF43hMO83XR40ZwbZ4OZSMuxi5ZhEoXgUyd8nj1G%2BRDWRJWX27T6hsgnpQHRUzNd7aLivwrZMEtCA%2BRvrc%2B4jni83qQM%2BM%2FURjCGkPJFuJzM%3D&game_biz=hkrpg_cn&os_system=iOS%2016.6&device_model=iPad13%2C8&plat_type=ios&page=1&size=5&gacha_type=11&end_id=0
+```
+|卡池类型|Value|
+|:--:|:--:|
+|当前up角色|gacha_type=11|
+|当前up光锥|gacha_type=12|
+|常驻卡池|gacha_type=1|
+|新手卡池|gacha_type=2|
+
 ## 参考库
 
 [gsiod_core](https://github.com/Genshin-bots/gsuid_core)
 [KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
 [baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
+

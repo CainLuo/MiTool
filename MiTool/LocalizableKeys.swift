@@ -12,6 +12,7 @@ typealias CopyStarRailWidget = LocalizableKeys.StarRailWidget
 typealias CopyStarRailRole = LocalizableKeys.StarRailRole
 typealias CopyGenshinWidget = LocalizableKeys.GenshinWidget
 typealias CopyGameName = LocalizableKeys.MihoyoGameName
+typealias CopyGenshinRole = LocalizableKeys.GenshinRole
 
 // swiftlint: disable convenience_type
 struct LocalizableKeys {
@@ -63,6 +64,11 @@ struct LocalizableKeys {
         static let date = String(localized: "GenshinWidgetTransformerDate")
         static let constellation = String(localized: "GenshinRoleConstellation")
         static let affix = String(localized: "GenshinRoleAffix")
+    }
+    
+    struct GenshinRole {
+        static let rolesTitle = String(localized: "GenshinRoleReloadRolesTitle")
+        static let skillsTitle = String(localized: "GenshinRoleReloadSkillsTitle")
     }
 
     struct MihoyoGameName {

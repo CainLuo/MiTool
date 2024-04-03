@@ -10,6 +10,7 @@
 		A41389982B9EAEED00F94141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41389972B9EAEED00F94141 /* Logger.swift */; };
 		A413899E2B9EB51A00F94141 /* LocaleX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413899D2B9EB51A00F94141 /* LocaleX.swift */; };
 		A48390CF2BB118790041254D /* GenshinRoleSkillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48390CE2BB118790041254D /* GenshinRoleSkillModel.swift */; };
+		A48390D82BB3F5050041254D /* BaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48390D72BB3F5050041254D /* BaseButtonView.swift */; };
 		A4871DBA2B8DE9C000C091BB /* starRailDailyNode.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */; };
 		A4871DBB2B8DE9C000C091BB /* starRailWidget.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DB92B8DE9C000C091BB /* starRailWidget.json */; };
 		A4871DBD2B8DE9FD00C091BB /* genshinImpactWidgetV2.json in Resources */ = {isa = PBXBuildFile; fileRef = A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */; };
@@ -20,7 +21,6 @@
 		A4871DCF2B901B7300C091BB /* SQLManager+StarRailWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */; };
 		A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */; };
 		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
-		A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */; };
 		A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1D82B9F02C30082734B /* SideBarModel.swift */; };
 		A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */; };
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
@@ -65,6 +65,9 @@
 		BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06922B72AA9A0013DD7D /* WebViewModel.swift */; };
 		BF2D06952B73818B0013DD7D /* StarRailRoleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06942B73818B0013DD7D /* StarRailRoleDetailView.swift */; };
 		BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */; };
+		BF3140D52BBDACAB00CF2D56 /* CustomShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3140D42BBDACAB00CF2D56 /* CustomShapeStyle.swift */; };
+		BF3140D72BBDADE100CF2D56 /* KFImageShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3140D62BBDADE100CF2D56 /* KFImageShapeStyle.swift */; };
+		BF3140D92BBDB37C00CF2D56 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3140D82BBDB37C00CF2D56 /* ViewConfiguration.swift */; };
 		BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F02B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift */; };
 		BF3F43F72B9C3E1300B5C3FD /* CookieJSWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */; };
 		BF3F43FA2B9C40BF00B5C3FD /* ArrayX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */; };
@@ -113,7 +116,7 @@
 		BFB03BBC2B8CE648005DD170 /* skillComputeRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */; };
 		BFB5DFCB2BAFFE2700682FCB /* SQLManager+GenshinCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB5DFCA2BAFFE2700682FCB /* SQLManager+GenshinCharacter.swift */; };
 		BFB5DFCE2BB00A1000682FCB /* GenshinRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB5DFCD2BB00A1000682FCB /* GenshinRoleView.swift */; };
-		BFB5DFD02BB00A3900682FCB /* GenshinRoleViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewViewModel.swift */; };
+		BFB5DFD02BB00A3900682FCB /* GenshinRoleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewModel.swift */; };
 		BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */; };
 		BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */; };
 		BFC3E7C82BB0191400FEE415 /* GenshinRoleSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3E7C72BB0191400FEE415 /* GenshinRoleSectionModel.swift */; };
@@ -143,6 +146,7 @@
 		A413899D2B9EB51A00F94141 /* LocaleX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleX.swift; sourceTree = "<group>"; };
 		A46EF6E92B9039B100A1E6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A48390CE2BB118790041254D /* GenshinRoleSkillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleSkillModel.swift; sourceTree = "<group>"; };
+		A48390D72BB3F5050041254D /* BaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButtonView.swift; sourceTree = "<group>"; };
 		A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailDailyNode.json; sourceTree = "<group>"; };
 		A4871DB92B8DE9C000C091BB /* starRailWidget.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRailWidget.json; sourceTree = "<group>"; };
 		A4871DBC2B8DE9FD00C091BB /* genshinImpactWidgetV2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genshinImpactWidgetV2.json; sourceTree = "<group>"; };
@@ -153,7 +157,6 @@
 		A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailWidget.swift"; sourceTree = "<group>"; };
 		A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111Skill.json; sourceTree = "<group>"; };
 		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
-		A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
 		A4CFC1D82B9F02C30082734B /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
@@ -198,6 +201,9 @@
 		BF2D06942B73818B0013DD7D /* StarRailRoleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleDetailView.swift; sourceTree = "<group>"; };
 		BF2D069C2B74E54F0013DD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRoleCardModel.swift; sourceTree = "<group>"; };
+		BF3140D42BBDACAB00CF2D56 /* CustomShapeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShapeStyle.swift; sourceTree = "<group>"; };
+		BF3140D62BBDADE100CF2D56 /* KFImageShapeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageShapeStyle.swift; sourceTree = "<group>"; };
+		BF3140D82BBDB37C00CF2D56 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		BF3F43F02B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserEditViewModel.swift; sourceTree = "<group>"; };
 		BF3F43F62B9C3E1300B5C3FD /* CookieJSWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJSWebView.swift; sourceTree = "<group>"; };
 		BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayX.swift; sourceTree = "<group>"; };
@@ -246,7 +252,7 @@
 		BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = skillComputeRequest.json; sourceTree = "<group>"; };
 		BFB5DFCA2BAFFE2700682FCB /* SQLManager+GenshinCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+GenshinCharacter.swift"; sourceTree = "<group>"; };
 		BFB5DFCD2BB00A1000682FCB /* GenshinRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleView.swift; sourceTree = "<group>"; };
-		BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleViewViewModel.swift; sourceTree = "<group>"; };
+		BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleViewModel.swift; sourceTree = "<group>"; };
 		BFC19FD02B9242DA006E83E9 /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
 		BFC19FD42B945288006E83E9 /* SQLManager+GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+GameRecord.swift"; sourceTree = "<group>"; };
 		BFC3E7C72BB0191400FEE415 /* GenshinRoleSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRoleSectionModel.swift; sourceTree = "<group>"; };
@@ -390,6 +396,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		BF3140D32BBDACA100CF2D56 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				BF3140D62BBDADE100CF2D56 /* KFImageShapeStyle.swift */,
+				BF3140D82BBDB37C00CF2D56 /* ViewConfiguration.swift */,
+				BF3140D42BBDACAB00CF2D56 /* CustomShapeStyle.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		BF3F43E32B9C3AB100B5C3FD /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +452,7 @@
 		BF4659CF2B69525500587AD3 /* MiTool */ = {
 			isa = PBXGroup;
 			children = (
+				BF3140D32BBDACA100CF2D56 /* ViewModifiers */,
 				A4CFC25A2B9F0AE00082734B /* MiHoYoKit */,
 				BF4659D22B69525500587AD3 /* ContentView.swift */,
 				BFE403B12B6E2A2F002FF39E /* Extensions */,
@@ -465,6 +482,7 @@
 			children = (
 				A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */,
 				BFFCC1F32B9DA02E00780742 /* SectionHeaderView.swift */,
+				A48390D72BB3F5050041254D /* BaseButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -535,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				BFB5DFCD2BB00A1000682FCB /* GenshinRoleView.swift */,
-				BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewViewModel.swift */,
+				BFB5DFCF2BB00A3900682FCB /* GenshinRoleViewModel.swift */,
 				BFC3E7C72BB0191400FEE415 /* GenshinRoleSectionModel.swift */,
 				BFC3E7C92BB0729B00FEE415 /* GenshinRoleSkillModel.swift */,
 			);
@@ -548,7 +566,6 @@
 				BFE403B22B6E2A3C002FF39E /* Bundle+Extensions.swift */,
 				BF2D06892B71E1B70013DD7D /* Image+Extensions.swift */,
 				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
-				A49FEFD52B8D92F100B01909 /* AlamofireObjectMapper.swift */,
 				BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */,
 				A413899D2B9EB51A00F94141 /* LocaleX.swift */,
 			);
@@ -823,12 +840,14 @@
 				BF2D06882B712A200013DD7D /* SideBarViewModel.swift in Sources */,
 				A4CFC2502B9F0A9B0082734B /* MihoyoGameCardsModel.swift in Sources */,
 				BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */,
+				A48390D82BB3F5050041254D /* BaseButtonView.swift in Sources */,
 				BF03A7702BAFD51F0007BAD7 /* DictionaryX.swift in Sources */,
 				A4CFC2532B9F0AB40082734B /* GenshinCharacterModel.swift in Sources */,
 				BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */,
 				BF2D06932B72AA9A0013DD7D /* WebViewModel.swift in Sources */,
 				A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */,
 				A4CFC2572B9F0AB40082734B /* GenshinWidgetModel.swift in Sources */,
+				BF3140D72BBDADE100CF2D56 /* KFImageShapeStyle.swift in Sources */,
 				A4CFC2482B9F0A910082734B /* ApiHeaderConfiguration.swift in Sources */,
 				BF05122A2B6E2651004D6878 /* StarRailRoleListView.swift in Sources */,
 				A4CFC24A2B9F0A910082734B /* ApiDSHelper.swift in Sources */,
@@ -851,11 +870,11 @@
 				BFA75B8E2B7FC8680020B246 /* SQLManager+GenshinWidget.swift in Sources */,
 				A4CFC24F2B9F0A9B0082734B /* MihoyoUserModel.swift in Sources */,
 				BF5581B92B6FAADE003A5487 /* SideBar.swift in Sources */,
-				BFB5DFD02BB00A3900682FCB /* GenshinRoleViewViewModel.swift in Sources */,
+				BFB5DFD02BB00A3900682FCB /* GenshinRoleViewModel.swift in Sources */,
 				BF03A76A2BADDA860007BAD7 /* BaseViewModel.swift in Sources */,
 				A4CFC26B2BA19CFE0082734B /* ApiManager+StarRail.swift in Sources */,
-				A49FEFD62B8D92F100B01909 /* AlamofireObjectMapper.swift in Sources */,
 				A4CFC24D2B9F0A950082734B /* StarRailDamageKeys.swift in Sources */,
+				BF3140D52BBDACAB00CF2D56 /* CustomShapeStyle.swift in Sources */,
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
 				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
@@ -864,6 +883,7 @@
 				BF4659D12B69525500587AD3 /* MiToolApp.swift in Sources */,
 				A48390CF2BB118790041254D /* GenshinRoleSkillModel.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
+				BF3140D92BBDB37C00CF2D56 /* ViewConfiguration.swift in Sources */,
 				BF03A76C2BAF3DF80007BAD7 /* ApiManager+Auth.swift in Sources */,
 				A4CFC2522B9F0AB40082734B /* StarRailWeightModel.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,

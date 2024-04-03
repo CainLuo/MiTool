@@ -56,6 +56,9 @@
 "GenshinRoleConstellation" = "C";
 "GenshinRoleAffix" = "A";
 
+"GenshinRoleReloadRolesTitle" = "Get Characters";
+"GenshinRoleReloadSkillsTitle" = "Get Skills";
+
 // MARK: - 米游社
 
 "MihoyoGameNameHonKai3" = "HonKai3";
