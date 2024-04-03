@@ -40,6 +40,7 @@ struct PrimaryButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
+                .font(.system(size: 14))
                 .modifier(ButtonStyleModifier(isDisabled: isDisabled, frame: frame))
         }
         .buttonStyle(PlainButtonStyle())
@@ -56,15 +57,16 @@ struct ButtonStyleModifier: ViewModifier {
             content
                 .foregroundColor(.white)
                 .padding()
+                .padding(.vertical, 10)
                 .frame(width: frame.width, height: frame.height)
                 .background(isDisabled ? Color.blue : Color.gray)
-                .cornerRadius(10)
+                .cornerRadius(8)
         } else {
             content
                 .foregroundColor(.white)
-                .padding()
+                .padding([.vertical, .horizontal], 5)
                 .background(isDisabled ? Color.blue : Color.gray)
-                .cornerRadius(10)
+                .cornerRadius(8)
         }
     }
 }

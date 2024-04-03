@@ -57,6 +57,10 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     public var external: NSNull?
     public var skillList: [GenshinRoleSkillItemModel]?
     
+    public var avatarURL: String {
+        icon ?? ""
+    }
+    
     public var constellation: String {
         guard let activedConstellationNum else {
             return ""
@@ -145,8 +149,9 @@ public struct GenshinCharacterConstellation: Mappable {
 }
 
 // MARK: - GenshinCharacterReliquary
-public struct GenshinCharacterReliquary: Mappable {
-    public var id: Int?
+public struct GenshinCharacterReliquary: Mappable, Identifiable {
+    public var id = UUID()
+    public var reliquaryID: Int?
     public var name: String?
     public var icon: String?
     public var pos: Int?
@@ -154,12 +159,20 @@ public struct GenshinCharacterReliquary: Mappable {
     public var level: Int?
     public var reliquarySet: GenshinCharacterSet?
     public var posName: String?
+    
+    public var iconURL: String {
+        icon ?? ""
+    }
+    
+    public var levelString: String {
+        "Lv: \(level ?? 1)"
+    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
-        id <- map["id"]
+        reliquaryID <- map["id"]
         name <- map["name"]
         icon <- map["icon"]
         pos <- map["pos"]
@@ -212,6 +225,10 @@ public struct GenshinCharacterWeapon: Mappable {
     public var typeName: String?
     public var desc: String?
     public var affixLevel: Int?
+    
+    public var weaponURL: String {
+        icon ?? ""
+    }
     
     public var affixContent: String {
         guard let affixLevel else {

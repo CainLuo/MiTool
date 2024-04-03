@@ -1,5 +1,5 @@
 //
-//  GenshinRoleViewViewModel.swift
+//  GenshinRoleViewModel.swift
 //  MiTool
 //
 //  Created by Cain Luo on 2024/3/24.
@@ -8,11 +8,11 @@
 import SwiftUI
 import Combine
 
-class GenshinRoleViewViewModel: BaseViewModel {
+class GenshinRoleViewModel: BaseViewModel {
     @Published var sections: [GenshinRoleSectionModel] = []
     @Published var reloadMesssage: String = ""
     
-    @State var isDisabled = true
+    @Published var isDisabled = true
     
     func fetchUserList() {
         let users = SQLManager.shared.getMihoyoUserList()
@@ -52,32 +52,32 @@ class GenshinRoleViewViewModel: BaseViewModel {
 //            .store(in: &cancellables)
     }
     
-    func reloadGenshinCharacterSkills(uid: String, server: String) {
-        let section = sections.filter { $0.uid == uid }.first
-        guard let list = section?.roleList else {
-            return
-        }
-        isDisabled.toggle()
-        list.publisher
-            .map { item -> (Int?, AnyPublisher<GenshinRoleSkillModel, Never>) in
-                return (item.avatarID,
-                        ApiManager.shared.fetchGenshinRoleSkills(
-                            uid: uid,
-                            server: server,
-                            avatarID: item.avatarID ?? 0
-                        )
-                            .eraseToAnyPublisher()
-                )
-            }
-            .collect()
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    self?.isDisabled.toggle()
-                },
-                receiveValue: { values in
-                    print("收到的所有值：", values)
-                }
-            )
-            .store(in: &cancellables)
+    func reloadGenshinCharacterSkills(uid: String) {
+//        let section = sections.first { $0.uid == uid }
+//        guard let section = section else {
+//            return
+//        }
+//        isDisabled.toggle()
+//        section.roleList.publisher
+//            .map { item -> (Int?, AnyPublisher<GenshinRoleSkillModel, Never>) in
+//                return (item.avatarID,
+//                        ApiManager.shared.fetchGenshinRoleSkills(
+//                            uid: section.uid,
+//                            server: section.server,
+//                            avatarID: item.avatarID ?? 0
+//                        )
+//                            .eraseToAnyPublisher()
+//                )
+//            }
+//            .collect()
+//            .sink(
+//                receiveCompletion: { [weak self] _ in
+//                    self?.isDisabled.toggle()
+//                },
+//                receiveValue: { values in
+//                    print("收到的所有值：", values)
+//                }
+//            )
+//            .store(in: &cancellables)
     }
 }
