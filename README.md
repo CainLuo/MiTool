@@ -1,14 +1,9 @@
 [![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_iPadOS_watchOS_visionOS-yellowgreen?style=flat-square)](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_iPadOS_watchOS_visionOS-Green?style=flat-square)
 
-# 逻辑
+## UI
 
-## 添加 Cookie 的逻辑
-* 启动, 进入首页, 判断是否有添加本地 Cookie
-* 如果没有, 则显示添加入口 -> 进行添加操作后将数据存储在 SQLite
-* 如果有, 则去请求 game crad 的数据, 然后获取 daily node 数据进行显示, 同时将数据存储在 SQLite
-
-## 获取材料的逻辑
-* 在有 Cookie 的前提下, 默认在后台自动去获取已有角色的接口, 然后将获取到的角色数据存到 SQLite, 存储完之后再从计算材料的接口中获取到材料数量并存到 SQLite, 只获取没有养成的角色的资料
+![img-1](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/iShot_2024-04-04_01.24.37.png)
+![img-2](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/iShot_2024-04-04_01.24.41.png)
 
 # 目前遇到的问题
 
