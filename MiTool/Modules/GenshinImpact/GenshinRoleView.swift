@@ -15,8 +15,6 @@ struct GenshinRoleView: View {
         static let spacing: CGFloat = 5
     }
 
-    private let imageConfig = ViewConfiguration(borderColor: Color.gray.opacity(0.3), borderWidth: 4)
-
     var body: some View {
         List(viewModel.sections) { section in
             Section {
@@ -58,6 +56,7 @@ struct GenshinRoleView: View {
 
 struct GenshinRoleAvatarInfoView: View {
     private let imageConfig = ViewConfiguration(borderColor: Color.gray.opacity(0.3), borderWidth: 4)
+    
     let item: GenshinCharacterAvatar
     
     private enum Constants {
