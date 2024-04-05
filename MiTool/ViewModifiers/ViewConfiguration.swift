@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Shape {
+    case none
     case circle
     case roundedRectangle(cornerRadius: CGFloat)
 }
@@ -20,7 +21,7 @@ struct ViewConfiguration {
     let borderWidth: CGFloat
 
     init(
-        shape: Shape = .circle,
+        shape: Shape = .none,
         frame: CGSize = CGSize(width: 90, height: 90),
         backgroundColor: Color? = nil,
         borderColor: Color? = nil,

@@ -30,7 +30,7 @@ class GenshinRoleViewModel: BaseViewModel {
 
         let locaList = SQLManager.shared.getGenshinCharacter(uuid: uid)
         section.roleList = locaList.sorted { left, right in
-            left.rarity ?? 5 > right.rarity ?? 5
+            left.rarity.rawValue > right.rarity.rawValue
         }
         self.sections.append(section)
     }

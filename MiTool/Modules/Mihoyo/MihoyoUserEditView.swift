@@ -19,18 +19,6 @@ struct MihoyoUserEditView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                PrimaryButton(
-                    title: CopyGameName.returnTitle,
-                    frame: CGSize(width: 65, height: 32)
-                ) {
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-                .padding([.leading, .top], 10)
-                
-                Spacer()
-            }
-            
             VStack(alignment: .leading) {
                 HStack {
                     VStack {

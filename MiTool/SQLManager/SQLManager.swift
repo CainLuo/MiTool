@@ -13,7 +13,9 @@ class SQLManager {
     
     private init() { }
     
+    // swiftlint: disable implicitly_unwrapped_optional
     open private(set) var dataBase: Connection!
+    // swiftlint: enable implicitly_unwrapped_optional
 
     let mihoyoUser = Table("mihoyoUser")
     let mihoyoGameCards = Table("mihoyoGameCards")
@@ -23,6 +25,7 @@ class SQLManager {
     let starRailRoleCompute = Table("starRailRoleCompute")
     let genshinImpactWidget = Table("genshinImpactWidget")
     let genshinImpactCharacter = Table("genshinImpactCharacter")
+    let genshinImpactWeapon = Table("genshinImpactWeapon")
 
     // 获取/设置数据库User version
     var userVersion: Int32 {

@@ -223,7 +223,7 @@ extension SQLManagerHelper {
         }
         SQLManager.shared.getGenshinCharacter(uuid: uid, avatarID: avatarID)
             .sink { item in
-                guard let item else {
+                guard item != nil else {
                     SQLManager.shared.addGenshinCharacter(uuid: uid, model: model)
                     return
                 }
@@ -234,6 +234,24 @@ extension SQLManagerHelper {
     
     func saveGenshinSkills(uid: String, avatarID: Int, skills: [GenshinRoleSkillItemModel]) {
         SQLManager.shared.upgradeGenshinCharacter(uuid: uid, avatarID: avatarID, skills: skills)
+    }
+}
+
+extension SQLManagerHelper {
+    func saveGenshinWeapons(weapons: [GenshinWeaponItemModel]) {
+        for weapon in weapons {
+            SQLManager.shared.getGenshinWeaponInfo(uWeaponID: weapon.weaponCatId ?? 0)
+                .sink { item in
+                    if item == nil {
+                        SQLManager.shared.addGenshinWeaponInfo(model: weapon)
+                    }
+                }
+                .store(in: &cancellables)
+        }
+    }
+    
+    func saveGenshinWeapons(weaponID: Int, computeInfo: GenshinWeaponComputeItemModel) {
+        SQLManager.shared.updateGenshinWeaponInfo(uWeaponID: weaponID, model: computeInfo)
     }
 }
 
