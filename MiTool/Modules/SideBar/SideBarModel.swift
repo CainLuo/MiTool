@@ -16,6 +16,7 @@ enum SideBarType {
     case starRailWiki
     
     case genshinImpactRole
+    case genshinImpactWeapon
     case genshinImpactMap
     case genshinImpactWiki
 }

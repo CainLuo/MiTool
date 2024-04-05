@@ -14,6 +14,7 @@ enum IconKeys {
         case header = "person.circle.fill"
         case home = "house.fill"
         case roleList = "person.circle"
+        case weapon = "pencil.and.outline"
         case map = "map.circle.fill"
         case wiki = "book.circle.fill"
         case starRailSection = "star.leadinghalf.filled"

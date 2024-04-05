@@ -48,7 +48,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     public var element: String?
     public var fetter: Int?
     public var level: Int?
-    public var rarity: Int?
+    public var rarity: GenshinRarityType = .one
     public var weapon: GenshinCharacterWeapon?
     public var reliquaries: [GenshinCharacterReliquary]?
     public var constellations: [GenshinCharacterConstellation]?
@@ -99,7 +99,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
         self.element = element
         self.fetter = fetter
         self.level = level
-        self.rarity = rarity
+        self.rarity = GenshinRarityType(rawValue: rarity ?? 0) ?? .one
         self.weapon = GenshinCharacterWeapon(JSONString: weapon ?? "")
         self.reliquaries = [GenshinCharacterReliquary](JSONString: reliquaries ?? "")
         self.constellations = [GenshinCharacterConstellation](JSONString: constellations ?? "")

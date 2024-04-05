@@ -55,7 +55,7 @@ struct GenshinRoleView: View {
 }
 
 struct GenshinRoleAvatarInfoView: View {
-    private let imageConfig = ViewConfiguration(borderColor: Color.gray.opacity(0.3), borderWidth: 4)
+    private let imageConfig = ViewConfiguration()
     
     let item: GenshinCharacterAvatar
     
@@ -66,8 +66,11 @@ struct GenshinRoleAvatarInfoView: View {
     var body: some View {
         HStack {
             ImageView(
-                provider: .remote(url: item.avatarURL),
+                provider: .remote(item.avatarURL),
                 configuration: imageConfig
+            )
+            .background(
+                item.rarity.ratityColor
             )
             
             VStack(spacing: Constants.spacing) {
@@ -90,7 +93,10 @@ struct GenshinRoleAvatarInfoView: View {
 }
 
 struct GenshinRoleReliquariesView: View {
-    private let skillConfig = ViewConfiguration(shape: .circle, frame: CGSize(width: 40, height: 40))
+    private let skillConfig = ViewConfiguration(
+        shape: .circle,
+        frame: CGSize(width: 40, height: 40)
+    )
 
     let reliquaries: [GenshinCharacterReliquary]
     
@@ -99,7 +105,7 @@ struct GenshinRoleReliquariesView: View {
             ForEach(reliquaries) { reliquarie in
                 VStack {
                     ImageView(
-                        provider: .remote(url: reliquarie.iconURL),
+                        provider: .remote(reliquarie.iconURL),
                         configuration: skillConfig
                     )
                     Text(reliquarie.levelString)
@@ -111,7 +117,10 @@ struct GenshinRoleReliquariesView: View {
 }
 
 struct GenshinRoleSkillsView: View {
-    private let skillConfig = ViewConfiguration(shape: .circle, frame: CGSize(width: 40, height: 40))
+    private let skillConfig = ViewConfiguration(
+        shape: .circle, 
+        frame: CGSize(width: 40, height: 40)
+    )
 
     let skills: [GenshinRoleSkillItemModel]
     
@@ -121,7 +130,7 @@ struct GenshinRoleSkillsView: View {
                 if (skill.maxLevel ?? 0) >= 10 {
                     HStack {
                         ImageView(
-                            provider: .remote(url: skill.skillURL),
+                            provider: .remote(skill.skillURL),
                             configuration: skillConfig
                         )
                         Text(skill.level)
@@ -134,7 +143,11 @@ struct GenshinRoleSkillsView: View {
 }
 
 struct GenshinRoleWeaponView: View {
-    private let imageConfig = ViewConfiguration(borderColor: Color.gray.opacity(0.3), borderWidth: 4)
+    private let imageConfig = ViewConfiguration(
+        shape: .circle,
+        borderColor: Color.gray.opacity(0.3),
+        borderWidth: 4
+    )
 
     let weapon: GenshinCharacterWeapon
     
@@ -151,7 +164,7 @@ struct GenshinRoleWeaponView: View {
                 Text(weapon.affixContent)
             }
             ImageView(
-                provider: .remote(url: weapon.weaponURL),
+                provider: .remote(weapon.weaponURL),
                 configuration: imageConfig
             )
         }

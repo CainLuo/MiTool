@@ -14,24 +14,28 @@ struct ContentView: View {
         NavigationSplitView {
             SideBar(selection: $selection)
         } detail: {
-            switch selection {
-            case .notes:
-                WidgetView()
-            case .users:
-                MihoyoUserListView()
-            case .starRailRole:
-                StarRailRoleListView()
-//                RoleInfoView(id: "1003")
-            case .starRailWiki:
-                WiKiMap(selection: $selection)
-            case .starRailMap:
-                WiKiMap(selection: $selection)
-            case .genshinImpactRole:
-                GenshinRoleView()
-            case .genshinImpactMap:
-                WiKiMap(selection: $selection)
-            case .genshinImpactWiki:
-                WiKiMap(selection: $selection)
+            NavigationStack {
+                switch selection {
+                case .notes:
+                    WidgetView()
+                case .users:
+                    MihoyoUserListView()
+                case .starRailRole:
+                    StarRailRoleListView()
+                    //                RoleInfoView(id: "1003")
+                case .starRailWiki:
+                    WiKiMap(selection: $selection)
+                case .starRailMap:
+                    WiKiMap(selection: $selection)
+                case .genshinImpactRole:
+                    GenshinRoleView()
+                case .genshinImpactWeapon:
+                    GenshinWeaponView()
+                case .genshinImpactMap:
+                    WiKiMap(selection: $selection)
+                case .genshinImpactWiki:
+                    WiKiMap(selection: $selection)
+                }
             }
         }
     }

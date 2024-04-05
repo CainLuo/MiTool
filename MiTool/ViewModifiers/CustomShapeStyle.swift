@@ -24,6 +24,8 @@ struct CustomShapeStyle: ViewModifier {
                 .frame(width: size.width, height: size.height)
                 .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                 .foregroundColor(color)
+        default:
+            content
         }
     }
 }

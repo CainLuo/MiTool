@@ -113,4 +113,20 @@ enum ApiHeaderConfiguration {
         }
         return headers
     }
+    
+    static func baseHeaders(region: Region, additionalHeaders: [String: String]?) -> [String: String] {
+        var headers = [
+            "User-Agent": userAgent,
+            "Referer": referer(region: region),
+            "Origin": referer(region: region),
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+            "Accept": "application/json, text/plain, */*",
+            "Connection": "keep-alive"
+        ]
+        if let additionalHeaders {
+            headers.merge(additionalHeaders) { $1 }
+        }
+        return headers
+    }
 }
