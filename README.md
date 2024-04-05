@@ -6,7 +6,6 @@
 ![img-2](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img2.png)
 ![img-3](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img3.png)
 ![img-4](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img4.png)
-![img-5](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img5.png)
 
 # 目前遇到的问题
 
