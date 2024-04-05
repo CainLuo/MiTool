@@ -98,4 +98,54 @@ extension ApiManager {
             headers: HTTPHeaders(headers)
         )
     }
+    
+    func fetchGensinWeaponList<T: Mappable>(page: Int) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.weapons.rawValue
+        let parameters: Parameters = [
+            "weapon_cat_ids": [],
+            "weapon_levels": [],
+            "page": page,
+            "size": 20
+        ]
+                
+        let headers = ApiHeaderConfiguration.baseHeaders(
+            region: region,
+            additionalHeaders: ["Cookie": cookie]
+        )
+        
+        return post(
+            url: url,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: HTTPHeaders(headers)
+        )
+    }
+    
+    func fetchGensinWeaponCompute<T: Mappable>(
+        weaponID: Int, 
+        currentLevel: Int = 1,
+        targetLevel: Int = 90
+    ) -> AnyPublisher<T, Never> {
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.compute.rawValue
+        let parameters: Parameters = [
+            "weapon": [
+                "id": weaponID,
+                "level_current": currentLevel,
+                "level_target": targetLevel
+            ],
+            "reliquary_list": []
+        ]
+                
+        let headers = ApiHeaderConfiguration.baseHeaders(
+            region: region,
+            additionalHeaders: ["Cookie": cookie]
+        )
+        
+        return post(
+            url: url,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: HTTPHeaders(headers)
+        )
+    }
 }

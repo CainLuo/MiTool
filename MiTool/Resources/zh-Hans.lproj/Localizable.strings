@@ -13,8 +13,8 @@
 
 "SideBarGenshinTitle" = "原神";
 "SideBarGenshinRole" = "原神角色列表";
-"SideBarGenshinMap"  = "星穹铁道地图";
-"SideBarGenshinWiki" = "星穹铁道Wiki";
+"SideBarGenshinMap"  = "原神地图";
+"SideBarGenshinWiki" = "原神Wiki";
 
 "SideBarStarRailTitle" = "崩坏：星穹铁道";
 "SideBarStarRailRole" = "星穹铁道角色培养列表";
@@ -58,6 +58,8 @@
 
 "GenshinRoleReloadRolesTitle" = "获取所有角色";
 "GenshinRoleReloadSkillsTitle" = "刷新角色天赋";
+
+"GenshinWeapon" = "武器图鉴";
 
 // MARK: - 米游社
 

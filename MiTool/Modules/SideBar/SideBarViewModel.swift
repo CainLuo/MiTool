@@ -68,6 +68,11 @@ class SideBarViewModel: BaseViewModel {
                 type: .genshinImpactRole
             ),
             SideBarItemModel(
+                name: CopySideBar.genshinWeapon,
+                iconName: IconSideBar.weapon.rawValue,
+                type: .genshinImpactWeapon
+            ),
+            SideBarItemModel(
                 name: CopySideBar.genshinMap,
                 iconName: IconSideBar.map.rawValue,
                 type: .genshinImpactMap

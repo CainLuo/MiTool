@@ -24,6 +24,7 @@ struct LocalizableKeys {
         static let genshinRole = String(localized: "SideBarGenshinRole")
         static let genshinMap = String(localized: "SideBarGenshinMap")
         static let genshinWiki = String(localized: "SideBarGenshinWiki")
+        static let genshinWeapon = String(localized: "GenshinWeapon")
 
         static let starRailTitle = String(localized: "SideBarStarRailTitle")
         static let starRailRole = String(localized: "SideBarStarRailRole")

@@ -41,12 +41,14 @@ enum ApiKeys {
         case filterList = "/event/e20200928calculate/v1/item/filter"
         // 获取角色的天赋培养材料
         case avatarSkill = "/event/e20200928calculate/v1/avatarSkill/list"
-        // 计算角色的天赋培养材料
+        // 计算角色/武器的天赋培养材料
         case compute = "/event/e20200928calculate/v2/compute"
         // 获取深渊记录
         case spiralAbyss = "/game_record/app/genshin/api/spiralAbyss"
         // 获取角色的详细信息
         case roleDetail = "/event/e20200928calculate/v1/sync/avatar/detail"
+        // 获取原神所有武器
+        case weapons = "/event/e20200928calculate/v1/weapon/list"
     }
 
     enum StarRail: String {

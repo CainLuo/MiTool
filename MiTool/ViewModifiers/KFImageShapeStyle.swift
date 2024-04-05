@@ -9,8 +9,8 @@ import SwiftUI
 import Kingfisher
 
 enum ImageProvider {
-    case remote(url: String)
-    case local(imageName: String)
+    case remote(_ url: String)
+    case local(_ imageName: String)
 }
 
 struct ImageView: View {
@@ -93,6 +93,8 @@ extension View {
             self.clipShape(Circle())
         case .roundedRectangle(let cornerRadius):
             self.clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        case .none:
+            self
         }
     }
 
@@ -141,6 +143,8 @@ extension View {
                             height: (frame?.height ?? 0) + width
                         )
                 )
+            case .none:
+                self
             }
         } else {
             self
