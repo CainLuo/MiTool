@@ -95,58 +95,76 @@ struct RoleInfoConsumeView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 200)
         } else {
-            LazyVGrid(columns: columns) {
-                if let consume = item.compute?.avatarConsume {
-                    ForEach(consume) { item in
-                        HStack {
-                            StarRaillRarityView(
-                                rarity: item.rarity ?? .one,
-                                urlString: item.itemURL ?? ""
-                            )
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text("\(item.itemName ?? "")")
-                                Text("\(item.num ?? 0)")
+            LazyVGrid(columns: columns, alignment: .leading) {
+                if let consume = item.compute?.avatarConsume,
+                    consume.isNotEmpty {
+                    Section {
+                        ForEach(consume) { item in
+                            HStack {
+                                StarRaillRarityView(
+                                    rarity: item.rarity ?? .one,
+                                    urlString: item.itemURL ?? ""
+                                )
+                                .frame(width: 30, height: 30)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text("\(item.itemName ?? "")")
+                                    Text("\(item.num ?? 0)")
+                                }
                             }
                         }
+                    } header: {
+                        Text(CopyStarRailRole.avatarConsume)
+                            .font(.system(size: 16, weight: .bold))
                     }
                 }
                 
-                if let consume = item.compute?.skillConsume {
-                    ForEach(consume) { item in
-                        HStack {
-                            StarRaillRarityView(
-                                rarity: item.rarity ?? .one,
-                                urlString: item.itemURL ?? ""
-                            )
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text("\(item.itemName ?? "")")
-                                Text("\(item.num ?? 0)")
+                if let consume = item.compute?.skillConsume,
+                   consume.isNotEmpty {
+                    Section {
+                        ForEach(consume) { item in
+                            HStack {
+                                StarRaillRarityView(
+                                    rarity: item.rarity ?? .one,
+                                    urlString: item.itemURL ?? ""
+                                )
+                                .frame(width: 30, height: 30)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text("\(item.itemName ?? "")")
+                                    Text("\(item.num ?? 0)")
+                                }
                             }
                         }
+                    } header: {
+                        Text(CopyStarRailRole.skillsConsume)
+                            .font(.system(size: 16, weight: .bold))
                     }
                 }
                 
-                if let consume = item.compute?.equipmentConsume {
-                    ForEach(consume) { item in
-                        HStack {
-                            StarRaillRarityView(
-                                rarity: item.rarity ?? .one,
-                                urlString: item.itemURL ?? ""
-                            )
-                            .frame(width: 30, height: 30)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text("\(item.itemName ?? "")")
-                                Text("\(item.num ?? 0)")
+                if let consume = item.compute?.equipmentConsume,
+                   consume.isNotEmpty {
+                    Section {
+                        ForEach(consume) { item in
+                            HStack {
+                                StarRaillRarityView(
+                                    rarity: item.rarity ?? .one,
+                                    urlString: item.itemURL ?? ""
+                                )
+                                .frame(width: 30, height: 30)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text("\(item.itemName ?? "")")
+                                    Text("\(item.num ?? 0)")
+                                }
                             }
                         }
+                    } header: {
+                        Text(CopyStarRailRole.equipmentConsume)
+                            .font(.system(size: 16, weight: .bold))
                     }
                 }
             }

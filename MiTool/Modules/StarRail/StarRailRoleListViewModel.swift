@@ -37,25 +37,26 @@ class StarRailRoleListViewModel: BaseViewModel {
                 }
                 .store(in: &cancellables)
         }
-        
+
         if locaList.isEmpty {
             ApiManager.shared.featchStarRailRoleList(with: section.uid, server: section.server, page: 1)
-                .sink { (result: StarRailAllRoleModel) in
+                .sink { [weak self] (result: StarRailAllRoleModel) in
                     guard let list = result.data?.list else {
                         return
                     }
-                    section.roleList = list
+                    let index = self?.sections.firstIndex { $0.uid == section.uid } ?? 0
+                    self?.sections[index].roleList = list
                     SQLManagerHelper.saveStarRailRoleDetail(uid: section.uid, list: list)
                 }
                 .store(in: &cancellables)
         }
-        
+
         let localSkill = SQLManager.shared.getAllStarRailRoleSkillList(uuid: section.uid)
-        
+
         if localSkill.isEmpty {
             fetchRoleList(uid: section.uid, roleList: section.roleList)
         }
-        
+
         let localCompute = SQLManager.shared.getAllStarRailRoleComputeList(uuid: section.uid)
         
         if localCompute.isEmpty {
@@ -67,8 +68,16 @@ class StarRailRoleListViewModel: BaseViewModel {
         let sortedList = locaList.sorted { left, right in
             left.rarity.rawValue > right.rarity.rawValue
         }
-        let notFinished = sortedList.filter { $0.compute != nil }
-        let finished = sortedList.filter { $0.compute == nil }
+        let finished = sortedList.filter {
+            $0.compute?.avatarConsume?.isEmpty == true &&
+            $0.compute?.skillConsume?.isEmpty == true &&
+            $0.compute?.equipmentConsume?.isEmpty == true
+        }
+        let notFinished = sortedList.filter {
+            $0.compute?.avatarConsume?.isNotEmpty == true ||
+            $0.compute?.skillConsume?.isNotEmpty == true ||
+            $0.compute?.equipmentConsume?.isNotEmpty == true
+        }
 
         section.roleList = notFinished + finished
         sections.append(section)
