@@ -11,39 +11,6 @@ import Combine
 import ObjectMapper
 
 extension ApiManager {
-    func fetchStarRailGameRoleInfo<T: Mappable>(with parameters: [String: Any]) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.Mihoyo.gameRoles.rawValue
-        let decodeSalt = ApiDSHelper.getDS(
-            region: region,
-            query: ""
-        )
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: [
-                "DS": decodeSalt,
-                "Cookie": cookie + "stoken=\(sToken)",
-                "x-rpc-device_fp": deviceFP,
-                "x-rpc-device_id": deviceID
-            ]
-        )
-        return get(
-            url: url,
-            parameters: parameters,
-            headers: HTTPHeaders(headers)
-        )
-//        { (result: Result<StarRailWidgetModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let data = success.data else {
-//                    return
-//                }
-//                Logger.info(data)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
-    }
-    
     func fetchStarRailWidget<T: Mappable>(
         with uid: String,
         server: Region = .china
@@ -68,135 +35,50 @@ extension ApiManager {
             parameters: nil,
             headers: HTTPHeaders(headers)
         )
-//        { (result: Result<StarRailWidgetModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let data = success.data else {
-//                    return
-//                }
-//                SQLManagerHelper.saveStarRailWidget(uid: uid, model: data)
-//                completion(data)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
-    }
-
-    func fetchStarRailRoles<T: Mappable>(
-        with uid: String,
-        parameters: Parameters,
-        server: Region = .china
-    ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
-        let decodeSalt = ApiDSHelper.getDS(
-            region: region,
-            query: ""
-        )
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: [
-                "DS": decodeSalt,
-                "Cookie": cookie,
-                "x-rpc-device_fp": deviceFP,
-                "x-rpc-device_id": deviceID
-            ]
-        )
-        
-        return get(
-            url: url,
-            parameters: nil,
-            headers: HTTPHeaders(headers)
-        )
-//        { (result: Result<StarRailAllRoleModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let list = success.data?.list else {
-//                    return
-//                }
-//                SQLManagerHelper.fetchStarRailRoleDetail(uid: uid, list: list)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
-    }
-
-    func fetchStarRailRoleSkill<T: Mappable>(
-        with uid: String,
-        roleID: String,
-        server: Region = .china
-    ) -> AnyPublisher<T, Never> {
-        let parameters: Parameters = [
-            "game": "hkrpg",
-            "lang": "zh-cn",
-            "item_id": roleID,
-            "tab_from": "TabAll",
-            "change_target_level": 0,
-            "uid": uid,
-            "region": "prod_gf_cn"
-        ]
-        
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
-        let decodeSalt = ApiDSHelper.getDS(
-            region: region,
-            query: ""
-        )
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: [
-                "DS": decodeSalt,
-                "Cookie": cookie,
-                "x-rpc-device_fp": deviceFP,
-                "x-rpc-device_id": deviceID
-            ]
-        )
-        
-        return get(
-            url: url,
-            parameters: parameters,
-            headers: HTTPHeaders(headers)
-        )
-//        { (result: Result<StarRailRoleInfoModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let info = success.data else {
-//                    return
-//                }
-//                SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: info)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
     }
 
     func fetchStarRailRoleSkillCompute<T: Mappable>(
+        with request: StarRailRoleComputeRequestModel
+    ) -> AnyPublisher<T, Never> {
+        let parameters: Parameters = request.toJSON()
+                
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.StarRail.compute.rawValue + "?game=hkrpg"
+
+        let headers = ApiHeaderConfiguration.baseHeaders(
+            region: region,
+            additionalHeaders: [
+                "Cookie": cookie
+            ]
+        )
+        
+        return post(
+            url: url,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: HTTPHeaders(headers)
+        )
+    }
+    
+    func fetchStarRailRoleDetail<T: Mappable>(
         with uid: String,
-        roleID: String,
-        server: Region = .china,
-        deviceFP: String,
-        deviceID: String
+        roleID: String
     ) -> AnyPublisher<T, Never> {
         let parameters: Parameters = [
             "game": "hkrpg",
             "lang": "zh-cn",
             "item_id": roleID,
-            "tab_from": "TabAll",
+            "tab_from": "TabOwned",
             "change_target_level": 0,
             "uid": uid,
             "region": "prod_gf_cn"
         ]
-        
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
-        let decodeSalt = ApiDSHelper.getDS(
-            region: region,
-            query: ""
-        )
-        let headers = ApiHeaderConfiguration.defaultHeaders(
+                
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.StarRail.avatarDetail.rawValue
+
+        let headers = ApiHeaderConfiguration.baseHeaders(
             region: region,
             additionalHeaders: [
-                "DS": decodeSalt,
-                "Cookie": cookie,
-                "x-rpc-device_fp": deviceFP,
-                "x-rpc-device_id": deviceID
+                "Cookie": cookie
             ]
         )
         
@@ -205,57 +87,30 @@ extension ApiManager {
             parameters: parameters,
             headers: HTTPHeaders(headers)
         )
-//        { (result: Result<StarRailSkillComputeModel, Error>) in
-//            switch result {
-//            case .success(let success):
-//                guard let info = success.data else {
-//                    return
-//                }
-//                SQLManagerHelper.saveStarRailRole(uid: uid, roleID: roleID, info: info)
-//            case .failure(let failure):
-//                Logger.error(failure)
-//            }
-//        }
     }
     
-    func fetchStarRailCharacter<T: Mappable>(
+    func featchStarRailRoleList<T: Mappable>(
         with uid: String,
-        server: String
+        server: String,
+        page: Int
     ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.character.rawValue
+        let url = ApiKeys.Host.takumi.rawValue + ApiKeys.StarRail.avatarList.rawValue
+        
         let parameters: Parameters = [
-            "rolePageAccessNotAllowed": "",
-            "role_id": "102731382",
-            "server": "prod_gf_cn"
+            "game": "hkrpg",
+            "uid": "102731382",
+            "region": "prod_gf_cn",
+            "lang": "zh-cn",
+            "tab_from": "TabOwned",
+            "page": 1,
+            "size": 100
         ]
-        
-        guard let body = parameters.toJSONString?.removeNewlinesAndSpaces() else {
-            fatalError("Invalid body: \(parameters)")
-        }
-//    https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/avatar/basic
-//    https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/avatar/basic?rolePageAccessNotAllowed=&role_id=102731382&server=prod_gf_cn
 
-        let decodeSalt = ApiDSHelper.getDS(
+        let headers = ApiHeaderConfiguration.baseHeaders(
             region: region,
-            query: "",
-            body: body
+            additionalHeaders: ["Cookie": cookie]
         )
-//        let decodeSalt = ApiDSHelper.getDS(method: "POST", data: "{\"role_id\":\"109050292\",\"server\":\"cn_gf01\"}")
         
-        // swiftlint:disable line_length
-        let cookie = ""
-        // swiftlint:enable line_length
-
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: [
-                "DS": decodeSalt,
-                "Cookie": cookie,
-                "x-rpc-device_fp": deviceFP,
-                "x-rpc-device_id": deviceID,
-                "x-rpc-platform": "5"
-            ])
-
         return get(
             url: url,
             parameters: parameters,

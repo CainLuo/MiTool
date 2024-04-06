@@ -28,19 +28,19 @@ public struct StarRailSkillComputeModel: Mappable {
 // MARK: - StarRailSkillComputeData
 public struct StarRailSkillComputeData: Mappable {
     // 等级培养耗材
-    public var avatarConsume: [StarRailSkillComputeAvatarConsume]?
+    public var avatarConsume: [StarRailSkillComputeAvatarConsume] = []
     // 行迹培养耗材
-    public var skillConsume: [StarRailSkillComputeAvatarConsume]?
+    public var skillConsume: [StarRailSkillComputeAvatarConsume] = []
     // 光锥培养耗材
-    public var equipmentConsume: [StarRailSkillComputeAvatarConsume]?
+    public var equipmentConsume: [StarRailSkillComputeAvatarConsume] = []
     // 用户需要自备的材料
     public var userOwnsMaterials: [String: Int]?
     // 除去背包内还需要获取的材料
-    public var needGetMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var needGetMaterials: [StarRailSkillComputeAvatarConsume] = []
     // 背包里可以支出的材料
-    public var canPayMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var canPayMaterials: [StarRailSkillComputeAvatarConsume] = []
     // 背包里可以合并的材料
-    public var canMergeMaterials: [StarRailSkillComputeAvatarConsume]?
+    public var canMergeMaterials: [StarRailSkillComputeAvatarConsume] = []
     // ID
     public var coinID: String?
 
@@ -49,6 +49,7 @@ public struct StarRailSkillComputeData: Mappable {
     }
 
     public init?(map: ObjectMapper.Map) { }
+    public init() { }
 
     init(
         avatarConsume: String?,
@@ -60,13 +61,13 @@ public struct StarRailSkillComputeData: Mappable {
         canMergeMaterials: String?,
         coinID: String?
     ) {
-        self.avatarConsume = [StarRailSkillComputeAvatarConsume](JSONString: avatarConsume ?? "")
-        self.skillConsume = [StarRailSkillComputeAvatarConsume](JSONString: skillConsume ?? "")
-        self.equipmentConsume = [StarRailSkillComputeAvatarConsume](JSONString: equipmentConsume ?? "")
+        self.avatarConsume = [StarRailSkillComputeAvatarConsume](JSONString: avatarConsume ?? "") ?? []
+        self.skillConsume = [StarRailSkillComputeAvatarConsume](JSONString: skillConsume ?? "") ?? []
+        self.equipmentConsume = [StarRailSkillComputeAvatarConsume](JSONString: equipmentConsume ?? "") ?? []
         self.userOwnsMaterials = userOwnsMaterials?.toJSON
-        self.needGetMaterials = [StarRailSkillComputeAvatarConsume](JSONString: needGetMaterials ?? "")
-        self.canPayMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canPayMaterials ?? "")
-        self.canMergeMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canMergeMaterials ?? "")
+        self.needGetMaterials = [StarRailSkillComputeAvatarConsume](JSONString: needGetMaterials ?? "") ?? []
+        self.canPayMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canPayMaterials ?? "") ?? []
+        self.canMergeMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canMergeMaterials ?? "") ?? []
         self.coinID = coinID
     }
 

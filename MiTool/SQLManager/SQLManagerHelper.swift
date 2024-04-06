@@ -256,7 +256,7 @@ extension SQLManagerHelper {
 }
 
 extension SQLManagerHelper {
-    static func fetchStarRailRoleDetail(uid: String, list: [StarRailAllRoleListModel]) {
+    static func saveStarRailRoleDetail(uid: String, list: [StarRailAllRoleListModel]) {
         for role in list {
             SQLManager.shared.getStarRailRoleInfo(
                 uid, roleID: role.itemID ?? ""
@@ -264,22 +264,13 @@ extension SQLManagerHelper {
                 if item != nil {
                     SQLManagerHelper.upgradeStarRailRoleInfo(uid: uid, role: role)
                 } else {
-                    SQLManagerHelper.saveStarRailRoleInfo(uid: uid, role: role)
+                    SQLManagerHelper.addStarRailRoleInfo(uid: uid, role: role)
                 }
             }
-            
-//            fetchStarRailRoleSkill(
-//                uid: uid,
-//                roleID: role.itemID ?? ""
-//            )
-//            self?.fetchStarRailRoleSkillCompute(
-//                uid: uid,
-//                roleID: role.itemID ?? ""
-//            )
         }
     }
 
-    static func saveStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
+    static func addStarRailRoleInfo(uid: String, role: StarRailAllRoleListModel) {
         SQLManager.shared.addStarRailRoleInfo(
             uuid: uid,
             model: role
@@ -350,7 +341,7 @@ extension SQLManagerHelper {
 }
 
 extension SQLManagerHelper {
-    static func saveStarRailRole(
+    func saveStarRailRole(
         uid: String,
         roleID: String,
         info: StarRailSkillComputeData
@@ -358,15 +349,20 @@ extension SQLManagerHelper {
         SQLManager.shared.getStarRailRoleCompute(
             uid, roleID: roleID
         ) { _, item in
-            if item != nil {
-                SQLManagerHelper.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
-            } else {
-                SQLManagerHelper.addStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
-            }
         }
+        
+        SQLManager.shared.getStarRailRoleCompute(uid, roleID: roleID)
+            .sink { [weak self] item in
+                if item != nil {
+                    self?.upgradeStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+                } else {
+                    self?.addStarRailRoleCompute(uid: uid, roleID: roleID, info: info)
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    static func addStarRailRoleCompute(
+    func addStarRailRoleCompute(
         uid: String,
         roleID: String,
         info: StarRailSkillComputeData
@@ -383,7 +379,7 @@ extension SQLManagerHelper {
         }
     }
     
-    static func upgradeStarRailRoleCompute(
+    func upgradeStarRailRoleCompute(
         uid: String,
         roleID: String,
         info: StarRailSkillComputeData
