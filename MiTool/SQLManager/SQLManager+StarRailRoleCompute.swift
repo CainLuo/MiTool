@@ -52,13 +52,13 @@ extension SQLManager {
             let insert = starRailRoleCompute.insert(
                 uid <- uuid,
                 itemID <- roleID,
-                avatarConsume <- model.avatarConsume.toJSONString(),
-                skillConsume <- model.skillConsume.toJSONString(),
-                equipmentConsume <- model.equipmentConsume.toJSONString(),
+                avatarConsume <- model.avatarConsume?.toJSONString(),
+                skillConsume <- model.skillConsume?.toJSONString(),
+                equipmentConsume <- model.equipmentConsume?.toJSONString(),
                 userOwnsMaterials <- model.userOwnsMaterialsString,
-                needGetMaterials <- model.needGetMaterials.toJSONString(),
-                canPayMaterials <- model.canPayMaterials.toJSONString(),
-                canMergeMaterials <- model.canMergeMaterials.toJSONString(),
+                needGetMaterials <- model.needGetMaterials?.toJSONString(),
+                canPayMaterials <- model.canPayMaterials?.toJSONString(),
+                canMergeMaterials <- model.canMergeMaterials?.toJSONString(),
                 coinID <- model.coinID
             )
             try dataBase.run(insert)
@@ -83,13 +83,13 @@ extension SQLManager {
                 )
                 try dataBase.run(starRailRole.update(
                     uid <- uuid,
-                    avatarConsume <- model.avatarConsume.toJSONString(),
-                    skillConsume <- model.skillConsume.toJSONString(),
-                    equipmentConsume <- model.equipmentConsume.toJSONString(),
+                    avatarConsume <- model.avatarConsume?.toJSONString(),
+                    skillConsume <- model.skillConsume?.toJSONString(),
+                    equipmentConsume <- model.equipmentConsume?.toJSONString(),
                     userOwnsMaterials <- model.userOwnsMaterialsString,
-                    needGetMaterials <- model.needGetMaterials.toJSONString(),
-                    canPayMaterials <- model.canPayMaterials.toJSONString(),
-                    canMergeMaterials <- model.canMergeMaterials.toJSONString(),
+                    needGetMaterials <- model.needGetMaterials?.toJSONString(),
+                    canPayMaterials <- model.canPayMaterials?.toJSONString(),
+                    canMergeMaterials <- model.canMergeMaterials?.toJSONString(),
                     coinID <- model.coinID
                 ))
                 complete?(true, nil)

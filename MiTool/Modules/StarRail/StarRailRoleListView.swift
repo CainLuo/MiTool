@@ -87,7 +87,9 @@ struct RoleInfoConsumeView: View {
     )
 
     var body: some View {
-        if item.compute == nil {
+        if item.compute?.avatarConsume?.isEmpty == true &&
+            item.compute?.skillConsume?.isEmpty == true &&
+            item.compute?.equipmentConsume?.isEmpty == true {
             Text(CopyStarRailRole.finishedConsume)
                 .boldModifier(size: 24)
                 .frame(maxWidth: .infinity)

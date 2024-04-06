@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class StarRailRoleListViewModel: BaseViewModel {
     @Published var sections: [StarRailRoleSectionModel] = []
@@ -21,15 +22,20 @@ class StarRailRoleListViewModel: BaseViewModel {
     
     private func fetchRoleInfoList(uid: String) {
         var section = StarRailRoleSectionModel()
-        SQLManager.shared.getGenshinGameCard(uuid: uid) { item in
+        SQLManager.shared.getStarRailGameCard(uuid: uid) { item in
             section.userName = item.nickname
             section.uid = item.gameUID
             section.server = item.region
         }
 
-        let locaList = SQLManager.shared.getAllStarRailRoleList(uuid: uid)
-        section.roleList = locaList.sorted { left, right in
-            left.rarity.rawValue > right.rarity.rawValue
+        var locaList = SQLManager.shared.getAllStarRailRoleList(uuid: uid)
+        for role in locaList {
+            SQLManager.shared.getStarRailRoleCompute(section.uid, roleID: role.itemID ?? "")
+                .sink { data in
+                    let index = locaList.firstIndex { $0.itemID == role.itemID } ?? 0
+                    locaList[index].compute = data
+                }
+                .store(in: &cancellables)
         }
         
         if locaList.isEmpty {
@@ -44,32 +50,58 @@ class StarRailRoleListViewModel: BaseViewModel {
                 .store(in: &cancellables)
         }
         
-        sections.append(section)
+        let localSkill = SQLManager.shared.getAllStarRailRoleSkillList(uuid: section.uid)
         
-        for role in section.roleList {
-            fetchRoleDetail(uid: section.uid, roleID: role.itemID ?? "")
+        if localSkill.isEmpty {
+            fetchRoleList(uid: section.uid, roleList: section.roleList)
         }
+        
+        let localCompute = SQLManager.shared.getAllStarRailRoleComputeList(uuid: section.uid)
+        
+        if localCompute.isEmpty {
+            for role in localSkill {
+                featchRoleCompute(uid: section.uid, server: section.server, role: role)
+            }
+        }
+        
+        let sortedList = locaList.sorted { left, right in
+            left.rarity.rawValue > right.rarity.rawValue
+        }
+        let notFinished = sortedList.filter { $0.compute != nil }
+        let finished = sortedList.filter { $0.compute == nil }
+
+        section.roleList = notFinished + finished
+        sections.append(section)
     }
     
-    private func fetchRoleDetail(uid: String, roleID: String) {
-        let section = sections.first { $0.uid == uid }
-        let role = section?.roleList.first { $0.itemID == roleID }
-        guard var role else {
-            return
-        }
-        
-        ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID)
-            .sink { [weak self] (result: StarRailRoleInfoModel) in
+    private func fetchRoleList(uid: String, roleList: [StarRailAllRoleListModel]) {
+        Publishers.Sequence(sequence: roleList)
+            .flatMap {
+                self.fetchRoleDetailPublisher(uid: uid, roleID: $0.itemID ?? "")
+            }
+            .collect()
+            .sink(receiveCompletion: { _ in
+                // 所有请求完成后的操作
+                print("All role detail requests completed")
+            }, receiveValue: { _ in
+                // 可选：处理收集到的数据
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func fetchRoleDetailPublisher(uid: String, roleID: String) -> AnyPublisher<Void, Never> {
+        return ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID)
+            .tryMap { (result: StarRailRoleInfoModel) in
                 guard let data = result.data else {
                     return
                 }
                 SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: data)
-                role.roleInfo = data
-                self?.featchRoleCompute(uid: uid, server: section?.server ?? "", role: data)
             }
-            .store(in: &cancellables)
+            .map { _ in }
+            .replaceError(with: ())
+            .eraseToAnyPublisher()
     }
-    
+
     private func featchRoleCompute(uid: String, server: String, role: StarRailRoleInfoData) {
         let skillList = filterSkills(role: role)
         var json: [String: Any] = [
