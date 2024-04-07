@@ -38,7 +38,7 @@ extension ApiManager {
     }
 
     func fetchStarRailRoleSkillCompute<T: Mappable>(
-        with request: StarRailRoleComputeRequestModel
+        with request: StarRailComputeRequestModel
     ) -> AnyPublisher<T, Never> {
         let parameters: Parameters = request.toJSON()
                 
@@ -61,17 +61,14 @@ extension ApiManager {
     
     func fetchStarRailRoleDetail<T: Mappable>(
         with uid: String,
-        roleID: String
+        roleID: String,
+        roleRegion: String
     ) -> AnyPublisher<T, Never> {
-        let parameters: Parameters = [
-            "game": "hkrpg",
-            "lang": "zh-cn",
-            "item_id": roleID,
-            "tab_from": "TabOwned",
-            "change_target_level": 0,
-            "uid": uid,
-            "region": "prod_gf_cn"
-        ]
+        let parameters: Parameters = StarRailRoleDetailRequestModel(
+            uid: uid,
+            region: roleRegion,
+            itemID: roleID,
+            changeTargetLevel: 0).toJSON()
                 
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.StarRail.avatarDetail.rawValue
 
@@ -91,21 +88,12 @@ extension ApiManager {
     
     func featchStarRailRoleList<T: Mappable>(
         with uid: String,
-        server: String,
+        roleRegion: String,
         page: Int
     ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.StarRail.avatarList.rawValue
         
-        let parameters: Parameters = [
-            "game": "hkrpg",
-            "uid": "102731382",
-            "region": "prod_gf_cn",
-            "lang": "zh-cn",
-            "tab_from": "TabOwned",
-            "page": 1,
-            "size": 100
-        ]
-
+        let parameters: Parameters = StarRailRoleRequestModel(uid: uid, region: roleRegion, page: page).toJSON()
         let headers = ApiHeaderConfiguration.baseHeaders(
             region: region,
             additionalHeaders: ["Cookie": cookie]

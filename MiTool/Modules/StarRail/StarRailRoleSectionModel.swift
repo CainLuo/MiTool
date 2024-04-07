@@ -9,8 +9,8 @@ import Foundation
 
 struct StarRailRoleSectionModel: Identifiable {
     var id = UUID()
-    var roleList: [StarRailAllRoleListModel] = []
-    var userName: String = ""
     var uid: String = ""
-    var server: String = ""
+    var userName: String = ""
+    var roleRegion: String = ""
+    var roleList: [StarRailAllRoleListModel] = []
 }

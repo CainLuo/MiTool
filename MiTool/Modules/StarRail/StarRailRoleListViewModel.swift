@@ -25,7 +25,7 @@ class StarRailRoleListViewModel: BaseViewModel {
         SQLManager.shared.getStarRailGameCard(uuid: uid) { item in
             section.userName = item.nickname
             section.uid = item.gameUID
-            section.server = item.region
+            section.roleRegion = item.region
         }
 
         var locaList = SQLManager.shared.getAllStarRailRoleList(uuid: uid)
@@ -39,7 +39,7 @@ class StarRailRoleListViewModel: BaseViewModel {
         }
 
         if locaList.isEmpty {
-            ApiManager.shared.featchStarRailRoleList(with: section.uid, server: section.server, page: 1)
+            ApiManager.shared.featchStarRailRoleList(with: section.uid, roleRegion: section.roleRegion, page: 1)
                 .sink { [weak self] (result: StarRailAllRoleModel) in
                     guard let list = result.data?.list else {
                         return
@@ -54,14 +54,14 @@ class StarRailRoleListViewModel: BaseViewModel {
         let localSkill = SQLManager.shared.getAllStarRailRoleSkillList(uuid: section.uid)
 
         if localSkill.isEmpty {
-            fetchRoleList(uid: section.uid, roleList: section.roleList)
+            fetchRoleList(uid: section.uid, roleRegion: section.roleRegion, roleList: section.roleList)
         }
 
         let localCompute = SQLManager.shared.getAllStarRailRoleComputeList(uuid: section.uid)
         
         if localCompute.isEmpty {
             for role in localSkill {
-                featchRoleCompute(uid: section.uid, server: section.server, role: role)
+                featchRoleCompute(uid: section.uid, roleRegion: section.roleRegion, role: role)
             }
         }
         
@@ -83,10 +83,10 @@ class StarRailRoleListViewModel: BaseViewModel {
         sections.append(section)
     }
     
-    private func fetchRoleList(uid: String, roleList: [StarRailAllRoleListModel]) {
+    private func fetchRoleList(uid: String, roleRegion: String, roleList: [StarRailAllRoleListModel]) {
         Publishers.Sequence(sequence: roleList)
             .flatMap {
-                self.fetchRoleDetailPublisher(uid: uid, roleID: $0.itemID ?? "")
+                self.fetchRoleDetailPublisher(uid: uid, roleID: $0.itemID ?? "", roleRegion: roleRegion)
             }
             .collect()
             .sink(receiveCompletion: { _ in
@@ -98,8 +98,8 @@ class StarRailRoleListViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
-    private func fetchRoleDetailPublisher(uid: String, roleID: String) -> AnyPublisher<Void, Never> {
-        return ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID)
+    private func fetchRoleDetailPublisher(uid: String, roleID: String, roleRegion: String) -> AnyPublisher<Void, Never> {
+        ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID, roleRegion: roleRegion)
             .tryMap { (result: StarRailRoleInfoModel) in
                 guard let data = result.data else {
                     return
@@ -111,42 +111,20 @@ class StarRailRoleListViewModel: BaseViewModel {
             .eraseToAnyPublisher()
     }
 
-    private func featchRoleCompute(uid: String, server: String, role: StarRailRoleInfoData) {
-        let skillList = filterSkills(role: role)
-        var json: [String: Any] = [
-            "game": "hkrpg",
-            "lang": "zh-cn",
-            "uid": uid,
-            "region": server,
-            "avatar": [
-                "item_id": role.avatar?.itemID ?? "",
-                "cur_level": role.avatar?.curLevel ?? 1,
-                "target_level": role.avatar?.targetLevel ?? 80
-            ],
-            "equipment": [],
-            "skill_list": skillList
-        ]
-        
-        if let eqiopment = role.equipment {
-            json["equipment"] = [
-                "item_id": eqiopment.itemID ?? "",
-                "cur_level": eqiopment.curLevel,
-                "target_level": eqiopment.targetLevel
-            ]
-        }
-        
-        let request = StarRailRoleComputeRequestModel(JSON: json)
-        guard let request else {
-            return
-        }
-        
+    private func featchRoleCompute(
+        uid: String, 
+        roleRegion: String,
+        role: StarRailRoleInfoData
+    ) {
         let section = sections.first { $0.uid == uid }
         let filterRole = section?.roleList.first { $0.itemID == role.avatar?.itemID ?? "" }
         guard var filterRole else {
             return
         }
 
-        ApiManager.shared.fetchStarRailRoleSkillCompute(with: request)
+        let parameters = StarRailComputeRequestModel(role: role, roleRegion: roleRegion)
+
+        ApiManager.shared.fetchStarRailRoleSkillCompute(with: parameters)
             .sink { (result: StarRailSkillComputeModel) in
                 guard let data = result.data else {
                     return
@@ -159,40 +137,5 @@ class StarRailRoleListViewModel: BaseViewModel {
                 )
             }
             .store(in: &cancellables)
-    }
-
-    private func filterSkills(role: StarRailRoleInfoData) -> [[String: Any]] {
-        var requestSkills: [[String: Any]] = []
-        var roleSkills: [StarRailRoleInfoSkill] = []
-        let point1Skill = role.skills.filter { $0.anchor == .one && $0.curLevel < 6 }
-        let pointSkills = role.skills.filter { $0.anchor != .one && $0.curLevel < 10 }
-        
-        roleSkills.append(contentsOf: point1Skill)
-        roleSkills.append(contentsOf: pointSkills)
-        
-        if roleSkills.isNotEmpty {
-            requestSkills = roleSkills.map {
-                [
-                    "item_id": $0.pointID ?? "",
-                    "cur_level": $0.curLevel,
-                    "target_level": $0.maxLevel ?? 1
-                ]
-            }
-        }
-        
-        let skillsOther = role.skillsOther.filter { $0.progress != .learned }
-            .map {
-                [
-                    "item_id": $0.pointID ?? "",
-                    "cur_level": $0.curLevel,
-                    "target_level": $0.maxLevel ?? 1
-                ]
-            }
-        
-        if skillsOther.isNotEmpty {
-            requestSkills.append(contentsOf: skillsOther)
-        }
-        
-        return requestSkills
     }
 }
