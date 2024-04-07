@@ -27,6 +27,7 @@
 		A4A3FE9A2BC27CBF00503A2C /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */; };
 		A4A3FE9C2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */; };
 		A4A3FE9E2BC280C100503A2C /* StarRailComputeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */; };
+		A4A3FEA02BC2A51100503A2C /* MihoyoUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */; };
 		A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1D82B9F02C30082734B /* SideBarModel.swift */; };
 		A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */; };
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
@@ -176,6 +177,7 @@
 		A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleDetailRequestModel.swift; sourceTree = "<group>"; };
 		A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailComputeRequestModel.swift; sourceTree = "<group>"; };
+		A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserManager.swift; sourceTree = "<group>"; };
 		A4CFC1D82B9F02C30082734B /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */,
+				A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				A48390CF2BB118790041254D /* GenshinRoleSkillModel.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
 				BF3140D92BBDB37C00CF2D56 /* ViewConfiguration.swift in Sources */,
+				A4A3FEA02BC2A51100503A2C /* MihoyoUserManager.swift in Sources */,
 				BF03A76C2BAF3DF80007BAD7 /* ApiManager+Auth.swift in Sources */,
 				A4CFC2522B9F0AB40082734B /* StarRailWeightModel.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,
