@@ -33,18 +33,18 @@ class StarRailApiManager: ApiRequestManager {
         roleRegion: String,
         page: Int
     ) -> AnyPublisher<T, Never> {
-        guard let user = MihoyoUserManager.shared.getUserInfo(uid: uid, isAccountUID: false) else {
+        guard let user = MihoyoUserManager.shared.getGameUserInfo(uid: uid) else {
             fatalError("Not find role user: \(uid)")
         }
         let configuration = StarRailRequestConfiguration(
             path: ApiKeys.StarRail.avatarList.rawValue,
-            accountRegion: user.region,
+            accountRegion: .china,
             method: .get
         )
         let parameters: Parameters = StarRailRoleRequestModel(uid: uid, region: roleRegion, page: page).toJSON()
         let headers = ApiHeaderConfiguration.baseHeaders(
             region: configuration.accountRegion,
-            additionalHeaders: ["Cookie": user.cookie]
+            additionalHeaders: ["Cookie": "user.cookie"]
         )
         
         return request(with: configuration)
