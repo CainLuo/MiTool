@@ -21,6 +21,7 @@
 		A4871DCF2B901B7300C091BB /* SQLManager+StarRailWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */; };
 		A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */; };
 		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
+		A4B91C512BBD02CC005454F3 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C502BBD02CC005454F3 /* ButtonFactory.swift */; };
 		A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1D82B9F02C30082734B /* SideBarModel.swift */; };
 		A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */; };
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
@@ -164,6 +165,7 @@
 		A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailWidget.swift"; sourceTree = "<group>"; };
 		A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111Skill.json; sourceTree = "<group>"; };
 		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
+		A4B91C502BBD02CC005454F3 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		A4CFC1D82B9F02C30082734B /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */,
 				BFFCC1F32B9DA02E00780742 /* SectionHeaderView.swift */,
 				A48390D72BB3F5050041254D /* BaseButtonView.swift */,
+				A4B91C502BBD02CC005454F3 /* ButtonFactory.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B91C512BBD02CC005454F3 /* ButtonFactory.swift in Sources */,
 				A4CFC2512B9F0AB40082734B /* StarRailCharacterDetailsModel.swift in Sources */,
 				BFB5DFCE2BB00A1000682FCB /* GenshinRoleView.swift in Sources */,
 				BFA75B7B2B7F86840020B246 /* WidgetView.swift in Sources */,

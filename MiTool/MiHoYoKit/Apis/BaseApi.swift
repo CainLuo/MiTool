@@ -10,6 +10,15 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+protocol ApiRequestConfiguration {
+    var host: String { get }
+    var path: String { get }
+    var method: HTTPMethod { get }
+    var parameters: Parameters? { get }
+    var headers: HTTPHeaders? { get }
+    var encoding: ParameterEncoding { get }
+}
+
 enum BaseRequestableError: Error {
     case invalidData
     case mappingFailed
@@ -37,6 +46,8 @@ protocol BaseRequestable {
         encoding: ParameterEncoding,
         headers: HTTPHeaders?
     ) -> AnyPublisher<T, Never>
+    
+    func request<T: Mappable>(with request: ApiRequestConfiguration) -> AnyPublisher<T, Never>
 }
 
 class BaseApiManager: BaseRequestable {
@@ -93,6 +104,36 @@ class BaseApiManager: BaseRequestable {
                 parameters: parameters,
                 encoding: encoding,
                 headers: headers)
+            .validate()
+            .response { response in
+                switch response.result {
+                case .success(let value):
+                    if let jsonData = value,
+                       let jsonString = String(data: jsonData, encoding: .utf8) {
+                        if let object = Mapper<T>().map(JSONString: jsonString) {
+                            promise(.success(object))
+                        } else {
+                            Logger.error(BaseRequestableError.mappingFailed)
+                        }
+                    } else {
+                        Logger.error(BaseRequestableError.invalidData)
+                    }
+                case .failure(let error):
+                    Logger.error(error)
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func request<T>(with request: ApiRequestConfiguration) -> AnyPublisher<T, Never> where T : Mappable {
+        Future<T, Never> { promise in
+            self.sessionManager.request(
+                request.path,
+                method: request.method,
+                parameters: request.parameters,
+                encoding: request.encoding,
+                headers: request.headers)
             .validate()
             .response { response in
                 switch response.result {

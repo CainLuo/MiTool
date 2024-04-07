@@ -76,6 +76,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     }
 
     public init?(map: ObjectMapper.Map) { }
+    init() { }
     init(
         avatarID: Int?,
         image: String?,
