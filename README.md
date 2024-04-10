@@ -14,10 +14,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img1.png" alt="Screenshot 1" style="max-width: 100px;"></td>
-        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img2.png" alt="Screenshot 2" style="max-width: 100px;"></td>
-        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img3.png" alt="Screenshot 3" style="max-width: 100px;"></td>
-        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img4.png" alt="Screenshot 4" style="max-width: 100px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img1.png" alt="Screenshot 1" style="max-width: 300px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img2.png" alt="Screenshot 2" style="max-width: 300px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img3.png" alt="Screenshot 3" style="max-width: 300px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img4.png" alt="Screenshot 4" style="max-width: 300px;"></td>
       </tr>
     </tbody>
   </table>
