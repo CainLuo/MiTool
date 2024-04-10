@@ -14,10 +14,10 @@ struct StarRailRoleListView: View {
     var body: some View {
         List(viewModel.sections) { section in
             Section {
-                ForEach(section.roleList) { item in
+                ForEach(section.items) { item in
                     StarRailRoleInfoView(
                         uid: section.uid,
-                        item: item, 
+                        item: item,
                         viewModel: viewModel
                     )
                 }
@@ -41,7 +41,7 @@ struct StarRailRoleListView: View {
 
 struct StarRailRoleInfoView: View {
     let uid: String
-    let item: StarRailAllRoleListModel
+    let item: StarRailRoleSectionItemModel
         
     @StateObject var viewModel: StarRailRoleListViewModel
 
@@ -59,27 +59,27 @@ struct StarRailRoleInfoView: View {
 }
 
 struct RoleInfoDrawingView: View {
-    let item: StarRailAllRoleListModel
+    let item: StarRailRoleSectionItemModel
 
     var body: some View {
         VStack {
             StarRaillRarityView(
-                rarity: item.rarity,
-                urlString: item.iconURL ?? ""
+                rarity: item.roleItem.rarity,
+                urlString: item.roleItem.iconURL ?? ""
             )
             .frame(width: 120)
             
-            Text(item.itemName ?? "")
+            Text(item.roleItem.itemName ?? "")
                 .boldModifier(size: 26)
                 .foregroundColor(.white)
-            Text(item.level)
+            Text(item.roleItem.level)
                 .sizeModifier(size: 20)
         }
     }
 }
 
 struct RoleInfoConsumeView: View {
-    let item: StarRailAllRoleListModel
+    let item: StarRailRoleSectionItemModel
 
     var columns = Array(
         repeating: GridItem(.flexible()),

@@ -62,26 +62,6 @@ public struct GenshinDailyNodeData: Mappable {
     public var dailyTask: GenshinDailyNodeDailyTask?
     // 魔神任务、支线任务详情
     public var archonQuestProgress: GenshinArchonQuestProgress?
-    
-    public var resinContent: String {
-        "\(currentResin)/\(maxResin)"
-    }
-
-    public var transformerTime: String {
-        guard let recoveryTime = transformer?.recoveryTime else {
-            return ""
-        }
-
-        if recoveryTime.reached {
-            return CopyGenshinWidget.ready
-        } else {
-            if recoveryTime.day > 0 {
-                return String(format: CopyGenshinWidget.transformerDay, recoveryTime.day, recoveryTime.hour)
-            } else {
-                return String(format: CopyGenshinWidget.transformerHour, recoveryTime.hour, recoveryTime.minute)
-            }
-        }
-    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -105,6 +85,28 @@ public struct GenshinDailyNodeData: Mappable {
         transformer <- map["transformer"]
         dailyTask <- map["daily_task"]
         archonQuestProgress <- map["archon_quest_progress"]
+    }
+}
+
+extension GenshinDailyNodeData {
+    public var resinContent: String {
+        "\(currentResin)/\(maxResin)"
+    }
+
+    public var transformerTime: String {
+        guard let recoveryTime = transformer?.recoveryTime else {
+            return ""
+        }
+
+        if recoveryTime.reached {
+            return CopyGenshinWidget.ready
+        } else {
+            if recoveryTime.day > 0 {
+                return String(format: CopyGenshinWidget.transformerDay, recoveryTime.day, recoveryTime.hour)
+            } else {
+                return String(format: CopyGenshinWidget.transformerHour, recoveryTime.hour, recoveryTime.minute)
+            }
+        }
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-public struct MihoyoDeviceFPResponseModel: Mappable {
+public struct MihoyoDeviceFPResponseModel: MihoyoModelProtocol {
     public var retcode: Int = 0
     public var message: String = ""
     public var data: MihoyoDeviceFPResponseDataModel?
@@ -22,7 +22,8 @@ public struct MihoyoDeviceFPResponseModel: Mappable {
     }
 }
 
-public struct MihoyoDeviceFPResponseDataModel: Mappable {
+public struct MihoyoDeviceFPResponseDataModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var deviceFp: String = ""
     public var code: Int = 0
     public var msg: String = ""

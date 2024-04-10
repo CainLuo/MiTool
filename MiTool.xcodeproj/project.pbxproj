@@ -28,6 +28,7 @@
 		A4A3FE9C2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */; };
 		A4A3FE9E2BC280C100503A2C /* StarRailComputeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */; };
 		A4A3FEA02BC2A51100503A2C /* MihoyoUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */; };
+		A4A75D6B2BC635240010447B /* MihoyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A75D6A2BC635240010447B /* MihoyoModel.swift */; };
 		A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1D82B9F02C30082734B /* SideBarModel.swift */; };
 		A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */; };
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
@@ -178,6 +179,7 @@
 		A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleDetailRequestModel.swift; sourceTree = "<group>"; };
 		A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailComputeRequestModel.swift; sourceTree = "<group>"; };
 		A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserManager.swift; sourceTree = "<group>"; };
+		A4A75D6A2BC635240010447B /* MihoyoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoModel.swift; sourceTree = "<group>"; };
 		A4CFC1D82B9F02C30082734B /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				A4CFC2622BA18B770082734B /* MihoyoDeviceFPFetchModel.swift */,
 				A4CFC2642BA18B950082734B /* MihoyoDeviceFPResponseModel.swift */,
 				A4CFC2332B9F0A720082734B /* MihoyoGameCardsModel.swift */,
+				A4A75D6A2BC635240010447B /* MihoyoModel.swift */,
 				A4CFC26E2BA1AB440082734B /* MihoyoSTokenModel.swift */,
 				A4CFC2322B9F0A720082734B /* MihoyoUserModel.swift */,
 			);
@@ -968,6 +971,7 @@
 				BF3140D52BBDACAB00CF2D56 /* CustomShapeStyle.swift in Sources */,
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
 				A4A3FE9A2BC27CBF00503A2C /* LanguageManager.swift in Sources */,
+				A4A75D6B2BC635240010447B /* MihoyoModel.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
 				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,

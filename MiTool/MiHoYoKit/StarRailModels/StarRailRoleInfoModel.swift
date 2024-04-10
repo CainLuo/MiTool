@@ -33,6 +33,7 @@ public struct StarRailRoleInfoData: Mappable {
     var isLogin: Bool?
 
     public init?(map: ObjectMapper.Map) { }
+    init() { }
 
     init(
         avatar: String?,

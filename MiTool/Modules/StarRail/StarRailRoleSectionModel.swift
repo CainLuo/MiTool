@@ -12,5 +12,12 @@ struct StarRailRoleSectionModel: Identifiable {
     var uid: String = ""
     var userName: String = ""
     var roleRegion: String = ""
-    var roleList: [StarRailAllRoleListModel] = []
+    var items: [StarRailRoleSectionItemModel] = []
+}
+
+struct StarRailRoleSectionItemModel: Identifiable {
+    var id = UUID()
+    var roleItem = StarRailAllRoleListModel()
+    var roleInfo = StarRailRoleInfoData()
+    var compute: StarRailSkillComputeData?
 }

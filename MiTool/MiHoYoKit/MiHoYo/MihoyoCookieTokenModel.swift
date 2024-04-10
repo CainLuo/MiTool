@@ -8,9 +8,9 @@
 import Foundation
 import ObjectMapper
 
-struct MihoyoCookieTokenModel: Mappable {
-    var retcode: Int?
-    var message: String?
+struct MihoyoCookieTokenModel: MihoyoModelProtocol {
+    var retcode: Int = 0
+    var message: String = ""
     var data: MihoyoCookieTokenDataModel?
 
     init?(map: Map) {}
@@ -22,7 +22,8 @@ struct MihoyoCookieTokenModel: Mappable {
     }
 }
 
-struct MihoyoCookieTokenDataModel: Mappable {
+struct MihoyoCookieTokenDataModel: MihoyoDataModelProtocol {
+    var id = UUID()
     var uid: String?
     var cookieToken: String?
 

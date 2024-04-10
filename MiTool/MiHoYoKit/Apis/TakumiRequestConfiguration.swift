@@ -13,6 +13,7 @@ class TakumiRequestConfiguration: ApiRequestConfiguration {
         ApiKeys.Host.takumi.rawValue
     }
     var path: String
+    var accountRegion: Region
     var method: Alamofire.HTTPMethod
     var parameters: Alamofire.Parameters?
     var headers: Alamofire.HTTPHeaders?
@@ -20,12 +21,14 @@ class TakumiRequestConfiguration: ApiRequestConfiguration {
     
     init(
         path: String,
+        accountRegion: Region,
         method: HTTPMethod,
         parameters: Parameters? = nil,
         headers: HTTPHeaders? = nil,
         encoding: ParameterEncoding = JSONEncoding.default
     ) {
         self.path = path
+        self.accountRegion = accountRegion
         self.method = method
         self.parameters = parameters
         self.headers = headers

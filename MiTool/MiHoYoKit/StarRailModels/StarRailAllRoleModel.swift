@@ -55,9 +55,6 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
     public var verticalIconURL: String?
     public var isForward: Bool?
     
-    public var compute: StarRailSkillComputeData?
-    public var roleInfo: StarRailRoleInfoData?
-    
     public var level: String {
         "Lv: \(curLevel) / \(maxLevel)"
     }

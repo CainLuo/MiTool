@@ -119,7 +119,8 @@ extension SQLManager {
                         needGetMaterials: item[needGetMaterials],
                         canPayMaterials: item[canPayMaterials],
                         canMergeMaterials: item[canMergeMaterials],
-                        coinID: item[coinID]
+                        coinID: item[coinID],
+                        roleID: item[itemID]
                     ))
                 }
             }
@@ -154,7 +155,8 @@ extension SQLManager {
                             needGetMaterials: item[needGetMaterials],
                             canPayMaterials: item[canPayMaterials],
                             canMergeMaterials: item[canMergeMaterials],
-                            coinID: item[coinID]
+                            coinID: item[coinID],
+                            roleID: item[itemID]
                         )
                         
                         promise(.success(data))
@@ -167,12 +169,13 @@ extension SQLManager {
         }
     }
 
-    func getAllStarRailRoleComputeList(uuid: String) -> [StarRailSkillComputeData] {
+    func getAllStarRailRoleComputeList(_ uuid: String) -> [StarRailSkillComputeData] {
         var list: [StarRailSkillComputeData] = []
         
         do {
             try dataBase.transaction {
-                try dataBase.prepare(starRailRoleCompute).forEach { item in
+                let query = self.starRailRoleCompute.filter(uid == uuid)
+                try dataBase.prepare(query).forEach { item in
                     let model = StarRailSkillComputeData(
                         avatarConsume: item[avatarConsume],
                         skillConsume: item[skillConsume],
@@ -181,7 +184,8 @@ extension SQLManager {
                         needGetMaterials: item[needGetMaterials],
                         canPayMaterials: item[canPayMaterials],
                         canMergeMaterials: item[canMergeMaterials],
-                        coinID: item[coinID]
+                        coinID: item[coinID],
+                        roleID: item[itemID]
                     )
                     list.append(model)
                 }
