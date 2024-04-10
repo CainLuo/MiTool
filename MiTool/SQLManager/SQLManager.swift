@@ -26,6 +26,7 @@ class SQLManager {
     let genshinImpactWidget = Table("genshinImpactWidget")
     let genshinImpactCharacter = Table("genshinImpactCharacter")
     let genshinImpactWeapon = Table("genshinImpactWeapon")
+    let genshinImpactSkills = Table("genshinImpactSkills")
 
     // 获取/设置数据库User version
     var userVersion: Int32 {
@@ -71,6 +72,7 @@ class SQLManager {
             createMihoyoGameCardsTable(dataBase)
             createGenshinImpactWidgetTable(dataBase)
             createGenshiCharacterTable(dataBase)
+            createGenshinRoleSkillTable(dataBase)
         } catch {
             Logger.error(error)
         }

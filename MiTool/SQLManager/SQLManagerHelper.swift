@@ -217,23 +217,37 @@ extension SQLManagerHelper {
         }
     }
     
-    func saveGenshinCharacter(uid: String, model: GenshinCharacterAvatar) {
-        guard let avatarID = model.avatarID else {
-            return
-        }
-        SQLManager.shared.getGenshinCharacter(uuid: uid, avatarID: avatarID)
-            .sink { item in
-                guard item != nil else {
-                    SQLManager.shared.addGenshinCharacter(uuid: uid, model: model)
-                    return
-                }
-                SQLManager.shared.upgradeGenshinCharacter(uuid: uid, model: model)
+    func saveGenshinCharacter(uid: String, list: [GenshinCharacterAvatar]) {
+        list.forEach { avatar in
+            guard let avatarID = avatar.avatarID else {
+                return
             }
-            .store(in: &cancellables)
+            
+            SQLManager.shared.getGenshinCharacter(uuid: uid, avatarID: avatarID)
+                .sink { item in
+                    guard item != nil else {
+                        SQLManager.shared.addGenshinCharacter(uuid: uid, model: avatar)
+                        return
+                    }
+                    SQLManager.shared.upgradeGenshinCharacter(uuid: uid, model: avatar)
+                }
+                .store(in: &cancellables)
+        }
     }
     
-    func saveGenshinSkills(uid: String, avatarID: Int, skills: [GenshinRoleSkillItemModel]) {
-        SQLManager.shared.upgradeGenshinCharacter(uuid: uid, avatarID: avatarID, skills: skills)
+    func saveGenshinSkills(uid: String, roleID: Int, skills: [GenshinRoleSkillItemModel]) {
+        skills.forEach { skill in
+            
+            SQLManager.shared.getGenshinRoleSkill(uuid: uid, roleID: roleID)
+                .sink { item in
+                    guard item != nil else {
+                        SQLManager.shared.addGenshinRoleSkill(uuid: uid, roleID: roleID, model: skill)
+                        return
+                    }
+                    SQLManager.shared.upgradeGenshinRoleSkill(uuid: uid, roleID: roleID, model: skill)
+                }
+                .store(in: &cancellables)
+        }
     }
 }
 

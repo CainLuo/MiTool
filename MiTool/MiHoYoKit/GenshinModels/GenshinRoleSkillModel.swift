@@ -30,6 +30,16 @@ public struct GenshinRoleSkillDataModel: Mappable {
     public var weapon: GenshinRoleWeaponModel?
     public var reliquaryList: [GenshinRoleReliquaryModel]?
     
+    init(
+        skillList: [GenshinRoleSkillItemModel]? = nil,
+        weapon: GenshinRoleWeaponModel? = nil,
+        reliquaryList: [GenshinRoleReliquaryModel]? = nil
+    ) {
+        self.skillList = skillList
+        self.weapon = weapon
+        self.reliquaryList = reliquaryList
+    }
+    
     public init?(map: Map) {}
     
     mutating public func mapping(map: Map) {
@@ -43,11 +53,12 @@ public struct GenshinRoleSkillDataModel: Mappable {
 public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
     public var id = UUID()
     public var skillID: Int?
-    public var groupId: Int?
+    public var groupID: Int?
     public var name: String?
     public var icon: String?
     public var maxLevel: Int = 90
     public var currentLevel: Int = 1
+    public var roleID: Int?
     
     public var level: String {
         "Lv: \(currentLevel)"
@@ -59,9 +70,25 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
     
     public init?(map: Map) {}
     
+    init(
+        roleID: Int?,
+        skillID: Int?,
+        groupID: Int?,
+        name: String?,
+        icon: String?,
+        maxLevel: Int = 90
+    ) {
+        self.roleID = roleID
+        self.skillID = skillID
+        self.groupID = groupID
+        self.name = name
+        self.icon = icon
+        self.maxLevel = maxLevel
+    }
+    
     mutating public func mapping(map: Map) {
         skillID <- map["id"]
-        groupId <- map["group_id"]
+        groupID <- map["group_id"]
         name <- map["name"]
         icon <- map["icon"]
         maxLevel <- map["max_level"]

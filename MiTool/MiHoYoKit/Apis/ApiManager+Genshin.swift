@@ -38,12 +38,12 @@ extension ApiManager {
     
     func fetchGenshinCharacter<T: Mappable>(
         with uid: String,
-        server: String
+        roleRegion: String
     ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.GenshinImpact.character.rawValue
         let parameters: Parameters = [
-            "role_id": "109050292",
-            "server": "cn_gf01"
+            "role_id": uid,
+            "server": roleRegion
         ]
         
         guard let body = parameters.toJSONString?.removeNewlinesAndSpaces() else {
@@ -77,13 +77,13 @@ extension ApiManager {
     
     func fetchGenshinRoleSkills<T: Mappable>(
         uid: String, 
-        server: String,
+        roleRegion: String,
         avatarID: Int
     ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.roleDetail.rawValue
         let parameters: Parameters = [
             "uid": uid,
-            "region": server,
+            "region": roleRegion,
             "avatar_id": avatarID
         ]
                 

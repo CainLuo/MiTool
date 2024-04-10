@@ -10,7 +10,7 @@ import SQLite
 import Combine
 
 private let index = Expression<Int>("index")          // 索引
-private let uid = Expression<String>("id")          // 角色ID
+private let uid = Expression<String>("id")          // 米游社ID
 private let characterID = Expression<Int?>("characterID")          // 角色ID
 private let image = Expression<String?>("image")          // 角色立绘
 private let icon = Expression<String?>("icon")          // 角色icon

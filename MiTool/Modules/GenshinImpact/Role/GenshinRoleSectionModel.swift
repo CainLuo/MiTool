@@ -9,8 +9,14 @@ import Foundation
 
 struct GenshinRoleSectionModel: Identifiable {
     var id = UUID()
-    var roleList: [GenshinCharacterAvatar] = []
-    var userName: String = ""
     var uid: String = ""
-    var server: String = ""
+    var userName: String = ""
+    var roleRegion: String = ""
+    var items: [GenshinRoleSectionItemModel] = []
+}
+
+struct GenshinRoleSectionItemModel: Identifiable {
+    var id = UUID()
+    var roleItem = GenshinCharacterAvatar()
+    var skillData: GenshinRoleSkillDataModel?
 }

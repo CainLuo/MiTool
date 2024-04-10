@@ -17,36 +17,35 @@ struct GenshinRoleView: View {
 
     var body: some View {
         List(viewModel.sections) { section in
-            Section {
-                ForEach(section.roleList) { item in
-                    HStack {
-                        GenshinRoleAvatarInfoView(item: item)
-                        
-                        HStack {
-                            if let reliquaries = item.reliquaries {
-                                GenshinRoleReliquariesView(reliquaries: reliquaries)
-                            }
-                            
-                            if let skills = item.skillList {
-                                GenshinRoleSkillsView(skills: skills)
-                            }
-                            
-                            if let weapon = item.weapon {
-                                Spacer()
-                                GenshinRoleWeaponView(weapon: weapon)
-                            }
-                        }
-                    }
-                    .padding()
-                    .applyViewModifiers(
-                        shape: .roundedRectangle(cornerRadius: 10),
-                        backgroundColor: .black.opacity(0.4)
-                    )
-                    .frame(maxWidth: .infinity)
-                }
-            } header: {
-                GenshinRoleSectionView(viewModel: viewModel, section: section)
-            }
+//            Section {
+//                ForEach(section.items) { item in
+//                    HStack {
+//                        GenshinRoleAvatarInfoView(item: item.roleItem)
+//                        HStack {
+//                            if let reliquaries = item.reliquaries {
+//                                GenshinRoleReliquariesView(reliquaries: reliquaries)
+//                            }
+//                            
+//                            if let skills = item.skillList {
+//                                GenshinRoleSkillsView(skills: skills)
+//                            }
+//                            
+//                            if let weapon = item.weapon {
+//                                Spacer()
+//                                GenshinRoleWeaponView(weapon: weapon)
+//                            }
+//                        }
+//                    }
+//                    .padding()
+//                    .applyViewModifiers(
+//                        shape: .roundedRectangle(cornerRadius: 10),
+//                        backgroundColor: .black.opacity(0.4)
+//                    )
+//                    .frame(maxWidth: .infinity)
+//                }
+//            } header: {
+//                GenshinRoleSectionView(viewModel: viewModel, section: section)
+//            }
         }
         .task {
             viewModel.fetchUserList()
@@ -127,7 +126,7 @@ struct GenshinRoleSkillsView: View {
     var body: some View {
         VStack {
             ForEach(skills) { skill in
-                if (skill.maxLevel ?? 0) >= 10 {
+                if (skill.maxLevel) >= 10 {
                     HStack {
                         ImageView(
                             provider: .remote(skill.skillURL),
@@ -194,9 +193,9 @@ struct GenshinRoleSectionView: View {
                 frame: Constants.buttonSize,
                 isDisabled: $viewModel.isDisabled
             ) {
-                viewModel.reloadGenshinCharacterSkills(
-                    uid: section.uid
-                )
+//                viewModel.reloadGenshinCharacterSkills(
+//                    uid: section.uid
+//                )
             }
 
             PrimaryButton(
@@ -204,9 +203,9 @@ struct GenshinRoleSectionView: View {
                 frame: Constants.buttonSize,
                 isDisabled: $viewModel.isDisabled
             ) {
-                viewModel.reloadGenshinCharacterSkills(
-                    uid: section.uid
-                )
+//                viewModel.reloadGenshinCharacterSkills(
+//                    uid: section.uid
+//                )
             }
         }
         .padding()
