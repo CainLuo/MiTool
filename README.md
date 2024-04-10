@@ -1,11 +1,28 @@
 [![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_iPadOS_watchOS_visionOS-yellowgreen?style=flat-square)](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_iPadOS_watchOS_visionOS-Green?style=flat-square)
 
-## UI
+## Sample Table with Multiple Screenshots
 
-![img-1](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img1.png)
-![img-2](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img2.png)
-![img-3](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img3.png)
-![img-4](https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img4.png)
+<div style="overflow-x: auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Image 1</th>
+        <th>Image 2</th>
+        <th>Image 3</th>
+        <th>Image 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img1.png" alt="Screenshot 1" style="max-width: 100px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img2.png" alt="Screenshot 2" style="max-width: 100px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img3.png" alt="Screenshot 3" style="max-width: 100px;"></td>
+        <td><img src="https://github.com/CainLuo/MiTool/blob/main/ScreenShot/img4.png" alt="Screenshot 4" style="max-width: 100px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 # 目前遇到的问题
 
