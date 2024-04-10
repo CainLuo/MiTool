@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - MihoyoGameCardsModel
-public struct MihoyoGameCardsModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct MihoyoGameCardsModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: MihoyoGameCardsData?
 
     public init?(map: ObjectMapper.Map) {
@@ -27,7 +27,8 @@ public struct MihoyoGameCardsModel: Mappable {
 }
 
 // MARK: - MihoyoGameCardsData
-public struct MihoyoGameCardsData: Mappable {
+public struct MihoyoGameCardsData: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var list: [MihoyoGameCardsList]?
 
     public init?(map: ObjectMapper.Map) {
@@ -48,7 +49,7 @@ public enum MihoyoGameID: Int {
 }
 
 // MARK: - MihoyoGameCardsList
-public struct MihoyoGameCardsList: Mappable, Identifiable {
+public struct MihoyoGameCardsList: MihoyoDataModelProtocol {
     public var id = UUID()
     public var hasRole: Bool?
     public var gameID: MihoyoGameID?
@@ -106,7 +107,7 @@ public struct MihoyoGameCardsList: Mappable, Identifiable {
 }
 
 // MARK: - MihoyoGameCardsDatum
-public struct MihoyoGameCardsDatum: Mappable, Identifiable {
+public struct MihoyoGameCardsDatum: MihoyoDataModelProtocol {
     public var id = UUID()
     public var name: String = ""
     public var type: Int?
@@ -123,7 +124,8 @@ public struct MihoyoGameCardsDatum: Mappable, Identifiable {
 }
 
 // MARK: - MihoyoGameCardsDataSwitch
-public struct MihoyoGameCardsDataSwitch: Mappable {
+public struct MihoyoGameCardsDataSwitch: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var switchID: Int?
     public var isPublic: Bool?
     public var switchName: String = ""

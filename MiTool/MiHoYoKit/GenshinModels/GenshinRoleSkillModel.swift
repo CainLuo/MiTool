@@ -46,11 +46,11 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
     public var groupId: Int?
     public var name: String?
     public var icon: String?
-    public var maxLevel: Int?
-    public var currentLevel: Int?
+    public var maxLevel: Int = 90
+    public var currentLevel: Int = 1
     
     public var level: String {
-        "Lv: \(currentLevel ?? 1)"
+        "Lv: \(currentLevel)"
     }
     
     public var skillURL: String {

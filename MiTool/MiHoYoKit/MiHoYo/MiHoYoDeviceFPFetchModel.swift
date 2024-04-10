@@ -8,7 +8,8 @@
 import Foundation
 import ObjectMapper
 
-public struct MihoyoDeviceFPFetchModel: Mappable {
+public struct MihoyoDeviceFPFetchModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var appName: String = ""
     public var platform: String = ""
     public var seedId: String = ""

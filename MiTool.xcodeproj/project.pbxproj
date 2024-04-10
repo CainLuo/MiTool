@@ -21,7 +21,14 @@
 		A4871DCF2B901B7300C091BB /* SQLManager+StarRailWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */; };
 		A49FEFC92B8C9FCB00B01909 /* 1111Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */; };
 		A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */; };
-		A4B91C512BBD02CC005454F3 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C502BBD02CC005454F3 /* ButtonFactory.swift */; };
+		A4A3FE922BC2769300503A2C /* StarRailApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE912BC2769300503A2C /* StarRailApiManager.swift */; };
+		A4A3FE942BC2778B00503A2C /* TakumiRequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE932BC2778B00503A2C /* TakumiRequestConfiguration.swift */; };
+		A4A3FE972BC27A6100503A2C /* StarRailRoleRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE962BC27A6100503A2C /* StarRailRoleRequestModel.swift */; };
+		A4A3FE9A2BC27CBF00503A2C /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */; };
+		A4A3FE9C2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */; };
+		A4A3FE9E2BC280C100503A2C /* StarRailComputeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */; };
+		A4A3FEA02BC2A51100503A2C /* MihoyoUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */; };
+		A4A75D6B2BC635240010447B /* MihoyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A75D6A2BC635240010447B /* MihoyoModel.swift */; };
 		A4CFC1D92B9F02C30082734B /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1D82B9F02C30082734B /* SideBarModel.swift */; };
 		A4CFC1DB2B9F02EA0082734B /* WidgetSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */; };
 		A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */; };
@@ -87,6 +94,7 @@
 		BFA15C002BBFF0DB00001B8D /* GenshinWeaponComputeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15BFF2BBFF0DB00001B8D /* GenshinWeaponComputeView.swift */; };
 		BFA15C022BBFF1CB00001B8D /* GenshinWeaponComputeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15C012BBFF1CB00001B8D /* GenshinWeaponComputeModel.swift */; };
 		BFA15C042BC0152500001B8D /* GenshinRarityKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15C032BC0152500001B8D /* GenshinRarityKeys.swift */; };
+		BFA15C062BC0606B00001B8D /* StarRailRoleSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15C052BC0606B00001B8D /* StarRailRoleSectionModel.swift */; };
 		BFA75B772B7E77450020B246 /* StarRailWidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */; };
 		BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B782B7E79E50020B246 /* StarRailWidgetCardViewModel.swift */; };
 		BFA75B7B2B7F86840020B246 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA75B7A2B7F86840020B246 /* WidgetView.swift */; };
@@ -118,7 +126,6 @@
 		BFB03BA92B84A58C005DD170 /* GenshinWidgetCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BA82B84A58C005DD170 /* GenshinWidgetCardViewModel.swift */; };
 		BFB03BAB2B8A4C4F005DD170 /* 1003Skill.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BAA2B8A4C4F005DD170 /* 1003Skill.json */; };
 		BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */; };
-		BFB03BAF2B8B0B71005DD170 /* StarRailRoleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BAE2B8B0B70005DD170 /* StarRailRoleInfoView.swift */; };
 		BFB03BB12B8B0B93005DD170 /* StarRailRoleInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB03BB02B8B0B93005DD170 /* StarRailRoleInfoViewModel.swift */; };
 		BFB03BB82B8CE504005DD170 /* 1003SkillCompute.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BB72B8CE504005DD170 /* 1003SkillCompute.json */; };
 		BFB03BBC2B8CE648005DD170 /* skillComputeRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */; };
@@ -165,7 +172,14 @@
 		A4871DCE2B901B7300C091BB /* SQLManager+StarRailWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+StarRailWidget.swift"; sourceTree = "<group>"; };
 		A49FEFC82B8C9FCB00B01909 /* 1111Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1111Skill.json; sourceTree = "<group>"; };
 		A49FEFCA2B8D82B400B01909 /* StarRaillRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRaillRarityView.swift; sourceTree = "<group>"; };
-		A4B91C502BBD02CC005454F3 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
+		A4A3FE912BC2769300503A2C /* StarRailApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailApiManager.swift; sourceTree = "<group>"; };
+		A4A3FE932BC2778B00503A2C /* TakumiRequestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakumiRequestConfiguration.swift; sourceTree = "<group>"; };
+		A4A3FE962BC27A6100503A2C /* StarRailRoleRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleRequestModel.swift; sourceTree = "<group>"; };
+		A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleDetailRequestModel.swift; sourceTree = "<group>"; };
+		A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailComputeRequestModel.swift; sourceTree = "<group>"; };
+		A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoUserManager.swift; sourceTree = "<group>"; };
+		A4A75D6A2BC635240010447B /* MihoyoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MihoyoModel.swift; sourceTree = "<group>"; };
 		A4CFC1D82B9F02C30082734B /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		A4CFC1DA2B9F02EA0082734B /* WidgetSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSectionModel.swift; sourceTree = "<group>"; };
 		A4CFC21E2B9F096F0082734B /* SideBarKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarKeys.swift; sourceTree = "<group>"; };
@@ -233,6 +247,9 @@
 		BFA15BFF2BBFF0DB00001B8D /* GenshinWeaponComputeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeaponComputeView.swift; sourceTree = "<group>"; };
 		BFA15C012BBFF1CB00001B8D /* GenshinWeaponComputeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeaponComputeModel.swift; sourceTree = "<group>"; };
 		BFA15C032BC0152500001B8D /* GenshinRarityKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinRarityKeys.swift; sourceTree = "<group>"; };
+		BFA15C052BC0606B00001B8D /* StarRailRoleSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleSectionModel.swift; sourceTree = "<group>"; };
+		BFA15C0B2BC17B7000001B8D /* 1301Detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1301Detail.json; sourceTree = "<group>"; };
+		BFA15C0C2BC17BA600001B8D /* 1301Compute.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1301Compute.json; sourceTree = "<group>"; };
 		BFA75B762B7E77450020B246 /* StarRailWidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetCard.swift; sourceTree = "<group>"; };
 		BFA75B782B7E79E50020B246 /* StarRailWidgetCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailWidgetCardViewModel.swift; sourceTree = "<group>"; };
 		BFA75B7A2B7F86840020B246 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
@@ -262,7 +279,6 @@
 		BFB03BA82B84A58C005DD170 /* GenshinWidgetCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWidgetCardViewModel.swift; sourceTree = "<group>"; };
 		BFB03BAA2B8A4C4F005DD170 /* 1003Skill.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1003Skill.json; sourceTree = "<group>"; };
 		BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleInfoModel.swift; sourceTree = "<group>"; };
-		BFB03BAE2B8B0B70005DD170 /* StarRailRoleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleInfoView.swift; sourceTree = "<group>"; };
 		BFB03BB02B8B0B93005DD170 /* StarRailRoleInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRailRoleInfoViewModel.swift; sourceTree = "<group>"; };
 		BFB03BB72B8CE504005DD170 /* 1003SkillCompute.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1003SkillCompute.json; sourceTree = "<group>"; };
 		BFB03BBB2B8CE648005DD170 /* skillComputeRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = skillComputeRequest.json; sourceTree = "<group>"; };
@@ -316,6 +332,25 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		A4A3FE952BC27A4B00503A2C /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4A3FE962BC27A6100503A2C /* StarRailRoleRequestModel.swift */,
+				A4A3FE9D2BC280C100503A2C /* StarRailComputeRequestModel.swift */,
+				A4A3FE9B2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		A4A3FE982BC27CB300503A2C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A4A3FE992BC27CBF00503A2C /* LanguageManager.swift */,
+				A4A3FE9F2BC2A51100503A2C /* MihoyoUserManager.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		A4CFC2252B9F0A720082734B /* Apis */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,11 +358,13 @@
 				A4CFC22F2B9F0A720082734B /* ApiGameServerKeys.swift */,
 				A4CFC2262B9F0A720082734B /* ApiHeaderConfiguration.swift */,
 				A4CFC22A2B9F0A720082734B /* ApiKeys.swift */,
+				A4A3FE932BC2778B00503A2C /* TakumiRequestConfiguration.swift */,
 				A4CFC2292B9F0A720082734B /* ApiManager.swift */,
 				A4CFC26A2BA19CFE0082734B /* ApiManager+StarRail.swift */,
 				A4CFC2702BA1AD510082734B /* ApiManager+Genshin.swift */,
 				BF03A76B2BAF3DF80007BAD7 /* ApiManager+Auth.swift */,
 				A4CFC2602BA17EA30082734B /* BaseApi.swift */,
+				A4A3FE912BC2769300503A2C /* StarRailApiManager.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -339,6 +376,7 @@
 				A4CFC2622BA18B770082734B /* MihoyoDeviceFPFetchModel.swift */,
 				A4CFC2642BA18B950082734B /* MihoyoDeviceFPResponseModel.swift */,
 				A4CFC2332B9F0A720082734B /* MihoyoGameCardsModel.swift */,
+				A4A75D6A2BC635240010447B /* MihoyoModel.swift */,
 				A4CFC26E2BA1AB440082734B /* MihoyoSTokenModel.swift */,
 				A4CFC2322B9F0A720082734B /* MihoyoUserModel.swift */,
 			);
@@ -359,9 +397,11 @@
 		A4CFC2382B9F0A720082734B /* StarRailModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */,
 				A4CFC2392B9F0A720082734B /* StarRailCharacterDetailsModel.swift */,
-				A4CFC23A2B9F0A720082734B /* StarRailSkillComputeRequestModel.swift */,
+				BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */,
 				A4CFC23D2B9F0A720082734B /* StarRailSkillComputeModel.swift */,
+				A4CFC23A2B9F0A720082734B /* StarRailSkillComputeRequestModel.swift */,
 				A4CFC23E2B9F0A720082734B /* StarRailWeightModel.swift */,
 			);
 			path = StarRailModels;
@@ -383,6 +423,7 @@
 		A4CFC25A2B9F0AE00082734B /* MiHoYoKit */ = {
 			isa = PBXGroup;
 			children = (
+				A4A3FE952BC27A4B00503A2C /* RequestModel */,
 				A4CFC2252B9F0A720082734B /* Apis */,
 				A4CFC2582B9F0ABC0082734B /* GenshinModels */,
 				A4CFC2342B9F0A720082734B /* Keys */,
@@ -471,6 +512,7 @@
 		BF4659CF2B69525500587AD3 /* MiTool */ = {
 			isa = PBXGroup;
 			children = (
+				A4A3FE982BC27CB300503A2C /* Utility */,
 				BF3140D32BBDACA100CF2D56 /* ViewModifiers */,
 				A4CFC25A2B9F0AE00082734B /* MiHoYoKit */,
 				BF4659D22B69525500587AD3 /* ContentView.swift */,
@@ -565,6 +607,8 @@
 				BFB03B7C2B83B263005DD170 /* starRailCharacterDetails.json */,
 				A4871DB82B8DE9C000C091BB /* starRailDailyNode.json */,
 				A4871DB92B8DE9C000C091BB /* starRailWidget.json */,
+				BFA15C0B2BC17B7000001B8D /* 1301Detail.json */,
+				BFA15C0C2BC17BA600001B8D /* 1301Compute.json */,
 			);
 			path = hkrpg;
 			sourceTree = SOURCE_ROOT;
@@ -663,14 +707,12 @@
 			isa = PBXGroup;
 			children = (
 				BF2D06A52B752DD30013DD7D /* ShowRoleCardModel.swift */,
-				BFE403AF2B6E2901002FF39E /* StarRailAllRoleModel.swift */,
 				BF05122B2B6E2709004D6878 /* StarRailRoleCardView.swift */,
 				BF2D06942B73818B0013DD7D /* StarRailRoleDetailView.swift */,
-				BFB03BAC2B8B062F005DD170 /* StarRailRoleInfoModel.swift */,
-				BFB03BAE2B8B0B70005DD170 /* StarRailRoleInfoView.swift */,
 				BFB03BB02B8B0B93005DD170 /* StarRailRoleInfoViewModel.swift */,
 				BF0512292B6E2651004D6878 /* StarRailRoleListView.swift */,
 				BFE403B82B6E2B55002FF39E /* StarRailRoleListViewModel.swift */,
+				BFA15C052BC0606B00001B8D /* StarRailRoleSectionModel.swift */,
 			);
 			path = StarRail;
 			sourceTree = "<group>";
@@ -867,6 +909,7 @@
 				A4CFC21F2B9F096F0082734B /* SideBarKeys.swift in Sources */,
 				BFA15BFE2BBFE11D00001B8D /* GenshinWeaponViewModel.swift in Sources */,
 				BFE403B02B6E2901002FF39E /* StarRailAllRoleModel.swift in Sources */,
+				BFA15C062BC0606B00001B8D /* StarRailRoleSectionModel.swift in Sources */,
 				BFE403B32B6E2A3C002FF39E /* Bundle+Extensions.swift in Sources */,
 				BF3F43FA2B9C40BF00B5C3FD /* ArrayX.swift in Sources */,
 				A4CFC24E2B9F0A950082734B /* StarRailDestinyKeys.swift in Sources */,
@@ -885,6 +928,7 @@
 				BF2D06912B72A8EC0013DD7D /* WebView.swift in Sources */,
 				BFA15C042BC0152500001B8D /* GenshinRarityKeys.swift in Sources */,
 				BFA15C002BBFF0DB00001B8D /* GenshinWeaponComputeView.swift in Sources */,
+				A4A3FE9C2BC27E2B00503A2C /* StarRailRoleDetailRequestModel.swift in Sources */,
 				A48390D82BB3F5050041254D /* BaseButtonView.swift in Sources */,
 				BF03A7702BAFD51F0007BAD7 /* DictionaryX.swift in Sources */,
 				BFA15BFA2BBFD72D00001B8D /* SQLManager+GenshinWeapon.swift in Sources */,
@@ -907,12 +951,14 @@
 				BF3F43F12B9C3DC200B5C3FD /* MihoyoUserEditViewModel.swift in Sources */,
 				BFC19FD52B945288006E83E9 /* SQLManager+GameRecord.swift in Sources */,
 				BFA75B792B7E79E50020B246 /* StarRailWidgetCardViewModel.swift in Sources */,
+				A4A3FE972BC27A6100503A2C /* StarRailRoleRequestModel.swift in Sources */,
+				A4A3FE942BC2778B00503A2C /* TakumiRequestConfiguration.swift in Sources */,
 				BF2D06952B73818B0013DD7D /* StarRailRoleDetailView.swift in Sources */,
 				A4CFC2462B9F0A910082734B /* ApiManager.swift in Sources */,
 				BFB03B732B831393005DD170 /* MihoyoUserEditView.swift in Sources */,
+				A4A3FE9E2BC280C100503A2C /* StarRailComputeRequestModel.swift in Sources */,
 				BF4659D32B69525500587AD3 /* ContentView.swift in Sources */,
 				A4871DC52B8EE46900C091BB /* Text+Extensions.swift in Sources */,
-				BFB03BAF2B8B0B71005DD170 /* StarRailRoleInfoView.swift in Sources */,
 				BFB03B6F2B8255E2005DD170 /* MihoyoGameCardViewModel.swift in Sources */,
 				BFA75B8E2B7FC8680020B246 /* SQLManager+GenshinWidget.swift in Sources */,
 				BFA15C022BBFF1CB00001B8D /* GenshinWeaponComputeModel.swift in Sources */,
@@ -924,6 +970,8 @@
 				A4CFC24D2B9F0A950082734B /* StarRailDamageKeys.swift in Sources */,
 				BF3140D52BBDACAB00CF2D56 /* CustomShapeStyle.swift in Sources */,
 				BFB03B6D2B80FF9B005DD170 /* MihoyoUserListView.swift in Sources */,
+				A4A3FE9A2BC27CBF00503A2C /* LanguageManager.swift in Sources */,
+				A4A75D6B2BC635240010447B /* MihoyoModel.swift in Sources */,
 				A49FEFCB2B8D82B400B01909 /* StarRaillRarityView.swift in Sources */,
 				BF2D068A2B71E1B70013DD7D /* Image+Extensions.swift in Sources */,
 				BF2D06A62B752DD30013DD7D /* ShowRoleCardModel.swift in Sources */,
@@ -932,11 +980,13 @@
 				A48390CF2BB118790041254D /* GenshinRoleSkillModel.swift in Sources */,
 				BFB03B652B80E299005DD170 /* SQLManager+MihoyoUser.swift in Sources */,
 				BF3140D92BBDB37C00CF2D56 /* ViewConfiguration.swift in Sources */,
+				A4A3FEA02BC2A51100503A2C /* MihoyoUserManager.swift in Sources */,
 				BF03A76C2BAF3DF80007BAD7 /* ApiManager+Auth.swift in Sources */,
 				A4CFC2522B9F0AB40082734B /* StarRailWeightModel.swift in Sources */,
 				BFB03BA72B849123005DD170 /* GenshinWidgetCard.swift in Sources */,
 				A4CFC2712BA1AD510082734B /* ApiManager+Genshin.swift in Sources */,
 				A4871DCB2B8F253900C091BB /* SQLManager+StarRailRoleSkill.swift in Sources */,
+				A4A3FE922BC2769300503A2C /* StarRailApiManager.swift in Sources */,
 				BFFCC1F42B9DA02E00780742 /* SectionHeaderView.swift in Sources */,
 				BFC19FD12B9242DA006E83E9 /* WidgetViewModel.swift in Sources */,
 				BFB03B712B825680005DD170 /* MihoyoGameCardView.swift in Sources */,

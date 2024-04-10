@@ -28,7 +28,7 @@ extension SQLManager {
             try dataBase.run(starRailRole.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(uid)
-                table.column(itemID)
+                table.column(itemID, unique: true)
                 table.column(itemName)
                 table.column(iconURL)
                 table.column(damageType)
@@ -57,7 +57,7 @@ extension SQLManager {
                 itemName <- model.itemName,
                 iconURL <- model.iconURL,
                 damageType <- model.damageType?.rawValue,
-                rarity <- model.rarity?.rawValue,
+                rarity <- model.rarity.rawValue,
                 avatarBaseType <- model.avatarBaseType?.rawValue,
                 maxLevel <- model.maxLevel,
                 curLevel <- model.curLevel,
@@ -88,7 +88,7 @@ extension SQLManager {
                     itemName <- model.itemName,
                     iconURL <- model.iconURL,
                     damageType <- model.damageType?.rawValue,
-                    rarity <- model.rarity?.rawValue,
+                    rarity <- model.rarity.rawValue,
                     avatarBaseType <- model.avatarBaseType?.rawValue,
                     maxLevel <- model.maxLevel,
                     curLevel <- model.curLevel,
@@ -122,8 +122,8 @@ extension SQLManager {
                         damageType: Damage(rawValue: item[damageType] ?? ""),
                         rarity: RarityType(rawValue: item[rarity] ?? ""),
                         avatarBaseType: Destiny(rawValue: item[avatarBaseType] ?? ""),
-                        maxLevel: item[maxLevel],
-                        curLevel: item[curLevel],
+                        maxLevel: item[maxLevel] ?? 80,
+                        curLevel: item[curLevel] ?? 1,
                         targetLevel: item[targetLevel],
                         verticalIconURL: item[verticalIconURL],
                         isForward: item[isForward]
@@ -149,8 +149,8 @@ extension SQLManager {
                         damageType: Damage(rawValue: item[damageType] ?? ""),
                         rarity: RarityType(rawValue: item[rarity] ?? ""),
                         avatarBaseType: Destiny(rawValue: item[avatarBaseType] ?? ""),
-                        maxLevel: item[maxLevel],
-                        curLevel: item[curLevel],
+                        maxLevel: item[maxLevel] ?? 80,
+                        curLevel: item[curLevel] ?? 1,
                         targetLevel: item[targetLevel],
                         verticalIconURL: item[verticalIconURL],
                         isForward: item[isForward]

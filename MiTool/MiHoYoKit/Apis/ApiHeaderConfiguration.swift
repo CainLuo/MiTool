@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 enum ApiHeaderConfiguration {
     static let userAgent: String = """
@@ -115,18 +116,51 @@ enum ApiHeaderConfiguration {
     }
     
     static func baseHeaders(region: Region, additionalHeaders: [String: String]?) -> [String: String] {
-        var headers = [
-            "User-Agent": userAgent,
-            "Referer": referer(region: region),
-            "Origin": referer(region: region),
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Accept": "application/json, text/plain, */*",
-            "Connection": "keep-alive"
-        ]
+        var headers = BaseHeaders(
+            userAgent: userAgent,
+            referer: referer(region: region),
+            origin: referer(region: region)
+        ).toJSON()
         if let additionalHeaders {
             headers.merge(additionalHeaders) { $1 }
         }
+        
+        guard let headers = headers as? [String: String] else {
+            return ["": ""]
+        }
+        
         return headers
     }
 }
+
+struct BaseHeaders: Mappable {
+    var userAgent: String?
+    var referer: String?
+    var origin: String?
+    var acceptEncoding: String = "gzip, deflate, br"
+    var acceptLanguage: String = "zh-CN,zh-Hans;q=0.9"
+    var accept: String = "application/json, text/plain, */*"
+    var connection: String = "keep-alive"
+
+    init?(map: Map) {}
+    init(
+        userAgent: String? = nil,
+        referer: String? = nil,
+        origin: String? = nil
+    ) {
+        self.userAgent = userAgent
+        self.referer = referer
+        self.origin = origin
+    }
+
+    mutating func mapping(map: Map) {
+        userAgent <- map["User-Agent"]
+        referer <- map["Referer"]
+        origin <- map["Origin"]
+        acceptEncoding <- map["Accept-Encoding"]
+        acceptLanguage <- map["Accept-Language"]
+        accept <- map["Accept"]
+        connection <- map["Connection"]
+    }
+}
+

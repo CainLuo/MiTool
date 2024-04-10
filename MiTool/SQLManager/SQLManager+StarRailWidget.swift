@@ -30,7 +30,7 @@ extension SQLManager {
         do {
             try dataBase.run(starRailDailyNode.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
-                table.column(uid)
+                table.column(uid, unique: true)
                 table.column(currentStamina)
                 table.column(maxStamina)
                 table.column(staminaRecoverTime)

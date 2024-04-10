@@ -33,6 +33,7 @@ public struct StarRailRoleInfoData: Mappable {
     var isLogin: Bool?
 
     public init?(map: ObjectMapper.Map) { }
+    init() { }
 
     init(
         avatar: String?,
@@ -104,7 +105,7 @@ public struct StarRailRoleInfoEquipment: Mappable {
     var rarity: RarityType = .one
     var maxLevel: Int = 80
     var curLevel: Int = 1
-    var targetLevel: Int?
+    var targetLevel: Int = 80
     var isForward = false
 
     var levelString: String {
@@ -132,18 +133,17 @@ public struct StarRailRoleInfoSkill: Mappable, Identifiable {
     public var id = UUID()
     var pointID: String?
     var prePoint: String?
-    var pointType: StarRailRoleInfoPointType?
-    var anchor: String?
+    var pointType: StarRailRolePointType?
+    var anchor: StarRailRoleAnchorType?
     var itemURL: String?
     var maxLevel: Int?
-    var curLevel: Int?
+    var curLevel: Int = 1
     var targetLevel: Int?
     var progress: StarRailRoleInfoProgress?
     var minLevelLimit: Int?
 
     var skillLevel: String {
-        guard let curLevel = curLevel, 
-              let maxLevel = maxLevel else {
+        guard let maxLevel = maxLevel else {
             return "Lv.1/-"
         }
         return "Lv.\(curLevel)/\(maxLevel)"
@@ -165,10 +165,17 @@ public struct StarRailRoleInfoSkill: Mappable, Identifiable {
     }
 }
 
-enum StarRailRoleInfoPointType: Int {
+enum StarRailRolePointType: Int {
     case other = 1
     case main = 2
     case talent = 3
+}
+
+enum StarRailRoleAnchorType: String {
+    case one = "Point01"
+    case two = "Point02"
+    case three = "Point03"
+    case four = "Point04"
 }
 
 enum StarRailRoleInfoProgress: String {

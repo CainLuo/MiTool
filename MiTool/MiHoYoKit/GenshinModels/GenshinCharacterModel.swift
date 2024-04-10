@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - GenshinCharacterModel
-public struct GenshinCharacterModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct GenshinCharacterModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinCharacterData?
 
     public init?(map: ObjectMapper.Map) { }
@@ -25,7 +25,8 @@ public struct GenshinCharacterModel: Mappable {
 }
 
 // MARK: - GenshinCharacterData
-public struct GenshinCharacterData: Mappable {
+public struct GenshinCharacterData: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var avatars: [GenshinCharacterAvatar]?
     public var role: GenshinCharacterRole?
 
@@ -39,7 +40,7 @@ public struct GenshinCharacterData: Mappable {
 }
 
 // MARK: - GenshinCharacterAvatar
-public struct GenshinCharacterAvatar: Mappable, Identifiable {
+public struct GenshinCharacterAvatar: MihoyoDataModelProtocol {
     public var id = UUID()
     public var avatarID: Int?
     public var image: String?
@@ -47,7 +48,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     public var name: String?
     public var element: String?
     public var fetter: Int?
-    public var level: Int?
+    public var level: Int = 1
     public var rarity: GenshinRarityType = .one
     public var weapon: GenshinCharacterWeapon?
     public var reliquaries: [GenshinCharacterReliquary]?
@@ -56,24 +57,6 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     public var costumes: [GenshinCharacterCostumes]?
     public var external: NSNull?
     public var skillList: [GenshinRoleSkillItemModel]?
-    
-    public var avatarURL: String {
-        icon ?? ""
-    }
-    
-    public var constellation: String {
-        guard let activedConstellationNum else {
-            return ""
-        }
-        return CopyGenshinWidget.constellation + "\(activedConstellationNum)"
-    }
-    
-    public var levelContent: String {
-        guard let level else {
-            return "Lv.1"
-        }
-        return "Lv.\(level)"
-    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -99,7 +82,7 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
         self.name = name
         self.element = element
         self.fetter = fetter
-        self.level = level
+        self.level = level ?? 1
         self.rarity = GenshinRarityType(rawValue: rarity ?? 0) ?? .one
         self.weapon = GenshinCharacterWeapon(JSONString: weapon ?? "")
         self.reliquaries = [GenshinCharacterReliquary](JSONString: reliquaries ?? "")
@@ -127,8 +110,25 @@ public struct GenshinCharacterAvatar: Mappable, Identifiable {
     }
 }
 
+extension GenshinCharacterAvatar {
+    public var avatarURL: String {
+        icon ?? ""
+    }
+    
+    public var constellation: String {
+        guard let activedConstellationNum else {
+            return ""
+        }
+        return CopyGenshinWidget.constellation + "\(activedConstellationNum)"
+    }
+    
+    public var levelContent: String {
+        "Lv.\(level)"
+    }
+}
+
 // MARK: - GenshinCharacterConstellation
-public struct GenshinCharacterConstellation: Mappable {
+public struct GenshinCharacterConstellation: MihoyoDataModelProtocol {
     public var id: Int?
     public var name: String?
     public var icon: String?
@@ -150,7 +150,7 @@ public struct GenshinCharacterConstellation: Mappable {
 }
 
 // MARK: - GenshinCharacterReliquary
-public struct GenshinCharacterReliquary: Mappable, Identifiable {
+public struct GenshinCharacterReliquary: MihoyoDataModelProtocol {
     public var id = UUID()
     public var reliquaryID: Int?
     public var name: String?
@@ -185,7 +185,7 @@ public struct GenshinCharacterReliquary: Mappable, Identifiable {
 }
 
 // MARK: - GenshinCharacterSet
-public struct GenshinCharacterSet: Mappable {
+public struct GenshinCharacterSet: MihoyoDataModelProtocol {
     public var id: Int?
     public var name: String?
     public var affixes: [GenshinCharacterAffix]?
@@ -201,7 +201,8 @@ public struct GenshinCharacterSet: Mappable {
 }
 
 // MARK: - GenshinCharacterAffix
-public struct GenshinCharacterAffix: Mappable {
+public struct GenshinCharacterAffix: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var activationNumber: Int?
     public var effect: String?
 
@@ -215,13 +216,13 @@ public struct GenshinCharacterAffix: Mappable {
 }
 
 // MARK: - GenshinCharacterWeapon
-public struct GenshinCharacterWeapon: Mappable {
+public struct GenshinCharacterWeapon: MihoyoDataModelProtocol {
     public var id: Int?
     public var name: String?
     public var icon: String?
     public var type: Int?
     public var rarity: Int?
-    public var level: Int?
+    public var level: Int = 1
     public var promoteLevel: Int?
     public var typeName: String?
     public var desc: String?
@@ -239,10 +240,7 @@ public struct GenshinCharacterWeapon: Mappable {
     }
     
     public var levelContent: String {
-        guard let level else {
-            return "Lv.1"
-        }
-        return "Lv.\(level)"
+        "Lv.\(level)"
     }
 
     public init?(map: ObjectMapper.Map) { }
@@ -262,7 +260,7 @@ public struct GenshinCharacterWeapon: Mappable {
     }
 }
 
-public struct GenshinCharacterCostumes: Mappable {
+public struct GenshinCharacterCostumes: MihoyoDataModelProtocol {
     public var id: Int = 0
     public var name: String = ""
     public var icon: String = ""
@@ -277,11 +275,12 @@ public struct GenshinCharacterCostumes: Mappable {
 }
 
 // MARK: - GenshinCharacterRole
-public struct GenshinCharacterRole: Mappable {
-    public var avatarURL: String?
-    public var nickname: String?
+public struct GenshinCharacterRole: MihoyoDataModelProtocol {
+    public var id = UUID()
+    public var avatarURL: String = ""
+    public var nickname: String = ""
     public var region: String?
-    public var level: Int?
+    public var level: Int = 1
 
     public init?(map: ObjectMapper.Map) { }
     init() { }

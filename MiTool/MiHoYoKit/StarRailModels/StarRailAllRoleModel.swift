@@ -47,13 +47,19 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
     public var itemName: String?
     public var iconURL: String?
     public var damageType: Damage?
-    public var rarity: RarityType?
+    public var rarity: RarityType = .one
     public var avatarBaseType: Destiny?
-    public var maxLevel: Int?
-    public var curLevel: Int?
+    public var maxLevel: Int = 80
+    public var curLevel: Int = 1
     public var targetLevel: Int?
     public var verticalIconURL: String?
     public var isForward: Bool?
+    
+    public var level: String {
+        "Lv: \(curLevel) / \(maxLevel)"
+    }
+    
+    init() { }
 
     init(
         itemID: String?,
@@ -62,8 +68,8 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
         damageType: Damage?, 
         rarity: RarityType?, 
         avatarBaseType: Destiny?,
-        maxLevel: Int?, 
-        curLevel: Int?,
+        maxLevel: Int = 80,
+        curLevel: Int = 1,
         targetLevel: Int?,
         verticalIconURL: String?,
         isForward: Bool?
@@ -72,7 +78,7 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
         self.itemName = itemName
         self.iconURL = iconURL
         self.damageType = damageType
-        self.rarity = rarity
+        self.rarity = rarity ?? .one
         self.avatarBaseType = avatarBaseType
         self.maxLevel = maxLevel
         self.curLevel = curLevel

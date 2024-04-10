@@ -23,7 +23,7 @@ extension SQLManager {
             try dataBase.run(starRailRoleSkill.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
                 table.column(uid)
-                table.column(itemID)
+                table.column(itemID, unique: true)
                 table.column(avatar)
                 table.column(skills)
                 table.column(skillsOther)
@@ -98,7 +98,7 @@ extension SQLManager {
                 )
                 try dataBase.prepare(query).forEach { item in
                     complete?(true, StarRailRoleInfoData(
-                        avatar: item[itemID],
+                        avatar: item[avatar],
                         skills: item[skills],
                         skillsOther: item[skillsOther],
                         equipment: item[equipment],
@@ -119,7 +119,7 @@ extension SQLManager {
             try dataBase.transaction {
                 try dataBase.prepare(starRailRoleSkill).forEach { item in
                     let model = StarRailRoleInfoData(
-                        avatar: item[itemID],
+                        avatar: item[avatar],
                         skills: item[skills],
                         skillsOther: item[skillsOther],
                         equipment: item[equipment],

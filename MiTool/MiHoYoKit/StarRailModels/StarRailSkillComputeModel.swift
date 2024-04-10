@@ -43,12 +43,15 @@ public struct StarRailSkillComputeData: Mappable {
     public var canMergeMaterials: [StarRailSkillComputeAvatarConsume]?
     // ID
     public var coinID: String?
+    // 角色 ID
+    public var roleID: String?
 
     public var userOwnsMaterialsString: String? {
         userOwnsMaterials?.toJSONString
     }
 
     public init?(map: ObjectMapper.Map) { }
+    public init() { }
 
     init(
         avatarConsume: String?,
@@ -58,16 +61,18 @@ public struct StarRailSkillComputeData: Mappable {
         needGetMaterials: String?,
         canPayMaterials: String?,
         canMergeMaterials: String?,
-        coinID: String?
+        coinID: String?,
+        roleID: String?
     ) {
-        self.avatarConsume = [StarRailSkillComputeAvatarConsume](JSONString: avatarConsume ?? "")
-        self.skillConsume = [StarRailSkillComputeAvatarConsume](JSONString: skillConsume ?? "")
-        self.equipmentConsume = [StarRailSkillComputeAvatarConsume](JSONString: equipmentConsume ?? "")
+        self.avatarConsume = [StarRailSkillComputeAvatarConsume](JSONString: avatarConsume ?? "") ?? []
+        self.skillConsume = [StarRailSkillComputeAvatarConsume](JSONString: skillConsume ?? "") ?? []
+        self.equipmentConsume = [StarRailSkillComputeAvatarConsume](JSONString: equipmentConsume ?? "") ?? []
         self.userOwnsMaterials = userOwnsMaterials?.toJSON
-        self.needGetMaterials = [StarRailSkillComputeAvatarConsume](JSONString: needGetMaterials ?? "")
-        self.canPayMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canPayMaterials ?? "")
-        self.canMergeMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canMergeMaterials ?? "")
+        self.needGetMaterials = [StarRailSkillComputeAvatarConsume](JSONString: needGetMaterials ?? "") ?? []
+        self.canPayMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canPayMaterials ?? "") ?? []
+        self.canMergeMaterials = [StarRailSkillComputeAvatarConsume](JSONString: canMergeMaterials ?? "") ?? []
         self.coinID = coinID
+        self.roleID = roleID
     }
 
     mutating public func mapping(map: ObjectMapper.Map) {
