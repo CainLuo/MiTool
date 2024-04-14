@@ -14,99 +14,100 @@ class GenshinRoleViewModel: BaseViewModel {
     
     @Published var isDisabled = true
     
+    private let helper = SQLManagerHelper()
+    
     func fetchUserList() {
         let users = SQLManager.shared.getMihoyoUserList()
-        for user in users {
-            fetchRoleInfoList(uid: user.uid)
+        users.forEach { _ in
+            fetchRoleInfoList()
         }
     }
     
-    private func fetchRoleInfoList(uid: String) {
+    private func fetchRoleInfoList() {
+        SQLManager.shared.getMihoyoGames()
+            .sink { [weak self] games in
+                let genshinAccounts = games.filter { $0.gameBiz.contains("hk4e") }
+                genshinAccounts.forEach { gameItem in
+                    self?.setupSections(gameItem: gameItem)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupSections(gameItem: MihoyoGamesItemModel) {
         var section = GenshinRoleSectionModel()
-        SQLManager.shared.getGenshinGameCard(uuid: uid) { item in
-            section.userName = item.nickname
-            section.uid = item.gameUID
-            section.roleRegion = item.region
-        }
-        
-        fetchLocalRoleList(accountUID: uid, gameUID: section.uid)
+        fetchLocalRoleList(gameUID: gameItem.gameUID, roleRegion: gameItem.region)
             .sink { [weak self] items in
                 if items.isNotEmpty {
                     section.items = items
                     self?.sections.append(section)
                 } else {
                     self?.fetchRemoteGenshinRoleList(
-                        gameUID: section.uid,
-                        roleRegion: section.roleRegion
+                        gameUID: gameItem.gameUID,
+                        roleRegion: gameItem.region
                     )
                 }
             }
             .store(in: &cancellables)
     }
     
-    func fetchLocalRoleList(accountUID: String, gameUID: String) -> AnyPublisher<[GenshinRoleSectionItemModel], Never> {
-        let localList = SQLManager.shared.getGenshinCharacter(uuid: accountUID)
-        let localSkills = SQLManager.shared.getGenshinRoleAllSkill(uuid: gameUID)
+    private func fetchLocalRoleList(
+        gameUID: String,
+        roleRegion: String
+    ) -> AnyPublisher<[GenshinRoleSectionItemModel], Never> {
+        let localList = SQLManager.shared.getGenshinCharacter(uuid: gameUID)
         let roleIDs = localList.compactMap { $0.avatarID }
         
-        return Publishers.Sequence(sequence: localSkills)
+        return Publishers.Sequence(sequence: localList)
             .map { data -> GenshinRoleSectionItemModel in
-                guard let roleID = data.roleID,
+                guard let roleID = data.avatarID,
                       let index = roleIDs.firstIndex(of: roleID) else {
                     fatalError("role id is empty")
                 }
                 let localRole = localList[index]
-                return GenshinRoleSectionItemModel(
-                    roleItem: localRole,
-                    skillData: GenshinRoleSkillDataModel(skillList: [data])
-                )
+                return GenshinRoleSectionItemModel(roleItem: localRole)
             }
             .collect()
             .eraseToAnyPublisher()
     }
     
     private func fetchRemoteGenshinRoleList(gameUID: String, roleRegion: String) {
-        let sqlHelper = SQLManagerHelper()
-        
         ApiManager.shared.fetchGenshinCharacter(with: gameUID, roleRegion: roleRegion)
             .sink { [weak self] (result: GenshinCharacterModel) in
                 guard let list = result.data?.avatars else {
                     return
                 }
-                
-                sqlHelper.saveGenshinCharacter(uid: gameUID, list: list)
-                self?.reloadGenshinCharacterSkills(uid: gameUID, roleList: list)
+                self?.helper.saveGenshinCharacter(uid: gameUID, list: list)
+                self?.reloadGenshinCharacterSkills(gameUID: gameUID, roleRegion: roleRegion, roleList: list)
             }
             .store(in: &cancellables)
     }
     
-    private func reloadGenshinCharacterSkills(uid: String, roleList: [GenshinCharacterAvatar]) {
-        let section = sections.first { $0.uid == uid }
-        guard let section = section else {
-            return
-        }
-        
-        let sqlHelper = SQLManagerHelper()
-        
+    private func reloadGenshinCharacterSkills(
+        gameUID: String,
+        roleRegion: String,
+        roleList: [GenshinCharacterAvatar]
+    ) {
         isDisabled.toggle()
         
         Publishers.Sequence(sequence: roleList)
             .flatMap { roleInfo in
                 ApiManager.shared.fetchGenshinRoleSkills(
-                   uid: section.uid,
-                   roleRegion: section.roleRegion,
-                   avatarID: roleInfo.avatarID ?? 0)
-                    .map { (roleInfo.avatarID ?? 0, $0) }
+                    gameUID: gameUID,
+                    roleRegion: roleRegion,
+                    avatarID: roleInfo.avatarID ?? 0)
+                .map { (roleInfo.avatarID ?? 0, $0) }
             }
             .collect()
             .sink { [weak self] _ in
                 self?.isDisabled.toggle()
-            } receiveValue: { (result: [(Int, GenshinRoleSkillModel)]) in
+                self?.fetchRoleInfoList()
+            } receiveValue: { [weak self] (result: [(Int, GenshinRoleSkillModel)]) in
                 result.forEach { roleID, model in
                     guard let list = model.data?.skillList else {
                         return
                     }
-                    sqlHelper.saveGenshinSkills(uid: uid, roleID: roleID, skills: list)
+                    self?.helper.saveGenshinSkills(uid: gameUID, roleID: roleID, skills: list)
                 }
             }
             .store(in: &cancellables)

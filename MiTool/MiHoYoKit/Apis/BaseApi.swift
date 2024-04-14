@@ -30,7 +30,7 @@ protocol ApiRequestProtocol {
 }
 
 class ApiRequestManager: ApiRequestProtocol {
-    func request<T>(with configuration: ApiRequestConfiguration) -> AnyPublisher<T, Never> where T : Mappable {
+    func request<T>(with configuration: ApiRequestConfiguration) -> AnyPublisher<T, Never> where T: Mappable {
         Future<T, Never> { promise in
             AF.request(
                 configuration.path,

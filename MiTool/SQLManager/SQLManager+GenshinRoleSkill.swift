@@ -23,7 +23,7 @@ extension SQLManager {
         do {
             try dataBase.run(genshinImpactSkills.create(ifNotExists: true) { table in
                 table.column(index, primaryKey: .autoincrement)
-                table.column(uid, unique: true)
+                table.column(uid)
                 table.column(itemID)
                 table.column(skillID)
                 table.column(groupID)
@@ -65,20 +65,18 @@ extension SQLManager {
         model: GenshinRoleSkillItemModel
     ) {
         do {
-            try dataBase.transaction {
-                let query = genshinImpactSkills.filter(
-                    uid == uuid &&
-                    itemID == roleID
-                )
-                try dataBase.run(query.update(
-                    itemID <- roleID,
-                    skillID <- model.skillID,
-                    groupID <- model.groupID,
-                    name <- model.name,
-                    icon <- model.icon,
-                    maxLevel <- model.maxLevel
-                ))
-            }
+            let query = genshinImpactSkills.filter(
+                uid == uuid &&
+                itemID == roleID
+            )
+            try dataBase.run(query.update(
+                itemID <- roleID,
+                skillID <- model.skillID,
+                groupID <- model.groupID,
+                name <- model.name,
+                icon <- model.icon,
+                maxLevel <- model.maxLevel
+            ))
         } catch {
             Logger.error(error)
         }
@@ -94,7 +92,7 @@ extension SQLManager {
             }
             do {
                 try self.dataBase.transaction {
-                    let query = self.genshinImpactCharacter.filter(
+                    let query = self.genshinImpactSkills.filter(
                         uid == uuid &&
                         itemID == roleID
                     )
@@ -109,31 +107,31 @@ extension SQLManager {
                         )
                         promise(.success(item))
                     }
+                    promise(.success(nil))
                 }
             } catch {
                 Logger.error(error)
             }
-        }.eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
     
     func getGenshinRoleAllSkill(uuid: String) -> [GenshinRoleSkillItemModel] {
         var list: [GenshinRoleSkillItemModel] = []
         do {
-            try dataBase.transaction {
-                let query = self.genshinImpactCharacter.filter(
-                    uid == uuid
+            let query = self.genshinImpactSkills.filter(
+                uid == uuid
+            )
+            try dataBase.prepare(query).forEach { item in
+                let item = GenshinRoleSkillItemModel(
+                    roleID: item[itemID],
+                    skillID: item[skillID],
+                    groupID: item[groupID],
+                    name: item[name],
+                    icon: item[icon],
+                    maxLevel: item[maxLevel]
                 )
-                try dataBase.prepare(query).forEach { item in
-                    let item = GenshinRoleSkillItemModel(
-                        roleID: item[itemID],
-                        skillID: item[skillID],
-                        groupID: item[groupID],
-                        name: item[name],
-                        icon: item[icon],
-                        maxLevel: item[maxLevel]
-                    )
-                    list.append(item)
-                }
+                list.append(item)
             }
             return list
         } catch {

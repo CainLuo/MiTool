@@ -163,4 +163,3 @@ struct BaseHeaders: Mappable {
         connection <- map["Connection"]
     }
 }
-

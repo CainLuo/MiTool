@@ -23,7 +23,7 @@ extension ApiManager {
             region: region,
             additionalHeaders: [
                 "DS": decodeSalt,
-                "Cookie": cookie + "stoken: \(sToken)",
+                "Cookie": cookie + "stoken=\(sToken)",
                 "x-rpc-device_fp": deviceFP,
                 "x-rpc-device_id": deviceID
             ]
@@ -76,22 +76,27 @@ extension ApiManager {
     }
     
     func fetchGenshinRoleSkills<T: Mappable>(
-        uid: String, 
+        gameUID: String, 
         roleRegion: String,
         avatarID: Int
     ) -> AnyPublisher<T, Never> {
+        var accountID = ""
+        let strings = cookie.components(separatedBy: ";")
+        let stuids = strings.filter { $0.contains("stuid=") }
+        if let uidString = stuids.first {
+            let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
+            accountID = "account_id=\(uid)"
+        }
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.roleDetail.rawValue
         let parameters: Parameters = [
-            "uid": uid,
+            "uid": gameUID,
             "region": roleRegion,
             "avatar_id": avatarID
         ]
-                
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: ["Cookie": cookie]
-        )
-        
+        let headers = [
+            "Cookie": "\(accountID);cookie_token=\(cookieToken)",
+            "referer": "https://webstatic.mihoyo.com"
+        ]
         return get(
             url: url,
             parameters: parameters,

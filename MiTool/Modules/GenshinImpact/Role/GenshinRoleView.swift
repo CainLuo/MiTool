@@ -17,35 +17,36 @@ struct GenshinRoleView: View {
 
     var body: some View {
         List(viewModel.sections) { section in
-//            Section {
-//                ForEach(section.items) { item in
-//                    HStack {
-//                        GenshinRoleAvatarInfoView(item: item.roleItem)
-//                        HStack {
-//                            if let reliquaries = item.reliquaries {
-//                                GenshinRoleReliquariesView(reliquaries: reliquaries)
-//                            }
-//                            
-//                            if let skills = item.skillList {
-//                                GenshinRoleSkillsView(skills: skills)
-//                            }
-//                            
-//                            if let weapon = item.weapon {
-//                                Spacer()
-//                                GenshinRoleWeaponView(weapon: weapon)
-//                            }
-//                        }
-//                    }
-//                    .padding()
-//                    .applyViewModifiers(
-//                        shape: .roundedRectangle(cornerRadius: 10),
-//                        backgroundColor: .black.opacity(0.4)
-//                    )
-//                    .frame(maxWidth: .infinity)
-//                }
-//            } header: {
-//                GenshinRoleSectionView(viewModel: viewModel, section: section)
-//            }
+            Section {
+                ForEach(section.items) { item in
+                    HStack {
+                        GenshinRoleAvatarInfoView(item: item.roleItem)
+                        HStack {
+                            if let reliquaries = item.roleItem.reliquaries {
+                                GenshinRoleReliquariesView(reliquaries: reliquaries)
+                            }
+                            
+                            if let skills = item.roleItem.skillList {
+                                GenshinRoleSkillsView(skills: skills)
+                            }
+                            
+                            if let weapon = item.roleItem.weapon {
+                                Spacer()
+                                GenshinRoleWeaponView(weapon: weapon)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .padding()
+                    .applyViewModifiers(
+                        shape: .roundedRectangle(cornerRadius: 10),
+                        backgroundColor: .black.opacity(0.4)
+                    )
+                    .frame(maxWidth: .infinity)
+                }
+            } header: {
+                GenshinRoleSectionView(viewModel: viewModel, section: section)
+            }
         }
         .task {
             viewModel.fetchUserList()
@@ -101,13 +102,13 @@ struct GenshinRoleReliquariesView: View {
     
     var body: some View {
         HStack {
-            ForEach(reliquaries) { reliquarie in
+            ForEach(reliquaries) { reliquary in
                 VStack {
                     ImageView(
-                        provider: .remote(reliquarie.iconURL),
+                        provider: .remote(reliquary.iconURL),
                         configuration: skillConfig
                     )
-                    Text(reliquarie.levelString)
+                    Text(reliquary.levelString)
                         .padding()
                 }
             }
@@ -159,11 +160,11 @@ struct GenshinRoleWeaponView: View {
             VStack(alignment: .trailing, spacing: Constants.spacing) {
                 Text(weapon.name ?? "")
                     .font(.system(size: 18, weight: .bold))
-                Text(weapon.levelContent)
-                Text(weapon.affixContent)
+                Text("\(weapon.level)")
+//                Text(weapon.affixContent)
             }
             ImageView(
-                provider: .remote(weapon.weaponURL),
+                provider: .remote(weapon.icon ?? ""),
                 configuration: imageConfig
             )
         }

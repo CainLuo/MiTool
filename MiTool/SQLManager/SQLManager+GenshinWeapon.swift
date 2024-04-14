@@ -38,17 +38,15 @@ extension SQLManager {
     
     func addGenshinWeaponInfo(model: GenshinWeaponItemModel) {
         do {
-            try dataBase.transaction {
-                let insert = genshinImpactWeapon.insert(
-                    weaponID <- model.weaponID,
-                    name <- model.name,
-                    icon <- model.icon,
-                    weaponCatId <- model.weaponCatId,
-                    weaponLevel <- model.weaponLevel.rawValue,
-                    maxLevel <- model.maxLevel
-                )
-                try dataBase.run(insert)
-            }
+            let insert = genshinImpactWeapon.insert(
+                weaponID <- model.weaponID,
+                name <- model.name,
+                icon <- model.icon,
+                weaponCatId <- model.weaponCatId,
+                weaponLevel <- model.weaponLevel.rawValue,
+                maxLevel <- model.maxLevel
+            )
+            try dataBase.run(insert)
         } catch {
             Logger.error(error)
         }
@@ -59,14 +57,12 @@ extension SQLManager {
         model: GenshinWeaponComputeItemModel
     ) {
         do {
-            try dataBase.transaction {
-                let query = genshinImpactWeapon.filter(
-                    weaponID == uWeaponID
-                )
-                try dataBase.run(query.update(
-                    computeInfo <- model.toJSONString()
-                ))
-            }
+            let query = genshinImpactWeapon.filter(
+                weaponID == uWeaponID
+            )
+            try dataBase.run(query.update(
+                computeInfo <- model.toJSONString()
+            ))
         } catch {
             Logger.error(error)
         }
@@ -78,20 +74,18 @@ extension SQLManager {
                 return
             }
             do {
-                try self.dataBase.transaction {
-                    let query = self.genshinImpactWeapon.filter(weaponID == uWeaponID)
-                    try self.dataBase.prepare(query).forEach { item in
-                        let avatar = GenshinWeaponItemModel(
-                            id: item[weaponID],
-                            name: item[name],
-                            icon: item[icon],
-                            weaponCatId: item[weaponCatId],
-                            weaponLevel: item[weaponLevel],
-                            maxLevel: item[maxLevel],
-                            computeInfo: item[computeInfo]
-                        )
-                        promise(.success(avatar))
-                    }
+                let query = self.genshinImpactWeapon.filter(weaponID == uWeaponID)
+                try self.dataBase.prepare(query).forEach { item in
+                    let avatar = GenshinWeaponItemModel(
+                        id: item[weaponID],
+                        name: item[name],
+                        icon: item[icon],
+                        weaponCatId: item[weaponCatId],
+                        weaponLevel: item[weaponLevel],
+                        maxLevel: item[maxLevel],
+                        computeInfo: item[computeInfo]
+                    )
+                    promise(.success(avatar))
                 }
             } catch {
                 Logger.error(error)
@@ -102,19 +96,17 @@ extension SQLManager {
     func getGenshinWeapons() -> [GenshinWeaponItemModel] {
         var list: [GenshinWeaponItemModel] = []
         do {
-            try dataBase.transaction {
-                try dataBase.prepare(genshinImpactWeapon).forEach { item in
-                    let avatar = GenshinWeaponItemModel(
-                        id: item[weaponID],
-                        name: item[name],
-                        icon: item[icon],
-                        weaponCatId: item[weaponCatId],
-                        weaponLevel: item[weaponLevel],
-                        maxLevel: item[maxLevel],
-                        computeInfo: item[computeInfo]
-                    )
-                    list.append(avatar)
-                }
+            try dataBase.prepare(genshinImpactWeapon).forEach { item in
+                let avatar = GenshinWeaponItemModel(
+                    id: item[weaponID],
+                    name: item[name],
+                    icon: item[icon],
+                    weaponCatId: item[weaponCatId],
+                    weaponLevel: item[weaponLevel],
+                    maxLevel: item[maxLevel],
+                    computeInfo: item[computeInfo]
+                )
+                list.append(avatar)
             }
             return list
         } catch {

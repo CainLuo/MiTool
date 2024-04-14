@@ -18,11 +18,14 @@ class SQLManager {
     // swiftlint: enable implicitly_unwrapped_optional
 
     let mihoyoUser = Table("mihoyoUser")
-    let mihoyoGameCards = Table("mihoyoGameCards")
+    let mihoyoGames = Table("mihoyoGames")
+    let starRailAccount = Table("starRailAccount")
+    
     let starRailRole = Table("starRailRole")
     let starRailRoleSkill = Table("starRailRoleSkill")
     let starRailDailyNode = Table("StarRailDailyNode")
     let starRailRoleCompute = Table("starRailRoleCompute")
+    
     let genshinImpactWidget = Table("genshinImpactWidget")
     let genshinImpactCharacter = Table("genshinImpactCharacter")
     let genshinImpactWeapon = Table("genshinImpactWeapon")
@@ -66,10 +69,12 @@ class SQLManager {
                 tries < 3
             }
             createMihoyoUserTable(dataBase)
+            createMihoyoGamesTable(dataBase)
+
             creteStarRailRoleTable(dataBase)
             cretestarRailRoleComputeTable(dataBase)
             creteStarRailRoleSkillTable(dataBase)
-            createMihoyoGameCardsTable(dataBase)
+            
             createGenshinImpactWidgetTable(dataBase)
             createGenshiCharacterTable(dataBase)
             createGenshinRoleSkillTable(dataBase)

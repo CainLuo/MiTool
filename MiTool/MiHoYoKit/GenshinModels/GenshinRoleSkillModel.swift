@@ -10,9 +10,9 @@ import ObjectMapper
 
 
 // GenshinRoleSkillDataModel
-public struct GenshinRoleSkillModel: Mappable {
-    public var message: String?
-    public var retcode: Int?
+public struct GenshinRoleSkillModel: MihoyoModelProtocol {
+    public var message: String = ""
+    public var retcode: Int = 0
     public var data: GenshinRoleSkillDataModel?
     
     public init?(map: Map) {}
@@ -99,12 +99,12 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
 // GenshinRoleWeaponModel
 public struct GenshinRoleWeaponModel: Mappable {
     public var id: Int?
-    public var name: String?
-    public var icon: String?
-    public var weaponCatId: Int?
-    public var weaponLevel: Int?
-    public var maxLevel: Int?
-    public var currentLevel: Int?
+    public var name: String = ""
+    public var icon: String = ""
+    public var weaponCatId: Int = 0
+    public var weaponLevel: RarityType = .one
+    public var maxLevel: Int = 90
+    public var currentLevel: Int = 1
     
     public init?(map: Map) {}
     
@@ -120,24 +120,31 @@ public struct GenshinRoleWeaponModel: Mappable {
 }
 
 // GenshinRoleReliquaryModel
-public struct GenshinRoleReliquaryModel: Mappable {
-    public var id: Int?
-    public var name: String?
-    public var icon: String?
+public struct GenshinRoleReliquaryModel: MihoyoDataModelProtocol {
+    public var id = UUID()
+    public var reliquaryID: Int?
+    public var name: String = ""
+    public var icon: String = ""
     public var reliquaryCatId: Int?
-    public var reliquaryLevel: Int?
-    public var currentLevel: Int?
-    public var maxLevel: Int?
+    public var reliquaryLevel: RarityType = .one
+    public var currentLevel: Int = 1
+    public var maxLevel: Int = 20
     
     public init?(map: Map) {}
     
     mutating public func mapping(map: Map) {
-        id <- map["id"]
+        reliquaryID <- map["id"]
         name <- map["name"]
         icon <- map["icon"]
         reliquaryCatId <- map["reliquary_cat_id"]
         reliquaryLevel <- map["reliquary_level"]
         currentLevel <- map["level_current"]
         maxLevel <- map["max_level"]
+    }
+}
+
+extension GenshinRoleReliquaryModel {
+    public var levelString: String {
+        "Lv: \(currentLevel)"
     }
 }

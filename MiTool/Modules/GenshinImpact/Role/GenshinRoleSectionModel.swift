@@ -18,5 +18,4 @@ struct GenshinRoleSectionModel: Identifiable {
 struct GenshinRoleSectionItemModel: Identifiable {
     var id = UUID()
     var roleItem = GenshinCharacterAvatar()
-    var skillData: GenshinRoleSkillDataModel?
 }

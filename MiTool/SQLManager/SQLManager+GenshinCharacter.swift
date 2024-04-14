@@ -57,26 +57,24 @@ extension SQLManager {
         model: GenshinCharacterAvatar
     ) {
         do {
-            try dataBase.transaction {
-                let insert = genshinImpactCharacter.insert(
-                    uid <- uuid,
-                    characterID <- model.avatarID,
-                    image <- model.image,
-                    icon <- model.icon,
-                    name <- model.name,
-                    element <- model.element,
-                    fetter <- model.fetter,
-                    level <- model.level,
-                    rarity <- model.rarity.rawValue,
-                    weapon <- model.weapon?.toJSONString(),
-                    reliquaries <- model.reliquaries?.toJSONString(),
-                    constellations <- model.constellations?.toJSONString(),
-                    activedConstellationNum <- model.activedConstellationNum,
-                    costumes <- model.costumes?.toJSONString(),
-                    skillList <- model.skillList?.toJSONString()
-                )
-                try dataBase.run(insert)
-            }
+            let insert = genshinImpactCharacter.insert(
+                uid <- uuid,
+                characterID <- model.avatarID,
+                image <- model.image,
+                icon <- model.icon,
+                name <- model.name,
+                element <- model.element,
+                fetter <- model.fetter,
+                level <- model.level,
+                rarity <- model.rarity.rawValue,
+                weapon <- model.weapon?.toJSONString(),
+                reliquaries <- model.reliquaries?.toJSONString(),
+                constellations <- model.constellations?.toJSONString(),
+                activedConstellationNum <- model.activedConstellationNum,
+                costumes <- model.costumes?.toJSONString(),
+                skillList <- model.skillList?.toJSONString()
+            )
+            try dataBase.run(insert)
         } catch {
             Logger.error(error)
         }
@@ -85,11 +83,49 @@ extension SQLManager {
     func getGenshinCharacter(uuid: String) -> [GenshinCharacterAvatar] {
         var list: [GenshinCharacterAvatar] = []
         do {
-            try dataBase.transaction {
-                let query = genshinImpactCharacter.filter(
-                    uid == uuid
+            let query = genshinImpactCharacter.filter(
+                uid == uuid
+            )
+            try dataBase.prepare(query).forEach { item in
+                let avatar = GenshinCharacterAvatar(
+                    avatarID: item[characterID],
+                    image: item[image],
+                    icon: item[icon],
+                    name: item[name],
+                    element: item[element],
+                    fetter: item[fetter],
+                    level: item[level],
+                    rarity: item[rarity],
+                    weapon: item[weapon],
+                    reliquaries: item[reliquaries],
+                    constellations: item[constellations],
+                    activedConstellationNum: item[activedConstellationNum],
+                    costumes: item[costumes],
+                    skillList: item[skillList]
                 )
-                try dataBase.prepare(query).forEach { item in
+                list.append(avatar)
+            }
+            return list
+        } catch {
+            Logger.error(error)
+            return list
+        }
+    }
+    
+    func getGenshinCharacter(
+        uuid: String,
+        avatarID: Int
+    ) -> AnyPublisher<GenshinCharacterAvatar?, Never> {
+        Future<GenshinCharacterAvatar?, Never> { [weak self] promise in
+            guard let self = self else {
+                return
+            }
+            do {
+                let query = self.genshinImpactCharacter.filter(
+                    uid == uuid &&
+                    characterID == avatarID
+                )
+                try self.dataBase.prepare(query).forEach { item in
                     let avatar = GenshinCharacterAvatar(
                         avatarID: item[characterID],
                         image: item[image],
@@ -106,54 +142,14 @@ extension SQLManager {
                         costumes: item[costumes],
                         skillList: item[skillList]
                     )
-                    list.append(avatar)
+                    promise(.success(avatar))
                 }
-            }
-            return list
-        } catch {
-            Logger.error(error)
-            return list
-        }
-    }
-    
-    func getGenshinCharacter(
-        uuid: String,
-        avatarID: Int
-    ) -> AnyPublisher<GenshinCharacterAvatar?, Never> {
-        return Future<GenshinCharacterAvatar?, Never> { [weak self] promise in
-            guard let self = self else {
-                return
-            }
-            do {
-                try self.dataBase.transaction {
-                    let query = self.genshinImpactCharacter.filter(
-                        uid == uuid &&
-                        characterID == avatarID
-                    )
-                    try self.dataBase.prepare(query).forEach { item in
-                        let avatar = GenshinCharacterAvatar(
-                            avatarID: item[characterID],
-                            image: item[image],
-                            icon: item[icon],
-                            name: item[name],
-                            element: item[element],
-                            fetter: item[fetter],
-                            level: item[level],
-                            rarity: item[rarity],
-                            weapon: item[weapon],
-                            reliquaries: item[reliquaries],
-                            constellations: item[constellations],
-                            activedConstellationNum: item[activedConstellationNum],
-                            costumes: item[costumes],
-                            skillList: item[skillList]
-                        )
-                        promise(.success(avatar))
-                    }
-                }
+                promise(.success(nil))
             } catch {
                 Logger.error(error)
             }
-        }.eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
 
     func upgradeGenshinCharacter(
@@ -161,27 +157,26 @@ extension SQLManager {
         model: GenshinCharacterAvatar
     ) {
         do {
-            try dataBase.transaction {
-                let query = genshinImpactCharacter.filter(
-                    uid == uuid &&
-                    characterID == model.avatarID ?? 0
-                )
-                try dataBase.run(query.update(
-                    characterID <- model.avatarID,
-                    image <- model.image,
-                    icon <- model.icon,
-                    name <- model.name,
-                    element <- model.element,
-                    fetter <- model.fetter,
-                    level <- model.level,
-                    rarity <- model.rarity.rawValue,
-                    weapon <- model.weapon?.toJSONString(),
-                    reliquaries <- model.reliquaries?.toJSONString(),
-                    constellations <- model.constellations?.toJSONString(),
-                    activedConstellationNum <- model.activedConstellationNum,
-                    costumes <- model.costumes?.toJSONString()
-                ))
-            }
+            let query = genshinImpactCharacter.filter(
+                uid == uuid &&
+                characterID == model.avatarID ?? 0
+            )
+            try dataBase.run(query.update(
+                characterID <- model.avatarID,
+                image <- model.image,
+                icon <- model.icon,
+                name <- model.name,
+                element <- model.element,
+                fetter <- model.fetter,
+                level <- model.level,
+                rarity <- model.rarity.rawValue,
+                weapon <- model.weapon?.toJSONString(),
+                reliquaries <- model.reliquaries?.toJSONString(),
+                constellations <- model.constellations?.toJSONString(),
+                activedConstellationNum <- model.activedConstellationNum,
+                costumes <- model.costumes?.toJSONString(),
+                skillList <- model.skillList?.toJSONString()
+            ))
         } catch {
             Logger.error(error)
         }
@@ -193,15 +188,13 @@ extension SQLManager {
         skills: [GenshinRoleSkillItemModel]
     ) {
         do {
-            try dataBase.transaction {
-                let query = genshinImpactCharacter.filter(
-                    uid == uuid &&
-                    characterID == avatarID
-                )
-                try dataBase.run(query.update(
-                    skillList <- skills.toJSONString()
-                ))
-            }
+            let query = genshinImpactCharacter.filter(
+                uid == uuid &&
+                characterID == avatarID
+            )
+            try dataBase.run(query.update(
+                skillList <- skills.toJSONString()
+            ))
         } catch {
             Logger.error(error)
         }

@@ -47,8 +47,7 @@ extension SQLManager {
 
     func addStarRailRoleInfo(
         uuid: String,
-        model: StarRailAllRoleListModel,
-        complete: ((Bool, Error?) -> Void)?
+        model: StarRailAllRoleListModel
     ) {
         do {
             let insert = starRailRole.insert(
@@ -66,24 +65,22 @@ extension SQLManager {
                 isForward <- model.isForward ?? false
             )
             try dataBase.run(insert)
-            complete?(true, nil)
         } catch {
             Logger.error(error)
-            complete?(false, error)
         }
     }
 
     func upgradeStarRailRoleInfo(
         uuid: String,
-        model: StarRailAllRoleListModel,
-        complete: ((Bool, Error?) -> Void)?
+        model: StarRailAllRoleListModel
     ) {
+        let starRailRole = starRailRole.filter(
+            uid == uuid &&
+            itemID == model.itemID ?? ""
+        )
+
         do {
             try dataBase.transaction {
-                let starRailRole = starRailRole.filter(
-                    uid == uuid &&
-                    itemID == model.itemID ?? ""
-                )
                 try dataBase.run(starRailRole.update(
                     itemName <- model.itemName,
                     iconURL <- model.iconURL,
@@ -96,10 +93,9 @@ extension SQLManager {
                     verticalIconURL <- model.verticalIconURL,
                     isForward <- model.isForward ?? false
                 ))
-                complete?(true, nil)
             }
         } catch {
-            complete?(false, error)
+            Logger.error(error)
         }
     }
     
@@ -140,23 +136,22 @@ extension SQLManager {
     func getAllStarRailRoleList(uuid: String) -> [StarRailAllRoleListModel] {
         var list: [StarRailAllRoleListModel] = []
         do {
-            try dataBase.transaction {
-                try dataBase.prepare(starRailRole).forEach { item in
-                    let model = StarRailAllRoleListModel(
-                        itemID: item[itemID],
-                        itemName: item[itemName],
-                        iconURL: item[iconURL],
-                        damageType: Damage(rawValue: item[damageType] ?? ""),
-                        rarity: RarityType(rawValue: item[rarity] ?? ""),
-                        avatarBaseType: Destiny(rawValue: item[avatarBaseType] ?? ""),
-                        maxLevel: item[maxLevel] ?? 80,
-                        curLevel: item[curLevel] ?? 1,
-                        targetLevel: item[targetLevel],
-                        verticalIconURL: item[verticalIconURL],
-                        isForward: item[isForward]
-                    )
-                    list.append(model)
-                }
+            let query = starRailRole.filter(uid == uuid)
+            try dataBase.prepare(query).forEach { item in
+                let model = StarRailAllRoleListModel(
+                    itemID: item[itemID],
+                    itemName: item[itemName],
+                    iconURL: item[iconURL],
+                    damageType: Damage(rawValue: item[damageType] ?? ""),
+                    rarity: RarityType(rawValue: item[rarity] ?? ""),
+                    avatarBaseType: Destiny(rawValue: item[avatarBaseType] ?? ""),
+                    maxLevel: item[maxLevel] ?? 80,
+                    curLevel: item[curLevel] ?? 1,
+                    targetLevel: item[targetLevel],
+                    verticalIconURL: item[verticalIconURL],
+                    isForward: item[isForward]
+                )
+                list.append(model)
             }
             return list
         } catch {
