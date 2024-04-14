@@ -21,9 +21,9 @@ class MihoyoUserManager {
 
     func fetchUserInformation() {
         users = SQLManager.shared.getMihoyoUserList()
-        users.forEach {
-            gameUser.append(contentsOf: SQLManager.shared.getAllMihoyoGameCards(uuid: $0.uid))
-        }
+//        users.forEach {
+//            gameUser.append(contentsOf: SQLManager.shared.getAllMihoyoGameCards(uuid: $0.uid))
+//        }
     }
     
     func addUser(userInfo: MihoyoUserInfo) {

@@ -85,6 +85,41 @@ public struct MihoyoGameCardsList: MihoyoDataModelProtocol {
     
     public init?(map: ObjectMapper.Map) {
     }
+    
+    public init(
+        hasRole: Bool? = nil,
+        gameID: Int? = nil,
+        gameRoleID: String = "",
+        gameUID: String = "",
+        nickname: String = "",
+        region: String = "",
+        level: Int = 1,
+        backgroundImage: String = "",
+        isPublic: Bool? = nil,
+        data: String? = nil,
+        regionName: String = "",
+        url: String = "",
+        dataSwitches: String? = nil,
+        h5DataSwitches: String? = nil,
+        backgroundColor: String = "",
+        backgroundImageV2: String = ""
+    ) {
+        self.hasRole = hasRole
+        self.gameID = MihoyoGameID(rawValue: gameID ?? 2)
+        self.gameRoleID = gameRoleID
+        self.gameUID = gameUID
+        self.nickname = nickname
+        self.region = region
+        self.level = level
+        self.backgroundImage = backgroundImage
+        self.isPublic = isPublic
+        self.data = [MihoyoGameCardsDatum](JSONString: data ?? "")
+        self.regionName = regionName
+        self.url = url
+        self.dataSwitches = [MihoyoGameCardsDataSwitch](JSONString: dataSwitches ?? "")
+        self.backgroundColor = backgroundColor
+        self.backgroundImageV2 = backgroundImageV2
+    }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         hasRole <- map["has_role"]

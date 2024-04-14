@@ -17,49 +17,60 @@ class StarRailRoleListViewModel: BaseViewModel {
 
     func fetchRoleAllList() {
         let users = SQLManager.shared.getMihoyoUserList()
-        for user in users {
-            fetchRoleInfoList(uid: user.uid)
+        users.forEach { _ in
+            fetchRoleInfoList()
         }
     }
     
-    private func fetchRoleInfoList(uid: String) {
+    private func fetchRoleInfoList() {
+        SQLManager.shared.getMihoyoGames()
+            .sink { [weak self] games in
+                let starRailAccounts = games.filter { $0.gameBiz.contains("hkrpg") }
+                starRailAccounts.forEach { gameItem in
+                    self?.setupSections(gameItem: gameItem)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupSections(gameItem: MihoyoGamesItemModel) {
         var section = StarRailRoleSectionModel()
-        SQLManager.shared.getStarRailGameCard(uuid: uid) { item in
-            section.userName = item.nickname
-            section.uid = item.gameUID
-            section.roleRegion = item.region
-        }
-        
-        fetchLocalData(accountUID: uid, gameUID: section.uid)
+        fetchLocalData(gameUID: gameItem.gameUID, roleRegion: gameItem.region)
             .sink { [weak self] items in
                 if items.isNotEmpty {
                     section.items = items
                     self?.sections.append(section)
                 } else {
                     self?.fetchRemoteRoleList(
-                        gameUID: section.uid,
-                        gameRegion: section.roleRegion,
+                        gameUID: gameItem.gameUID,
+                        gameRegion: gameItem.region,
                         page: self?.remotePage ?? 1
                     )
-                    self?.remotePage += 1
                 }
             }
             .store(in: &cancellables)
     }
     
-    private func fetchLocalData(accountUID: String, gameUID: String) -> AnyPublisher<[StarRailRoleSectionItemModel], Never> {
-        let locaList = SQLManager.shared.getAllStarRailRoleList(uuid: accountUID)
-        let compute = SQLManager.shared.getAllStarRailRoleComputeList(gameUID)
+    private func fetchLocalData(gameUID: String, roleRegion: String) -> AnyPublisher<[StarRailRoleSectionItemModel], Never> {
+        let locaList = SQLManager.shared.getAllStarRailRoleList(uuid: gameUID)
+        let computeList = SQLManager.shared.getAllStarRailRoleComputeList(gameUID)
         let roleIDs = locaList.compactMap { $0.itemID }
         
-        return Publishers.Sequence(sequence: compute)
-            .map { data -> StarRailRoleSectionItemModel in
-                guard let roleID = data.roleID,
+        return Publishers.Sequence(sequence: locaList)
+            .map { [weak self] data -> StarRailRoleSectionItemModel in
+                guard let roleID = data.itemID,
                       let index = roleIDs.firstIndex(of: roleID) else {
                     fatalError("role id is empty")
                 }
                 let localRole = locaList[index]
-                return StarRailRoleSectionItemModel(roleItem: localRole, compute: data)
+                let compute = computeList.first(where: { $0.roleID == localRole.itemID })
+                let localCompute = computeList.isEmpty ? nil : compute
+                
+                if localCompute == nil {
+                    self?.fetchRemoteRoleDetail(uid: gameUID, roleID: roleID, roleRegion: roleRegion)
+                }
+                
+                return StarRailRoleSectionItemModel(roleItem: localRole, compute: localCompute)
             }
             .collect()
             .eraseToAnyPublisher()
@@ -68,35 +79,45 @@ class StarRailRoleListViewModel: BaseViewModel {
     private func fetchRemoteRoleList(gameUID: String, gameRegion: String, page: Int) {
         ApiManager.shared.featchStarRailRoleList(with: gameUID, roleRegion: gameRegion, page: page)
             .sink { [weak self] (result: StarRailAllRoleModel) in
-                guard let list = result.data?.list else {
+                guard let list = result.data?.list,
+                      list.isNotEmpty else {
                     self?.fetchRoleAllList()
                     return
                 }
                 SQLManagerHelper.saveStarRailRoleDetail(uid: gameUID, list: list)
-                self?.fetchRemoteRoleList(gameUID: gameUID, gameRegion: gameRegion, page: page)
+                self?.remotePage += 1
+                self?.fetchRemoteRoleList(gameUID: gameUID, gameRegion: gameRegion, page: self?.remotePage ?? 1)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchRemoteRoleDetail(uid: String, roleID: String, roleRegion: String) {
+        ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID, roleRegion: roleRegion)
+            .sink { [weak self] (result: StarRailRoleInfoModel) in
+                guard let data = result.data else {
+                    return
+                }
+                SQLManagerHelper.addStarRailRoleSkill(uid: uid, info: data)
+                self?.fetchRemoteRoleCompute(uid: uid, roleRegion: roleRegion, role: data)
             }
             .store(in: &cancellables)
     }
 
-    private func featchRemoteRoleCompute(
+    private func fetchRemoteRoleCompute(
         uid: String,
         roleRegion: String,
         role: StarRailRoleInfoData
     ) {
-        let section = sections.first { $0.uid == uid }
-        let filterRole = section?.items.first { $0.roleInfo.avatar?.itemID == role.avatar?.itemID ?? "" }
-        guard var filterRole else {
-            return
-        }
-
         let parameters = StarRailComputeRequestModel(role: role, roleRegion: roleRegion)
-
+        let sectionIndex = sections.firstIndex { $0.uid == uid } ?? 0
+        let itemIndex = sections[sectionIndex].items.firstIndex { $0.roleItem.itemID == role.avatar?.itemID ?? "" } ?? 0
+        
         ApiManager.shared.fetchStarRailRoleSkillCompute(with: parameters)
-            .sink { (result: StarRailSkillComputeModel) in
+            .sink { [weak self] (result: StarRailSkillComputeModel) in
                 guard let data = result.data else {
                     return
                 }
-                filterRole.compute = data
+                self?.sections[sectionIndex].items[itemIndex].compute = data
                 SQLManagerHelper().addStarRailRoleCompute(
                     uid: uid,
                     roleID: role.avatar?.itemID ?? "",
@@ -106,33 +127,3 @@ class StarRailRoleListViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
 }
-
-//extension StarRailRoleListViewModel {
-//    private func fetchRemoteRoleList(uid: String, roleRegion: String, roleList: [StarRailAllRoleListModel]) {
-//        Publishers.Sequence(sequence: roleList)
-//            .flatMap {
-//                self.fetchRemoteRoleDetailPublisher(uid: uid, roleID: $0.itemID ?? "", roleRegion: roleRegion)
-//            }
-//            .collect()
-//            .sink(receiveCompletion: { _ in
-//                // 所有请求完成后的操作
-//                print("All role detail requests completed")
-//            }, receiveValue: { _ in
-//                // 可选：处理收集到的数据
-//            })
-//            .store(in: &cancellables)
-//    }
-//
-//    private func fetchRemoteRoleDetailPublisher(uid: String, roleID: String, roleRegion: String) -> AnyPublisher<Void, Never> {
-//        ApiManager.shared.fetchStarRailRoleDetail(with: uid, roleID: roleID, roleRegion: roleRegion)
-//            .tryMap { (result: StarRailRoleInfoModel) in
-//                guard let data = result.data else {
-//                    return
-//                }
-//                SQLManagerHelper.saveStarRailRoleSkill(uid: uid, roleID: roleID, info: data)
-//            }
-//            .map { _ in }
-//            .replaceError(with: ())
-//            .eraseToAnyPublisher()
-//    }
-//}

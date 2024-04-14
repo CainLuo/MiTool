@@ -64,22 +64,20 @@ extension SQLManager {
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
-            try dataBase.transaction {
-                let starRailRoleSkill = starRailRoleSkill.filter(
-                    uid == uuid &&
-                    itemID == model.avatar?.itemID ?? ""
-                )
-                try dataBase.run(starRailRoleSkill.update(
-                    uid <- uuid,
-                    itemID <- model.avatar?.itemID,
-                    avatar <- model.avatar?.toJSONString(),
-                    skills <- model.skills.toJSONString(),
-                    skillsOther <- model.skillsOther.toJSONString(),
-                    equipment <- model.equipment?.toJSONString(),
-                    isLogin <- model.isLogin
-                ))
-                complete?(true, nil)
-            }
+            let starRailRoleSkill = starRailRoleSkill.filter(
+                uid == uuid &&
+                itemID == model.avatar?.itemID ?? ""
+            )
+            try dataBase.run(starRailRoleSkill.update(
+                uid <- uuid,
+                itemID <- model.avatar?.itemID,
+                avatar <- model.avatar?.toJSONString(),
+                skills <- model.skills.toJSONString(),
+                skillsOther <- model.skillsOther.toJSONString(),
+                equipment <- model.equipment?.toJSONString(),
+                isLogin <- model.isLogin
+            ))
+            complete?(true, nil)
         } catch {
             complete?(false, error)
         }
@@ -91,20 +89,18 @@ extension SQLManager {
         complete: ((Bool, StarRailRoleInfoData?) -> Void)?
     ) {
         do {
-            try dataBase.transaction {
-                let query = starRailRoleSkill.filter(
-                    uid == uuid &&
-                    itemID == roleID
-                )
-                try dataBase.prepare(query).forEach { item in
-                    complete?(true, StarRailRoleInfoData(
-                        avatar: item[avatar],
-                        skills: item[skills],
-                        skillsOther: item[skillsOther],
-                        equipment: item[equipment],
-                        isLogin: item[isLogin] ?? false
-                    ))
-                }
+            let query = starRailRoleSkill.filter(
+                uid == uuid &&
+                itemID == roleID
+            )
+            try dataBase.prepare(query).forEach { item in
+                complete?(true, StarRailRoleInfoData(
+                    avatar: item[avatar],
+                    skills: item[skills],
+                    skillsOther: item[skillsOther],
+                    equipment: item[equipment],
+                    isLogin: item[isLogin] ?? false
+                ))
             }
             complete?(false, nil)
         } catch {
@@ -116,17 +112,15 @@ extension SQLManager {
     func getAllStarRailRoleSkillList(uuid: String) -> [StarRailRoleInfoData] {
         var list: [StarRailRoleInfoData] = []
         do {
-            try dataBase.transaction {
-                try dataBase.prepare(starRailRoleSkill).forEach { item in
-                    let model = StarRailRoleInfoData(
-                        avatar: item[avatar],
-                        skills: item[skills],
-                        skillsOther: item[skillsOther],
-                        equipment: item[equipment],
-                        isLogin: item[isLogin] ?? false
-                    )
-                    list.append(model)
-                }
+            try dataBase.prepare(starRailRoleSkill).forEach { item in
+                let model = StarRailRoleInfoData(
+                    avatar: item[avatar],
+                    skills: item[skills],
+                    skillsOther: item[skillsOther],
+                    equipment: item[equipment],
+                    isLogin: item[isLogin] ?? false
+                )
+                list.append(model)
             }
             return list
         } catch {

@@ -23,7 +23,7 @@ extension ApiManager {
             region: region,
             additionalHeaders: [
                 "DS": decodeSalt,
-                "Cookie": cookie + "stoken: \(sToken)",
+                "Cookie": cookie + "stoken=\(sToken)",
                 "x-rpc-device_fp": deviceFP,
                 "x-rpc-device_id": deviceID
             ]
@@ -38,12 +38,12 @@ extension ApiManager {
     
     func fetchGenshinCharacter<T: Mappable>(
         with uid: String,
-        server: String
+        roleRegion: String
     ) -> AnyPublisher<T, Never> {
         let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.GenshinImpact.character.rawValue
         let parameters: Parameters = [
-            "role_id": "109050292",
-            "server": "cn_gf01"
+            "role_id": uid,
+            "server": roleRegion
         ]
         
         guard let body = parameters.toJSONString?.removeNewlinesAndSpaces() else {
@@ -76,22 +76,27 @@ extension ApiManager {
     }
     
     func fetchGenshinRoleSkills<T: Mappable>(
-        uid: String, 
-        server: String,
+        gameUID: String, 
+        roleRegion: String,
         avatarID: Int
     ) -> AnyPublisher<T, Never> {
+        var accountID = ""
+        let strings = cookie.components(separatedBy: ";")
+        let stuids = strings.filter { $0.contains("stuid=") }
+        if let uidString = stuids.first {
+            let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
+            accountID = "account_id=\(uid)"
+        }
         let url = ApiKeys.Host.takumi.rawValue + ApiKeys.GenshinImpact.roleDetail.rawValue
         let parameters: Parameters = [
-            "uid": uid,
-            "region": server,
+            "uid": gameUID,
+            "region": roleRegion,
             "avatar_id": avatarID
         ]
-                
-        let headers = ApiHeaderConfiguration.defaultHeaders(
-            region: region,
-            additionalHeaders: ["Cookie": cookie]
-        )
-        
+        let headers = [
+            "Cookie": "\(accountID);cookie_token=\(cookieToken)",
+            "referer": "https://webstatic.mihoyo.com"
+        ]
         return get(
             url: url,
             parameters: parameters,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class MihoyoUserEditViewModel: BaseViewModel {
     @Published var saveUserSuccess = false
@@ -73,26 +74,30 @@ class MihoyoUserEditViewModel: BaseViewModel {
                 }
                 self?.uid = userInfo.uid
                 self?.nickname = userInfo.nickname
-                self?.fetchGameCard(uid: userInfo.uid, server: StarRailGameBiz.china.rawValue)
-                self?.fetchGameCard(uid: userInfo.uid, server: GenshinGameBiz.china.rawValue)
+                self?.fetchGameCard(uid: userInfo.uid)
             }
             .store(in: &cancellables)
     }
     
-    func fetchGameCard(uid: String, server: String) {
-        ApiManager.shared.fetchStarRailGameCards(
-            uid: uid,
-            server: StarRailGameBiz.china.rawValue
-        )
-            .sink { (result: MihoyoGameCardsModel) in
-                guard let list = result.data?.list else {
-                    return
-                }
-                if server == StarRailGameBiz.china.rawValue {
-                    SQLManagerHelper.saveStarRailCards(uid, gameCards: list)
-                }
-                if server == GenshinGameBiz.china.rawValue {
-                    SQLManagerHelper.saveGenshinCards(uid, gameCards: list)
+    func fetchGameCard(uid: String) {
+        let games = [StarRailGameBiz.china.rawValue, GenshinGameBiz.china.rawValue]
+        
+        Publishers.Sequence(sequence: games)
+            .flatMap { server in
+                ApiManager.shared.fetchStarRailGameCards(
+                    uid: uid,
+                    server: server)
+                .map { (server, $0) }
+            }
+            .collect()
+            .sink { _ in
+                Logger.info("success")
+            } receiveValue: { (result: [(String, MihoyoGamesModel)]) in
+                result.forEach { gameCards in
+                    guard let list = gameCards.1.data?.list else {
+                        return
+                    }
+                    SQLManagerHelper().saveMihoyoGames(uid, gameCards: list)
                 }
             }
             .store(in: &cancellables)

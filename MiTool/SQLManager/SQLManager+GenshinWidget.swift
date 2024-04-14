@@ -94,26 +94,24 @@ extension SQLManager {
     ) {
         Logger.warning("Update widget data with uid: \(uuid), model: \(model)")
         do {
-            try dataBase.transaction {
-                let genshinImpactWidget = genshinImpactWidget.filter(
-                    uid == uuid
-                )
-                try dataBase.run(genshinImpactWidget.update(
-                    uid <- uuid,
-                    currentResin <- model.currentResin,
-                    maxResin <- model.maxResin,
-                    resinRecoveryTime <- model.resinRecoveryTime,
-                    finishedTaskNum <- model.finishedTaskNum,
-                    totalTaskNum <- model.totalTaskNum,
-                    isExtraTaskRewardReceived <- model.isExtraTaskRewardReceived,
-                    currentExpeditionNum <- model.currentExpeditionNum,
-                    maxExpeditionNum <- model.maxExpeditionNum,
-                    expeditions <- model.expeditions?.toJSONString(),
-                    currentHomeCoin <- model.currentHomeCoin,
-                    maxHomeCoin <- model.maxHomeCoin
-                ))
-                complete?(true, nil)
-            }
+            let genshinImpactWidget = genshinImpactWidget.filter(
+                uid == uuid
+            )
+            try dataBase.run(genshinImpactWidget.update(
+                uid <- uuid,
+                currentResin <- model.currentResin,
+                maxResin <- model.maxResin,
+                resinRecoveryTime <- model.resinRecoveryTime,
+                finishedTaskNum <- model.finishedTaskNum,
+                totalTaskNum <- model.totalTaskNum,
+                isExtraTaskRewardReceived <- model.isExtraTaskRewardReceived,
+                currentExpeditionNum <- model.currentExpeditionNum,
+                maxExpeditionNum <- model.maxExpeditionNum,
+                expeditions <- model.expeditions?.toJSONString(),
+                currentHomeCoin <- model.currentHomeCoin,
+                maxHomeCoin <- model.maxHomeCoin
+            ))
+            complete?(true, nil)
         } catch {
             Logger.error(error)
             complete?(false, error)
@@ -125,23 +123,21 @@ extension SQLManager {
         complete: ((Bool, GenshinWidgetData?) -> Void)?
     ) {
         do {
-            try dataBase.transaction {
-                let query = genshinImpactWidget.filter(uid == uuid)
-                try dataBase.prepare(query).forEach { item in
-                    complete?(true, GenshinWidgetData(
-                        currentResin: item[currentResin] ?? 0,
-                        maxResin: item[maxResin] ?? 0,
-                        resinRecoveryTime: item[resinRecoveryTime] ?? "",
-                        finishedTaskNum: item[finishedTaskNum] ?? 0,
-                        totalTaskNum: item[totalTaskNum] ?? 0,
-                        isExtraTaskRewardReceived: item[isExtraTaskRewardReceived],
-                        currentExpeditionNum: item[currentExpeditionNum] ?? 0,
-                        maxExpeditionNum: item[maxExpeditionNum] ?? 0,
-                        expeditions: item[expeditions],
-                        currentHomeCoin: item[currentHomeCoin] ?? 0,
-                        maxHomeCoin: item[maxHomeCoin] ?? 0
-                    ))
-                }
+            let query = genshinImpactWidget.filter(uid == uuid)
+            try dataBase.prepare(query).forEach { item in
+                complete?(true, GenshinWidgetData(
+                    currentResin: item[currentResin] ?? 0,
+                    maxResin: item[maxResin] ?? 0,
+                    resinRecoveryTime: item[resinRecoveryTime] ?? "",
+                    finishedTaskNum: item[finishedTaskNum] ?? 0,
+                    totalTaskNum: item[totalTaskNum] ?? 0,
+                    isExtraTaskRewardReceived: item[isExtraTaskRewardReceived],
+                    currentExpeditionNum: item[currentExpeditionNum] ?? 0,
+                    maxExpeditionNum: item[maxExpeditionNum] ?? 0,
+                    expeditions: item[expeditions],
+                    currentHomeCoin: item[currentHomeCoin] ?? 0,
+                    maxHomeCoin: item[maxHomeCoin] ?? 0
+                ))
             }
             complete?(false, nil)
         } catch {

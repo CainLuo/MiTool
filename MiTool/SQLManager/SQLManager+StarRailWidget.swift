@@ -85,25 +85,23 @@ extension SQLManager {
         complete: ((Bool, Error?) -> Void)?
     ) {
         do {
-            try dataBase.transaction {
-                let mihoyoUser = starRailDailyNode.filter(uid == uuid)
-                try dataBase.run(mihoyoUser.update(
-                    uid <- uuid,
-                    currentStamina <- model.currentStamina,
-                    maxStamina <- model.maxStamina,
-                    staminaRecoverTime <- model.staminaRecoverTime,
-                    acceptedEpeditionNum <- model.acceptedEpeditionNum,
-                    totalExpeditionNum <- model.totalExpeditionNum,
-                    expeditions <- model.expeditions?.toJSONString(),
-                    currentTrainScore <- model.currentTrainScore,
-                    maxRogueScore <- model.maxRogueScore,
-                    weeklyCocoonCnt <- model.weeklyCocoonCnt,
-                    weeklyCocoonLimit <- model.weeklyCocoonLimit,
-                    currentReserveStamina <- model.currentReserveStamina,
-                    isReserveStaminaFull <- model.isReserveStaminaFull
-                ))
-                complete?(true, nil)
-            }
+            let mihoyoUser = starRailDailyNode.filter(uid == uuid)
+            try dataBase.run(mihoyoUser.update(
+                uid <- uuid,
+                currentStamina <- model.currentStamina,
+                maxStamina <- model.maxStamina,
+                staminaRecoverTime <- model.staminaRecoverTime,
+                acceptedEpeditionNum <- model.acceptedEpeditionNum,
+                totalExpeditionNum <- model.totalExpeditionNum,
+                expeditions <- model.expeditions?.toJSONString(),
+                currentTrainScore <- model.currentTrainScore,
+                maxRogueScore <- model.maxRogueScore,
+                weeklyCocoonCnt <- model.weeklyCocoonCnt,
+                weeklyCocoonLimit <- model.weeklyCocoonLimit,
+                currentReserveStamina <- model.currentReserveStamina,
+                isReserveStaminaFull <- model.isReserveStaminaFull
+            ))
+            complete?(true, nil)
         } catch {
             complete?(false, error)
         }
@@ -114,28 +112,26 @@ extension SQLManager {
         complete: ((Bool, StarRailWidgetDataModel?) -> Void)?
     ) {
         do {
-            try dataBase.transaction {
-                let query = starRailDailyNode.filter(
-                    uid == uuid
-                )
-                try dataBase.prepare(query).forEach { item in
-                    complete?(true, StarRailWidgetDataModel(
-                        currentStamina: item[currentStamina],
-                        maxStamina: item[maxStamina],
-                        staminaRecoverTime: item[staminaRecoverTime],
-                        acceptedEpeditionNum: item[acceptedEpeditionNum],
-                        totalExpeditionNum: item[totalExpeditionNum],
-                        expeditions: item[expeditions],
-                        currentTrainScore: item[currentTrainScore],
-                        maxTrainScore: item[maxTrainScore],
-                        currentRogueScore: item[currentRogueScore],
-                        maxRogueScore: item[maxRogueScore],
-                        weeklyCocoonCnt: item[weeklyCocoonCnt],
-                        weeklyCocoonLimit: item[weeklyCocoonLimit],
-                        currentReserveStamina: item[currentReserveStamina],
-                        isReserveStaminaFull: item[isReserveStaminaFull]
-                    ))
-                }
+            let query = starRailDailyNode.filter(
+                uid == uuid
+            )
+            try dataBase.prepare(query).forEach { item in
+                complete?(true, StarRailWidgetDataModel(
+                    currentStamina: item[currentStamina],
+                    maxStamina: item[maxStamina],
+                    staminaRecoverTime: item[staminaRecoverTime],
+                    acceptedEpeditionNum: item[acceptedEpeditionNum],
+                    totalExpeditionNum: item[totalExpeditionNum],
+                    expeditions: item[expeditions],
+                    currentTrainScore: item[currentTrainScore],
+                    maxTrainScore: item[maxTrainScore],
+                    currentRogueScore: item[currentRogueScore],
+                    maxRogueScore: item[maxRogueScore],
+                    weeklyCocoonCnt: item[weeklyCocoonCnt],
+                    weeklyCocoonLimit: item[weeklyCocoonLimit],
+                    currentReserveStamina: item[currentReserveStamina],
+                    isReserveStaminaFull: item[isReserveStaminaFull]
+                ))
             }
             complete?(false, nil)
         } catch {
@@ -147,26 +143,24 @@ extension SQLManager {
     func getStarRaillAllDailyNode() -> [StarRailWidgetDataModel] {
         var list: [StarRailWidgetDataModel] = []
         do {
-            try dataBase.transaction {
-                try dataBase.prepare(starRailDailyNode).forEach { item in
-                    let account = StarRailWidgetDataModel(
-                        currentStamina: item[currentStamina],
-                        maxStamina: item[maxStamina],
-                        staminaRecoverTime: item[staminaRecoverTime],
-                        acceptedEpeditionNum: item[acceptedEpeditionNum],
-                        totalExpeditionNum: item[totalExpeditionNum],
-                        expeditions: item[expeditions],
-                        currentTrainScore: item[currentTrainScore],
-                        maxTrainScore: item[maxTrainScore],
-                        currentRogueScore: item[currentRogueScore],
-                        maxRogueScore: item[maxRogueScore],
-                        weeklyCocoonCnt: item[weeklyCocoonCnt],
-                        weeklyCocoonLimit: item[weeklyCocoonLimit],
-                        currentReserveStamina: item[currentReserveStamina],
-                        isReserveStaminaFull: item[isReserveStaminaFull]
-                    )
-                    list.append(account)
-                }
+            try dataBase.prepare(starRailDailyNode).forEach { item in
+                let account = StarRailWidgetDataModel(
+                    currentStamina: item[currentStamina],
+                    maxStamina: item[maxStamina],
+                    staminaRecoverTime: item[staminaRecoverTime],
+                    acceptedEpeditionNum: item[acceptedEpeditionNum],
+                    totalExpeditionNum: item[totalExpeditionNum],
+                    expeditions: item[expeditions],
+                    currentTrainScore: item[currentTrainScore],
+                    maxTrainScore: item[maxTrainScore],
+                    currentRogueScore: item[currentRogueScore],
+                    maxRogueScore: item[maxRogueScore],
+                    weeklyCocoonCnt: item[weeklyCocoonCnt],
+                    weeklyCocoonLimit: item[weeklyCocoonLimit],
+                    currentReserveStamina: item[currentReserveStamina],
+                    isReserveStaminaFull: item[isReserveStaminaFull]
+                )
+                list.append(account)
             }
             return list
         } catch {

@@ -23,57 +23,44 @@ class WidgetViewModel: BaseViewModel {
             ApiManager.shared.sToken = user.sToken ?? ""
             ApiManager.shared.region = Region(rawValue: user.region ?? "") ?? .china
             ApiManager.shared.cookieToken = user.cookieToken ?? ""
-
-            fetchGameCard(uid: user.uid, server: StarRailGameBiz.china.rawValue)
-            fetchGameCard(uid: user.uid, server: GenshinGameBiz.china.rawValue)
-
-            var starRailItem = WidgetSectionItem()
-            var genshinItem = WidgetSectionItem()
-
-            dbManager.getStarRailGameCard(uuid: user.uid) { starRailInfo in
-                starRailItem = WidgetSectionItem(
-                    uid: starRailInfo.gameUID,
-                    nickname: starRailInfo.nickname,
-                    server: starRailInfo.region
-                )
-            }
             
-            dbManager.getGenshinGameCard(uuid: user.uid) { starRailInfo in
-                genshinItem = WidgetSectionItem(
-                    uid: starRailInfo.gameUID,
-                    nickname: starRailInfo.nickname,
-                    server: starRailInfo.region
-                )
-            }
+            dbManager.getMihoyoGames()
+                .sink { games in
+                    var starRailItem = WidgetSectionItem()
+                    var genshinItem = WidgetSectionItem()
 
-            sections.append(
-                WidgetSectionModel(
-                    uid: user.uid,
-                    title: user.nickname,
-                    genshinItem: genshinItem,
-                    starRailItem: starRailItem
-                )
-            )
+                    games.forEach { gameItem in
+                        let isGenshin = gameItem.gameBiz.contains("hk4e")
+                        let isStarRail = gameItem.gameBiz.contains("hkrpg")
+
+                        if isGenshin {
+                            genshinItem = WidgetSectionItem(
+                                uid: gameItem.gameUID,
+                                nickname: gameItem.nickname,
+                                server: gameItem.region
+                            )
+                        }
+                        
+                        if isStarRail {
+                            starRailItem = WidgetSectionItem(
+                                uid: gameItem.gameUID,
+                                nickname: gameItem.nickname,
+                                server: gameItem.region
+                            )
+                        }
+                    }
+
+                    sections.append(
+                        WidgetSectionModel(
+                            uid: user.uid,
+                            title: user.nickname,
+                            genshinItem: genshinItem,
+                            starRailItem: starRailItem
+                        )
+                    )
+                }
+                .store(in: &cancellables)
         }
         widgetSections = sections
-    }
-    
-    private func fetchGameCard(uid: String, server: String) {
-        ApiManager.shared.fetchStarRailGameCards(
-            uid: uid,
-            server: StarRailGameBiz.china.rawValue
-        )
-            .sink { (result: MihoyoGameCardsModel) in
-                guard let list = result.data?.list else {
-                    return
-                }
-                if server == StarRailGameBiz.china.rawValue {
-                    SQLManagerHelper.saveStarRailCards(uid, gameCards: list)
-                }
-                if server == GenshinGameBiz.china.rawValue {
-                    SQLManagerHelper.saveGenshinCards(uid, gameCards: list)
-                }
-            }
-            .store(in: &cancellables)
     }
 }

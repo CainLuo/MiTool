@@ -18,24 +18,24 @@ struct GenshinRoleView: View {
     var body: some View {
         List(viewModel.sections) { section in
             Section {
-                ForEach(section.roleList) { item in
+                ForEach(section.items) { item in
                     HStack {
-                        GenshinRoleAvatarInfoView(item: item)
-                        
+                        GenshinRoleAvatarInfoView(item: item.roleItem)
                         HStack {
-                            if let reliquaries = item.reliquaries {
+                            if let reliquaries = item.roleItem.reliquaries {
                                 GenshinRoleReliquariesView(reliquaries: reliquaries)
                             }
                             
-                            if let skills = item.skillList {
+                            if let skills = item.roleItem.skillList {
                                 GenshinRoleSkillsView(skills: skills)
                             }
                             
-                            if let weapon = item.weapon {
+                            if let weapon = item.roleItem.weapon {
                                 Spacer()
                                 GenshinRoleWeaponView(weapon: weapon)
                             }
                         }
+                        .frame(maxWidth: .infinity)
                     }
                     .padding()
                     .applyViewModifiers(
@@ -102,13 +102,13 @@ struct GenshinRoleReliquariesView: View {
     
     var body: some View {
         HStack {
-            ForEach(reliquaries) { reliquarie in
+            ForEach(reliquaries) { reliquary in
                 VStack {
                     ImageView(
-                        provider: .remote(reliquarie.iconURL),
+                        provider: .remote(reliquary.iconURL),
                         configuration: skillConfig
                     )
-                    Text(reliquarie.levelString)
+                    Text(reliquary.levelString)
                         .padding()
                 }
             }
@@ -127,7 +127,7 @@ struct GenshinRoleSkillsView: View {
     var body: some View {
         VStack {
             ForEach(skills) { skill in
-                if (skill.maxLevel ?? 0) >= 10 {
+                if (skill.maxLevel) >= 10 {
                     HStack {
                         ImageView(
                             provider: .remote(skill.skillURL),
@@ -160,11 +160,11 @@ struct GenshinRoleWeaponView: View {
             VStack(alignment: .trailing, spacing: Constants.spacing) {
                 Text(weapon.name ?? "")
                     .font(.system(size: 18, weight: .bold))
-                Text(weapon.levelContent)
-                Text(weapon.affixContent)
+                Text("\(weapon.level)")
+//                Text(weapon.affixContent)
             }
             ImageView(
-                provider: .remote(weapon.weaponURL),
+                provider: .remote(weapon.icon ?? ""),
                 configuration: imageConfig
             )
         }
@@ -194,9 +194,9 @@ struct GenshinRoleSectionView: View {
                 frame: Constants.buttonSize,
                 isDisabled: $viewModel.isDisabled
             ) {
-                viewModel.reloadGenshinCharacterSkills(
-                    uid: section.uid
-                )
+//                viewModel.reloadGenshinCharacterSkills(
+//                    uid: section.uid
+//                )
             }
 
             PrimaryButton(
@@ -204,9 +204,9 @@ struct GenshinRoleSectionView: View {
                 frame: Constants.buttonSize,
                 isDisabled: $viewModel.isDisabled
             ) {
-                viewModel.reloadGenshinCharacterSkills(
-                    uid: section.uid
-                )
+//                viewModel.reloadGenshinCharacterSkills(
+//                    uid: section.uid
+//                )
             }
         }
         .padding()

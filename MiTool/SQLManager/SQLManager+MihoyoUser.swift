@@ -135,25 +135,23 @@ extension SQLManager {
     func getMihoyoUserList() -> [MihoyoUserInfo] {
         var list: [MihoyoUserInfo] = []
         do {
-            try dataBase.transaction {
-                try dataBase.prepare(mihoyoUser).forEach { item in
-                    let account = MihoyoUserInfo(
-                        uid: item[uid] ?? "",
-                        nickname: item[nickname] ?? "",
-                        introduce: item[introduce] ?? "",
-                        gender: item[gender] ?? 1,
-                        communityInfo: item[communityInfo],
-                        avatarURL: item[avatarURL] ?? "",
-                        ipRegion: item[ipRegion] ?? "",
-                        cookie: item[cookie] ?? "",
-                        sToken: item[sToken] ?? "",
-                        deivceFP: item[deivceFP] ?? "",
-                        deviceID: item[deviceID] ?? UUID().uuidString,
-                        region: item[region] ?? "",
-                        cookieToken: item[cookieToken] ?? ""
-                    )
-                    list.append(account)
-                }
+            try dataBase.prepare(mihoyoUser).forEach { item in
+                let account = MihoyoUserInfo(
+                    uid: item[uid] ?? "",
+                    nickname: item[nickname] ?? "",
+                    introduce: item[introduce] ?? "",
+                    gender: item[gender] ?? 1,
+                    communityInfo: item[communityInfo],
+                    avatarURL: item[avatarURL] ?? "",
+                    ipRegion: item[ipRegion] ?? "",
+                    cookie: item[cookie] ?? "",
+                    sToken: item[sToken] ?? "",
+                    deivceFP: item[deivceFP] ?? "",
+                    deviceID: item[deviceID] ?? UUID().uuidString,
+                    region: item[region] ?? "",
+                    cookieToken: item[cookieToken] ?? ""
+                )
+                list.append(account)
             }
             return list
         } catch {
