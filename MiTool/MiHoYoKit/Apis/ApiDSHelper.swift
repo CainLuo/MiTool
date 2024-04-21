@@ -8,17 +8,17 @@
 import Foundation
 import CryptoSwift
 
-public enum Region: String {
+public enum AccountRegion: String {
     case china = "hk4e_cn"
     case global = "hk4e_global"
     
     static let regions = [
-        Region.china: "China",
-        Region.global: "Global"
+        AccountRegion.china: "China",
+        AccountRegion.global: "Global"
     ]
     
-    static func region(_ regionString: String) -> Region {
-        let regionSever = Region.regions.filter { $0.value == regionString }.compactMap { $0.key }
+    static func region(_ regionString: String) -> AccountRegion {
+        let regionSever = AccountRegion.regions.filter { $0.value == regionString }.compactMap { $0.key }
         guard let region = regionSever.first else {
             return .china
         }
@@ -27,7 +27,7 @@ public enum Region: String {
 }
 
 enum ApiDSHelper {
-    static func getDS(region: Region, query: String, body: String? = nil) -> String {
+    static func getDS(region: AccountRegion, query: String, body: String? = nil) -> String {
         let salt: String = ApiHeaderConfiguration.salt(region: region)
         
         let time = String(Int(Date().timeIntervalSince1970))

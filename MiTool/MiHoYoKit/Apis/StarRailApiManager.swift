@@ -16,7 +16,7 @@ struct StarRailRequestConfiguration: ApiRequestConfiguration {
     }
     
     var path: String
-    var accountRegion: Region = .china
+    var accountRegion: AccountRegion = .china
     var method: Alamofire.HTTPMethod
     var parameters: Alamofire.Parameters?
     var headers: Alamofire.HTTPHeaders?

@@ -39,7 +39,7 @@ class MihoyoUserEditViewModel: BaseViewModel {
     func saveMihoyoUser(
         region: String
     ) {
-        let regionSever = Region.region(region)
+        let regionSever = AccountRegion.region(region)
         let userInfo = MihoyoUserInfo(
             uid: uid,
             nickname: nickname,
@@ -66,7 +66,7 @@ class MihoyoUserEditViewModel: BaseViewModel {
     func fetchMihoyoUserInfo(
         region: String
     ) {
-        let regionSever = Region.region(region)
+        let regionSever = AccountRegion.region(region)
         ApiManager.shared.fetchMihoyoUserInfo(uid: uid, region: regionSever)
             .sink { [weak self] (result: MihoyoUserModel) in
                 guard let userInfo = result.data?.userInfo else {

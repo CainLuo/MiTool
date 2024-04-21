@@ -14,7 +14,7 @@ enum ApiHeaderConfiguration {
     AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1
     """
     
-    static func recordURLAPIHost(region: Region) -> String {
+    static func recordURLAPIHost(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "api-takumi-record.mihoyo.com"
@@ -23,7 +23,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func accountAPIURLHost(region: Region) -> String {
+    static func accountAPIURLHost(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "api-takumi.mihoyo.com"
@@ -32,7 +32,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func hk4eAPIURLHost(region: Region) -> String {
+    static func hk4eAPIURLHost(region: AccountRegion) -> String {
         switch region {
         case .china:
             "hk4e-api.mihoyo.com"
@@ -41,7 +41,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func hostInHeaders(region: Region) -> String {
+    static func hostInHeaders(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "https://api-takumi-record.mihoyo.com/"
@@ -50,7 +50,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func salt(region: Region) -> String {
+    static func salt(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
@@ -59,7 +59,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func xRpcAppVersion(region: Region) -> String {
+    static func xRpcAppVersion(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "2.60.1"
@@ -68,7 +68,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func xRpcClientType(region: Region) -> String {
+    static func xRpcClientType(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "5"
@@ -77,7 +77,7 @@ enum ApiHeaderConfiguration {
         }
     }
     
-    static func referer(region: Region) -> String {
+    static func referer(region: AccountRegion) -> String {
         switch region {
         case .china:
             return "https://webstatic.mihoyo.com"
@@ -90,7 +90,7 @@ enum ApiHeaderConfiguration {
     /// You need to add `DS` field using `URLRequestHelper.getDS` manually
     /// - Parameter region: the region of the account
     /// - Returns: http request headers
-    static func defaultHeaders(region: Region, additionalHeaders: [String: String]?) -> [String: String] {
+    static func defaultHeaders(region: AccountRegion, additionalHeaders: [String: String]?) -> [String: String] {
         var headers = [
             "User-Agent": userAgent,
             "Referer": referer(region: region),
@@ -115,7 +115,7 @@ enum ApiHeaderConfiguration {
         return headers
     }
     
-    static func baseHeaders(region: Region, additionalHeaders: [String: String]?) -> [String: String] {
+    static func baseHeaders(region: AccountRegion, additionalHeaders: [String: String]?) -> [String: String] {
         var headers = BaseHeaders(
             userAgent: userAgent,
             referer: referer(region: region),

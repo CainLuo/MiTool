@@ -13,7 +13,7 @@ import ObjectMapper
 protocol ApiRequestConfiguration {
     var host: String { get }
     var path: String { get set }
-    var accountRegion: Region { get set }
+    var accountRegion: AccountRegion { get set }
     var method: HTTPMethod { get set }
     var parameters: Parameters? { get set }
     var headers: HTTPHeaders? { get set }

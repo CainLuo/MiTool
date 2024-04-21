@@ -21,3 +21,10 @@ struct StarRailRoleSectionItemModel: Identifiable {
     var roleInfo = StarRailRoleInfoData()
     var compute: StarRailSkillComputeData?
 }
+
+// MARK: - Local Model
+public struct StarRailLocalCompute: Identifiable {
+    public var id = UUID()
+    public var title: String = ""
+    public var consume: [StarRailSkillComputeAvatarConsume] = []
+}

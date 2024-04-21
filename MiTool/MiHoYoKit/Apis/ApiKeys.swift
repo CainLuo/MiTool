@@ -10,7 +10,7 @@ import Foundation
 enum ApiKeys {
     enum Host: String {
         case stokenV2 = "https://passport-api.mihoyo.com"
-        case mihoyo = "https://api-takumi-record.mihoyo.com"
+        case takumiRecord = "https://api-takumi-record.mihoyo.com"
         case bbsMihoyo = "https://bbs-api.miyoushe.com"
         case enka = ""
         case takumi = "https://api-takumi.mihoyo.com"

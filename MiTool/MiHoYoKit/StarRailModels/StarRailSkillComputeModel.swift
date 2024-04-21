@@ -110,10 +110,3 @@ public struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
         rarity <- map["rarity"]
     }
 }
-
-// MARK: - Local Model
-public struct StarRailLocalCompute: Identifiable {
-    public var id = UUID()
-    public var title: String = ""
-    public var consume: [StarRailSkillComputeAvatarConsume] = []
-}
