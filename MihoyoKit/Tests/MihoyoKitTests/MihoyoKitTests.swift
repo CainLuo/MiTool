@@ -1,7 +1,7 @@
 import XCTest
-@testable import MihoyoKit
+@testable import MiHoYoKit
 
-final class MihoyoKitTests: XCTestCase {
+final class MiHoYoKitTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
