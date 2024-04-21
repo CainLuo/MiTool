@@ -13,9 +13,9 @@ import ObjectMapper
 extension ApiManager {
     func fetchStarRailWidget<T: Mappable>(
         with uid: String,
-        server: Region = .china
+        server: AccountRegion = .china
     ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.StarRail.widget.rawValue
+        let url = ApiKeys.Host.takumiRecord.rawValue + ApiKeys.StarRail.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
             region: region,
             query: ""

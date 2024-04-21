@@ -14,7 +14,7 @@ extension ApiManager {
     func fetchGenshinWidget<T: Mappable>(
         uid: String
     ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.GenshinImpact.widget.rawValue
+        let url = ApiKeys.Host.takumiRecord.rawValue + ApiKeys.GenshinImpact.widget.rawValue
         let decodeSalt = ApiDSHelper.getDS(
             region: region,
             query: ""
@@ -40,7 +40,7 @@ extension ApiManager {
         with uid: String,
         roleRegion: String
     ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.GenshinImpact.character.rawValue
+        let url = ApiKeys.Host.takumiRecord.rawValue + ApiKeys.GenshinImpact.character.rawValue
         let parameters: Parameters = [
             "role_id": uid,
             "server": roleRegion

@@ -47,7 +47,7 @@ struct MihoyoUserEditView: View {
                     "Select Region",
                     selection: $selection
                 ) {
-                    ForEach(Region.regions.map { $0.value }, id: \.self) { region in
+                    ForEach(AccountRegion.regions.map { $0.value }, id: \.self) { region in
                         Text(region)
                     }
                 }

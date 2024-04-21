@@ -21,7 +21,7 @@ class WidgetViewModel: BaseViewModel {
             ApiManager.shared.deviceFP = user.deivceFP ?? ""
             ApiManager.shared.deviceID = user.deviceID ?? UUID().uuidString
             ApiManager.shared.sToken = user.sToken ?? ""
-            ApiManager.shared.region = Region(rawValue: user.region ?? "") ?? .china
+            ApiManager.shared.region = AccountRegion(rawValue: user.region ?? "") ?? .china
             ApiManager.shared.cookieToken = user.cookieToken ?? ""
             
             dbManager.getMihoyoGames()

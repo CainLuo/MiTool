@@ -15,7 +15,7 @@ class ApiManager: BaseApiManager {
     
     var deviceFP: String = ""
     var deviceID: String = ""
-    var region: Region = .china
+    var region: AccountRegion = .china
     var cookie: String = ""
     var sToken: String = ""
     var cookieToken: String = ""
@@ -26,7 +26,7 @@ class ApiManager: BaseApiManager {
     
     func fetchMihoyoUserInfo<T: Mappable>(
         uid: String,
-        region: Region = .china
+        region: AccountRegion = .china
     ) -> AnyPublisher<T, Never> {
         let urlString = ApiKeys.Host.bbsMihoyo.rawValue + ApiKeys.Mihoyo.userFullInfo.rawValue
         guard let url = URL(string: urlString) else {
@@ -88,7 +88,7 @@ class ApiManager: BaseApiManager {
     func fetchMihoyoGameCards<T: Mappable>(
         uid: String
     ) -> AnyPublisher<T, Never> {
-        let url = ApiKeys.Host.mihoyo.rawValue + ApiKeys.Mihoyo.gameRecord.rawValue
+        let url = ApiKeys.Host.takumiRecord.rawValue + ApiKeys.Mihoyo.gameRecord.rawValue
         let parameters: Parameters = ["uid": uid]
         let decodeSalt = ApiDSHelper.getDS1()
         let headers = [
