@@ -135,6 +135,10 @@ enum ApiHeaderConfiguration {
             headers.merge(additionalHeaders) { $1 }
         }
         
+        guard let headers = headers as? [String: String] else {
+            fatalError("headers not [String: String] type")
+        }
+        
         return headers
     }
 }

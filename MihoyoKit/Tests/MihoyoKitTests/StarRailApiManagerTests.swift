@@ -7,7 +7,7 @@
 
 import XCTest
 import Combine
-@testable import MiHoYoKit // 替换为你的模块名称
+@testable import MiHoYoKit
 
 class StarRailApiManagerTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
@@ -58,16 +58,4 @@ class StarRailApiManagerTests: XCTestCase {
             .store(in: &cancellables)
         wait(for: [expect], timeout: 5.0) // 修改超时时间以适应你的需求
     }
-
-//    func testWidget() {
-//        let expect = expectation(description: "widget completes")
-//
-//        manager.widget(with: .china)
-//            .sink { (result: StarRailAllRoleModel) in
-//                expect.fulfill()
-//            }
-//            .store(in: &cancellables)
-//        wait(for: [expect], timeout: 5.0) // 修改超时时间以适应你的需求
-//    }
-
 }

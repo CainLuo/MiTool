@@ -26,70 +26,74 @@ struct GenshinRequestConfiguration: ApiRequestConfiguration {
 public class GenshinApiManager: ApiRequestManager {
     public static let shared = GenshinApiManager()
     
+    public var cookie: String = ""
+    public var cookieToken: String = ""
+    public var accountRegion: AccountRegion = .china
+
     private override init() { }
     
     func fetchGenshinRoleSkills<T: Mappable>(
         with parameters: GenshinRoleSkillsRequestModel
     ) -> AnyPublisher<T, Never> {
-        var configuration = GenshinRequestConfiguration(
+        
+        var accountID = ""
+        let strings = cookie.components(separatedBy: ";")
+        let stuids = strings.filter { $0.contains("stuid=") }
+        if let uidString = stuids.first {
+            let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
+            accountID = "account_id=\(uid)"
+        }
+
+        let headers = ApiHeaderModel(
+            cookie: "\(accountID);cookie_token=\(cookieToken)",
+            referer: "https://webstatic.mihoyo.com"
+        )
+            .toJSON()
+        
+        guard let headers = headers as? [String: String] else {
+            fatalError("headers is not [String: String] type")
+        }
+
+        let configuration = GenshinRequestConfiguration(
             path: ApiKeys.GenshinImpact.roleDetail.rawValue,
             method: .get,
-            parameters: parameters.toJSON()
+            parameters: parameters.toJSON(),
+            headers: HTTPHeaders(headers)
         )
-
-//        var accountID = ""
-//        let strings = cookie.components(separatedBy: ";")
-//        let stuids = strings.filter { $0.contains("stuid=") }
-//        if let uidString = stuids.first {
-//            let uid = uidString.replacingOccurrences(of: "stuid=", with: "")
-//            accountID = "account_id=\(uid)"
-//        }
-
-//        let headers = [
-//            "Cookie": "\(accountID);cookie_token=\(cookieToken)",
-//            "referer": "https://webstatic.mihoyo.com"
-//        ]
         return request(with: configuration)
     }
     
     func fetchGensinWeaponList<T: Mappable>(page: Int) -> AnyPublisher<T, Never> {
         let parameters = GenshinWeaponListRequestModel(page: page)
-        var configuration = GenshinRequestConfiguration(
+        let headers = ApiHeaderConfiguration.baseHeaders(
+            region: accountRegion,
+            additionalHeaders: ["Cookie": "cookie"]
+        )
+        let configuration = GenshinRequestConfiguration(
             path: ApiKeys.GenshinImpact.weapons.rawValue,
             method: .post,
-            parameters: parameters.toJSON()
+            parameters: parameters.toJSON(),
+            headers: HTTPHeaders(headers)
         )
-                
-//        let headers = ApiHeaderConfiguration.baseHeaders(
-//            region: region,
-//            additionalHeaders: ["Cookie": cookie]
-//        )
-        
+
         return request(with: configuration)
     }
     
     func fetchGensinWeaponCompute<T: Mappable>(
-        with parameters: GensinComputeRequestModel
+        with parameters: GenshinComputeRequestModel
     ) -> AnyPublisher<T, Never> {
-        var configuration = GenshinRequestConfiguration(
+        let headers = ApiHeaderConfiguration.baseHeaders(
+            region: accountRegion,
+            additionalHeaders: ["Cookie": "cookie"]
+        )
+
+        let configuration = GenshinRequestConfiguration(
             path: ApiKeys.GenshinImpact.compute.rawValue,
             method: .post,
-            parameters: parameters.toJSON()
+            parameters: parameters.toJSON(),
+            headers: HTTPHeaders(headers)
         )
-//        let parameters: Parameters = [
-//            "weapon": [
-//                "id": weaponID,
-//                "level_current": currentLevel,
-//                "level_target": targetLevel
-//            ],
-//            "reliquary_list": []
-//        ]
-                
-//        let headers = ApiHeaderConfiguration.baseHeaders(
-//            region: region,
-//            additionalHeaders: ["Cookie": cookie]
-//        )
-        
+
         return request(with: configuration)
     }
 }

@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  GenshinComputeRequestModel.swift
+//
 //
 //  Created by Cain Luo on 2024/4/21.
 //
@@ -8,24 +8,25 @@
 import Foundation
 import ObjectMapper
 
-public struct GensinComputeRequestModel: Mappable {
+public struct GenshinComputeRequestModel: Mappable {
     public var id: Int?
     public var levelCurrent: Int?
     public var levelTarget: Int?
     public var elementAttrId: Int?
-    public var skillList: [GensinComputeRequestTargetModel]?
-    public var weapon: GensinComputeRequestTargetModel?
-    public var reliquaryList: [GensinComputeRequestTargetModel]?
+    public var skillList: [GenshinComputeRequestTargetModel]?
+    public var weapon: GenshinComputeRequestTargetModel?
+    public var reliquaryList: [GenshinComputeRequestTargetModel]?
 
     public init?(map: Map){}
+    public init() { }
     public init(
         id: Int? = nil,
         levelCurrent: Int? = nil,
         levelTarget: Int? = nil,
         elementAttrId: Int? = nil,
-        skillList: [GensinComputeRequestTargetModel]? = nil,
-        weapon: GensinComputeRequestTargetModel?,
-        reliquaryList: [GensinComputeRequestTargetModel]? = []
+        skillList: [GenshinComputeRequestTargetModel]? = nil,
+        weapon: GenshinComputeRequestTargetModel?,
+        reliquaryList: [GenshinComputeRequestTargetModel]? = []
     ) {
         self.id = id
         self.levelCurrent = levelCurrent
@@ -47,7 +48,7 @@ public struct GensinComputeRequestModel: Mappable {
     }
 }
 
-public struct GensinComputeRequestTargetModel: Mappable {
+public struct GenshinComputeRequestTargetModel: Mappable {
     public var id: Int?
     public var levelCurrent: Int?
     public var levelTarget: Int?

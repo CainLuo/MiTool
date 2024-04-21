@@ -64,6 +64,10 @@ public class TakumiRecordApiManager: ApiRequestManager {
             xRpcLanguage: "",
             xRpcPage: ""
         ).toJSON()
+        
+        guard let headers = headers as? [String: String] else {
+            fatalError("headers not [String: String] type")
+        }
 
         configuration.headers = HTTPHeaders(headers)
         return request(with: configuration)

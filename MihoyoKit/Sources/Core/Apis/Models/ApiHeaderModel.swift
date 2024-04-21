@@ -97,11 +97,4 @@ struct ApiHeaderModel: Mappable {
         xRpcLanguage <- map["x-rpc-language"]
         xRpcPage <- map["x-rpc-page"]
     }
-    
-    func toJSON() -> [String: String] {
-        guard let json = self.toJSON() as? [String: String] else {
-            fatalError("ApiHeaderMotl to json fail, not [String: String] type.")
-        }
-        return json
-    }
 }
