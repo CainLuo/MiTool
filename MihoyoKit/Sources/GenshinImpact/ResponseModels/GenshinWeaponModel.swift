@@ -8,31 +8,34 @@
 import Foundation
 import ObjectMapper
 
-public class GenshinWeaponModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct GenshinWeaponModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinWeaponDataModel?
 
-    public required init?(map: Map) {}
+    public init?(map: Map) {}
+    public init() { }
 
-    public func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         retcode <- map["retcode"]
         message <- map["message"]
         data <- map["data"]
     }
 }
 
-public class GenshinWeaponDataModel: Mappable {
+public struct GenshinWeaponDataModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var list: [GenshinWeaponItemModel] = []
 
-    public required init?(map: Map) {}
+    public init?(map: Map) {}
+    public init() { }
 
-    public func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         list <- map["list"]
     }
 }
 
-public class GenshinWeaponItemModel: Mappable, Identifiable {
+public struct GenshinWeaponItemModel: MihoyoDataModelProtocol {
     public var id = UUID()
     public var weaponID: Int?
     public var name: String?
@@ -42,25 +45,10 @@ public class GenshinWeaponItemModel: Mappable, Identifiable {
     public var maxLevel: Int?
     
     public var computeInfo: [GenshinWeaponComputeItemModel] = []
-    
-    public var iconURL: String {
-        icon ?? ""
-    }
-    
-    public var nameContent: String {
-        name ?? ""
-    }
-    
-    public var levelContent: String {
-        guard let maxLevel else {
-            return "Lv: 1/90"
-        }
-        return "Lv: 1/\(maxLevel)"
-    }
 
-    public required init?(map: Map) {}
-    init() { }
-    init(
+    public init?(map: Map) {}
+    public init() { }
+    public init(
         id: Int?,
         name: String?,
         icon: String?,
@@ -78,7 +66,7 @@ public class GenshinWeaponItemModel: Mappable, Identifiable {
         self.computeInfo = [GenshinWeaponComputeItemModel](JSONString: computeInfo ?? "") ?? []
     }
     
-    public func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         weaponID <- map["id"]
         name <- map["name"]
         icon <- map["icon"]

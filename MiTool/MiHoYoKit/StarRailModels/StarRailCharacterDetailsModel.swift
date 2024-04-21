@@ -8,6 +8,7 @@
 import Foundation
 import ObjectMapper
 
+// swiftlint: disable file_length
 // MARK: - StarRailChaDetailsModel
 public struct StarRailChaDetailsModel: Mappable {
     public var retcode: Int?
@@ -445,5 +446,5 @@ public struct StarRailChaDetailsRelicProperty: Mappable {
 }
 
 // MARK: - StarRailChaDetailsRelicWiki
-public struct StarRailChaDetailsRelicWiki {
-}
+public struct StarRailChaDetailsRelicWiki { }
+// swiftlint:enable file_length

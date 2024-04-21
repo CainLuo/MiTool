@@ -8,12 +8,13 @@
 import Foundation
 import ObjectMapper
 
-public struct GenshinWeaponComputeModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct GenshinWeaponComputeModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinWeaponComputeDataModel?
 
-    public init?(map: Map) {}
+    public init?(map: Map) { }
+    public init() { }
 
     public mutating func mapping(map: Map) {
         retcode <- map["retcode"]
@@ -22,13 +23,15 @@ public struct GenshinWeaponComputeModel: Mappable {
     }
 }
 
-public struct GenshinWeaponComputeDataModel: Mappable {
+public struct GenshinWeaponComputeDataModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var avatarConsume: [GenshinWeaponComputeItemModel]?
     public var avatarSkillConsume: [GenshinWeaponComputeItemModel]?
     public var weaponConsume: [GenshinWeaponComputeItemModel]?
     public var reliquaryConsume: [GenshinWeaponComputeItemModel]?
 
     public init?(map: Map) {}
+    public init() { }
 
     public mutating func mapping(map: Map) {
         avatarConsume <- map["avatar_consume"]
@@ -38,7 +41,7 @@ public struct GenshinWeaponComputeDataModel: Mappable {
     }
 }
 
-public struct GenshinWeaponComputeItemModel: Mappable, Identifiable {
+public struct GenshinWeaponComputeItemModel: MihoyoDataModelProtocol {
     public var id = UUID()
     public var computID: Int?
     public var name: String = ""
@@ -49,6 +52,7 @@ public struct GenshinWeaponComputeItemModel: Mappable, Identifiable {
     public var iconURL: String = ""
 
     public init?(map: Map) {}
+    public init() { }
 
     public mutating func mapping(map: Map) {
         computID <- map["computID"]

@@ -110,23 +110,6 @@ public struct GenshinCharacterAvatar: MihoyoDataModelProtocol {
     }
 }
 
-extension GenshinCharacterAvatar {
-    public var avatarURL: String {
-        icon ?? ""
-    }
-    
-    public var constellation: String {
-        guard let activedConstellationNum else {
-            return ""
-        }
-        return CopyGenshinWidget.constellation + "\(activedConstellationNum)"
-    }
-    
-    public var levelContent: String {
-        "Lv.\(level)"
-    }
-}
-
 // MARK: - GenshinCharacterConstellation
 public struct GenshinCharacterConstellation: MihoyoDataModelProtocol {
     public var id: Int?
@@ -160,14 +143,6 @@ public struct GenshinCharacterReliquary: MihoyoDataModelProtocol {
     public var level: Int?
     public var reliquarySet: GenshinCharacterSet?
     public var posName: String?
-    
-    public var iconURL: String {
-        icon ?? ""
-    }
-    
-    public var levelString: String {
-        "Lv: \(level ?? 1)"
-    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }
@@ -227,21 +202,6 @@ public struct GenshinCharacterWeapon: MihoyoDataModelProtocol {
     public var typeName: String?
     public var desc: String?
     public var affixLevel: Int?
-    
-    public var weaponURL: String {
-        icon ?? ""
-    }
-    
-    public var affixContent: String {
-        guard let affixLevel else {
-            return ""
-        }
-        return CopyGenshinWidget.affix + "\(affixLevel)"
-    }
-    
-    public var levelContent: String {
-        "Lv.\(level)"
-    }
 
     public init?(map: ObjectMapper.Map) { }
     init() { }

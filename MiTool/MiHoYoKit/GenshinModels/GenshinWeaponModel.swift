@@ -42,21 +42,6 @@ public class GenshinWeaponItemModel: Mappable, Identifiable {
     public var maxLevel: Int?
     
     public var computeInfo: [GenshinWeaponComputeItemModel] = []
-    
-    public var iconURL: String {
-        icon ?? ""
-    }
-    
-    public var nameContent: String {
-        name ?? ""
-    }
-    
-    public var levelContent: String {
-        guard let maxLevel else {
-            return "Lv: 1/90"
-        }
-        return "Lv: 1/\(maxLevel)"
-    }
 
     public required init?(map: Map) {}
     init() { }

@@ -9,10 +9,9 @@ import SwiftUI
 import ObjectMapper
 
 // MARK: - StarRailAllRoleModel
-public struct StarRailAllRoleModel: Mappable, Identifiable {
-    public var id = UUID()
-    public var retcode: Int?
-    public var message: String?
+public struct StarRailAllRoleModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: StarRailAllRoleDataModel?
 
     public init?(map: Map) { }
@@ -26,13 +25,12 @@ public struct StarRailAllRoleModel: Mappable, Identifiable {
 }
 
 // MARK: - StarRailAllRoleDataModel
-public struct StarRailAllRoleDataModel: Mappable, Identifiable {
+public struct StarRailAllRoleDataModel: MihoyoDataModelProtocol {
     public var id = UUID()
     public var list: [StarRailAllRoleListModel]?
     public var isLogin: Bool?
 
-    public init?(map: Map) {
-    }
+    public init?(map: Map) { }
 
     mutating public func mapping(map: Map) {
         list <- map["list"]
@@ -41,7 +39,7 @@ public struct StarRailAllRoleDataModel: Mappable, Identifiable {
 }
 
 // MARK: - StarRailAllRoleListModel
-public struct StarRailAllRoleListModel: Mappable, Identifiable {
+public struct StarRailAllRoleListModel: MihoyoDataModelProtocol {
     public var id = UUID()
     public var itemID: String?
     public var itemName: String?
@@ -55,13 +53,17 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
     public var verticalIconURL: String?
     public var isForward: Bool?
     
-    public var level: String {
-        "Lv: \(curLevel) / \(maxLevel)"
+    public init(
+        itemName: String?,
+        iconURL: String?,
+        targetLevel: Int?
+    ) {
+        self.itemName = itemName
+        self.iconURL = iconURL
+        self.targetLevel = targetLevel
     }
-    
-    init() { }
 
-    init(
+    public init(
         itemID: String?,
         itemName: String?,
         iconURL: String?,
@@ -88,7 +90,8 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
     }
 
     public init?(map: Map) { }
-
+    public init() { }
+    
     mutating public func mapping(map: Map) {
         itemID <- map["item_id"]
         itemName <- map["item_name"]
@@ -101,15 +104,5 @@ public struct StarRailAllRoleListModel: Mappable, Identifiable {
         targetLevel <- map["target_level"]
         verticalIconURL <- map["vertical_icon_url"]
         isForward <- map["is_forward"]
-    }
-
-    init(
-        itemName: String?,
-        iconURL: String?,
-        targetLevel: Int?
-    ) {
-        self.itemName = itemName
-        self.iconURL = iconURL
-        self.targetLevel = targetLevel
     }
 }

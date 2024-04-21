@@ -15,7 +15,7 @@ public struct GenshinCharacterModel: MihoyoModelProtocol {
     public var data: GenshinCharacterData?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
@@ -31,7 +31,7 @@ public struct GenshinCharacterData: MihoyoDataModelProtocol {
     public var role: GenshinCharacterRole?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         avatars <- map["avatars"]
@@ -59,8 +59,8 @@ public struct GenshinCharacterAvatar: MihoyoDataModelProtocol {
     public var skillList: [GenshinRoleSkillItemModel]?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
-    init(
+    public init() { }
+    public init(
         avatarID: Int?,
         image: String?,
         icon: String?,
@@ -120,7 +120,7 @@ public struct GenshinCharacterConstellation: MihoyoDataModelProtocol {
     public var pos: Int?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -143,17 +143,9 @@ public struct GenshinCharacterReliquary: MihoyoDataModelProtocol {
     public var level: Int?
     public var reliquarySet: GenshinCharacterSet?
     public var posName: String?
-    
-    public var iconURL: String {
-        icon ?? ""
-    }
-    
-    public var levelString: String {
-        "Lv: \(level ?? 1)"
-    }
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         reliquaryID <- map["id"]
@@ -174,7 +166,7 @@ public struct GenshinCharacterSet: MihoyoDataModelProtocol {
     public var affixes: [GenshinCharacterAffix]?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -190,7 +182,7 @@ public struct GenshinCharacterAffix: MihoyoDataModelProtocol {
     public var effect: String?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         activationNumber <- map["activation_number"]
@@ -212,7 +204,7 @@ public struct GenshinCharacterWeapon: MihoyoDataModelProtocol {
     public var affixLevel: Int?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -251,7 +243,7 @@ public struct GenshinCharacterRole: MihoyoDataModelProtocol {
     public var level: Int = 1
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         avatarURL <- map["AvatarUrl"]

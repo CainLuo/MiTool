@@ -90,6 +90,7 @@
 		BF5581B92B6FAADE003A5487 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581B82B6FAADE003A5487 /* SideBar.swift */; };
 		BF5581BB2B6FAB1A003A5487 /* SideBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */; };
 		BF5581BE2B6FAED7003A5487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF5581C02B6FAED7003A5487 /* Localizable.strings */; };
+		BF7A6CCA2BD565640088EBCE /* Model+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A6CC92BD565640088EBCE /* Model+Extensions.swift */; };
 		BFA15BF32BBFC7EF00001B8D /* GenshinWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15BF22BBFC7EF00001B8D /* GenshinWeaponView.swift */; };
 		BFA15BFA2BBFD72D00001B8D /* SQLManager+GenshinWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15BF92BBFD72D00001B8D /* SQLManager+GenshinWeapon.swift */; };
 		BFA15BFC2BBFD7CB00001B8D /* GenshinWeaponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA15BFB2BBFD7CB00001B8D /* GenshinWeaponModel.swift */; };
@@ -245,6 +246,7 @@
 		BF5581BA2B6FAB1A003A5487 /* SideBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItemView.swift; sourceTree = "<group>"; };
 		BF5581BF2B6FAED7003A5487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF5581C12B6FAED8003A5487 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF7A6CC92BD565640088EBCE /* Model+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extensions.swift"; sourceTree = "<group>"; };
 		BFA15BF22BBFC7EF00001B8D /* GenshinWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeaponView.swift; sourceTree = "<group>"; };
 		BFA15BF92BBFD72D00001B8D /* SQLManager+GenshinWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SQLManager+GenshinWeapon.swift"; sourceTree = "<group>"; };
 		BFA15BFB2BBFD7CB00001B8D /* GenshinWeaponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinWeaponModel.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				A4871DC42B8EE46900C091BB /* Text+Extensions.swift */,
 				BF3F43F92B9C40BF00B5C3FD /* ArrayX.swift */,
 				A413899D2B9EB51A00F94141 /* LocaleX.swift */,
+				BF7A6CC92BD565640088EBCE /* Model+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				BF05122A2B6E2651004D6878 /* StarRailRoleListView.swift in Sources */,
 				A4CFC24A2B9F0A910082734B /* ApiDSHelper.swift in Sources */,
 				BFA15BF32BBFC7EF00001B8D /* GenshinWeaponView.swift in Sources */,
+				BF7A6CCA2BD565640088EBCE /* Model+Extensions.swift in Sources */,
 				A4CFC2562B9F0AB40082734B /* GenshinDailyNodeModel.swift in Sources */,
 				A4CFC24C2B9F0A950082734B /* StarRailRarityKeys.swift in Sources */,
 				BFB03BAD2B8B062F005DD170 /* StarRailRoleInfoModel.swift in Sources */,

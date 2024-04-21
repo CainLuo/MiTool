@@ -60,14 +60,6 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
     public var currentLevel: Int = 1
     public var roleID: Int?
     
-    public var level: String {
-        "Lv: \(currentLevel)"
-    }
-    
-    public var skillURL: String {
-        icon ?? ""
-    }
-    
     public init?(map: Map) {}
     
     init(
@@ -140,11 +132,5 @@ public struct GenshinRoleReliquaryModel: MihoyoDataModelProtocol {
         reliquaryLevel <- map["reliquary_level"]
         currentLevel <- map["level_current"]
         maxLevel <- map["max_level"]
-    }
-}
-
-extension GenshinRoleReliquaryModel {
-    public var levelString: String {
-        "Lv: \(currentLevel)"
     }
 }

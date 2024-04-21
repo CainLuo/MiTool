@@ -14,20 +14,20 @@ final class ApiHeaderModelTests: XCTestCase {
     override func setUp() {
       super.setUp()
       apiHeaderModel = ApiHeaderModel(
-        userAgent: "UserAgent",
-        referer: "Referer",
-        origin: "Origin",
+        accept: "Accept", 
         acceptEncoding: "AcceptEncoding",
         acceptLanguage: "AcceptLanguage",
-        accept: "Accept",
         connection: "Connection",
+        origin: "Origin",
+        referer: "Referer", 
+        secFetchDest: "SecFetchDest",
+        secFetchMode: "SecFetchMode", 
+        secFetchSite: "SecFetchSite",
+        userAgent: "UserAgent",
         xRpcAppVersion: "XRpcAppVersion",
         xRpcClientType: "XRpcClientType",
-        xRpcPage: "XRpcPage",
-        xRpcLanguage: "XRpcLanguage",
-        secFetchDest: "SecFetchDest",
-        secFetchSite: "SecFetchSite",
-        secFetchMode: "SecFetchMode"
+        xRpcLanguage: "XRpcLanguage", 
+        xRpcPage: "XRpcPage"
       )
     }
 

@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - GenshinWidgetModel
-public struct GenshinWidgetModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct GenshinWidgetModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinWidgetData?
 
     public init?(map: ObjectMapper.Map) { }
@@ -25,7 +25,8 @@ public struct GenshinWidgetModel: Mappable {
 }
 
 // MARK: - GenshinWidgetData
-public struct GenshinWidgetData: Mappable {
+public struct GenshinWidgetData: MihoyoDataModelProtocol {
+    public var id = UUID()
     // 当前体力
     public var currentResin: Int = 0
     // 最大体力
@@ -54,14 +55,10 @@ public struct GenshinWidgetData: Mappable {
     public var homeURL: String = ""
     public var noteURL: String = ""
 
-    public var resinContent: String {
-        "\(currentResin)/\(maxResin)"
-    }
-
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
     
-    init(
+    public init(
         currentResin: Int,
         maxResin: Int,
         resinRecoveryTime: String,
@@ -108,13 +105,13 @@ public struct GenshinWidgetData: Mappable {
 }
 
 // MARK: - GenshinWidgetExpedition
-public struct GenshinWidgetExpedition: Mappable, Identifiable {
+public struct GenshinWidgetExpedition: MihoyoDataModelProtocol {
     public var id = UUID()
     public var avatarSideIcon: String = ""
     public var status: String?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         avatarSideIcon <- map["avatar_side_icon"]

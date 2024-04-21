@@ -9,13 +9,13 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailChaDetailsModel
-public struct StarRailChaDetailsModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct StarRailChaDetailsModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: StarRailChaDetailsData?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
@@ -25,7 +25,8 @@ public struct StarRailChaDetailsModel: Mappable {
 }
 
 // MARK: - StarRailChaDetailsData
-public struct StarRailChaDetailsData: Mappable {
+public struct StarRailChaDetailsData: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var avatarList: [StarRailChaDetailsAvatarList]?
     public var equipWiki: StarRailChaDetailsEquipWiki?
     public var relicWiki: StarRailChaDetailsRelicWiki?
@@ -34,7 +35,7 @@ public struct StarRailChaDetailsData: Mappable {
     public var relicProperties: [StarRailChaDetailsRelicProperty]?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         avatarList <- map["avatar_list"]
@@ -47,7 +48,7 @@ public struct StarRailChaDetailsData: Mappable {
 }
 
 // MARK: - StarRailChaDetailsAvatarList
-public struct StarRailChaDetailsAvatarList: Mappable {
+public struct StarRailChaDetailsAvatarList: MihoyoDataModelProtocol {
     public var id: Int = 0
     public var level: Int = 1
     public var name: String = ""
@@ -66,7 +67,7 @@ public struct StarRailChaDetailsAvatarList: Mappable {
     public var figurePath: String = ""
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -89,7 +90,7 @@ public struct StarRailChaDetailsAvatarList: Mappable {
 }
 
 // MARK: - StarRailChaDetailsEquip
-public struct StarRailChaDetailsEquip: Mappable {
+public struct StarRailChaDetailsEquip: MihoyoDataModelProtocol {
     public var id: Int = 0
     public var level: Int = 1
     public var rank: Int = 0
@@ -99,7 +100,7 @@ public struct StarRailChaDetailsEquip: Mappable {
     public var rarity: StarRailRarityTypes = .one
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -113,7 +114,7 @@ public struct StarRailChaDetailsEquip: Mappable {
 }
 
 // MARK: - StarRailChaDetailsOrnament
-public struct StarRailChaDetailsOrnament: Mappable {
+public struct StarRailChaDetailsOrnament: MihoyoDataModelProtocol {
     public var id: Int = 0
     public var level: Int = 1
     public var pos: Int = 0
@@ -125,7 +126,7 @@ public struct StarRailChaDetailsOrnament: Mappable {
     public var properties: [StarRailChaDetailsMainPropertyClass]?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -141,13 +142,14 @@ public struct StarRailChaDetailsOrnament: Mappable {
 }
 
 // MARK: - StarRailChaDetailsMainPropertyClass
-public struct StarRailChaDetailsMainPropertyClass: Mappable {
+public struct StarRailChaDetailsMainPropertyClass: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var propertyType: Int?
     public var value: String?
     public var times: Int?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         propertyType <- map["property_type"]
@@ -157,14 +159,15 @@ public struct StarRailChaDetailsMainPropertyClass: Mappable {
 }
 
 // MARK: - StarRailChaDetailsPropertyElement
-public struct StarRailChaDetailsPropertyElement: Mappable {
+public struct StarRailChaDetailsPropertyElement: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var propertyType: Int?
     public var base: String?
     public var add: String?
     public var propertyFinal: String?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         propertyType <- map["property_type"]
@@ -175,7 +178,7 @@ public struct StarRailChaDetailsPropertyElement: Mappable {
 }
 
 // MARK: - StarRailChaDetailsRank
-public struct StarRailChaDetailsRank: Mappable {
+public struct StarRailChaDetailsRank: MihoyoDataModelProtocol {
     public var id: Int?
     public var pos: Int?
     public var name: String?
@@ -184,7 +187,7 @@ public struct StarRailChaDetailsRank: Mappable {
     public var isUnlocked: Bool?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         id <- map["id"]
@@ -197,7 +200,8 @@ public struct StarRailChaDetailsRank: Mappable {
 }
 
 // MARK: - StarRailChaDetailsSkill
-public struct StarRailChaDetailsSkill: Mappable {
+public struct StarRailChaDetailsSkill: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var pointID: String?
     public var pointType: Int?
     public var itemURL: String?
@@ -210,7 +214,7 @@ public struct StarRailChaDetailsSkill: Mappable {
     public var skillStages: [StarRailChaDetailsSkillStage]?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         pointID <- map["point_id"]
@@ -227,7 +231,8 @@ public struct StarRailChaDetailsSkill: Mappable {
 }
 
 // MARK: - StarRailChaDetailsSkillStage
-public struct StarRailChaDetailsSkillStage: Mappable {
+public struct StarRailChaDetailsSkillStage: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var desc: String?
     public var name: String?
     public var level: Int?
@@ -237,7 +242,7 @@ public struct StarRailChaDetailsSkillStage: Mappable {
     public var isRankWork: Bool?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         desc <- map["desc"]
@@ -344,7 +349,8 @@ public struct StarRailChaDetailsPropertyInfo {
 }
 
 // MARK: - StarRailChaDetailsThe1
-public struct StarRailChaDetailsThe1: Mappable {
+public struct StarRailChaDetailsThe1: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var propertyType: Int?
     public var name: String?
     public var icon: String?
@@ -352,7 +358,7 @@ public struct StarRailChaDetailsThe1: Mappable {
     public var propertyNameFilter: String?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         propertyType <- map["property_type"]
@@ -421,7 +427,7 @@ public struct StarRailChaDetailsThe1001: Mappable {
     public var isCustomPropertyValid: Bool?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         recommendRelicProperties <- map["recommend_relic_properties"]
@@ -436,7 +442,7 @@ public struct StarRailChaDetailsRelicProperty: Mappable {
     public var modifyPropertyType: Int?
     
     public init?(map: Map) { }
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         propertyType <- map["property_type"]
@@ -445,5 +451,4 @@ public struct StarRailChaDetailsRelicProperty: Mappable {
 }
 
 // MARK: - StarRailChaDetailsRelicWiki
-public struct StarRailChaDetailsRelicWiki {
-}
+public struct StarRailChaDetailsRelicWiki { }

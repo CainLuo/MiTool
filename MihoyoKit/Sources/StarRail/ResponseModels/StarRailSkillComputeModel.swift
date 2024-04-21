@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailSkillComputeModel
-public struct StarRailSkillComputeModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct StarRailSkillComputeModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: StarRailSkillComputeData?
 
     public init?(map: ObjectMapper.Map) { }
@@ -25,7 +25,8 @@ public struct StarRailSkillComputeModel: Mappable {
 }
 
 // MARK: - StarRailSkillComputeData
-public struct StarRailSkillComputeData: Mappable {
+public struct StarRailSkillComputeData: MihoyoDataModelProtocol {
+    public var id = UUID()
     // 等级培养耗材
     public var avatarConsume: [StarRailSkillComputeAvatarConsume]?
     // 行迹培养耗材
@@ -47,8 +48,7 @@ public struct StarRailSkillComputeData: Mappable {
 
     public init?(map: ObjectMapper.Map) { }
     public init() { }
-
-    init(
+    public init(
         avatarConsume: String?,
         skillConsume: String?,
         equipmentConsume: String?,
@@ -83,7 +83,7 @@ public struct StarRailSkillComputeData: Mappable {
 }
 
 // MARK: - StarRailSkillComputeAvatarConsume
-public struct StarRailSkillComputeAvatarConsume: Mappable, Identifiable {
+public struct StarRailSkillComputeAvatarConsume: MihoyoDataModelProtocol {
     public var id = UUID()
     public var itemID: String?
     public var itemName: String?

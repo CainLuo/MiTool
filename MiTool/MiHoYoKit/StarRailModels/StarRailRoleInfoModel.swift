@@ -73,10 +73,6 @@ public struct StarRailRoleInfoAvatar: Mappable {
     var isForward: Bool?
     var isUp: Bool?
 
-    var level: String {
-        "Lv.\(curLevel)"
-    }
-
     public init?(map: ObjectMapper.Map) { }
     init() { }
 
@@ -108,10 +104,6 @@ public struct StarRailRoleInfoEquipment: Mappable {
     var targetLevel: Int = 80
     var isForward = false
 
-    var levelString: String {
-        "Lv.\(curLevel)/\(maxLevel)"
-    }
-
     public init?(map: ObjectMapper.Map) { }
     init() { }
 
@@ -141,13 +133,6 @@ public struct StarRailRoleInfoSkill: Mappable, Identifiable {
     var targetLevel: Int?
     var progress: StarRailRoleInfoProgress?
     var minLevelLimit: Int?
-
-    var skillLevel: String {
-        guard let maxLevel = maxLevel else {
-            return "Lv.1/-"
-        }
-        return "Lv.\(curLevel)/\(maxLevel)"
-    }
 
     public init?(map: ObjectMapper.Map) { }
 

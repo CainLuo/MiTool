@@ -88,28 +88,6 @@ public struct GenshinDailyNodeData: Mappable {
     }
 }
 
-extension GenshinDailyNodeData {
-    public var resinContent: String {
-        "\(currentResin)/\(maxResin)"
-    }
-
-    public var transformerTime: String {
-        guard let recoveryTime = transformer?.recoveryTime else {
-            return ""
-        }
-
-        if recoveryTime.reached {
-            return CopyGenshinWidget.ready
-        } else {
-            if recoveryTime.day > 0 {
-                return String(format: CopyGenshinWidget.transformerDay, recoveryTime.day, recoveryTime.hour)
-            } else {
-                return String(format: CopyGenshinWidget.transformerHour, recoveryTime.hour, recoveryTime.minute)
-            }
-        }
-    }
-}
-
 // MARK: - GenshinArchonQuestProgress
 public struct GenshinArchonQuestProgress: Mappable {
     public var list: [Any?]?
@@ -181,28 +159,6 @@ public struct GenshinDailyNodeExpedition: Mappable, Identifiable {
     public var status: String = ""
     public var remainedTime: String = ""
 
-    public var remainedTimeString: String {
-        guard let remainedTime = Int(remainedTime) else {
-            return ""
-        }
-
-        let tempMinute = remainedTime % 3600
-        let minute = tempMinute / 60
-        let hour = (remainedTime - tempMinute) / 3600
-        return String(format: CopyGenshinWidget.transformerHour, hour, minute)
-    }
-
-    public var timeProgress: CGFloat {
-        guard let remainedTime = Int(remainedTime) else {
-            return 0
-        }
-        if remainedTime == 0 {
-            return 1
-        } else {
-            return (3600.0 / CGFloat(remainedTime))
-        }
-    }
-
     public init?(map: ObjectMapper.Map) { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
@@ -248,16 +204,4 @@ public struct GenshinDailyNodeRecoveryTime: Mappable {
         second <- map["Second"]
         reached <- map["reached"]
     }
-}
-
-// MARK:
-public struct GenshinLocalDailyModel: Identifiable {
-    public var id = UUID()
-    public var iconNmae: String
-    public var currentValue: Int = 0
-    public var maxValue: Int = 0
-    public var valueContent: String {
-        "\(currentValue)/\(maxValue)"
-    }
-    public var otherContent: String? = nil
 }

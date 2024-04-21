@@ -128,27 +128,6 @@ public struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
     // 探险icon地址
     public var itemURL: String = ""
     
-    public var timeString: String {
-        if remainingTime == 0 {
-            return CopyStarRailWidget.finished
-        } else if remainingTime < 3600 {
-            let minutes = remainingTime / 60
-            return String(format: CopyGenshinWidget.transformerMinutes, minutes)
-        } else {
-            let minutes = remainingTime % 3600 / 60
-            let hour = Int(remainingTime / 3600)
-            return String(format: CopyGenshinWidget.transformerHour, hour, minutes)
-        }
-    }
-    
-    public var timeProgress: CGFloat {
-        if remainingTime == 0 {
-            return 1
-        } else {
-            return (3600.0 / CGFloat(remainingTime))
-        }
-    }
-    
     public init?(map: ObjectMapper.Map) { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
@@ -157,32 +136,5 @@ public struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
         remainingTime <- map["remaining_time"]
         name <- map["name"]
         itemURL <- map["item_url"]
-    }
-}
-
-public enum StarRailLocalType {
-    case daily
-    case weekly
-    case entrusted
-    case weeklyMonster
-}
-
-public struct StarRailLocalModel: Identifiable, Hashable {
-    public var id = UUID()
-    public var type: StarRailLocalType
-    public var currentValue: Int = 0
-    public var maxValue: Int = 0
-    
-    public var name: String {
-        switch type {
-        case .daily:
-            return CopyStarRailWidget.daily
-        case .weekly:
-            return CopyStarRailWidget.weekly
-        case .entrusted:
-            return CopyStarRailWidget.entrusted
-        case .weeklyMonster:
-            return CopyStarRailWidget.weeklyMonster
-        }
     }
 }

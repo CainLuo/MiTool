@@ -9,13 +9,13 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailRoleInfoModel
-public struct StarRailRoleInfoModel: Mappable {
-    var retcode: Int?
-    var message: String?
-    var data: StarRailRoleInfoData?
+public struct StarRailRoleInfoModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
+    public var data: StarRailRoleInfoData?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         retcode <- map["retcode"]
@@ -25,17 +25,18 @@ public struct StarRailRoleInfoModel: Mappable {
 }
 
 // MARK: - StarRailRoleInfoData
-public struct StarRailRoleInfoData: Mappable {
-    var avatar: StarRailRoleInfoAvatar?
-    var skills: [StarRailRoleInfoSkill] = []
-    var skillsOther: [StarRailRoleInfoSkill] = []
-    var equipment: StarRailRoleInfoEquipment?
-    var isLogin: Bool?
+public struct StarRailRoleInfoData: MihoyoDataModelProtocol {
+    public var id = UUID()
+    public var avatar: StarRailRoleInfoAvatar?
+    public var skills: [StarRailRoleInfoSkill] = []
+    public var skillsOther: [StarRailRoleInfoSkill] = []
+    public var equipment: StarRailRoleInfoEquipment?
+    public var isLogin: Bool?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
-    init(
+    public init(
         avatar: String?,
         skills: String?,
         skillsOther: String?,
@@ -59,26 +60,23 @@ public struct StarRailRoleInfoData: Mappable {
 }
 
 // MARK: - StarRailRoleInfoAvatar
-public struct StarRailRoleInfoAvatar: Mappable {
-    var itemID: String?
-    var itemName: String?
-    var iconURL: String?
-    var damageType: StarRailDamageTypes?
-    var rarity: StarRailRarityTypes = .one
-    var avatarBaseType: StarRailDestinyTypes?
-    var maxLevel: Int = 80
-    var curLevel: Int = 1
-    var targetLevel: Int?
-    var verticalIconURL: String?
-    var isForward: Bool?
-    var isUp: Bool?
-
-    var level: String {
-        "Lv.\(curLevel)"
-    }
+public struct StarRailRoleInfoAvatar: MihoyoDataModelProtocol {
+    public var id = UUID()
+    public var itemID: String?
+    public var itemName: String?
+    public var iconURL: String?
+    public var damageType: StarRailDamageTypes?
+    public var rarity: StarRailRarityTypes = .one
+    public var avatarBaseType: StarRailDestinyTypes?
+    public var maxLevel: Int = 80
+    public var curLevel: Int = 1
+    public var targetLevel: Int?
+    public var verticalIconURL: String?
+    public var isForward: Bool?
+    public var isUp: Bool?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
@@ -97,23 +95,20 @@ public struct StarRailRoleInfoAvatar: Mappable {
 }
 
 // MARK: - StarRailRoleInfoEquipment
-public struct StarRailRoleInfoEquipment: Mappable {
-    var itemID: String?
-    var itemName: String?
-    var itemURL: String?
-    var avatarBaseType: String?
-    var rarity: StarRailRarityTypes = .one
-    var maxLevel: Int = 80
-    var curLevel: Int = 1
-    var targetLevel: Int = 80
-    var isForward = false
-
-    var levelString: String {
-        "Lv.\(curLevel)/\(maxLevel)"
-    }
+public struct StarRailRoleInfoEquipment: MihoyoDataModelProtocol {
+    public var id = UUID()
+    public var itemID: String?
+    public var itemName: String?
+    public var itemURL: String?
+    public var avatarBaseType: String?
+    public var rarity: StarRailRarityTypes = .one
+    public var maxLevel: Int = 80
+    public var curLevel: Int = 1
+    public var targetLevel: Int = 80
+    public var isForward = false
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]
@@ -129,27 +124,21 @@ public struct StarRailRoleInfoEquipment: Mappable {
 }
 
 // MARK: - StarRailRoleInfoSkill
-public struct StarRailRoleInfoSkill: Mappable, Identifiable {
+public struct StarRailRoleInfoSkill: MihoyoDataModelProtocol {
     public var id = UUID()
-    var pointID: String?
-    var prePoint: String?
-    var pointType: StarRailRolePointType?
-    var anchor: StarRailRoleAnchorType?
-    var itemURL: String?
-    var maxLevel: Int?
-    var curLevel: Int = 1
-    var targetLevel: Int?
-    var progress: StarRailRoleInfoProgress?
-    var minLevelLimit: Int?
-
-    var skillLevel: String {
-        guard let maxLevel = maxLevel else {
-            return "Lv.1/-"
-        }
-        return "Lv.\(curLevel)/\(maxLevel)"
-    }
+    public var pointID: String?
+    public var prePoint: String?
+    public var pointType: StarRailRolePointType?
+    public var anchor: StarRailRoleAnchorType?
+    public var itemURL: String?
+    public var maxLevel: Int?
+    public var curLevel: Int = 1
+    public var targetLevel: Int?
+    public var progress: StarRailRoleInfoProgress?
+    public var minLevelLimit: Int?
 
     public init?(map: ObjectMapper.Map) { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         pointID <- map["point_id"]
@@ -165,20 +154,20 @@ public struct StarRailRoleInfoSkill: Mappable, Identifiable {
     }
 }
 
-enum StarRailRolePointType: Int {
+public enum StarRailRolePointType: Int {
     case other = 1
     case main = 2
     case talent = 3
 }
 
-enum StarRailRoleAnchorType: String {
+public enum StarRailRoleAnchorType: String {
     case one = "Point01"
     case two = "Point02"
     case three = "Point03"
     case four = "Point04"
 }
 
-enum StarRailRoleInfoProgress: String {
+public enum StarRailRoleInfoProgress: String {
     case canLearnButStillNotLearn = "CanLearnButStillNotLearn"
     case learned = "Learned"
 }

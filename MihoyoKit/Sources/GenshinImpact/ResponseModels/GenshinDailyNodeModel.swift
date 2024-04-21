@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - GenshinDailyNodeModel
-public struct GenshinDailyNodeModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct GenshinDailyNodeModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinDailyNodeData?
 
     public init?(map: ObjectMapper.Map) { }
@@ -25,7 +25,8 @@ public struct GenshinDailyNodeModel: Mappable {
 }
 
 // MARK: - GenshinDailyNodeData
-public struct GenshinDailyNodeData: Mappable {
+public struct GenshinDailyNodeData: MihoyoDataModelProtocol {
+    public var id = UUID()
     // 当前体力
     public var currentResin: Int = 0
     // 最大体力
@@ -64,7 +65,7 @@ public struct GenshinDailyNodeData: Mappable {
     public var archonQuestProgress: GenshinArchonQuestProgress?
 
     public init?(map: ObjectMapper.Map) { }
-    init() { }
+    public init() { }
 
     mutating public func mapping(map: ObjectMapper.Map) {
         currentResin <- map["current_resin"]
@@ -89,7 +90,8 @@ public struct GenshinDailyNodeData: Mappable {
 }
 
 // MARK: - GenshinArchonQuestProgress
-public struct GenshinArchonQuestProgress: Mappable {
+public struct GenshinArchonQuestProgress: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var list: [Any?]?
     public var isOpenArchonQuest = false
     public var isFinishAllMainline = false
@@ -108,7 +110,8 @@ public struct GenshinArchonQuestProgress: Mappable {
 }
 
 // MARK: - GenshinDailyNodeDailyTask
-public struct GenshinDailyNodeDailyTask: Mappable {
+public struct GenshinDailyNodeDailyTask: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var totalNum: Int = 0
     public var finishedNum: Int = 0
     public var isExtraTaskRewardReceived = false
@@ -129,7 +132,8 @@ public struct GenshinDailyNodeDailyTask: Mappable {
 }
 
 // MARK: - GenshinDailyNodeAttendanceReward
-public struct GenshinDailyNodeAttendanceReward: Mappable {
+public struct GenshinDailyNodeAttendanceReward: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var status: String = ""
     public var progress: Int = 0
 
@@ -142,7 +146,8 @@ public struct GenshinDailyNodeAttendanceReward: Mappable {
 }
 
 // MARK: - GenshinDailyNodeTaskReward
-public struct GenshinDailyNodeTaskReward: Mappable {
+public struct GenshinDailyNodeTaskReward: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var status: String = ""
 
     public init?(map: ObjectMapper.Map) { }
@@ -153,7 +158,7 @@ public struct GenshinDailyNodeTaskReward: Mappable {
 }
 
 // MARK: - GenshinDailyNodeExpedition
-public struct GenshinDailyNodeExpedition: Mappable, Identifiable {
+public struct GenshinDailyNodeExpedition: MihoyoDataModelProtocol {
     public var id = UUID()
     public var avatarSideIcon: String = ""
     public var status: String = ""
@@ -169,7 +174,8 @@ public struct GenshinDailyNodeExpedition: Mappable, Identifiable {
 }
 
 // MARK: - GenshinDailyNodeTransformer
-public struct GenshinDailyNodeTransformer: Mappable {
+public struct GenshinDailyNodeTransformer: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var obtained = false
     public var recoveryTime: GenshinDailyNodeRecoveryTime?
     public var wiki: String = ""
@@ -188,7 +194,8 @@ public struct GenshinDailyNodeTransformer: Mappable {
 }
 
 // MARK: - GenshinDailyNodeRecoveryTime
-public struct GenshinDailyNodeRecoveryTime: Mappable {
+public struct GenshinDailyNodeRecoveryTime: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var day: Int = 0
     public var hour: Int = 0
     public var minute: Int = 0
@@ -204,16 +211,4 @@ public struct GenshinDailyNodeRecoveryTime: Mappable {
         second <- map["Second"]
         reached <- map["reached"]
     }
-}
-
-// MARK:
-public struct GenshinLocalDailyModel: Identifiable {
-    public var id = UUID()
-    public var iconNmae: String
-    public var currentValue: Int = 0
-    public var maxValue: Int = 0
-    public var valueContent: String {
-        "\(currentValue)/\(maxValue)"
-    }
-    public var otherContent: String? = nil
 }

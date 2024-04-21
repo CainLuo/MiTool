@@ -9,9 +9,9 @@ import Foundation
 import ObjectMapper
 
 // MARK: - StarRailWidgetModel
-public struct StarRailWidgetModel: Mappable {
-    public var retcode: Int?
-    public var message: String?
+public struct StarRailWidgetModel: MihoyoModelProtocol {
+    public var retcode: Int = 0
+    public var message: String = ""
     public var data: StarRailWidgetDataModel?
     
     public init?(map: ObjectMapper.Map) { }
@@ -25,7 +25,8 @@ public struct StarRailWidgetModel: Mappable {
 }
 
 // MARK: - StarRailWidgetDataModel
-public struct StarRailWidgetDataModel: Mappable {
+public struct StarRailWidgetDataModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     // 当前体力
     public var currentStamina: Int = 0
     // 最大体力
@@ -56,8 +57,7 @@ public struct StarRailWidgetDataModel: Mappable {
     public var isReserveStaminaFull = false
     
     public init?(map: ObjectMapper.Map) { }
-    
-    init(
+    public init(
         currentStamina: Int,
         maxStamina: Int,
         staminaRecoverTime: Int,
@@ -115,7 +115,7 @@ public enum StarRailWidgetExpeditionStatus: String {
 }
 
 // MARK: - StarRailWidgetExpeditionModel
-public struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
+public struct StarRailWidgetExpeditionModel: MihoyoDataModelProtocol {
     public var id = UUID()
     // 探险角色头像列表
     public var avatars: [String]?
@@ -127,14 +127,6 @@ public struct StarRailWidgetExpeditionModel: Mappable, Identifiable {
     public var name: String = ""
     // 探险icon地址
     public var itemURL: String = ""
-    
-    public var timeProgress: CGFloat {
-        if remainingTime == 0 {
-            return 1
-        } else {
-            return (3600.0 / CGFloat(remainingTime))
-        }
-    }
     
     public init?(map: ObjectMapper.Map) { }
     

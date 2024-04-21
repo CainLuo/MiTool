@@ -19,8 +19,7 @@ public struct StarRailSkillComputeRequestModel: Mappable {
     public var region: String?
     
     public init?(map: ObjectMapper.Map) { }
-    
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         game <- map["game"]
@@ -40,8 +39,7 @@ public struct StarRailSkillComputeRequestAvatar: Mappable {
     public var targetLevel: Int?
     
     public init?(map: ObjectMapper.Map) { }
-    
-    init() { }
+    public init() { }
     
     mutating public func mapping(map: ObjectMapper.Map) {
         itemID <- map["item_id"]

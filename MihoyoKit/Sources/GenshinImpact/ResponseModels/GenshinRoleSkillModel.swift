@@ -11,8 +11,8 @@ import ObjectMapper
 
 // GenshinRoleSkillDataModel
 public struct GenshinRoleSkillModel: MihoyoModelProtocol {
-    public var message: String = ""
     public var retcode: Int = 0
+    public var message: String = ""
     public var data: GenshinRoleSkillDataModel?
     
     public init?(map: Map) {}
@@ -25,12 +25,13 @@ public struct GenshinRoleSkillModel: MihoyoModelProtocol {
 }
 
 // GenshinRoleSkillDataModel
-public struct GenshinRoleSkillDataModel: Mappable {
+public struct GenshinRoleSkillDataModel: MihoyoDataModelProtocol {
+    public var id = UUID()
     public var skillList: [GenshinRoleSkillItemModel]?
     public var weapon: GenshinRoleWeaponModel?
     public var reliquaryList: [GenshinRoleReliquaryModel]?
     
-    init(
+    public init(
         skillList: [GenshinRoleSkillItemModel]? = nil,
         weapon: GenshinRoleWeaponModel? = nil,
         reliquaryList: [GenshinRoleReliquaryModel]? = nil
@@ -50,7 +51,7 @@ public struct GenshinRoleSkillDataModel: Mappable {
 }
 
 // GenshinRoleSkillItemModel
-public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
+public struct GenshinRoleSkillItemModel: MihoyoDataModelProtocol {
     public var id = UUID()
     public var skillID: Int?
     public var groupID: Int?
@@ -59,18 +60,10 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
     public var maxLevel: Int = 90
     public var currentLevel: Int = 1
     public var roleID: Int?
-    
-    public var level: String {
-        "Lv: \(currentLevel)"
-    }
-    
-    public var skillURL: String {
-        icon ?? ""
-    }
-    
+        
     public init?(map: Map) {}
     
-    init(
+    public init(
         roleID: Int?,
         skillID: Int?,
         groupID: Int?,
@@ -97,7 +90,7 @@ public struct GenshinRoleSkillItemModel: Mappable, Identifiable {
 }
 
 // GenshinRoleWeaponModel
-public struct GenshinRoleWeaponModel: Mappable {
+public struct GenshinRoleWeaponModel: MihoyoDataModelProtocol {
     public var id: Int?
     public var name: String = ""
     public var icon: String = ""
@@ -130,7 +123,7 @@ public struct GenshinRoleReliquaryModel: MihoyoDataModelProtocol {
     public var currentLevel: Int = 1
     public var maxLevel: Int = 20
     
-    public init?(map: Map) {}
+    public init?(map: Map) { }
     
     mutating public func mapping(map: Map) {
         reliquaryID <- map["id"]
@@ -140,11 +133,5 @@ public struct GenshinRoleReliquaryModel: MihoyoDataModelProtocol {
         reliquaryLevel <- map["reliquary_level"]
         currentLevel <- map["level_current"]
         maxLevel <- map["max_level"]
-    }
-}
-
-extension GenshinRoleReliquaryModel {
-    public var levelString: String {
-        "Lv: \(currentLevel)"
     }
 }

@@ -54,10 +54,6 @@ public struct GenshinWidgetData: Mappable {
     public var homeURL: String = ""
     public var noteURL: String = ""
 
-    public var resinContent: String {
-        "\(currentResin)/\(maxResin)"
-    }
-
     public init?(map: ObjectMapper.Map) { }
     init() { }
     
