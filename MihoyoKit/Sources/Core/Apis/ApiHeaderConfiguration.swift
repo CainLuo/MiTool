@@ -142,3 +142,71 @@ enum ApiHeaderConfiguration {
         return headers
     }
 }
+
+// API请求的类型枚举
+enum ApiRequestType {
+    case roleData
+    case weaponList
+    case weaponCompute
+    // 添加其他的类型
+}
+
+struct User {
+    let cookie: String
+    let region: String
+    let cookieToken: String
+
+    // 添加其他的用户信息
+}
+
+class HeadersFactory {
+    private let user: User
+
+    init(user: User) {
+        self.user = user
+    }
+
+    func headers(for requestType: ApiRequestType) -> [String: String] {
+        var headers: [String: String] = ["Cookie": user.cookie]
+
+        switch requestType {
+        case .roleData:
+            break
+        case .weaponList:
+            headers["Region"] = user.region
+        case .weaponCompute:
+            headers["CookieToken"] = user.cookieToken
+        // 添加其他的case，根据具体的请求类型返回不同的请求头
+        }
+
+        return headers
+    }
+}
+
+public class AAAApiRequestManager {
+    static let shared = AAAApiRequestManager()
+
+    var currentUser: User? {
+        didSet {
+            headersFactory = HeadersFactory(user: currentUser!)
+        }
+    }
+
+    private var headersFactory: HeadersFactory?
+
+    func request(api: String, requestType: ApiRequestType, completion: (Data?, URLResponse?, Error?) -> Void) {
+        guard let headers = headersFactory?.headers(for: requestType) else {
+            return
+        }
+
+        // 这里你会创建一个URLRequest，并将headers设置为请求的头部，
+        // 然后使用URLSession或者其他网络请求库来发送此请求。
+
+        // 比如：
+        /*
+        var request = URLRequest(url: URL(string: api)!)
+        request.allHTTPHeaderFields = headers
+        URLSession.shared.dataTask(with: request, completionHandler: completion).resume()
+        */
+    }
+}
