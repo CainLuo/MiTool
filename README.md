@@ -52,11 +52,7 @@
 - [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
 
 ## 参考库
-本项目参考了以下第三方项目的 DS 加密方式(目前还没有请求成功), 排名不分先后, 感谢各位大佬的共享~
-
-- [gsiod_core](https://github.com/Genshin-bots/gsuid_core)
-- [KimigaiiWuyi/GenshinUID](https://github.com/KimigaiiWuyi/GenshinUID)
-- [baiqwerdvd/StarRailUID](https://github.com/baiqwerdvd/StarRailUID)
+- API 和加密方式来自 [UIGF Documents](https://github.com/UIGF-org/mihoyo-api-collect/tree/main)
 
 ## 代码一致性
 为了让项目的代码一致性, 使用了 [SwiftLint](https://github.com/realm/SwiftLint), 具体规则使用了 [kodecocodes](https://github.com/kodecocodes/swift-style-guide/tree/main?tab=readme-ov-file#classes-and-structures) 所提供的代码风格.
